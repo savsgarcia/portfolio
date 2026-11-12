@@ -22,7 +22,7 @@
   --font-hand: "Caveat", "Comic Sans MS", cursive;
 
   /* Layout (values from the 1920px frame, scaled down on smaller screens) */
-  --gutter: 32px;
+  --gutter: 0px;
   --side: clamp(256px, 14.7vw, 282px);
   --c2: clamp(256px, 17.3vw, 332px);
   --c3: clamp(330px, 23.9vw, 459px);
@@ -163,17 +163,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 3px;
+  height: 2px;
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .25s ease;
 }
 .nav-link:hover { color: var(--ink); }
-.nav-link[aria-current="page"] {
-  color: var(--ink);
-  font-weight: 400;
-}
+.nav-link[aria-current="page"] { color: var(--ink); }
 .nav-link[aria-current="page"]::after { transform: scaleX(1); }
 
 .contact {
@@ -261,30 +258,31 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 
 .project-tab {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 24px 0 5px;
-  border-bottom: 3px solid transparent;
+  display: grid;
+  grid-template-columns: auto auto;
+  column-gap: 1ch;
+  justify-content: start;
+  padding: 24px 0 6px;
+  border-bottom: 2px solid transparent;
   text-align: left;
   color: var(--muted);
   transition: color .2s ease, border-color .25s ease;
 }
+.project-tab-num,
 .project-tab-title {
   font-family: var(--font-mono);
-  font-size: clamp(12px, .73vw, 14px);
-  white-space: nowrap;
+  font-size: 18px;
   line-height: 24px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
 }
-.project-tab-client { font-size: 16px; line-height: 24px; }
+.project-tab-client { grid-column: 2; font-size: 16px; line-height: 24px; }
 .project-tab:hover { color: var(--ink); }
 .project-tab[aria-selected="true"] {
   color: var(--ink);
   border-bottom-color: var(--accent);
 }
-.project-tab[aria-selected="true"] .project-tab-title { font-weight: 500; }
+.project-tab[aria-selected="true"] :is(.project-tab-num, .project-tab-title) { font-weight: 500; }
 
 .col--text { padding: calc(var(--top) - 7px) 40px 40px; }
 
@@ -306,7 +304,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   padding-bottom: 8px;
   font-size: 20px;
   line-height: 24px;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--ink);
   text-decoration: none;
 }
@@ -318,7 +316,6 @@ a.cta,
   background-repeat: repeat-x;
 }
 .cta--soon { cursor: default; }
-.cta--locked { font-weight: 400; }
 
 .col--visual {
   position: relative;
@@ -561,7 +558,8 @@ a.cta,
     width: max-content;
   }
   .project-tab { padding-top: 8px; }
-  .project-tab-title { font-size: 12px; }
+  .project-tab-num,
+  .project-tab-title { font-size: 14px; white-space: nowrap; }
   .project-tab-client { font-size: 14px; }
 
   .col--text { padding: 40px var(--gutter) 40px; max-width: 640px; }
