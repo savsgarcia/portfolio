@@ -270,11 +270,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 .project-tab-num,
 .project-tab-title {
-  font-family: var(--font-mono);
+  font-family: var(--font-sans);
+  font-weight: 500;
   font-size: 18px;
   line-height: 24px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
 }
 .project-tab-client { grid-column: 2; font-size: 16px; line-height: 24px; }
 .project-tab:hover { color: var(--ink); }
@@ -282,7 +281,6 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   color: var(--ink);
   border-bottom-color: var(--accent);
 }
-.project-tab[aria-selected="true"] :is(.project-tab-num, .project-tab-title) { font-weight: 500; }
 
 .col--text { padding: calc(var(--top) - 7px) 40px 40px; }
 
