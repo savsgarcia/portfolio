@@ -248,6 +248,12 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   grid-template-columns: var(--c2) var(--c3) 1fr;
 }
 
+/* Largest screens: image panel takes 30% of the viewport width */
+@media (min-width: 1600px) {
+  .view--work { grid-template-columns: var(--c2) minmax(var(--c3), 1fr) 30vw; }
+  .project-copy { max-width: 459px; }
+}
+
 .col--projects { padding: calc(var(--top) - 24px) 16px 40px clamp(24px, 2.1vw, 40px); }
 
 .projects {
