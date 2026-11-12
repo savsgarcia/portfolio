@@ -249,19 +249,20 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 
 /* Largest screens: image panel takes 50% of the viewport width.
-   The project list sits above the intro, both centered in the other half. */
+   The project list sits above the intro, full width with 40px margins. */
 @media (min-width: 1600px) {
   .view--work {
-    grid-template-columns: 1fr minmax(0, 720px) 1fr 50vw;
+    grid-template-columns: minmax(0, 1fr) 50vw;
     grid-template-rows: auto 1fr;
   }
-  .view--work .col--projects { grid-column: 2; grid-row: 1; padding: var(--top) 40px 0; }
-  .view--work .col--text { grid-column: 2; grid-row: 2; padding: 48px 40px 40px; }
-  .view--work .col--visual { grid-column: 4; grid-row: 1 / -1; }
+  .view--work .col--projects { grid-column: 1; grid-row: 1; padding: var(--top) 40px 0; }
+  .view--work .col--text { grid-column: 1; grid-row: 2; padding: 48px 40px 40px; }
+  .view--work .col--visual { grid-column: 2; grid-row: 1 / -1; }
   .view--work .projects { flex-direction: row; flex-wrap: wrap; align-items: flex-end; gap: 8px 32px; }
   .view--work .project-tab { padding-top: 0; }
-  .project-copy .display { font-size: 64px; line-height: 64px; }
-  .project-copy .lede { max-width: 459px; }
+  .view--work .project-copy { max-width: none; }
+  .project-copy .display { font-size: 96px; line-height: 96px; }
+  .project-copy .lede { max-width: 580px; }
 }
 
 .col--projects { padding: calc(var(--top) - 24px) 16px 40px clamp(24px, 2.1vw, 40px); }
