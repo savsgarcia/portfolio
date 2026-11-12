@@ -151,8 +151,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   position: relative;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(32px, 2.1vw, 40px);
-  line-height: 40px;
+  font-size: 28px;
+  line-height: 32px;
   padding-bottom: 8px;
   color: var(--faint);
   text-decoration: none;
@@ -534,7 +534,7 @@ a.cta,
   }
   .sidebar > .brand { display: none; }
   .nav { margin-top: 12vh; padding-left: 0; }
-  .nav-link { font-size: 40px; }
+  .nav-link { font-size: 28px; }
   .contact { margin-top: 64px; }
   .last-update { margin-top: auto; padding-top: 48px; }
 
