@@ -250,7 +250,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* Largest screens: image panel takes 30% of the viewport width */
 @media (min-width: 1600px) {
-  .view--work { grid-template-columns: var(--c2) minmax(var(--c3), 1fr) 30vw; }
+  /* Projects + text sit centered in the space left of the image panel */
+  .view--work { grid-template-columns: 1fr var(--c2) minmax(0, 680px) 1fr 30vw; }
+  .view--work .col--projects { grid-column: 2; }
+  .view--work .col--text { grid-column: 3; }
+  .view--work .col--visual { grid-column: 5; }
   .project-copy { max-width: 600px; }
   .project-copy .display { font-size: 64px; line-height: 64px; }
   .project-copy .lede { max-width: 459px; }
