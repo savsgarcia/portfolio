@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Saul García · Product designer</title>
+  <meta name="description" content="Saul García is a product designer making high-stakes, data-dense software in healthcare, insurance and fintech clearer and harder to get wrong.">
+  <meta name="theme-color" content="#FFFEFB">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FFFEFB'/%3E%3Ctext x='16' y='23' font-family='Georgia,serif' font-size='20' text-anchor='middle' fill='%23334155'%3ES%3C/text%3E%3Ccircle cx='25' cy='8' r='3' fill='%23548439'/%3E%3C/svg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@700&family=Fraunces:opsz,wght@9..144,300;9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- Mobile top bar -->
+  <header class="topbar">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar">
+      <svg class="icon-open" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+      <span class="menu-toggle-label">menu</span>
+    </button>
+    <a class="brand brand--compact" href="#work">
+      <span class="brand-name">Saul García</span>
+      <span class="brand-role">Product designer</span>
+    </a>
+  </header>
+
+  <div class="layout">
+    <!-- Left panel: identity, navigation, contact -->
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#work">
+        <span class="brand-name">Saul García</span>
+        <span class="brand-role">Product designer</span>
+      </a>
+
+      <nav class="nav" aria-label="Main">
+        <a class="nav-link" href="#work" data-view="work">Work</a>
+        <a class="nav-link" href="#experience" data-view="experience">Experience</a>
+        <a class="nav-link" href="#about" data-view="about">About</a>
+      </nav>
+
+      <div class="contact">
+        <p class="status"><span class="status-dot" aria-hidden="true"></span>I’m available for work</p>
+        <p class="contact-title">Let’s get in touch</p>
+        <a class="contact-link" href="mailto:saulgarciavital@gmail.com">saulgarciavital@gmail.com</a>
+        <a class="contact-link contact-link--underline" href="https://www.linkedin.com/in/saul-garc%C3%ADa-9406a298" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+
+      <p class="last-update">Last update Nov 2026</p>
+    </aside>
+
+    <main id="main" class="main" tabindex="-1">
+
+      <!-- WORK -->
+      <section class="view view--work" id="view-work" data-view="work" aria-label="Work">
+        <div class="col col--projects">
+          <div class="projects" role="tablist" aria-label="Projects" aria-orientation="vertical">
+            <button class="project-tab" role="tab" id="tab-viu" aria-controls="panel-project" aria-selected="true" data-project="viu">
+              <span class="project-tab-title">01. Insurance profile</span>
+              <span class="project-tab-client">VIU by HUB</span>
+            </button>
+            <button class="project-tab" role="tab" id="tab-order-entry" aria-controls="panel-project" aria-selected="false" tabindex="-1" data-project="order-entry">
+              <span class="project-tab-title">02. AI-assisted order entry</span>
+              <span class="project-tab-client">Oracle</span>
+            </button>
+            <button class="project-tab" role="tab" id="tab-order-sets" aria-controls="panel-project" aria-selected="false" tabindex="-1" data-project="order-sets">
+              <span class="project-tab-title">03. Order sets</span>
+              <span class="project-tab-client">Oracle</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="col col--text" id="panel-project" role="tabpanel" aria-labelledby="tab-viu">
+          <div class="project-copy">
+            <h1 class="display" data-field="title">How Frankie found clarity, and a better way to renew.</h1>
+            <p class="lede" data-field="description">Designing VIU’s account space, where every policy lives in one place and HUB can help before each renewal.</p>
+            <p class="project-cta" data-field="cta">
+              <span class="cta cta--soon" title="Case study coming soon">See case study
+                <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+              </span>
+            </p>
+          </div>
+        </div>
+
+        <div class="col col--visual" data-field="visual" style="--panel-bg:#F8F5EC">
+          <img class="project-image project-image--viu" src="assets/img/viu.webp" width="1986" height="1614" alt="VIU by HUB account screen: a personal dashboard greeting Frankie with all their policies and recommended coverage.">
+        </div>
+      </section>
+
+      <!-- EXPERIENCE -->
+      <section class="view view--experience" id="view-experience" data-view="experience" aria-label="Experience" hidden>
+        <h1 class="visually-hidden">Experience</h1>
+        <ol class="timeline">
+          <li class="job is-current">
+            <div class="job-company">
+              <span class="job-name">Oracle</span>
+              <span class="job-dates">Feb 2025 - Sept 2026</span>
+            </div>
+            <div class="job-role">
+              <span class="job-dot" aria-hidden="true"></span>
+              <h2 class="job-title">Principal UX designer</h2>
+              <p class="job-meta">Health - MX (Remote)</p>
+            </div>
+            <p class="job-desc">Designed clinical ordering workflows for primary care and oncology, from lab requests to cancer regimens, to reduce clicks and build regulatory compliance into the design.</p>
+          </li>
+          <li class="job">
+            <div class="job-company">
+              <span class="job-name">Distillery</span>
+              <span class="job-dates">Jun 2021 - Dec 2024</span>
+            </div>
+            <div class="job-role">
+              <span class="job-dot" aria-hidden="true"></span>
+              <h2 class="job-title">Product designer</h2>
+              <p class="job-meta">Consultancy - MX (Remote)</p>
+            </div>
+            <p class="job-desc">Designed policy and coverage experiences for an insurance platform to reduce agent service calls, while managing the Latin America design team for 2 years.</p>
+          </li>
+          <li class="job">
+            <div class="job-company">
+              <span class="job-name">Thirty3</span>
+              <span class="job-dates">Jun 2020 - Jun 2021</span>
+            </div>
+            <div class="job-role">
+              <span class="job-dot" aria-hidden="true"></span>
+              <h2 class="job-title">Product designer</h2>
+              <p class="job-meta">Consultancy - Switzerland (Remote)</p>
+            </div>
+            <p class="job-desc">Designed SaaS products for early-stage startups, including a market research platform with data-dense results, to help clients get insights faster.</p>
+          </li>
+        </ol>
+        <a class="handnote" href="https://www.linkedin.com/in/saul-garc%C3%ADa-9406a298" target="_blank" rel="noopener">
+          <span class="handnote-arrow" aria-hidden="true">←</span>
+          <span>Check out my full experience</span>
+        </a>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="view view--about" id="view-about" data-view="about" aria-label="About" hidden>
+        <div class="about-copy">
+          <h1 class="display">Designing clarity for high-stakes, data-dense software.</h1>
+          <p class="about-lead">Most recently simplifying clinical workflows at Oracle Health.</p>
+          <p class="about-body">With a background in graphic design and frontend, I take mission-critical workflows in healthcare, insurance and fintech and make them faster to use and harder to get wrong.</p>
+        </div>
+        <div class="about-photo">
+          <img src="assets/img/saul.webp" width="404" height="404" alt="Portrait of Saul García">
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
