@@ -293,7 +293,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   color: var(--muted);
 }
 
-.project-cta { margin-top: 48px; }
+.project-cta { margin-top: 24px; }
 
 .cta {
   display: inline-flex;
@@ -562,7 +562,7 @@ a.cta,
 
   .col--text { padding: 40px var(--gutter) 40px; max-width: 640px; }
   .display { font-size: clamp(34px, 8.5vw, 48px); line-height: 1.06; }
-  .project-cta { margin-top: 32px; }
+  .project-cta { margin-top: 24px; }
   .cta { font-size: 18px; }
 
   .col--visual {
