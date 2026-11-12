@@ -255,10 +255,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
     grid-template-columns: 1fr minmax(0, 720px) 1fr 50vw;
     grid-template-rows: auto 1fr;
   }
-  .view--work .col--projects { grid-column: 2; grid-row: 1; padding: calc(var(--top) - 136px) 40px 0; }
+  .view--work .col--projects { grid-column: 2; grid-row: 1; padding: var(--top) 40px 0; }
   .view--work .col--text { grid-column: 2; grid-row: 2; padding: 48px 40px 40px; }
   .view--work .col--visual { grid-column: 4; grid-row: 1 / -1; }
-  .view--work .projects { flex-direction: row; flex-wrap: wrap; gap: 8px 24px; }
+  .view--work .projects { flex-direction: row; flex-wrap: wrap; align-items: flex-end; gap: 8px 32px; }
+  .view--work .project-tab { padding-top: 0; }
   .project-copy .display { font-size: 64px; line-height: 64px; }
   .project-copy .lede { max-width: 459px; }
 }
@@ -273,24 +274,27 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 }
 
 .project-tab {
-  display: grid;
-  grid-template-columns: auto auto;
-  column-gap: 1ch;
-  justify-content: start;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   padding: 24px 0 6px;
   border-bottom: 2px solid transparent;
   text-align: left;
   color: var(--muted);
   transition: color .2s ease, border-color .25s ease;
 }
-.project-tab-num,
 .project-tab-title {
   font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
+}
+.project-tab[aria-selected="true"] .project-tab-title {
   font-weight: 500;
   font-size: 18px;
   line-height: 24px;
 }
-.project-tab-client { grid-column: 2; font-size: 14px; font-weight: 400; line-height: 22px; }
+.project-tab-client { font-size: 14px; font-weight: 400; line-height: 22px; }
 .project-tab:hover { color: var(--ink); }
 .project-tab[aria-selected="true"] {
   color: var(--ink);
@@ -571,8 +575,8 @@ a.cta,
     width: max-content;
   }
   .project-tab { padding-top: 8px; }
-  .project-tab-num,
-  .project-tab-title { font-size: 14px; white-space: nowrap; }
+  .project-tab-title,
+  .project-tab[aria-selected="true"] .project-tab-title { font-size: 14px; white-space: nowrap; }
   .project-tab-client { font-size: 14px; }
 
   .col--text { padding: 40px var(--gutter) 40px; max-width: 640px; }
