@@ -303,11 +303,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   font-size: 14px;
   line-height: 22px;
 }
-.project-tab[aria-selected="true"] .project-tab-title {
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 24px;
-}
+.project-tab[aria-selected="true"] .project-tab-title { font-weight: 500; }
 .project-tab-client { font-size: 14px; font-weight: 400; line-height: 22px; }
 .project-tab:hover { color: var(--ink); }
 .project-tab[aria-selected="true"] {
@@ -589,8 +585,7 @@ a.cta,
     width: max-content;
   }
   .project-tab { padding-top: 8px; }
-  .project-tab-title,
-  .project-tab[aria-selected="true"] .project-tab-title { font-size: 14px; white-space: nowrap; }
+  .project-tab-title { white-space: nowrap; }
   .project-tab-client { font-size: 14px; }
 
   .col--text { padding: 40px var(--gutter) 40px; max-width: 640px; }
