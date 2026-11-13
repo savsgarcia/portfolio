@@ -19,7 +19,7 @@
       alt: 'VIU by HUB account screen: a personal dashboard greeting Frankie with all their policies and recommended coverage.'
     },
     'order-entry': {
-      title: 'How Dr. Haven got help ordering, only when he asked for it',
+      title: 'How Dr. Haven<br>got help ordering, only when he asked for it',
       description: 'Designing AI-assisted order entry for an EHR: when the assistant helps, and when it steps aside.',
       cta: '<span class="cta cta--locked">Available on request · NDA ' + lock + '</span>',
       bg: '#DCE8E1',
