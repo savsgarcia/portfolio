@@ -603,10 +603,22 @@ a.cta,
   .project-cta { margin-top: 24px; }
   .cta { font-size: 18px; }
 
+  /* Image fits the panel, centered, with 32px margins */
   .col--visual {
-    height: clamp(320px, 78vw, 640px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
   }
-  .project-image { top: 40px; left: var(--gutter); }
+  .project-image,
+  .project-image--viu,
+  .project-image--order-entry,
+  .project-image--order-sets {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 
   /* Experience */
   .view--experience {
