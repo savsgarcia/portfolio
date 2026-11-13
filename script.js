@@ -8,7 +8,8 @@
 
   const projects = {
     'viu': {
-      title: 'How Frankie found clarity, and a better way to renew.',
+      // <br> forces the line break after "Frankie"
+      title: 'How Frankie<br>found clarity, and a better way to renew.',
       description: 'Designing VIU’s account space, where every policy lives in one place and HUB can help before each renewal.',
       // Case study not published yet: swap this for a link when it is ready,
       // e.g. '<a class="cta" href="viu/">See case study ' + chevron + '</a>'
@@ -98,7 +99,7 @@
     visual.style.setProperty('--panel-bg', p.bg);
 
     switchTimer = setTimeout(function () {
-      titleEl.textContent = p.title;
+      titleEl.innerHTML = p.title;
       descEl.textContent = p.description;
       ctaEl.innerHTML = p.cta;
       const img = document.createElement('img');
