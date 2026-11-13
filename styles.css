@@ -354,17 +354,17 @@ a.cta,
 .project-image {
   position: absolute;
   top: calc(var(--top) - 3px);
-  left: 40px;
+  left: 40px; /* each image subtracts its transparent edge so the visible edges line up */
   max-width: none;
   height: auto;
   transition: opacity .25s ease, transform .25s ease;
 }
-.project-image--viu { width: 120%; }
+.project-image--viu { width: 120%; left: calc(40px - 0.97%); }
 .project-image--order-entry {
-  left: 8%;
+  left: calc(40px - 0.86%);
   width: 84%;
 }
-.project-image--order-sets { width: 186%; }
+.project-image--order-sets { width: 186%; left: calc(40px - 0.93%); }
 
 /* ---------- Experience ---------- */
 
