@@ -267,6 +267,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .project-copy .lede { max-width: 580px; }
 }
 @media (min-width: 1280px) and (max-width: 1599px) {
+  .view--work { grid-template-columns: minmax(0, 1fr) 40vw; }
   .view--work .projects { column-gap: 16px; }
   .view--work .col--text { padding-top: 32px; }
 }
