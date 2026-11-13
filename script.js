@@ -27,7 +27,7 @@
       alt: 'AI assistant panel inside an EHR suggesting a lisinopril order ready for review, with relevant chart context.'
     },
     'order-sets': {
-      title: 'How clinicians ordered complex care plans without losing their place',
+      title: 'How clinicians<br>ordered complex care plans without losing their place',
       description: 'Modernizing a legacy order sets experience for expert users, without breaking the workflows they rely on.',
       cta: '<span class="cta cta--locked">Available on request · NDA ' + lock + '</span>',
       bg: '#DCC3D2',
