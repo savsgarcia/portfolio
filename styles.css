@@ -250,9 +250,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   grid-template-columns: var(--c2) var(--c3) 1fr;
 }
 
-/* Largest screens: image panel takes 50% of the viewport width.
+/* Desktop (1280px+): image panel takes 50% of the viewport width.
    The project list sits above the intro, full width with 40px margins. */
-@media (min-width: 1600px) {
+@media (min-width: 1280px) {
   .view--work {
     grid-template-columns: minmax(0, 1fr) 50vw;
     grid-template-rows: auto 1fr;
@@ -263,8 +263,15 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .view--work .projects { flex-direction: row; flex-wrap: wrap; align-items: flex-end; gap: 8px 32px; }
   .view--work .project-tab { padding-top: 0; }
   .view--work .project-copy { max-width: none; }
-  .project-copy .display { font-size: 96px; line-height: 96px; }
+  .project-copy .display { font-size: clamp(44px, 3.75vw, 60px); line-height: 1.04; text-wrap: balance; }
   .project-copy .lede { max-width: 580px; }
+}
+@media (min-width: 1280px) and (max-width: 1599px) {
+  .view--work .projects { column-gap: 16px; }
+  .view--work .col--text { padding-top: 32px; }
+}
+@media (min-width: 1600px) {
+  .project-copy .display { font-size: 96px; line-height: 96px; }
 }
 
 .col--projects { padding: calc(var(--top) - 24px) 16px 40px clamp(24px, 2.1vw, 40px); }
