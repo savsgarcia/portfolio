@@ -555,7 +555,7 @@
   border-radius: 20px;
   background: #F7F7F8;
 }
-.cs-dialog__shot img { display: block; width: 100%; height: auto; border-radius: 8px; }
+.cs-dialog__shot img { display: block; width: 100%; height: auto; }
 
 /* ---------- Footer ---------- */
 
