@@ -409,9 +409,10 @@
 .cs-notes li {
   position: relative;
   padding: 12px 14px 12px 44px;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #D6CEC7;
   border-radius: 4px;
-  background: #FFFFFF;
+  background: #FCFCFB;
+  color: #403730;
   box-shadow: var(--cs-shadow);
 }
 .cs-notes li::before {
