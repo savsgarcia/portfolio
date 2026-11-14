@@ -28,7 +28,7 @@
   --side: clamp(256px, 14.7vw, 282px);
   --c2: clamp(256px, 17.3vw, 332px);
   --c3: clamp(330px, 23.9vw, 459px);
-  --c3-exp: 372px; /* longest job title (322px) + 24px padding each side */
+  --c3-exp: 288px; /* longest line in the role column (~239px) + 24px padding each side */
   --top: clamp(132px, 29.5vh, 320px);
 
   /* Dotted divider (1px dot, 6px gap) */
@@ -404,7 +404,7 @@ a.cta,
   flex-direction: column;
   align-items: flex-end;
   gap: 8px;
-  padding: 20px 24px 0; /* company name centered on the timeline dot */
+  padding: 16px 24px 0; /* company name centered on the timeline dot */
   text-align: right;
   font-family: var(--font-mono);
   color: var(--stone);
@@ -420,7 +420,7 @@ a.cta,
 .job-dot {
   position: absolute;
   left: -4px;
-  top: 28px; /* centered on the first line of the 32px title */
+  top: 24px; /* centered on the first line of the 24px title */
   width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--dot-idle);
@@ -430,9 +430,9 @@ a.cta,
 .job-title {
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: 32px;
-  line-height: 36px;
-  font-variation-settings: "opsz" 32;
+  font-size: 24px;
+  line-height: 28px;
+  font-variation-settings: "opsz" 24;
   white-space: nowrap;
 }
 .job-meta {
