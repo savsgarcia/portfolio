@@ -404,7 +404,7 @@ a.cta,
   flex-direction: column;
   align-items: flex-end;
   gap: 8px;
-  padding: 0 24px;
+  padding: 20px 24px 0; /* company name centered on the timeline dot */
   text-align: right;
   font-family: var(--font-mono);
   color: var(--stone);
