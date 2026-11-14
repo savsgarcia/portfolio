@@ -757,6 +757,31 @@ a.cta,
   .view--work > .col--visual .project-image--order-sets { width: 186%; left: calc(var(--img-start) - 0.93%); }
 }
 
+/* Tablet to small desktop (700–1099px): About keeps the desktop
+   column layout with dotted dividers; the menu stays in the hamburger. */
+@media (min-width: 700px) and (max-width: 1099px) {
+  .view--about {
+    display: grid;
+    grid-template-columns: 18% minmax(0, 46%) 1fr;
+    min-height: calc(100dvh - 84px);
+    padding: 0;
+    background-image: var(--dots), var(--dots);
+    background-size: 1px 7px;
+    background-repeat: repeat-y;
+    background-position: calc(18% - 1px) 0, calc(64% - 1px) 0;
+  }
+  .about-copy {
+    grid-column: 2;
+    max-width: none;
+    padding: clamp(48px, calc(var(--top) - 84px), 240px) 24px 40px;
+  }
+  .about-photo {
+    grid-column: 3;
+    padding: calc(clamp(48px, calc(var(--top) - 84px), 240px) + 7px) 24px 40px 32px;
+  }
+  .about-photo img { width: min(160px, 100%); height: auto; aspect-ratio: 1; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
