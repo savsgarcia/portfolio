@@ -179,7 +179,13 @@
 
 /* ---------- 01. Overview ---------- */
 
-.cs-overview { padding-top: 48px; }
+.cs-overview {
+  /* Card: #FCFCFB with 40px padding on every side. Same box as the other sections,
+     so the text inside stays aligned with the rest of the page. */
+  margin-top: 32px;
+  padding: 40px var(--cs-pad);
+  background: var(--cs-card-bg);
+}
 .cs-overview__grid {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
@@ -217,7 +223,7 @@
   color: var(--ink);
   font-variant-numeric: lining-nums;
 }
-.cs-stat__unit { font-size: 32px; } /* the % sign is smaller than the number */
+.cs-stat__unit { font-size: 32px; line-height: 0; } /* smaller % sign; line-height 0 keeps the row height */
 
 /* ---------- 02. The challenge ---------- */
 
@@ -559,7 +565,7 @@
   }
   .cs-back { grid-column: 1 / -1; }
   .cs-section { padding-top: 72px; }
-  .cs-overview { padding-top: 40px; }
+  .cs-overview { margin-top: 20px; padding-top: 40px; padding-bottom: 40px; }
   .cs-title { font-size: 40px; line-height: 44px; }
 
   .cs-intro > :first-child,
