@@ -1,0 +1,657 @@
+/* ==========================================================
+   Case study pages
+   Design source: Figma "Portfolio" › Moodboard › Desktop 1920x1080 › Use Case
+   Builds on the tokens and base styles in ../styles.css.
+   ========================================================== */
+
+.cs {
+  --cs-side: clamp(256px, 14.7vw, 282px);
+  --cs-content: 1126px;        /* 12-column content area */
+  --cs-pad: 40px;
+  --cs-hero-bg: #FCFAF5;
+  --cs-card-bg: #FCFCFB;
+  --cs-chip-bg: #F0ECE0;
+  --cs-note-final-bg: #EEF0FB;
+  --cs-note-final-border: #CBD0EE;
+  --cs-shadow: 0 4px 16px rgba(30, 41, 59, .10);
+}
+
+/* ---------- Layout ---------- */
+
+.cs-layout {
+  display: grid;
+  grid-template-columns: var(--cs-side) minmax(0, 1fr);
+  grid-template-areas:
+    "side main"
+    "side footer";
+  min-height: 100dvh;
+}
+
+.cs-side {
+  grid-area: side;
+  position: sticky;
+  top: 0;
+  align-self: start;
+  height: 100dvh;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 24px;
+  background-image: var(--dots);
+  background-size: 1px 7px;
+  background-position: right top;
+  background-repeat: repeat-y;
+}
+
+.cs-main { grid-area: main; min-width: 0; outline: none; }
+.cs-info { display: none; } /* About + Contents copy for smaller screens (built by case-study.js) */
+/* List reset with zero specificity, so component margins (e.g. .cs-stats) still apply */
+:where(.cs) ul { margin: 0; padding: 0; list-style: none; }
+.cs-footer { grid-area: footer; padding: 48px var(--cs-pad) 40px; max-width: calc(var(--cs-content) + 2 * var(--cs-pad)); width: 100%; margin: 0 auto; }
+
+/* Every section sits on the same centered content column */
+.cs-section,
+.cs-hero img {
+  max-width: calc(var(--cs-content) + 2 * var(--cs-pad));
+  margin: 0 auto;
+  padding: 0 var(--cs-pad);
+}
+.cs-section { padding-top: 96px; }
+
+/* ---------- Sidebar ---------- */
+
+.cs-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 32px;
+  color: var(--ink);
+  text-decoration: none;
+}
+.cs-back:hover { text-decoration: underline; text-underline-offset: 4px; }
+
+.cs-label {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-strong);
+}
+
+.cs-about dl { display: grid; gap: 8px; margin: 8px 0 0; }
+.cs-about dl div { display: flex; flex-wrap: wrap; gap: 4px; font-size: 14px; line-height: 22px; color: var(--ink); }
+.cs-about dd { margin: 0; }
+
+.cs-index ol { display: grid; gap: 4px; margin-top: 8px; }
+.cs-index a {
+  display: inline-block;
+  padding: 2px 0;
+  font-size: 14px;
+  line-height: 22px;
+  color: var(--muted);
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color .2s ease, border-color .2s ease;
+}
+.cs-index a:hover { color: var(--ink); }
+.cs-index a[aria-current="true"] { color: var(--ink); border-bottom-color: var(--accent); }
+
+/* ---------- Type ---------- */
+
+.cs-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-strong);
+}
+.cs-eyebrow--dot::before {
+  content: "";
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.cs-title {
+  max-width: 14em;
+  margin-top: 8px;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 48px;
+  line-height: 52px;
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  font-variation-settings: "opsz" 72;
+  text-wrap: balance;
+  scroll-margin-top: 32px;
+  outline: none;
+}
+.cs-title:focus-visible { outline: 2px solid var(--accent); outline-offset: 8px; }
+
+.cs-lead { font-size: 20px; line-height: 28px; color: var(--ink); }
+.cs-sub { margin-top: 24px; font-size: 16px; line-height: 24px; }
+.cs-section p { color: var(--ink); }
+.cs-section p + p { margin-top: 16px; }
+.cs-section strong { font-weight: 600; }
+.cs-note-text { font-size: 14px; line-height: 20px; color: #737270 !important; } /* 4.7:1 on the #FCFCFB overview card */
+
+.cs-section h3 {
+  font-family: var(--font-sans);
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 28px;
+  color: var(--ink);
+}
+
+.cs-intro {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 16px;
+  margin-top: 32px;
+}
+.cs-intro > :first-child { grid-column: 1 / span 5; }
+.cs-intro > :last-child { grid-column: 7 / span 5; margin-top: 0; } /* body text: 5 of 12 columns, starting where the right column of Key decisions starts */
+
+.cs-rule { margin: 64px 0 0; border: 0; border-top: 1px solid var(--ink); }
+.cs-rule--dotted {
+  height: 1px;
+  border: 0;
+  background-image: linear-gradient(to right, var(--divider) 0 1px, transparent 1px 7px);
+  background-size: 7px 1px;
+  background-repeat: repeat-x;
+}
+
+/* ---------- Hero ---------- */
+
+.cs-hero { background: linear-gradient(to bottom, var(--cs-hero-bg), var(--bg)); }
+.cs-hero img { display: block; width: 100%; height: auto; padding: 0; }
+
+/* ---------- 01. Overview ---------- */
+
+.cs-overview {
+  /* Card: #FCFCFB with 40px padding on every side. Same box as the other sections,
+     so the text inside stays aligned with the rest of the page. */
+  margin-top: 32px;
+  padding: 40px var(--cs-pad);
+  background: var(--cs-card-bg);
+}
+.cs-overview__grid {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 32px;
+  margin-top: 32px;
+}
+.cs-overview__main { grid-column: 1 / span 8; }
+.cs-overview__main .cs-label { margin-top: 24px; }
+.cs-overview__main .cs-label + p { margin-top: 4px; }
+.cs-persona { grid-column: 10 / span 3; }
+.cs-persona p { font-size: 14px; line-height: 22px; }
+.cs-persona .cs-label + p { margin-top: 4px; }
+.cs-persona p + p { margin-top: 12px; }
+
+.cs-impact { margin-top: 48px; }
+.cs-impact .cs-lead { margin-top: 4px; }
+.cs-stats {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+  font-size: 14px;
+  line-height: 20px;
+}
+.cs-stat {
+  display: block;
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 56px;
+  color: var(--ink);
+  font-variant-numeric: lining-nums;
+}
+.cs-stat__unit { font-size: 32px; line-height: 0; } /* smaller % sign; line-height 0 keeps the row height */
+
+/* ---------- 02. The challenge ---------- */
+
+.cs-problem { max-width: 560px; margin-top: 64px; }
+.cs-problem .cs-label { margin-bottom: 16px; }
+.cs-section h3.cs-label { font-family: var(--font-mono); font-size: 12px; line-height: 24px; }
+.cs-hard {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 32px 24px;
+  margin-top: 32px;
+}
+.cs-hard__num {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 56px;
+  line-height: 56px;
+  color: var(--ink);
+}
+.cs-hard h3 { margin: 16px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; }
+.cs-hard p { font-size: 16px; line-height: 24px; margin-top: 4px !important; }
+
+/* ---------- 03. Key decisions ---------- */
+
+.cs-decision {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  column-gap: 24px;
+  row-gap: 32px;
+  align-items: start;
+  margin-top: 64px;
+}
+.cs-rule--dotted + .cs-decision { margin-top: 64px; }
+.cs-decision__text { grid-column: 1 / span 5; }
+.cs-decision__text .cs-label { margin-bottom: 8px; }
+.cs-decision__text h3 + p { margin-top: 8px; }
+.cs-decision__media { grid-column: 7 / span 6; margin: 0; }
+.cs-decision--reverse .cs-decision__text { grid-column: 7 / span 6; grid-row: 1; }
+.cs-decision--reverse .cs-decision__media { grid-column: 1 / span 6; grid-row: 1; }
+.cs-decision__media img { display: block; width: 100%; height: auto; }
+.cs-decision__media--zebra img { max-width: 360px; margin: 0 auto; }
+.cs-decision__media--zebra figcaption { max-width: 420px; margin: 16px auto 0; }
+.cs-decision__media--bleed { margin-right: calc(-1 * var(--cs-pad)); }
+.cs-decision__media figcaption { font-size: 12px; line-height: 18px; color: var(--muted); }
+
+.cs-chip {
+  display: inline-flex;
+  gap: 12px;
+  margin-top: 24px !important;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: var(--cs-chip-bg);
+  font-size: 14px;
+  line-height: 20px;
+}
+.cs-chip span { color: var(--ink-soft); } /* 6.5:1 on the chip background */
+
+/* ---------- 04. Validation ---------- */
+
+.cs-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 24px;
+  margin-top: 48px;
+}
+/* The controls stick to the top while the Validation section is on screen,
+   so the version and annotations can be changed further down. */
+.cs-controls {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 12px 16px;
+  border-radius: 0 0 12px 12px;
+  background: rgba(255, 254, 251, .82);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.cs-controls__left { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+.cs-controls__right { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
+
+.cs-btn,
+.cs-segmented {
+  border: 1px solid #CBCAC3;
+  border-radius: 8px;
+  background: #F2F1ED;
+}
+.cs-btn {
+  height: 40px;
+  padding: 8px 16px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.cs-btn:hover { background: #E9E8E2; }
+
+/* Segmented control: the selected option fills its half edge to edge (no gap showing the background) */
+.cs-segmented {
+  display: inline-flex;
+  height: 40px;
+  overflow: hidden;
+}
+.cs-segmented button {
+  padding: 8px 16px;
+  font-size: 14px;
+  line-height: 22px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.cs-segmented button:hover { background: #E9E8E2; }
+.cs-segmented button[aria-pressed="true"] { background: var(--ink); color: #FFFFFF; }
+.cs-segmented button:focus-visible { outline-offset: -4px; outline-color: #FFFFFF; }
+.cs-segmented button[aria-pressed="false"]:focus-visible { outline-color: var(--accent); }
+
+.cs-switch {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--ink);
+}
+.cs-switch__track {
+  position: relative;
+  width: 44px; height: 24px;
+  border-radius: 999px;
+  background: #94A3B8;
+  transition: background-color .2s ease;
+}
+.cs-switch__track::after {
+  content: "";
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: #FFFFFF;
+  transition: transform .2s ease;
+}
+.cs-switch[aria-checked="true"] .cs-switch__track { background: var(--ink); }
+.cs-switch[aria-checked="true"] .cs-switch__track::after { transform: translateX(20px); }
+.cs-switch__hint { font-size: 12px; line-height: 18px; color: var(--muted) !important; }
+
+.cs-version { display: grid; gap: 48px; margin-top: 32px; }
+.cs-version[hidden] { display: none; }
+
+.cs-shot {
+  margin: 0;
+  padding: 40px 0 24px;
+  border-radius: 12px;
+  background: var(--cs-card-bg);
+}
+.cs-shot figcaption,
+.cs-mobile figcaption,
+.cs-results figcaption {
+  margin-top: 24px;
+  padding: 0 24px;
+  text-align: right;
+  font-size: 14px;
+  line-height: 20px;
+  color: var(--ink);
+}
+
+/* The screenshot and its notes. Note positions are percentages of the screenshot
+   (from Figma), set per note: --x/--y for the marker, --nx/--ny for the note card. */
+.cs-shot__frame {
+  position: relative;
+  width: 100%;
+  container-type: inline-size;
+}
+.cs-shot__img { position: relative; }
+.cs-shot__frame img { display: block; width: 100%; height: auto; } /* the screenshots carry their own rounded corners and shadow */
+
+.cs-notes { counter-reset: note; }
+.cs-notes[hidden] { display: none; }
+.cs-notes li {
+  counter-increment: note;
+  font-size: 13px;
+  line-height: 18px;
+  color: var(--ink);
+}
+.cs-notes li strong { font-weight: 600; }
+
+/* List layout (smaller screens): numbered notes under the screenshot, with matching
+   numbered markers on the image. */
+.cs-notes {
+  display: grid;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 0 24px;
+}
+.cs-notes li {
+  position: relative;
+  padding: 12px 14px 12px 44px;
+  border: 1px solid #D6CEC7;
+  border-radius: 4px;
+  background: #FCFCFB;
+  color: #403730;
+  box-shadow: var(--cs-shadow);
+}
+.cs-notes li::before {
+  content: counter(note);
+  position: absolute;
+  left: 12px; top: 12px;
+  display: grid;
+  place-items: center;
+  width: 20px; height: 20px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-size: 11px;
+  line-height: 1;
+  font-weight: 600;
+}
+.cs-version--final .cs-notes li { background: var(--cs-note-final-bg); border-color: var(--cs-note-final-border); }
+
+/* Markers on the image (added by case-study.js, decorative) */
+.cs-marker {
+  position: absolute;
+  left: calc(var(--x) * 1%);
+  top: calc(var(--y) * 1%);
+  display: grid;
+  place-items: center;
+  width: 20px; height: 20px;
+  margin: -10px 0 0 -10px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #FFFFFF;
+  font-size: 11px;
+  font-weight: 600;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, .8);
+  pointer-events: none;
+}
+.cs-shot__frame:has(.cs-notes[hidden]) .cs-marker { display: none; }
+
+/* Overlay layout (large screens): notes float over and beside the screenshot, like the design */
+@media (min-width: 1280px) {
+  .cs-shot { padding-top: 48px; }
+  .cs-shot__frame { width: 70%; margin-left: 14%; }
+  .cs-notes { display: block; margin: 0; padding: 0; }
+  .cs-notes li {
+    position: absolute;
+    left: calc(var(--nx) * 1%);
+    top: calc(var(--ny) * 1%);
+    width: calc(var(--w, 34) * 1cqw);
+    padding: 10px 12px;
+    font-size: 12px;
+    line-height: 17px;
+    z-index: 2;
+  }
+  .cs-notes li::before { display: none; }
+  .cs-marker {
+    width: 8px; height: 8px;
+    margin: -4px 0 0 -4px;
+    font-size: 0;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, .9);
+  }
+}
+
+.cs-mobile { margin: 64px 0 0; }
+.cs-mobile ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.cs-mobile img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--cs-shadow); }
+
+/* ---------- 05. Outcome ---------- */
+
+.cs-results { margin: 48px 0 0; }
+.cs-results ul {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+.cs-results li {
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--cs-card-bg);
+}
+.cs-results img { display: block; width: 100%; height: auto; }
+.cs-results p { margin-top: 16px; font-size: 18px; line-height: 24px; }
+.cs-results figcaption { padding: 0; margin-top: 16px; color: var(--muted); }
+
+/* ---------- 06. Reflection ---------- */
+
+.cs-lessons {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 32px 24px;
+  margin-top: 48px;
+}
+.cs-lessons h3 { margin: 0; }
+.cs-lessons p { margin-top: 4px !important; font-size: 14px; line-height: 22px; }
+.cs-next { margin-top: 32px; }
+.cs-next a { font-size: 16px; font-weight: 500; color: var(--ink); text-underline-offset: 4px; }
+
+/* ---------- Raw data dialog ---------- */
+
+.cs-dialog {
+  width: min(1040px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
+  padding: 0;
+  border: 0;
+  border-radius: 16px;
+  background: #FFFFFF;
+  color: var(--ink);
+  box-shadow: 0 24px 64px rgba(30, 41, 59, .25);
+}
+.cs-dialog::backdrop { background: rgba(30, 41, 59, .45); }
+.cs-dialog__body { position: relative; padding: 48px 40px 40px; }
+.cs-dialog__close {
+  position: absolute;
+  top: 16px; right: 16px;
+  display: grid;
+  place-items: center;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  color: var(--ink);
+}
+.cs-dialog__close:hover { background: #F1F5F9; }
+.cs-dialog__title {
+  padding-right: 48px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 36px;
+  color: var(--ink);
+}
+.cs-dialog__body > p { max-width: 760px; margin-top: 16px; font-size: 18px; line-height: 28px; }
+.cs-dialog__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 32px;
+  margin: 40px 0 0;
+  font-size: 16px;
+  line-height: 26px;
+}
+.cs-dialog__list dt { font-weight: 600; }
+.cs-dialog__list dd { margin: 12px 0 0; }
+.cs-dialog__shot {
+  margin: 40px 0 0;
+  padding: 28px;
+  border-radius: 20px;
+  background: #F7F7F8;
+}
+.cs-dialog__shot img { display: block; width: 100%; height: auto; }
+
+/* ---------- Footer ---------- */
+
+.cs-footer .last-update { color: var(--ink-strong); }
+
+/* ==========================================================
+   Smaller screens: sidebar becomes a top block
+   ========================================================== */
+
+@media (max-width: 1099px) {
+  .cs { --cs-pad: 20px; }
+  .cs-layout {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "side" "main" "footer";
+  }
+  /* Only "Back" stays in the header: fixed top-left, 16px padding, blurred background
+     so the page shows through as it scrolls. About and Contents move below the hero. */
+  .cs-side {
+    position: fixed;
+    top: calc(4px + env(safe-area-inset-top, 0px));
+    left: calc(4px + env(safe-area-inset-left, 0px));
+    z-index: 30;
+    height: auto;
+    overflow: visible;
+    display: block;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255, 254, 251, .72);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  .cs-layout:has(.cs-info) .cs-side :is(.cs-about, .cs-index) { display: none; }
+  .cs-main { padding-top: 64px; }
+  .cs-controls { top: calc(68px + env(safe-area-inset-top, 0px)); border-radius: 12px; }
+
+  .cs-info {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    padding: 32px var(--cs-pad) 0;
+  }
+  .cs-section { padding-top: 72px; }
+  .cs-overview { margin-top: 20px; padding-top: 40px; padding-bottom: 40px; }
+  .cs-title { font-size: 40px; line-height: 44px; }
+
+  .cs-intro > :first-child,
+  .cs-intro > :last-child,
+  .cs-overview__main,
+  .cs-persona,
+  .cs-decision__text,
+  .cs-decision__media,
+  .cs-decision--reverse .cs-decision__text,
+  .cs-decision--reverse .cs-decision__media { grid-column: 1 / -1; grid-row: auto; }
+  .cs-decision--reverse .cs-decision__media { order: 2; }
+  .cs-hard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 699px) {
+  .cs-info { grid-template-columns: minmax(0, 1fr); }
+  .cs-title { font-size: 36px; line-height: 40px; }
+  .cs-stats,
+  .cs-results ul,
+  .cs-lessons { grid-template-columns: minmax(0, 1fr); }
+  .cs-stat { font-size: 48px; line-height: 48px; }
+  .cs-hard { grid-template-columns: minmax(0, 1fr); }
+  .cs-mobile ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+  .cs-controls__right { align-items: flex-start; }
+  .cs-shot { padding: 20px 0 16px; }
+  .cs-shot__frame { width: calc(100% - 32px); margin: 0 16px; }
+  .cs-notes { padding: 0 16px; }
+  .cs-dialog__body { padding: 40px 20px 24px; }
+  .cs-dialog__list { grid-template-columns: minmax(0, 1fr); }
+  .cs-dialog__title { font-size: 24px; line-height: 32px; }
+  .cs-dialog__body > p { font-size: 16px; line-height: 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

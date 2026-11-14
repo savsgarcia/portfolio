@@ -44,7 +44,10 @@ The tests serve the site on port 4173, open every page (and every hash view of `
 - Landmarks: `<header class="site-header">` wraps the top bar and the sidebar (it uses `display: contents`, so it does not change the layout). `<footer class="site-footer">` holds "Last update"; on desktop it is fixed to the bottom of the sidebar.
 - Headings: each view has one `h1` (visually hidden "Work" and "Experience"; the About headline). Project titles and job titles are `h2`.
 - The project copy (title, description, CTA) has a single interactive element: the "See case study" link. The whole block is clickable through the stretched-link pattern (`.cta--stretched::after` covers `.project-copy`). Never add click handlers, `role`, or `tabindex` to headings, paragraphs or container divs to make an area clickable; use a real `<a href>` with a stretched `::after` instead. A test checks for click listeners on the panel and its ancestors.
-- `case-studies/viu/` is a placeholder page until the VIU case study is written.
+- Case studies live in `case-studies/<name>/index.html` and share `case-studies/case-study.css` and `case-studies/case-study.js`:
+  - Sidebar on desktop with Back, About and a Contents index. Below 1100px only "Back" stays in the header, fixed top-left with a blurred background; `case-study.js` copies About and Contents into `.cs-info` under the hero (CSS shows one copy at a time). Index links move focus to the section heading (`tabindex="-1"`, `scroll-margin-top`); the section on screen gets `aria-current="true"`.
+  - Validation: Tested/Final buttons with `aria-pressed`; "Show annotations" is `role="switch"` with `aria-checked`. Notes are an ordered list after each screenshot: floating over it from 1280px, a numbered list below it on smaller screens. Note and marker positions come from Figma as percentages (`--x/--y` marker, `--nx/--ny` note, optional `--w` width).
+  - "See raw data" opens a native `<dialog>` (focus trapped, Esc closes, focus returns to the button).
 - The project switcher on desktop is a tablist (`role="tab"` + `aria-selected`, roving tabindex 0/-1, arrow keys).
 - Inactive project numbers use `--num-idle: #93918A`, the lightest warm grey that meets 3:1 at 24px.
 - The index links, Tested/Final control, annotations switch, dialogs and gallery rules apply to the case study pages when they are built.
