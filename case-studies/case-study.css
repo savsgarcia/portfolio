@@ -45,6 +45,7 @@
 }
 
 .cs-main { grid-area: main; min-width: 0; outline: none; }
+.cs-info { display: none; } /* About + Contents copy for smaller screens (built by case-study.js) */
 /* List reset with zero specificity, so component margins (e.g. .cs-stats) still apply */
 :where(.cs) ul { margin: 0; padding: 0; list-style: none; }
 .cs-footer { grid-area: footer; padding: 48px var(--cs-pad) 40px; max-width: calc(var(--cs-content) + 2 * var(--cs-pad)); width: 100%; margin: 0 auto; }
@@ -143,7 +144,7 @@
 .cs-section p { color: var(--ink); }
 .cs-section p + p { margin-top: 16px; }
 .cs-section strong { font-weight: 600; }
-.cs-note-text { font-size: 14px; line-height: 20px; color: var(--muted) !important; }
+.cs-note-text { font-size: 14px; line-height: 20px; color: #737270 !important; } /* 4.7:1 on the #FCFCFB overview card */
 
 .cs-section h3 {
   font-family: var(--font-sans);
@@ -554,17 +555,31 @@
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "side" "main" "footer";
   }
+  /* Only "Back" stays in the header: fixed top-left, 16px padding, blurred background
+     so the page shows through as it scrolls. About and Contents move below the hero. */
   .cs-side {
-    position: static;
+    position: fixed;
+    top: calc(4px + env(safe-area-inset-top, 0px));
+    left: calc(4px + env(safe-area-inset-left, 0px));
+    z-index: 30;
     height: auto;
     overflow: visible;
+    display: block;
+    padding: 16px;
+    border-radius: 12px;
+    background: rgba(255, 254, 251, .72);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+  }
+  .cs-layout:has(.cs-info) .cs-side :is(.cs-about, .cs-index) { display: none; }
+  .cs-main { padding-top: 64px; }
+
+  .cs-info {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 24px;
-    padding: 20px var(--cs-pad) 32px;
-    background: none;
+    padding: 32px var(--cs-pad) 0;
   }
-  .cs-back { grid-column: 1 / -1; }
   .cs-section { padding-top: 72px; }
   .cs-overview { margin-top: 20px; padding-top: 40px; padding-bottom: 40px; }
   .cs-title { font-size: 40px; line-height: 44px; }
@@ -582,7 +597,7 @@
 }
 
 @media (max-width: 699px) {
-  .cs-side { grid-template-columns: minmax(0, 1fr); }
+  .cs-info { grid-template-columns: minmax(0, 1fr); }
   .cs-title { font-size: 36px; line-height: 40px; }
   .cs-stats,
   .cs-results ul,
