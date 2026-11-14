@@ -429,7 +429,7 @@ a.cta,
 
 .job-title {
   font-family: var(--font-display);
-  font-weight: 400;
+  font-weight: 300;
   font-size: 32px;
   line-height: 36px;
   font-variation-settings: "opsz" 32;
