@@ -21,7 +21,6 @@
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --font-hand: "Caveat", "Comic Sans MS", cursive;
 
   /* Layout (values from the 1920px frame, scaled down on smaller screens) */
   --gutter: 0px;
@@ -448,28 +447,6 @@ a.cta,
   line-height: 22px;
 }
 
-.handnote {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  width: var(--c2);
-  margin: auto 0 clamp(48px, 13vh, 144px);
-  padding: 0 24px;
-  font-family: var(--font-hand);
-  font-weight: 700;
-  font-size: 21px;
-  line-height: 24px;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  color: var(--ink);
-}
-.handnote-arrow {
-  color: var(--accent);
-  margin-top: 10px;
-  transition: transform .2s ease;
-}
-.handnote:hover .handnote-arrow { transform: translateX(-4px); }
-.handnote span:last-child { max-width: 190px; }
 
 /* ---------- About ---------- */
 
@@ -653,7 +630,6 @@ a.cta,
   .job-title { white-space: normal; }
   .job-dot { left: -28px; top: 8px; }
   .job-desc { padding: 0; margin-top: 4px; }
-  .handnote { width: auto; margin: 48px 0 0; padding: 0; }
 
   /* About */
   .view--about {
