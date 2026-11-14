@@ -381,7 +381,7 @@
   container-type: inline-size;
 }
 .cs-shot__img { position: relative; }
-.cs-shot__frame img { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--cs-shadow); }
+.cs-shot__frame img { display: block; width: 100%; height: auto; } /* the screenshots carry their own rounded corners and shadow */
 
 .cs-notes { counter-reset: note; }
 .cs-notes[hidden] { display: none; }
@@ -509,37 +509,53 @@
 /* ---------- Raw data dialog ---------- */
 
 .cs-dialog {
-  width: min(720px, calc(100vw - 32px));
-  max-height: calc(100dvh - 64px);
+  width: min(1040px, calc(100vw - 32px));
+  max-height: calc(100dvh - 48px);
   padding: 0;
   border: 0;
-  border-radius: 12px;
-  background: var(--bg);
+  border-radius: 16px;
+  background: #FFFFFF;
   color: var(--ink);
   box-shadow: 0 24px 64px rgba(30, 41, 59, .25);
 }
 .cs-dialog::backdrop { background: rgba(30, 41, 59, .45); }
-.cs-dialog__body { position: relative; padding: 40px; }
+.cs-dialog__body { position: relative; padding: 48px 40px 40px; }
 .cs-dialog__close {
   position: absolute;
   top: 16px; right: 16px;
   display: grid;
   place-items: center;
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   border-radius: 50%;
+  color: var(--ink);
 }
 .cs-dialog__close:hover { background: #F1F5F9; }
 .cs-dialog__title {
-  padding-right: 40px;
-  font-family: var(--font-display);
-  font-weight: 300;
-  font-size: 32px;
+  padding-right: 48px;
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 28px;
   line-height: 36px;
+  color: var(--ink);
 }
-.cs-dialog p { margin-top: 16px; font-size: 16px; line-height: 24px; }
-.cs-dialog__list { display: grid; gap: 12px; margin: 24px 0 0; font-size: 16px; line-height: 24px; }
-.cs-dialog__list dt { font-weight: 600; display: inline; }
-.cs-dialog__list dd { display: inline; margin: 0; }
+.cs-dialog__body > p { max-width: 760px; margin-top: 16px; font-size: 18px; line-height: 28px; }
+.cs-dialog__list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px 32px;
+  margin: 40px 0 0;
+  font-size: 16px;
+  line-height: 26px;
+}
+.cs-dialog__list dt { font-weight: 600; }
+.cs-dialog__list dd { margin: 12px 0 0; }
+.cs-dialog__shot {
+  margin: 40px 0 0;
+  padding: 28px;
+  border-radius: 20px;
+  background: #F7F7F8;
+}
+.cs-dialog__shot img { display: block; width: 100%; height: auto; border-radius: 8px; }
 
 /* ---------- Footer ---------- */
 
@@ -609,7 +625,10 @@
   .cs-shot { padding: 20px 0 16px; }
   .cs-shot__frame { width: calc(100% - 32px); margin: 0 16px; }
   .cs-notes { padding: 0 16px; }
-  .cs-dialog__body { padding: 32px 20px 24px; }
+  .cs-dialog__body { padding: 40px 20px 24px; }
+  .cs-dialog__list { grid-template-columns: minmax(0, 1fr); }
+  .cs-dialog__title { font-size: 24px; line-height: 32px; }
+  .cs-dialog__body > p { font-size: 16px; line-height: 24px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
