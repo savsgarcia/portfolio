@@ -12,7 +12,7 @@
   --muted: #767572;
   --faint: #767572;
   --divider: #94A3B8;
-  --num-idle: #D0CEC6;
+  --num-idle: #93918A; /* lightest warm grey that still meets 3:1 for large text */
   --stone: #737565;
   --accent: #548439;
   --dot-idle: #D9D9D9;
@@ -97,6 +97,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 .topbar { display: none; }
 
+/* Header wrapper exists for the landmark only; its children lay out in .layout */
+.site-header { display: contents; }
+
 .layout {
   display: grid;
   grid-template-columns: var(--side) 1fr;
@@ -114,7 +117,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   height: 100dvh;
   display: flex;
   flex-direction: column;
-  padding: 40px 24px; /* same space above the name and below "Last update" */
+  /* 40px above the name; bottom leaves room for the footer (24px gap + 24px line + 40px) */
+  padding: 40px 24px 88px;
   background-image: var(--dots);
   background-size: 1px 7px;
   background-position: right top;
@@ -216,8 +220,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .contact-link:hover,
 .contact-link--underline { text-decoration: underline; text-underline-offset: 3px; }
 
+.site-footer {
+  /* Shown at the bottom of the sidebar: 40px from the bottom, like the name from the top */
+  position: fixed;
+  left: 24px;
+  bottom: 40px;
+  z-index: 5;
+}
 .last-update {
-  margin-top: 24px; /* contact block sits right above this */
   font-size: 12px;
   line-height: 24px;
   font-weight: 300;
@@ -535,7 +545,8 @@ a.cta,
     inset: 0;
     z-index: 20;
     height: auto;
-    padding: 104px var(--gutter) 20px; /* matches the top bar 20px */
+    /* bottom leaves room for the footer: 24px gap + 24px line + 20px */
+    padding: 104px var(--gutter) 68px;
     background: var(--bg);
     overflow-y: auto;
     visibility: hidden;
@@ -551,7 +562,18 @@ a.cta,
   .nav { margin-top: 12vh; padding-left: 0; }
   .nav-link { font-size: 48px; line-height: 48px; }
   .contact { margin-top: auto; padding-top: 48px; }
-  .last-update { margin-top: 24px; }
+  /* Footer sits at the end of the page; while the menu is open it shows at the menu's bottom */
+  .site-footer {
+    position: static;
+    padding: 0 var(--gutter) 20px;
+  }
+  .menu-open .site-footer {
+    position: fixed;
+    left: var(--gutter);
+    bottom: 20px;
+    z-index: 25;
+    padding: 0;
+  }
 
   .view { min-height: 0; }
 

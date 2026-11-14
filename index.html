@@ -16,47 +16,47 @@
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <!-- Mobile top bar -->
-  <header class="topbar">
-    <a class="brand brand--compact" href="#work">
-      <span class="brand-name">Saul García</span>
-      <span class="brand-role">Product designer</span>
-    </a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar">
-      <svg class="icon-open" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-      <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
-      <span class="menu-toggle-label">menu</span>
-    </button>
-  </header>
-
   <div class="layout">
-    <!-- Left panel: identity, navigation, contact -->
-    <aside class="sidebar" id="sidebar">
-      <a class="brand" href="#work">
-        <span class="brand-name">Saul García</span>
-        <span class="brand-role">Product designer</span>
-      </a>
-
-      <nav class="nav" aria-label="Main">
-        <a class="nav-link" href="#work" data-view="work">Work</a>
-        <a class="nav-link" href="#experience" data-view="experience">Experience</a>
-        <a class="nav-link" href="#about" data-view="about">About</a>
-      </nav>
-
-      <div class="contact">
-        <p class="status"><span class="status-dot" aria-hidden="true"></span>I’m available for work</p>
-        <p class="contact-title">Let’s get in touch</p>
-        <a class="contact-link" href="mailto:saulgarciavital@gmail.com">saulgarciavital@gmail.com</a>
-        <a class="contact-link contact-link--underline" href="https://www.linkedin.com/in/saul-garc%C3%ADa-9406a298" target="_blank" rel="noopener">LinkedIn</a>
+    <!-- Site header: top bar (tablet/phone) + sidebar (desktop, or the open menu on smaller screens) -->
+    <header class="site-header">
+      <div class="topbar">
+        <a class="brand brand--compact" href="#work">
+          <span class="brand-name">Saul García</span>
+          <span class="brand-role">Product designer</span>
+        </a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="sidebar">
+          <svg class="icon-open" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M2 5h16M2 10h16M2 15h16" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          <svg class="icon-close" width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+          <span class="menu-toggle-label">menu</span>
+        </button>
       </div>
 
-      <p class="last-update">Last update Nov 2026</p>
-    </aside>
+      <div class="sidebar" id="sidebar">
+        <a class="brand" href="#work">
+          <span class="brand-name">Saul García</span>
+          <span class="brand-role">Product designer</span>
+        </a>
+
+        <nav class="nav" aria-label="Main">
+          <a class="nav-link" href="#work" data-view="work">Work</a>
+          <a class="nav-link" href="#experience" data-view="experience">Experience</a>
+          <a class="nav-link" href="#about" data-view="about">About</a>
+        </nav>
+
+        <div class="contact">
+          <p class="status"><span class="status-dot" aria-hidden="true"></span>I’m available for work</p>
+          <p class="contact-title">Let’s get in touch</p>
+          <a class="contact-link" href="mailto:saulgarciavital@gmail.com">saulgarciavital@gmail.com</a>
+          <a class="contact-link contact-link--underline" href="https://www.linkedin.com/in/saul-garc%C3%ADa-9406a298" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+    </header>
 
     <main id="main" class="main" tabindex="-1">
 
       <!-- WORK -->
       <section class="view view--work" id="view-work" data-view="work" aria-label="Work">
+        <h1 class="visually-hidden">Work</h1>
         <div class="col col--projects">
           <div class="projects" role="tablist" aria-label="Projects" aria-orientation="vertical">
             <button class="project-tab" role="tab" id="tab-viu" aria-controls="panel-project" aria-selected="true" data-project="viu">
@@ -76,7 +76,7 @@
 
         <div class="col col--text" id="panel-project" role="tabpanel" aria-labelledby="tab-viu">
           <div class="project-copy">
-            <h1 class="display" data-field="title">How Frankie<br>found clarity, and a better way to renew.</h1>
+            <h2 class="display" data-field="title">How Frankie<br>found clarity, and a better way to renew.</h2>
             <p class="lede" data-field="description">Designing VIU’s account space, where every policy lives in one place and HUB can help before each renewal.</p>
             <p class="project-cta" data-field="cta">
               <span class="cta cta--soon" title="Case study coming soon">See case study
@@ -150,6 +150,10 @@
       </section>
 
     </main>
+
+    <footer class="site-footer">
+      <p class="last-update">Last update Nov 2026</p>
+    </footer>
   </div>
 
   <script src="script.js"></script>
