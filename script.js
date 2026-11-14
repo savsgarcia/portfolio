@@ -12,9 +12,8 @@
       // <br> forces the line break after "Frankie"
       title: 'How Frankie<br>found clarity, and a better way to renew.',
       description: 'Designing VIU’s account space, where every policy lives in one place and HUB can help before each renewal.',
-      // Case study not published yet: swap this for a link when it is ready,
-      // e.g. '<a class="cta" href="viu/">See case study ' + chevron + '</a>'
-      cta: '<span class="cta cta--soon" title="Case study coming soon">See case study ' + chevron + '</span>',
+      // Stretched link: the only interactive element in the project copy (see .cta--stretched in styles.css)
+      cta: '<a class="cta cta--stretched" href="case-studies/viu/">See case study ' + chevron + '</a>',
       bg: '#F8F5EC',
       image: 'assets/img/viu.webp', width: 1986, height: 1614,
       alt: 'VIU by HUB account screen: a personal dashboard greeting Frankie with all their policies and recommended coverage.'

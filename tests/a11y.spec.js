@@ -148,3 +148,47 @@ test('mobile menu is accessible when open and closes with Escape', async ({ page
   await expect(toggle).toHaveAttribute('aria-expanded', 'false');
   await expect(toggle).toBeFocused();
 });
+
+// Work panel: the project copy must expose a single interactive element (the CTA).
+// The heading and description are plain content: no click handlers, roles or tabindex on them.
+test('project copy has only one interactive element and no click handlers on content', async ({ page }) => {
+  await open(page, '/#work');
+  const copies = page.locator('.project-copy:visible');
+  const n = await copies.count();
+  expect(n).toBeGreaterThan(0);
+  for (let i = 0; i < n; i++) {
+    const copy = copies.nth(i);
+    const interactive = copy.locator('a[href], button, [role="button"], [role="link"], [tabindex], [onclick]');
+    expect(await interactive.count()).toBeLessThanOrEqual(1);
+    for (const sel of ['.display', '.lede']) {
+      const el = copy.locator(sel);
+      await expect(el).not.toHaveAttribute('role', /.+/);
+      await expect(el).not.toHaveAttribute('onclick', /.*/);
+    }
+  }
+  // No click listeners on the panel, its content or any ancestor up to <html>.
+  const client = await page.context().newCDPSession(page).catch(() => null);
+  test.skip(!client, 'listener check needs Chromium');
+  const { result } = await client.send('Runtime.evaluate', {
+    expression: `(() => { const out = []; let el = document.querySelector('.project-copy .display');
+      while (el) { out.push(el); el = el.parentElement; }
+      return out.concat([...document.querySelectorAll('.project-copy, .project-copy *')]); })()`,
+  });
+  const { result: props } = await client.send('Runtime.getProperties', { objectId: result.objectId, ownProperties: true });
+  for (const p of props.filter((x) => /^\d+$/.test(x.name))) {
+    const { listeners } = await client.send('DOMDebugger.getEventListeners', { objectId: p.value.objectId });
+    const clicks = listeners.filter((l) => ['click', 'mousedown', 'mouseup', 'pointerdown', 'pointerup'].includes(l.type));
+    expect(clicks, `click listener on ${p.value.description}`).toEqual([]);
+  }
+});
+
+test('the whole VIU project copy opens the case study (stretched link)', async ({ page }) => {
+  await open(page, '/#work');
+  const copy = page.locator('.project-copy:visible').first();
+  const link = copy.getByRole('link', { name: 'See case study' });
+  await expect(link).toHaveAttribute('href', /case-studies\/viu\//);
+  // Click the middle of the heading like a person would; the link's ::after sits on top of it.
+  const box = await copy.locator('.display').boundingBox();
+  await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+  await expect(page).toHaveURL(/case-studies\/viu\/$/);
+});

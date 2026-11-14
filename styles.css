@@ -349,14 +349,26 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   color: var(--ink);
   text-decoration: none;
 }
-a.cta,
-.cta--soon {
+a.cta {
   background-image: linear-gradient(to right, var(--ink) 0 2px, transparent 2px 4px);
   background-size: 4px 1px;
   background-position: left bottom;
   background-repeat: repeat-x;
 }
-.cta--soon { cursor: default; }
+a.cta svg { transition: transform .2s ease; }
+
+/* Stretched link: one real <a href>, whose ::after covers the whole project copy
+   (title, description, CTA). Nothing else in the block is clickable, so screen
+   readers announce only the link; the heading and text read as normal content. */
+.project-copy { position: relative; }
+.cta--stretched::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.project-copy:hover a.cta svg,
+a.cta:focus-visible svg { transform: translateX(4px); }
 
 .col--visual {
   position: relative;
