@@ -692,14 +692,32 @@ a.cta,
   .case-eyebrow .project-tab-num { color: var(--ink); }
   .case-name { font-size: 14px; line-height: 22px; font-weight: 500; }
   .case-client { font-size: 14px; line-height: 22px; color: var(--muted); }
+  .case-eyebrow { padding-top: 24px; }
+
+  /* Close-up of the product: image shown large and cropped by the panel */
   .case-visual {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 40px;
-    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    height: 360px;
     background: var(--panel-bg);
   }
+  .case-visual .project-image {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    max-width: none;
+    height: auto;
+  }
+  .case-visual .project-image--viu { width: 1000px; }
+  .case-visual .project-image--order-entry { width: 760px; }
+  .case-visual .project-image--order-sets { width: 1300px; }
+}
+@media (max-width: 699px) {
+  .case-visual { height: 220px; }
+  .case-visual .project-image { top: 24px; left: var(--gutter); }
+  .case-visual .project-image--viu { width: 760px; }
+  .case-visual .project-image--order-entry { width: 560px; }
+  .case-visual .project-image--order-sets { width: 1000px; }
 }
 
 /* Phone: project heading at 48px */

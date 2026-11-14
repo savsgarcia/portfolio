@@ -50,6 +50,10 @@
     const article = document.createElement('article');
     article.className = 'case';
     article.innerHTML =
+      // Image first: a close-up crop of the product screen
+      '<div class="case-visual" style="--panel-bg:' + p.bg + '">' +
+        '<img class="project-image project-image--' + key + '" src="' + p.image + '" width="' + p.width + '" height="' + p.height + '" alt="" loading="lazy">' +
+      '</div>' +
       '<p class="case-eyebrow">' +
         '<span class="project-tab-num">' + p.num + '</span>' +
         '<span class="case-name">' + p.name + '</span>' +
@@ -59,9 +63,6 @@
         '<h2 class="display">' + p.title + '</h2>' +
         '<p class="lede">' + p.description + '</p>' +
         '<p class="project-cta">' + p.cta + '</p>' +
-      '</div>' +
-      '<div class="case-visual" style="--panel-bg:' + p.bg + '">' +
-        '<img class="project-image project-image--' + key + '" src="' + p.image + '" width="' + p.width + '" height="' + p.height + '" alt="" loading="lazy">' +
       '</div>';
     article.querySelector('img').alt = p.alt;
     stack.appendChild(article);
