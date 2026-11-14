@@ -211,8 +211,8 @@
   margin-bottom: 8px;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: 56px;
-  line-height: 56px;
+  font-size: 32px;
+  line-height: 36px;
   color: var(--ink);
   font-variant-numeric: lining-nums;
 }
@@ -578,7 +578,6 @@
   .cs-stats,
   .cs-results ul,
   .cs-lessons { grid-template-columns: minmax(0, 1fr); }
-  .cs-stat { font-size: 48px; line-height: 48px; }
   .cs-hard { grid-template-columns: minmax(0, 1fr); }
   .cs-mobile ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .cs-controls__right { align-items: flex-start; }
