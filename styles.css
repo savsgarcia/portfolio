@@ -668,6 +668,11 @@ a.cta,
   .about-photo img { width: 140px; height: 140px; }
 }
 
+/* Tablet: project heading stays at 64px */
+@media (min-width: 700px) and (max-width: 1099px) {
+  .project-copy .display { font-size: 64px; line-height: 64px; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: .01ms !important;
