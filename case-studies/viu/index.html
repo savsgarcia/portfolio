@@ -3,52 +3,316 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>VIU by HUB case study · Saul García</title>
-  <meta name="description" content="How Frankie found clarity, and a better way to renew. Case study coming soon.">
+  <title>How Frankie found clarity · VIU by HUB case study · Saul García</title>
+  <meta name="description" content="Case study: designing VIU by HUB's account space, where every policy lives in one place and HUB can help before each renewal.">
   <meta name="theme-color" content="#FFFEFB">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../styles.css">
-  <style>
-    /* Placeholder page until the case study is written */
-    .cs-page { min-height: 100dvh; display: flex; flex-direction: column; padding: 40px 24px; gap: 48px; }
-    .cs-header { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 16px; }
-    .cs-nav { display: flex; gap: 24px; }
-    .cs-nav a { font-size: 16px; color: var(--ink); }
-    .cs-main { flex: 1; max-width: 720px; outline: none; }
-    .cs-eyebrow { font-size: 14px; line-height: 22px; color: var(--muted); }
-    .cs-main .display { margin-top: 16px; }
-    .cs-main .lede { max-width: 580px; }
-    .cs-back { display: inline-block; margin-top: 32px; font-weight: 500; color: var(--ink); }
-  </style>
+  <link rel="stylesheet" href="../case-study.css">
 </head>
-<body>
+<body class="cs">
   <a class="skip-link" href="#main">Skip to content</a>
 
-  <div class="cs-page">
-    <header class="cs-header">
-      <a class="brand" href="../../#work">
-        <span class="brand-name">Saul García</span>
-        <span class="brand-role">Product designer</span>
+  <div class="cs-layout">
+    <!-- Sidebar on desktop, top block on smaller screens -->
+    <header class="cs-side">
+      <a class="cs-back" href="../../#work">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        Back
       </a>
-      <nav class="cs-nav" aria-label="Main">
-        <a href="../../#work">Work</a>
-        <a href="../../#experience">Experience</a>
-        <a href="../../#about">About</a>
+
+      <div class="cs-about">
+        <p class="cs-label" id="about-label">About</p>
+        <dl aria-labelledby="about-label">
+          <div><dt>Project:</dt> <dd>Insurance profile</dd></div>
+          <div><dt>Client:</dt> <dd>VIU by HUB</dd></div>
+          <div><dt>Team:</dt> <dd>2 FE, 1 UX writer, 1 PM</dd></div>
+          <div><dt>Timeline:</dt> <dd>2022–2023</dd></div>
+        </dl>
+      </div>
+
+      <nav class="cs-index" aria-label="Contents">
+        <p class="cs-label" aria-hidden="true">Contents</p>
+        <ol>
+          <li><a href="#overview">01. Overview</a></li>
+          <li><a href="#challenge">02. The challenge</a></li>
+          <li><a href="#decisions">03. Key decisions</a></li>
+          <li><a href="#validation">04. Validation</a></li>
+          <li><a href="#outcome">05. Outcome</a></li>
+          <li><a href="#reflection">06. Reflection</a></li>
+        </ol>
       </nav>
     </header>
 
     <main id="main" class="cs-main" tabindex="-1">
-      <p class="cs-eyebrow">01 · Insurance profile · VIU by HUB</p>
-      <h1 class="display">How Frankie found clarity, and a better way to renew.</h1>
-      <p class="lede">This case study is being written. In the meantime, I’m happy to walk you through it: write to me at saulgarciavital@gmail.com.</p>
-      <a class="cs-back" href="../../#work">Back to work</a>
+
+      <div class="cs-hero">
+        <img src="img/hero.webp" width="2280" height="1200" alt="VIU by HUB account space on a laptop and a phone: “Hi, Frankie!” above all of Frankie’s personal policies.">
+      </div>
+
+      <!-- 01. OVERVIEW -->
+      <section class="cs-section cs-overview" aria-labelledby="overview">
+        <p class="cs-eyebrow">01. Overview</p>
+        <h1 class="cs-title" id="overview" tabindex="-1">How Frankie found clarity, and a better way to renew</h1>
+
+        <div class="cs-overview__grid">
+          <div class="cs-overview__main">
+            <p>Frankie had two policies, two providers and no idea what either covered, so he renewed without comparing. HUB saw the opportunity: with VIU, it could become the trusted partner that helps people like him <strong>get better coverage</strong> and prices before each renewal.</p>
+            <p class="cs-label">My role</p>
+            <p>I led the end-to-end design of VIU’s Account space, where Frankie can see <strong>all his policies in one place</strong>, understand what they cover, and find better options when it’s time to renew.</p>
+          </div>
+          <div class="cs-persona">
+            <p class="cs-label">Meet Frankie</p>
+            <p>32 years old<br>Homeowners · Huntington, NY<br>Auto · 2020 Nissan Rogue</p>
+            <p>What frustrates him: not knowing what he’s actually covered for, and renewing without comparing.</p>
+            <p class="cs-note-text">Composite persona based on our research participants</p>
+          </div>
+        </div>
+
+        <div class="cs-impact">
+          <p class="cs-label">Impact</p>
+          <p class="cs-lead">Built for a new generation. Adopted far beyond it.</p>
+          <ul class="cs-stats">
+            <li><span class="cs-stat">80%</span> of HUB clients moved to VIU</li>
+            <li><span class="cs-stat">20%</span> fewer customer support requests</li>
+            <li><span class="cs-stat">+1,000</span> users imported their policies</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 02. THE CHALLENGE -->
+      <section class="cs-section" aria-labelledby="challenge">
+        <p class="cs-eyebrow cs-eyebrow--dot">02. The challenge</p>
+        <h2 class="cs-title" id="challenge" tabindex="-1">A quote alone wouldn’t make them stay</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">HUB wanted to be there before every renewal, not just once.</p>
+          <p>A new generation was buying insurance online, from digital-first players like Lemonade and Policygenius. HUB had the carriers and the expertise, but no digital place where customers could manage their insurance. VIU was HUB’s answer, built in two parts at the same time: a quoting experience to bring people in, and an account space to make them stay.</p>
+        </div>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <div class="cs-problem">
+          <h3 class="cs-label">The problem</h3>
+          <p class="cs-lead">How might we give people one clear place for all their insurance, and make HUB the partner they turn to before every renewal?</p>
+          <p>VIU would win a younger audience. HUB’s existing clients weren’t expected to follow. <strong>Success meant sign-ups, imported policies and quotes.</strong></p>
+          <p>Four things made this hard:</p>
+        </div>
+        <ol class="cs-hard">
+          <li><span class="cs-hard__num" aria-hidden="true">01</span><h3>Fragmented data</h3><p>Many sources, one place.</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">02</span><h3>Regulated complexity</h3><p>Plain words, exact facts</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">03</span><h3>Selling without breaking trust</h3><p>His space, HUB’s funnel.</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">04</span><h3>One design, many policies</h3><p>Every type had to fit.</p></li>
+        </ol>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 03. KEY DECISIONS -->
+      <section class="cs-section" aria-labelledby="decisions">
+        <p class="cs-eyebrow cs-eyebrow--dot">03. Key decisions</p>
+        <h2 class="cs-title" id="decisions" tabindex="-1">Every decision started with the business</h2>
+        <p class="cs-sub">I started from HUB’s business goals and a competitive analysis.</p>
+
+        <article class="cs-decision">
+          <div class="cs-decision__text">
+            <p class="cs-label">01. Show every policy, not just ours</p>
+            <h3>Everything Frankie has, in one place.</h3>
+            <p>We first planned to show only policies bought through HUB. But competitors like The Zebra let users upload any policy as a PDF.</p>
+            <p>We took it a step further: Frankie could connect his carrier account instead of uploading files. VIU became useful from day one, and HUB got the data to find better deals.</p>
+            <p class="cs-chip"><span>Based on</span> Competitive analysis</p>
+          </div>
+          <figure class="cs-decision__media cs-decision__media--zebra">
+            <img src="img/zebra-upload.webp" width="720" height="660" alt="The Zebra’s mobile app: “Never shop again. We mean it.” with a policy PDF uploaded and an “Upload your policy” button.">
+            <figcaption>The Zebra asks users to upload a PDF. VIU connected directly to the carrier. Image: The Zebra.</figcaption>
+          </figure>
+        </article>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision cs-decision--reverse">
+          <div class="cs-decision__text">
+            <p class="cs-label">02. Make every piece of data accountable</p>
+            <h3>Frankie knows how fresh his data is.</h3>
+            <p>To connect carrier accounts, we proposed Trellis, a partner that links users’ insurance accounts. That meant VIU would show data it didn’t own, updated on someone else’s schedule.</p>
+            <p>So every card shows its source and last sync, with a way to refresh. Trust was built into every card, not left to a disclaimer.</p>
+            <p class="cs-chip"><span>Based on</span> Carrier data limits</p>
+          </div>
+          <div class="cs-decision__media">
+            <img src="img/policy-card-sync.webp" width="1140" height="390" alt="Auto policy card for a 2020 BMW Series3 by Geico, $1,992.00 a year, labelled “Synced 20 days ago” with a refresh icon.">
+          </div>
+        </article>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision">
+          <div class="cs-decision__text">
+            <p class="cs-label">03. Organize by intent, not by product</p>
+            <h3>Offers when Frankie is ready to act.</h3>
+            <p>The easy option was a catalog of every product, shown the same way to everyone. But with Frankie’s policies in hand, the best offer was the one built on what he already has.</p>
+            <p>So the page puts his policies first, “Get quotes” on each one next, and new coverage last. Behind the scenes, HUB’s advisors prepared quotes before renewal, validating demand before automating it.</p>
+            <p class="cs-chip"><span>Based on</span> Business goals · MVP constraints</p>
+          </div>
+          <div class="cs-decision__media cs-decision__media--bleed">
+            <img src="img/offer-cards.webp" width="1640" height="530" alt="Offer cards for new coverage: Life, “Quote with Ethos”, and Homeowners, “Get instant quotes”.">
+          </div>
+        </article>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 04. VALIDATION -->
+      <section class="cs-section cs-validation" aria-labelledby="validation">
+        <p class="cs-eyebrow cs-eyebrow--dot">04. Validation</p>
+        <h2 class="cs-title" id="validation" tabindex="-1">Clear screens, confusing words</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">Frankie still didn’t know what he was paying for</p>
+          <div>
+            <p>After HUB approved the first iteration, we tested it with 10 users from our target audience: how they managed their policies, how they reacted to offers, and how well they understood their coverage.</p>
+            <p><strong>The biggest finding:</strong> even with clean screens, people weren’t sure what their coverage meant. So we kept the exact terms and explained each one, made renewal dates always visible, and turned “Add a new policy” into “Import a policy.”</p>
+          </div>
+        </div>
+
+        <div class="cs-controls">
+          <div class="cs-controls__left">
+            <button class="cs-btn" type="button" id="raw-open" aria-haspopup="dialog">See raw data</button>
+            <div class="cs-segmented" role="group" aria-label="Screen version">
+              <button type="button" data-version="tested" aria-pressed="true">Tested</button>
+              <button type="button" data-version="final" aria-pressed="false">Final</button>
+            </div>
+          </div>
+          <div class="cs-controls__right">
+            <button class="cs-switch" type="button" role="switch" aria-checked="true" id="annotations-switch" aria-describedby="annotations-hint">
+              <span class="cs-switch__label">Show annotations</span>
+              <span class="cs-switch__track" aria-hidden="true"></span>
+            </button>
+            <p class="cs-switch__hint" id="annotations-hint" aria-live="polite">Notes show paraphrased user feedback</p>
+          </div>
+        </div>
+
+        <!-- TESTED -->
+        <div class="cs-version" data-version="tested">
+          <figure class="cs-shot">
+            <div class="cs-shot__frame" style="--r:0.907">
+              <img src="img/home-tested.webp" width="1800" height="1985" alt="Tested home screen: “Hi, Frankie!”, two policy cards with an “Add a new policy” button, and a grid of six insurance products under “Find the best protection for you and yours”.">
+              <ol class="cs-notes" aria-label="User feedback on the home screen">
+                <li style="--x:84.4;--y:18.6;--nx:67.6;--ny:8.1">“Hmm, ‘Add a new policy’... so this is to buy a new one? (clicks) Oh, wait. It’s to connect the ones I already have. Okay, that’s actually great, I just wouldn’t have guessed it.”</li>
+                <li style="--x:12.6;--y:26;--nx:-4.3;--ny:15.5">“I mean, I don’t see myself logging in every day. If I come in, it’s probably to check when something’s due... so, yeah, I’d want to see the renewal dates right there.”</li>
+                <li style="--x:86.1;--y:32;--nx:87.4;--ny:27.2">“How do I start a quote? Maybe if I click the card...? (clicks) Oh, okay, I like that. It doesn’t feel like you’re pushing me. I actually kind of want to know if I’m overpaying.”</li>
+                <li style="--x:30;--y:38.8;--nx:-5.1;--ny:34.4">“Oh, nice, it tells me about the refresh delay. But... can’t it just update by itself? Like, if I change something with my provider, it should show up here.”</li>
+                <li style="--x:86.8;--y:71.9;--nx:88.3;--ny:67.6">“Okay, these are like, other insurance I could get? Some of these I don’t care about at all, honestly. Can I hide them? And if there was a price, even a rough one, that’d be amazing.”</li>
+              </ol>
+            </div>
+            <figcaption>Home screen</figcaption>
+          </figure>
+
+          <figure class="cs-shot">
+            <div class="cs-shot__frame" style="--r:0.95">
+              <img src="img/policy-tested.webp" width="1800" height="1895" alt="Tested policy detail for a 2020 Nissan Rogue by Nationwide: renewal badge, policy number and dates, and a coverage list with an icon next to each coverage.">
+              <ol class="cs-notes" aria-label="User feedback on the policy detail">
+                <li style="--x:63;--y:13;--nx:69.2;--ny:5.3">“Okay, so this is my policy... it looks kind of empty? (scrolls) Oh, there it is. I didn’t realize there was more down here.”</li>
+                <li style="--x:42.5;--y:16.8;--nx:7.5;--ny:13.6">“Oh, it says it’s renewing soon. If I tap that, does it take me to renew? (taps)”</li>
+                <li style="--x:76;--y:40;--nx:77.6;--ny:36.6">“Could I compare this with, like, the same coverage from another company? Just to see.”</li>
+                <li style="--x:18.8;--y:44.4;--nx:-16.5;--ny:40.4">“Bodily injury liability... I mean, I paid for it, so I should know what it is, right? (laughs) But I’m not really sure.”</li>
+                <li style="--x:22.9;--y:50.7;--nx:24.6;--ny:46.5">“I’m trying to figure out these icons... is this the car one? Honestly, they make it harder, not easier.”</li>
+              </ol>
+            </div>
+            <figcaption>Policy detail</figcaption>
+          </figure>
+        </div>
+
+        <!-- FINAL -->
+        <div class="cs-version cs-version--final" data-version="final" hidden>
+          <figure class="cs-shot">
+            <div class="cs-shot__frame" style="--r:1.23">
+              <img src="img/home-final.webp" width="1800" height="1464" alt="Final home screen: “Hi, Frankie!”, two policy cards with renewal labels and an “Import a policy” button, and “Recommended for you” offers with estimated prices.">
+              <ol class="cs-notes" aria-label="Design changes on the home screen">
+                <li style="--x:83;--y:21.7;--nx:51.7;--ny:7.1;--w:28"><strong>Import a policy.</strong> “Add a new policy” didn’t signal that the next step was signing in to another carrier. After a few iterations with our UX writers and internal reviews, “Import” made the action clear.</li>
+                <li style="--x:38.5;--y:38.4;--nx:-3.4;--ny:29.9;--w:28"><strong>Renewal date.</strong> Users compare renewal dates across their policies, so the date is now always visible. It starts as a gray label and becomes an alert as renewal gets close.</li>
+                <li style="--x:71.4;--y:64.3;--nx:72.4;--ny:55.6;--w:28"><strong>Personalized offers.</strong> Every VIU user has at least one policy, which is enough to start building a profile. Offers now react to the policies users already have, with estimated prices and a direct path to quote. Cards can also ask simple questions, like “Do you have pets?”, to unlock more relevant options. Designed for V2, as quoting moved beyond the manual MVP process.</li>
+              </ol>
+            </div>
+            <figcaption>Home screen</figcaption>
+          </figure>
+
+          <figure class="cs-shot">
+            <div class="cs-shot__frame" style="--r:0.906">
+              <img src="img/policy-final.webp" width="1800" height="1986" alt="Final policy detail for a 2020 Nissan Rogue: compact header with sync status, renewal date with “Compare quotes”, and coverages grouped by who they protect, each with a plain-language description.">
+              <ol class="cs-notes" aria-label="Design changes on the policy detail">
+                <li style="--x:19.5;--y:10.6;--nx:-13.5;--ny:4.7;--w:30"><strong>Above the fold.</strong> Tighter vertical spacing brings the key policy information into view, so users can scan it at a glance.</li>
+                <li style="--x:81.8;--y:16.5;--nx:64.7;--ny:17.6"><strong>Compare quotes.</strong> Users wanted to compare right after reviewing their coverage, so “Compare quotes” now lives here too, next to the renewal date.</li>
+                <li style="--x:19.2;--y:23.8;--nx:-13.5;--ny:19;--w:31"><strong>Clearer coverages.</strong> Removed the ambiguous icons and added plain-language descriptions. Coverages are grouped by who they protect: others, or you and your car.</li>
+                <li style="--x:21;--y:63;--nx:-13.5;--ny:64.7;--w:30"><strong>Next on the roadmap:</strong> grading coverage, for example, showing whether your limits would cover an average accident in your state.</li>
+              </ol>
+            </div>
+            <figcaption>Policy detail</figcaption>
+          </figure>
+        </div>
+
+        <figure class="cs-mobile">
+          <ul>
+            <li><img src="img/mobile-connecting.webp" width="750" height="1538" alt="Mobile: “Enjoy the VIU” while VIU looks up Frankie’s insurance info, with a progress bar and “Connecting...”."></li>
+            <li><img src="img/mobile-profile.webp" width="750" height="1538" alt="Mobile: Profile screen with account details, login email, password and personal information."></li>
+            <li><img src="img/mobile-ready.webp" width="750" height="1538" alt="Mobile: “Your information is ready!” with a “Go to your dashboard” button and a link to import another policy."></li>
+          </ul>
+          <figcaption>Mobile UI examples</figcaption>
+        </figure>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 05. OUTCOME -->
+      <section class="cs-section" aria-labelledby="outcome">
+        <p class="cs-eyebrow cs-eyebrow--dot">05. Outcome</p>
+        <h2 class="cs-title" id="outcome" tabindex="-1">Built for one audience, adopted by two</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">People like Frankie came, and so did HUB’s clients.</p>
+          <p>Adoption far exceeded the business’s initial expectations. The biggest surprise wasn’t the young audience we designed for: many of HUB’s existing clients, the ones everyone assumed were less tech-savvy, also created VIU accounts using their HUB information. The profile we designed for Frankie became the portal HUB’s clients had been missing.</p>
+        </div>
+        <figure class="cs-results">
+          <ul>
+            <li><img src="img/outcome-adoption.webp" width="692" height="430" alt=""><p>80% of HUB International users transitioned to the VIU platform.</p></li>
+            <li><img src="img/outcome-calls.webp" width="692" height="430" alt=""><p>Reduced call volume for customer experience (CX) by 20% compared to the previous eight months.</p></li>
+            <li><img src="img/outcome-imports.webp" width="696" height="430" alt=""><p>+1,000 new users uploaded their policies to VIU by HUB.</p></li>
+          </ul>
+          <figcaption>2023 Third quarter</figcaption>
+        </figure>
+      </section>
+
+      <!-- 06. REFLECTION -->
+      <section class="cs-section" aria-labelledby="reflection">
+        <p class="cs-eyebrow cs-eyebrow--dot">06. Reflection</p>
+        <h2 class="cs-title" id="reflection" tabindex="-1">Design for who actually shows up</h2>
+        <ul class="cs-lessons">
+          <li><h3>Measure the funnel</h3><p>We tracked adoption, not quotes. I’d define the funnel before launch.</p></li>
+          <li><h3>Question the brief</h3><p>The brief left out HUB’s clients. They came anyway. I’d research them early.</p></li>
+          <li><h3>Push for what users ask</h3><p>Users asked for auto-sync; we explained the delay. I’d push for it sooner.</p></li>
+        </ul>
+        <hr class="cs-rule">
+        <p class="cs-next"><a href="../../#work">Back to work</a></p>
+      </section>
     </main>
 
-    <footer>
+    <footer class="cs-footer">
       <p class="last-update">Last update Nov 2026</p>
     </footer>
   </div>
+
+  <!-- Raw data dialog -->
+  <dialog class="cs-dialog" id="raw-dialog" aria-labelledby="raw-title">
+    <div class="cs-dialog__body">
+      <button class="cs-dialog__close" type="button" data-close>
+        <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <span class="visually-hidden">Close</span>
+      </button>
+      <h2 class="cs-dialog__title" id="raw-title">What to show, and what to leave out</h2>
+      <p>This is how a policy looked in the system HUB’s advisors used. Every field made sense to an expert. Our job was to find what mattered to Frankie.</p>
+      <dl class="cs-dialog__list">
+        <div><dt>Shown:</dt> <dd>Only the coverages on the policy, with their full names.</dd></div>
+        <div><dt>Simplified:</dt> <dd>One amount per coverage, per person and per accident, or a deductible, instead of a grid of empty columns.</dd></div>
+        <div><dt>Left out:</dt> <dd>The cost of each coverage and advisor-only fields. Users needed what they’re covered for and what they pay in total.</dd></div>
+      </dl>
+    </div>
+  </dialog>
+
+  <script src="../case-study.js"></script>
 </body>
 </html>
