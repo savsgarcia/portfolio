@@ -679,7 +679,7 @@ a.cta,
   .work-stack {
     display: flex;
     flex-direction: column;
-    gap: 64px;
+    gap: 24px;
     padding: 24px 0 64px;
   }
   .case .project-copy { padding: 0 var(--gutter); max-width: 640px; }
