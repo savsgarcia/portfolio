@@ -6,11 +6,15 @@ Static personal portfolio: plain HTML, CSS and JavaScript, no build step.
 - `styles.css` — design tokens and layout (desktop ≥1100px, small desktop 900–1099px, tablet 700–899px, phone <700px)
 - `script.js` — view routing, project switcher, stacked use cases on smaller screens, mobile menu
 - `assets/img/` — project images and portrait (exported from Figma)
-- `tests/a11y.spec.js` — accessibility tests (axe + Playwright) for every `.html` page
+- `tests/` — Playwright tests, run on every `.html` page:
+  - `a11y.spec.js` — axe + the accessibility rules below, at desktop, tablet and phone sizes
+  - `layout.spec.js` — no horizontal scroll at 360, 390, 834, 1024, 1100, 1280, 1440 and 1920px
+  - `links.spec.js` — every internal link, image, stylesheet, script and `#section` link exists (external links are not visited)
+  - `pages.js` — shared helpers: finds every page and hash view, opens a page
 
 Design source: Figma file "Portfolio", page "Moodboard". Fonts: Fraunces (display), Inter (text), IBM Plex Mono (labels).
 
-## Running the accessibility tests
+## Running the tests
 
 ```bash
 npm install

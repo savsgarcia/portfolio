@@ -9,9 +9,14 @@ Personal portfolio site. Plain HTML, CSS and JavaScript — no build step.
 
 To preview locally, open `index.html` in a browser.
 
-## Accessibility tests
+## Tests
 
-Every page is checked with axe and Playwright on each pull request (`.github/workflows/a11y.yml`). To run them locally:
+On each pull request (`.github/workflows/a11y.yml`), every page is checked for:
+- accessibility (axe and the rules in `CLAUDE.md`),
+- horizontal scroll at common screen widths,
+- broken internal links, images and files.
+
+To run them locally:
 
 ```bash
 npm install

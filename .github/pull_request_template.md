@@ -19,4 +19,4 @@ All rules are in [CLAUDE.md](../CLAUDE.md). Check each one that applies, and mar
 - [ ] Every image has meaningful `alt` text; decorative images use `alt=""`.
 - [ ] Text contrast is at least 4.5:1 (3:1 for large text and UI components).
 - [ ] Checked with the keyboard only (Tab, Shift+Tab, Enter, Space, Esc, arrow keys).
-- [ ] `npm run test:a11y` passes locally (it also runs automatically on this PR).
+- [ ] `npm run test:a11y` passes locally (accessibility, layout and link tests; they also run automatically on this PR).
