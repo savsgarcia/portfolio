@@ -161,7 +161,7 @@
   margin-top: 32px;
 }
 .cs-intro > :first-child { grid-column: 1 / span 5; }
-.cs-intro > :last-child { grid-column: 6 / span 7; margin-top: 0; }
+.cs-intro > :last-child { grid-column: 6 / span 5; margin-top: 0; } /* body text: 5 of 12 columns */
 
 .cs-rule { margin: 64px 0 0; border: 0; border-top: 1px solid var(--ink); }
 .cs-rule--dotted {
