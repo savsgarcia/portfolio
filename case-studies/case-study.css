@@ -293,6 +293,20 @@
   gap: 24px;
   margin-top: 48px;
 }
+/* The controls stick to the top while the Validation section is on screen,
+   so the version and annotations can be changed further down. */
+.cs-controls {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  margin-left: -16px;
+  margin-right: -16px;
+  padding: 12px 16px;
+  border-radius: 0 0 12px 12px;
+  background: rgba(255, 254, 251, .82);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
 .cs-controls__left { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
 .cs-controls__right { display: flex; flex-direction: column; align-items: flex-end; gap: 2px; }
 
@@ -595,6 +609,7 @@
   }
   .cs-layout:has(.cs-info) .cs-side :is(.cs-about, .cs-index) { display: none; }
   .cs-main { padding-top: 64px; }
+  .cs-controls { top: calc(68px + env(safe-area-inset-top, 0px)); border-radius: 12px; }
 
   .cs-info {
     display: grid;
