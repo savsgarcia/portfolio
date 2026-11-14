@@ -668,6 +668,40 @@ a.cta,
   .about-photo img { width: 140px; height: 140px; }
 }
 
+/* Stacked use cases: only on tablet/phone */
+.work-stack { display: none; }
+
+@media (max-width: 1099px) {
+  .view--work > .col--projects,
+  .view--work > .col--text,
+  .view--work > .col--visual { display: none; }
+
+  .work-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding: 24px 0 64px;
+  }
+  .case .project-copy { padding: 0 var(--gutter); max-width: 640px; }
+  .case-eyebrow {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 var(--gutter) 24px;
+  }
+  .case-eyebrow .project-tab-num { color: var(--ink); }
+  .case-name { font-size: 14px; line-height: 22px; font-weight: 500; }
+  .case-client { font-size: 14px; line-height: 22px; color: var(--muted); }
+  .case-visual {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+    padding: 32px;
+    background: var(--panel-bg);
+  }
+}
+
 /* Phone: project heading at 48px */
 @media (max-width: 699px) {
   .project-copy .display { font-size: 48px; line-height: 48px; }

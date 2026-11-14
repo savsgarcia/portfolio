@@ -8,6 +8,7 @@
 
   const projects = {
     'viu': {
+      num: '01', name: 'Insurance profile', client: 'VIU by HUB',
       // <br> forces the line break after "Frankie"
       title: 'How Frankie<br>found clarity, and a better way to renew.',
       description: 'Designing VIU’s account space, where every policy lives in one place and HUB can help before each renewal.',
@@ -19,6 +20,7 @@
       alt: 'VIU by HUB account screen: a personal dashboard greeting Frankie with all their policies and recommended coverage.'
     },
     'order-entry': {
+      num: '02', name: 'AI-assisted order entry', client: 'Oracle',
       title: 'How Dr. Haven<br>got help ordering, only when he asked for it',
       description: 'Designing AI-assisted order entry for an EHR: when the assistant helps, and when it steps aside.',
       cta: '<span class="cta cta--locked">Available on request · NDA ' + lock + '</span>',
@@ -27,6 +29,7 @@
       alt: 'AI assistant panel inside an EHR suggesting a lisinopril order ready for review, with relevant chart context.'
     },
     'order-sets': {
+      num: '03', name: 'Order sets', client: 'Oracle',
       title: 'How clinicians<br>ordered complex care plans without losing their place',
       description: 'Modernizing a legacy order sets experience for expert users, without breaking the workflows they rely on.',
       cta: '<span class="cta cta--locked">Available on request · NDA ' + lock + '</span>',
@@ -38,6 +41,31 @@
 
   // Preload project images so switching feels instant
   Object.values(projects).forEach(function (p) { const i = new Image(); i.src = p.image; });
+
+  /* ---------- Stacked use cases (tablet/phone) ---------- */
+
+  const stack = document.getElementById('work-stack');
+  Object.keys(projects).forEach(function (key) {
+    const p = projects[key];
+    const article = document.createElement('article');
+    article.className = 'case';
+    article.innerHTML =
+      '<p class="case-eyebrow">' +
+        '<span class="project-tab-num">' + p.num + '</span>' +
+        '<span class="case-name">' + p.name + '</span>' +
+        '<span class="case-client">' + p.client + '</span>' +
+      '</p>' +
+      '<div class="project-copy">' +
+        '<h2 class="display">' + p.title + '</h2>' +
+        '<p class="lede">' + p.description + '</p>' +
+        '<p class="project-cta">' + p.cta + '</p>' +
+      '</div>' +
+      '<div class="case-visual" style="--panel-bg:' + p.bg + '">' +
+        '<img class="project-image project-image--' + key + '" src="' + p.image + '" width="' + p.width + '" height="' + p.height + '" alt="" loading="lazy">' +
+      '</div>';
+    article.querySelector('img').alt = p.alt;
+    stack.appendChild(article);
+  });
 
   /* ---------- Views (Work / Experience / About) ---------- */
 
