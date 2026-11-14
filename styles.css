@@ -708,16 +708,16 @@ a.cta,
     max-width: none;
     height: auto;
   }
-  .case-visual .project-image--viu { width: 1000px; }
-  .case-visual .project-image--order-entry { width: 760px; }
-  .case-visual .project-image--order-sets { width: 1300px; }
+  .case-visual .project-image--viu { width: 700px; }
+  .case-visual .project-image--order-entry { width: 532px; }
+  .case-visual .project-image--order-sets { width: 910px; }
 }
 @media (max-width: 699px) {
   .case-visual { height: 220px; }
   .case-visual .project-image { top: 24px; left: var(--gutter); }
-  .case-visual .project-image--viu { width: 760px; }
-  .case-visual .project-image--order-entry { width: 560px; }
-  .case-visual .project-image--order-sets { width: 1000px; }
+  .case-visual .project-image--viu { width: 532px; }
+  .case-visual .project-image--order-entry { width: 392px; }
+  .case-visual .project-image--order-sets { width: 700px; }
 }
 
 /* Phone: project heading at 48px */
