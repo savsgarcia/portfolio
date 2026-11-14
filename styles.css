@@ -683,15 +683,17 @@ a.cta,
     padding: 24px 0 64px;
   }
   .case .project-copy { padding: 0 var(--gutter); max-width: 640px; }
+  /* Number on the left, project name + company stacked on its right */
   .case-eyebrow {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 12px;
+    align-items: center;
     padding: 0 var(--gutter) 24px;
   }
-  .case-eyebrow .project-tab-num { color: var(--ink); }
-  .case-name { font-size: 14px; line-height: 22px; font-weight: 500; }
-  .case-client { font-size: 14px; line-height: 22px; color: var(--muted); }
+  .case-eyebrow .project-tab-num { grid-row: 1 / 3; margin: 0; color: var(--ink); }
+  .case-name { grid-column: 2; font-size: 14px; line-height: 22px; font-weight: 500; }
+  .case-client { grid-column: 2; font-size: 14px; line-height: 22px; color: var(--muted); }
   .case-eyebrow { padding-top: 24px; }
 
   /* Close-up of the product: image shown large and cropped by the panel */
