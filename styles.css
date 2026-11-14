@@ -691,11 +691,11 @@ a.cta,
     column-gap: 8px;
     padding: 0 var(--gutter) 24px;
   }
-  .case-eyebrow .project-tab-num { margin: 0; color: var(--ink); }
-  .case-name { font-size: 14px; line-height: 22px; font-weight: 500; }
-  .case-client { font-size: 14px; line-height: 22px; color: var(--muted); }
+  .case-eyebrow .project-tab-num { margin: 0; color: var(--ink); font-size: 16px; line-height: 24px; font-weight: 300; }
+  .case-name { font-size: 16px; line-height: 24px; font-weight: 300; }
+  .case-client { font-size: 16px; line-height: 24px; font-weight: 300; color: var(--muted); }
   .case-name::before,
-  .case-client::before { content: "·"; margin-right: 8px; color: var(--muted); font-weight: 400; }
+  .case-client::before { content: "·"; margin-right: 8px; color: var(--muted); font-weight: 300; }
   .case-eyebrow { padding-top: 24px; }
 
   /* Close-up of the product: image shown large and cropped by the panel */
