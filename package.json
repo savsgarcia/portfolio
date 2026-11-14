@@ -1,0 +1,14 @@
+{
+  "name": "portfolio",
+  "private": true,
+  "description": "Saul García's portfolio — static site with accessibility tests.",
+  "scripts": {
+    "serve": "http-server . -p 4173 -s",
+    "test:a11y": "playwright test"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.11.0",
+    "@playwright/test": "1.63.0",
+    "http-server": "14.1.1"
+  }
+}

@@ -9,8 +9,10 @@
   --ink: #334155;
   --ink-strong: #1E293B;
   --ink-soft: #475569;
-  --muted: #64748B;
-  --faint: #94A3B8;
+  --muted: #767572;
+  --faint: #767572;
+  --divider: #94A3B8;
+  --num-idle: #93918A; /* lightest warm grey that still meets 3:1 for large text */
   --stone: #737565;
   --accent: #548439;
   --dot-idle: #D9D9D9;
@@ -19,18 +21,17 @@
   --font-display: "Fraunces", Georgia, "Times New Roman", serif;
   --font-sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
-  --font-hand: "Caveat", "Comic Sans MS", cursive;
 
   /* Layout (values from the 1920px frame, scaled down on smaller screens) */
-  --gutter: 32px;
+  --gutter: 0px;
   --side: clamp(256px, 14.7vw, 282px);
   --c2: clamp(256px, 17.3vw, 332px);
   --c3: clamp(330px, 23.9vw, 459px);
-  --c3-exp: clamp(220px, 14.1vw, 271px);
+  --c3-exp: 288px; /* longest line in the role column (~239px) + 24px padding each side */
   --top: clamp(132px, 29.5vh, 320px);
 
   /* Dotted divider (1px dot, 6px gap) */
-  --dots: linear-gradient(to bottom, var(--faint) 0 1px, transparent 1px 7px);
+  --dots: linear-gradient(to bottom, var(--divider) 0 1px, transparent 1px 7px);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -96,6 +97,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 .topbar { display: none; }
 
+/* Header wrapper exists for the landmark only; its children lay out in .layout */
+.site-header { display: contents; }
+
 .layout {
   display: grid;
   grid-template-columns: var(--side) 1fr;
@@ -113,7 +117,8 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   height: 100dvh;
   display: flex;
   flex-direction: column;
-  padding: 40px 24px 24px;
+  /* 40px above the name; bottom leaves room for the footer (24px gap + 24px line + 40px) */
+  padding: 40px 24px 88px;
   background-image: var(--dots);
   background-size: 1px 7px;
   background-position: right top;
@@ -145,14 +150,13 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   align-items: flex-start;
   gap: 16px;
   margin-top: calc(var(--top) - 82px);
-  padding-left: 8px;
 }
 .nav-link {
   position: relative;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: clamp(32px, 2.1vw, 40px);
-  line-height: 40px;
+  font-size: 28px;
+  line-height: 32px;
   padding-bottom: 8px;
   color: var(--faint);
   text-decoration: none;
@@ -163,17 +167,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   content: "";
   position: absolute;
   left: 0; right: 0; bottom: 0;
-  height: 3px;
+  height: 2px;
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
   transition: transform .25s ease;
 }
 .nav-link:hover { color: var(--ink); }
-.nav-link[aria-current="page"] {
-  color: var(--ink);
-  font-weight: 400;
-}
+.nav-link[aria-current="page"] { color: var(--ink); }
 .nav-link[aria-current="page"]::after { transform: scaleX(1); }
 
 .contact {
@@ -203,7 +204,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   margin-top: 8px;
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: clamp(24px, 1.46vw, 28px);
+  font-size: 24px;
   line-height: 32px;
   white-space: nowrap;
   font-variation-settings: "opsz" 28;
@@ -219,8 +220,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .contact-link:hover,
 .contact-link--underline { text-decoration: underline; text-underline-offset: 3px; }
 
+.site-footer {
+  /* Shown at the bottom of the sidebar: 40px from the bottom, like the name from the top */
+  position: fixed;
+  left: 24px;
+  bottom: 40px;
+  z-index: 5;
+}
 .last-update {
-  margin-top: clamp(32px, 10vh, 112px);
   font-size: 12px;
   line-height: 24px;
   font-weight: 300;
@@ -251,6 +258,30 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   grid-template-columns: var(--c2) var(--c3) 1fr;
 }
 
+/* Desktop (1100px+): image panel takes 40% (50% from 1600px) of the viewport width.
+   The project list sits above the intro, full width with 40px margins. */
+@media (min-width: 1100px) {
+  .view--work {
+    grid-template-columns: minmax(0, 1fr) 50vw;
+    grid-template-rows: auto 1fr;
+  }
+  .view--work .col--projects { grid-column: 1; grid-row: 1; padding: var(--top) 40px 0; }
+  .view--work .col--text { grid-column: 1; grid-row: 2; padding: 48px 40px 40px; }
+  .view--work .col--visual { grid-column: 2; grid-row: 1 / -1; }
+  .view--work .projects { flex-direction: row; flex-wrap: wrap; align-items: flex-end; gap: 8px 40px; }
+  .view--work .project-tab { padding-top: 0; }
+  .view--work .project-copy { max-width: none; }
+  .project-copy .display { font-size: clamp(40px, 3.75vw, 60px); line-height: 1.04; text-wrap: balance; }
+  .project-copy .lede { max-width: 580px; }
+}
+@media (min-width: 1100px) and (max-width: 1599px) {
+  .view--work { grid-template-columns: minmax(0, 1fr) 40vw; }
+  .view--work .col--text { padding-top: 32px; }
+}
+@media (min-width: 1600px) {
+  .project-copy .display { font-size: 96px; line-height: 96px; }
+}
+
 .col--projects { padding: calc(var(--top) - 24px) 16px 40px clamp(24px, 2.1vw, 40px); }
 
 .projects {
@@ -264,27 +295,35 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 24px 0 5px;
-  border-bottom: 3px solid transparent;
+  padding: 24px 0 6px;
+  border-bottom: 2px solid transparent;
   text-align: left;
   color: var(--muted);
   transition: color .2s ease, border-color .25s ease;
 }
-.project-tab-title {
-  font-family: var(--font-mono);
-  font-size: clamp(12px, .73vw, 14px);
-  white-space: nowrap;
-  line-height: 24px;
-  letter-spacing: 0.04em;
-  text-transform: uppercase;
+.project-tab-num {
+  margin-bottom: 8px;
+  font-family: var(--font-display);
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 20px;
+  font-variation-settings: "opsz" 24;
+  color: var(--num-idle);
+  transition: color .2s ease;
 }
-.project-tab-client { font-size: 16px; line-height: 24px; }
+.project-tab[aria-selected="true"] .project-tab-num { color: var(--ink); }
+.project-tab-title {
+  font-family: var(--font-sans);
+  font-weight: 300;
+  font-size: 14px;
+  line-height: 22px;
+}
+.project-tab-client { font-size: 14px; font-weight: 300; line-height: 22px; }
 .project-tab:hover { color: var(--ink); }
 .project-tab[aria-selected="true"] {
   color: var(--ink);
   border-bottom-color: var(--accent);
 }
-.project-tab[aria-selected="true"] .project-tab-title { font-weight: 500; }
 
 .col--text { padding: calc(var(--top) - 7px) 40px 40px; }
 
@@ -297,7 +336,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   color: var(--muted);
 }
 
-.project-cta { margin-top: 48px; }
+.project-cta { margin-top: 24px; }
 
 .cta {
   display: inline-flex;
@@ -310,15 +349,26 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   color: var(--ink);
   text-decoration: none;
 }
-a.cta,
-.cta--soon {
+a.cta {
   background-image: linear-gradient(to right, var(--ink) 0 2px, transparent 2px 4px);
   background-size: 4px 1px;
   background-position: left bottom;
   background-repeat: repeat-x;
 }
-.cta--soon { cursor: default; }
-.cta--locked { font-weight: 400; }
+a.cta svg { transition: transform .2s ease; }
+
+/* Stretched link: one real <a href>, whose ::after covers the whole project copy
+   (title, description, CTA). Nothing else in the block is clickable, so screen
+   readers announce only the link; the heading and text read as normal content. */
+.project-copy { position: relative; }
+.cta--stretched::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+.project-copy:hover a.cta svg,
+a.cta:focus-visible svg { transform: translateX(4px); }
 
 .col--visual {
   position: relative;
@@ -330,17 +380,20 @@ a.cta,
 .project-image {
   position: absolute;
   top: calc(var(--top) - 3px);
-  left: 40px;
+  /* All images start where the centered order-entry image starts.
+     Each one subtracts its own transparent edge so the visible edges line up. */
+  --img-start: 8.86%;
+  left: var(--img-start);
   max-width: none;
   height: auto;
   transition: opacity .25s ease, transform .25s ease;
 }
-.project-image--viu { width: 120%; }
+.project-image--viu { width: 120%; left: calc(var(--img-start) - 0.97%); }
 .project-image--order-entry {
-  left: 8%;
+  left: 8%; /* centered: (100% - 84%) / 2 */
   width: 84%;
 }
-.project-image--order-sets { width: 186%; }
+.project-image--order-sets { width: 186%; left: calc(var(--img-start) - 0.93%); }
 
 /* ---------- Experience ---------- */
 
@@ -372,7 +425,7 @@ a.cta,
   flex-direction: column;
   align-items: flex-end;
   gap: 8px;
-  padding: 0 24px;
+  padding: 16px 24px 0; /* company name centered on the timeline dot */
   text-align: right;
   font-family: var(--font-mono);
   color: var(--stone);
@@ -388,7 +441,7 @@ a.cta,
 .job-dot {
   position: absolute;
   left: -4px;
-  top: 22px;
+  top: 24px; /* centered on the first line of the 24px title */
   width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--dot-idle);
@@ -397,10 +450,11 @@ a.cta,
 
 .job-title {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  font-variation-settings: "opsz" 20;
+  font-weight: 300;
+  font-size: 24px;
+  line-height: 28px;
+  font-variation-settings: "opsz" 24;
+  white-space: nowrap;
 }
 .job-meta {
   margin-top: 8px;
@@ -415,28 +469,6 @@ a.cta,
   line-height: 22px;
 }
 
-.handnote {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  width: var(--c2);
-  margin: auto 0 clamp(48px, 13vh, 144px);
-  padding: 0 24px;
-  font-family: var(--font-hand);
-  font-weight: 700;
-  font-size: 21px;
-  line-height: 24px;
-  letter-spacing: 0.04em;
-  text-decoration: none;
-  color: var(--ink);
-}
-.handnote-arrow {
-  color: var(--accent);
-  margin-top: 10px;
-  transition: transform .2s ease;
-}
-.handnote:hover .handnote-arrow { transform: translateX(-4px); }
-.handnote span:last-child { max-width: 190px; }
 
 /* ---------- About ---------- */
 
@@ -509,7 +541,7 @@ a.cta,
   .menu-open .menu-toggle .icon-open { display: none; }
   .menu-open .menu-toggle .icon-close { display: block; }
 
-  .brand--compact { align-items: flex-end; text-align: right; }
+  .brand--compact { align-items: flex-start; text-align: left; }
   .brand--compact .brand-name { font-size: 20px; }
   .brand--compact .brand-role { font-size: 13px; }
 
@@ -525,7 +557,8 @@ a.cta,
     inset: 0;
     z-index: 20;
     height: auto;
-    padding: 104px var(--gutter) 24px;
+    /* bottom leaves room for the footer: 24px gap + 24px line + 20px */
+    padding: 104px var(--gutter) 68px;
     background: var(--bg);
     overflow-y: auto;
     visibility: hidden;
@@ -539,9 +572,20 @@ a.cta,
   }
   .sidebar > .brand { display: none; }
   .nav { margin-top: 12vh; padding-left: 0; }
-  .nav-link { font-size: 40px; }
-  .contact { margin-top: 64px; }
-  .last-update { margin-top: auto; padding-top: 48px; }
+  .nav-link { font-size: 48px; line-height: 48px; }
+  .contact { margin-top: auto; padding-top: 48px; }
+  /* Footer sits at the end of the page; while the menu is open it shows at the menu's bottom */
+  .site-footer {
+    position: static;
+    padding: 0 var(--gutter) 20px;
+  }
+  .menu-open .site-footer {
+    position: fixed;
+    left: var(--gutter);
+    bottom: 20px;
+    z-index: 25;
+    padding: 0;
+  }
 
   .view { min-height: 0; }
 
@@ -561,18 +605,30 @@ a.cta,
     width: max-content;
   }
   .project-tab { padding-top: 8px; }
-  .project-tab-title { font-size: 12px; }
+  .project-tab-title { white-space: nowrap; }
   .project-tab-client { font-size: 14px; }
 
   .col--text { padding: 40px var(--gutter) 40px; max-width: 640px; }
   .display { font-size: clamp(34px, 8.5vw, 48px); line-height: 1.06; }
-  .project-cta { margin-top: 32px; }
+  .project-cta { margin-top: 24px; }
   .cta { font-size: 18px; }
 
+  /* Image fits the panel, centered, with 32px margins */
   .col--visual {
-    height: clamp(320px, 78vw, 640px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px;
   }
-  .project-image { top: 40px; left: var(--gutter); }
+  .project-image,
+  .project-image--viu,
+  .project-image--order-entry,
+  .project-image--order-sets {
+    position: static;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
 
   /* Experience */
   .view--experience {
@@ -605,9 +661,9 @@ a.cta,
     text-align: left;
   }
   .job-role { position: static; padding: 0; }
+  .job-title { white-space: normal; }
   .job-dot { left: -28px; top: 8px; }
   .job-desc { padding: 0; margin-top: 4px; }
-  .handnote { width: auto; margin: 48px 0 0; padding: 0; }
 
   /* About */
   .view--about {
@@ -620,6 +676,144 @@ a.cta,
   .about-copy { padding: 32px 0 0; max-width: 560px; }
   .about-photo { padding: 0; }
   .about-photo img { width: 140px; height: 140px; }
+}
+
+/* Stacked use cases: only on tablet/phone */
+.work-stack { display: none; }
+
+@media (max-width: 1099px) {
+  .view--work > .col--projects,
+  .view--work > .col--text,
+  .view--work > .col--visual { display: none; }
+
+  .work-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 4px 0 64px; /* + the top bar's 20px bottom padding = 24px visible gap */
+  }
+  .case .project-copy { padding: 0 var(--gutter); max-width: 640px; }
+  /* One line: 01 · Project name · Company */
+  .case-eyebrow {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    column-gap: 8px;
+    padding: 0 var(--gutter) 24px;
+  }
+  .case-eyebrow .project-tab-num { margin: 0; color: var(--ink); font-size: 16px; line-height: 24px; font-weight: 300; }
+  .case-name { font-size: 16px; line-height: 24px; font-weight: 300; }
+  .case-client { font-size: 16px; line-height: 24px; font-weight: 300; color: var(--muted); }
+  .case-name::before,
+  .case-client::before { content: "·"; margin-right: 8px; color: var(--muted); font-weight: 300; }
+  .case-eyebrow { padding-top: 24px; }
+
+  /* Close-up of the product: image shown large and cropped by the panel */
+  .case-visual {
+    position: relative;
+    overflow: hidden;
+    height: 360px;
+    background: var(--panel-bg);
+  }
+  .case-visual .project-image {
+    position: absolute;
+    top: 32px;
+    left: 32px;
+    max-width: none;
+    height: auto;
+  }
+  .case-visual .project-image--viu { width: 700px; }
+  .case-visual .project-image--order-entry { width: 532px; }
+  .case-visual .project-image--order-sets { width: 910px; }
+}
+@media (max-width: 699px) {
+  .case-visual { height: 220px; }
+  .case-visual .project-image { top: 24px; left: var(--gutter); }
+  .case-visual .project-image--viu { width: 532px; }
+  .case-visual .project-image--order-entry { width: 392px; }
+  .case-visual .project-image--order-sets { width: 700px; }
+}
+
+/* Phone: project heading at 48px */
+@media (max-width: 699px) {
+  .project-copy .display { font-size: 48px; line-height: 48px; }
+}
+
+/* Tablet: project heading stays at 64px */
+@media (min-width: 700px) and (max-width: 1099px) {
+  .project-copy .display { font-size: 64px; line-height: 64px; }
+}
+
+/* Small desktop (900–1099px): same Work layout as desktop L,
+   with the sidebar replaced by the top bar + hamburger menu. */
+@media (min-width: 900px) and (max-width: 1099px) {
+  .work-stack { display: none; }
+  .view--work {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 40vw;
+    grid-template-rows: auto 1fr;
+    min-height: calc(100dvh - 84px);
+  }
+  .view--work > .col--projects {
+    display: block;
+    grid-column: 1; grid-row: 1;
+    padding: 40px 40px 0;
+    overflow: visible;
+  }
+  .view--work > .col--text {
+    display: block;
+    grid-column: 1; grid-row: 2;
+    padding: 32px 40px 40px;
+    max-width: none;
+  }
+  .view--work > .col--visual {
+    display: block;
+    grid-column: 2; grid-row: 1 / -1;
+    padding: 0;
+    height: auto;
+  }
+  .view--work .projects {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 8px 40px;
+    padding: 0;
+    width: auto;
+  }
+  .view--work .project-tab { padding-top: 0; }
+  .view--work .project-tab-title { white-space: normal; }
+  .view--work .project-copy .display { font-size: 48px; line-height: 1.04; text-wrap: balance; }
+  .view--work .project-copy .lede { max-width: 580px; }
+
+  .view--work > .col--visual .project-image { position: absolute; top: 48px; height: auto; max-width: none; }
+  .view--work > .col--visual .project-image--viu { width: 120%; left: calc(var(--img-start) - 0.97%); }
+  .view--work > .col--visual .project-image--order-entry { width: 84%; left: 8%; }
+  .view--work > .col--visual .project-image--order-sets { width: 186%; left: calc(var(--img-start) - 0.93%); }
+}
+
+/* Tablet to small desktop (700–1099px): About keeps the desktop
+   column layout with dotted dividers; the menu stays in the hamburger. */
+@media (min-width: 700px) and (max-width: 1099px) {
+  .view--about {
+    display: grid;
+    grid-template-columns: 18% minmax(0, 46%) 1fr;
+    min-height: calc(100dvh - 84px);
+    padding: 0;
+    background-image: var(--dots), var(--dots);
+    background-size: 1px 7px;
+    background-repeat: repeat-y;
+    background-position: calc(18% - 1px) 0, calc(64% - 1px) 0;
+  }
+  .about-copy {
+    grid-column: 2;
+    max-width: none;
+    padding: clamp(48px, calc(var(--top) - 84px), 240px) 24px 40px;
+  }
+  .about-photo {
+    grid-column: 3;
+    padding: calc(clamp(48px, calc(var(--top) - 84px), 240px) + 7px) 24px 40px 32px;
+  }
+  .about-photo img { width: min(160px, 100%); height: auto; aspect-ratio: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
