@@ -28,7 +28,7 @@
   --side: clamp(256px, 14.7vw, 282px);
   --c2: clamp(256px, 17.3vw, 332px);
   --c3: clamp(330px, 23.9vw, 459px);
-  --c3-exp: clamp(340px, 24vw, 440px);
+  --c3-exp: 372px; /* longest job title (322px) + 24px padding each side */
   --top: clamp(132px, 29.5vh, 320px);
 
   /* Dotted divider (1px dot, 6px gap) */
@@ -433,6 +433,7 @@ a.cta,
   font-size: 32px;
   line-height: 36px;
   font-variation-settings: "opsz" 32;
+  white-space: nowrap;
 }
 .job-meta {
   margin-top: 8px;
@@ -649,6 +650,7 @@ a.cta,
     text-align: left;
   }
   .job-role { position: static; padding: 0; }
+  .job-title { white-space: normal; }
   .job-dot { left: -28px; top: 8px; }
   .job-desc { padding: 0; margin-top: 4px; }
   .handnote { width: auto; margin: 48px 0 0; padding: 0; }
