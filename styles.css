@@ -668,6 +668,11 @@ a.cta,
   .about-photo img { width: 140px; height: 140px; }
 }
 
+/* Phone: project heading at 48px */
+@media (max-width: 699px) {
+  .project-copy .display { font-size: 48px; line-height: 48px; }
+}
+
 /* Tablet: project heading stays at 64px */
 @media (min-width: 700px) and (max-width: 1099px) {
   .project-copy .display { font-size: 64px; line-height: 64px; }
