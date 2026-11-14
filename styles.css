@@ -680,7 +680,7 @@ a.cta,
     display: flex;
     flex-direction: column;
     gap: 24px;
-    padding: 24px 0 64px;
+    padding: 4px 0 64px; /* + the top bar's 20px bottom padding = 24px visible gap */
   }
   .case .project-copy { padding: 0 var(--gutter); max-width: 640px; }
   /* Number on the left, project name + company stacked on its right */
