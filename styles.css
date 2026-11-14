@@ -28,7 +28,7 @@
   --side: clamp(256px, 14.7vw, 282px);
   --c2: clamp(256px, 17.3vw, 332px);
   --c3: clamp(330px, 23.9vw, 459px);
-  --c3-exp: clamp(220px, 14.1vw, 271px);
+  --c3-exp: clamp(340px, 24vw, 440px);
   --top: clamp(132px, 29.5vh, 320px);
 
   /* Dotted divider (1px dot, 6px gap) */
@@ -420,7 +420,7 @@ a.cta,
 .job-dot {
   position: absolute;
   left: -4px;
-  top: 22px;
+  top: 28px; /* centered on the first line of the 32px title */
   width: 8px; height: 8px;
   border-radius: 50%;
   background: var(--dot-idle);
@@ -430,9 +430,9 @@ a.cta,
 .job-title {
   font-family: var(--font-display);
   font-weight: 400;
-  font-size: 20px;
-  line-height: 24px;
-  font-variation-settings: "opsz" 20;
+  font-size: 32px;
+  line-height: 36px;
+  font-variation-settings: "opsz" 32;
 }
 .job-meta {
   margin-top: 8px;
