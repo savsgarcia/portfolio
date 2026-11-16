@@ -5,27 +5,6 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* ---------- About + Contents below the hero (smaller screens) ---------- */
-
-  // On tablet and phone, the sidebar shows only "Back"; a copy of About and Contents
-  // sits under the hero image. CSS shows one or the other, never both.
-  const side = document.querySelector('.cs-side');
-  const hero = document.querySelector('.cs-hero');
-  if (side && hero) {
-    const info = document.createElement('div');
-    info.className = 'cs-info';
-    side.querySelectorAll('.cs-about, .cs-index').forEach((el) => {
-      const copy = el.cloneNode(true);
-      copy.querySelectorAll('[id]').forEach((n) => {
-        const id = n.id;
-        n.id = id + '-m';
-        copy.querySelectorAll('[aria-labelledby="' + id + '"]').forEach((r) => r.setAttribute('aria-labelledby', id + '-m'));
-      });
-      info.appendChild(copy);
-    });
-    hero.after(info);
-  }
-
   /* ---------- Contents index ---------- */
 
   const indexLinks = Array.from(document.querySelectorAll('.cs-index a[href^="#"]'));
@@ -67,6 +46,30 @@
   }
   if (headings[0]) setCurrent(location.hash ? location.hash.slice(1) : headings[0].id);
 
+  /* ---------- Validation controls docked to the bottom (tablet/phone) ---------- */
+
+  // Below 1100px the controls live in a bar fixed to the bottom edge. It slides in once the
+  // first screenshot enters the screen and slides out when the Validation section ends.
+  const controls = document.querySelector('.cs-controls');
+  const validation = controls && controls.closest('section');
+  if (controls && validation) {
+    const small = window.matchMedia('(max-width: 1099px)');
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const firstShot = validation.querySelector('.cs-version:not([hidden]) .cs-shot');
+      const start = firstShot ? firstShot.getBoundingClientRect().top : validation.getBoundingClientRect().top;
+      const end = validation.getBoundingClientRect().bottom;
+      const show = small.matches && start < window.innerHeight && end > window.innerHeight - controls.offsetHeight;
+      controls.classList.toggle('is-docked', show);
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  }
+
   /* ---------- Annotation markers (decorative, numbered to match the notes) ---------- */
 
   // Markers sit on a wrapper around the image, so their positions are relative to the
@@ -101,9 +104,31 @@
   versionButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const version = button.dataset.version;
+      if (button.getAttribute('aria-pressed') === 'true') return;
+
+      // Keep the reader at the same spot: the Tested and Final screenshots have different
+      // heights, so remember how far through the current screenshot the top of the screen
+      // is, and restore that point on the matching screenshot after switching.
+      const current = versions.find((v) => !v.hidden);
+      const shots = current ? Array.from(current.querySelectorAll('.cs-shot')) : [];
+      const index = shots.findIndex((f) => f.getBoundingClientRect().bottom > 0);
+      let progress = null;
+      if (index > -1) {
+        const r = shots[index].getBoundingClientRect();
+        progress = r.top < 0 ? -r.top / r.height : null; // null: screenshot starts below the top edge
+      }
+
       versionButtons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
       versions.forEach((v) => { v.hidden = v.dataset.version !== version; });
       if (hint) hint.textContent = HINTS[version];
+
+      if (progress !== null) {
+        const next = versions.find((v) => !v.hidden).querySelectorAll('.cs-shot')[index];
+        if (next) {
+          const r = next.getBoundingClientRect();
+          window.scrollTo({ top: window.scrollY + r.top + progress * r.height, behavior: 'instant' });
+        }
+      }
     });
   });
 

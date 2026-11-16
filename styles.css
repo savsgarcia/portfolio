@@ -689,7 +689,7 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .work-stack {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 40px; /* 40px after each use case */
     padding: 4px 0 64px; /* + the top bar's 20px bottom padding = 24px visible gap */
   }
   .case .project-copy { padding: 0 var(--gutter); max-width: 640px; }
