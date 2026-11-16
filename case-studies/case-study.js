@@ -46,6 +46,39 @@
   }
   if (headings[0]) setCurrent(location.hash ? location.hash.slice(1) : headings[0].id);
 
+  /* ---------- Validation controls docked to the bottom (tablet/phone) ---------- */
+
+  // Below 1100px the controls scroll with the page. Once they leave the screen at the
+  // top, they dock to the bottom edge until the Validation section ends. A spacer keeps
+  // the page from jumping when the bar leaves the flow.
+  const controls = document.querySelector('.cs-controls');
+  const validation = controls && controls.closest('section');
+  if (controls && validation) {
+    const spacer = document.createElement('div');
+    spacer.className = 'cs-controls-spacer';
+    spacer.setAttribute('aria-hidden', 'true');
+    controls.before(spacer);
+    const small = window.matchMedia('(max-width: 1099px)');
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const docked = controls.classList.contains('is-docked');
+      const anchor = (docked ? spacer : controls).getBoundingClientRect();
+      const barHeight = docked ? controls.offsetHeight : anchor.height;
+      const sectionEnd = validation.getBoundingClientRect().bottom;
+      const shouldDock = small.matches && anchor.bottom < 0 && sectionEnd > window.innerHeight - barHeight;
+      if (shouldDock === docked) return;
+      if (shouldDock) spacer.style.height = anchor.height + 'px';
+      else spacer.style.height = '';
+      controls.classList.toggle('is-docked', shouldDock);
+    };
+    const onScroll = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  }
+
   /* ---------- Annotation markers (decorative, numbered to match the notes) ---------- */
 
   // Markers sit on a wrapper around the image, so their positions are relative to the

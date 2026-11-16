@@ -639,6 +639,24 @@
   .cs-main { padding-top: 64px; }
   /* Tablet and phone: the controls scroll with the page (sticky only on desktop) */
   .cs-controls { position: static; margin-left: 0; margin-right: 0; padding: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
+  /* After scrolling past them, the controls dock to the bottom until Validation ends */
+  .cs-controls.is-docked {
+    position: fixed;
+    top: auto; left: 0; right: 0; bottom: 0;
+    z-index: 30;
+    margin: 0;
+    align-items: center;
+    gap: 12px 16px;
+    padding: 12px max(var(--cs-pad), env(safe-area-inset-left, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(var(--cs-pad), env(safe-area-inset-right, 0px));
+    border-top: 1px solid #E5E3DD;
+    border-radius: 0;
+    background: rgba(255, 254, 251, .82);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    animation: cs-dock-in .2s ease;
+  }
+  .cs-controls.is-docked .cs-switch__hint { display: none; }
+  @keyframes cs-dock-in { from { transform: translateY(100%); } }
 
   .cs-section { padding-top: 72px; }
   .cs-overview { margin-top: 20px; padding-top: 40px; padding-bottom: 40px; }
