@@ -701,8 +701,10 @@
     border-radius: 2px;
     background: #CBCAC3;
   }
-  .cs-dialog__close { top: 12px; right: 8px; }
-  .cs-dialog__shot { padding: 12px; border-radius: 12px; }
+  .cs-dialog__close { top: 12px; right: 8px; z-index: 1; background: rgba(255, 255, 255, .9); }
+  /* Bottom sheet: the advisor system screenshot comes first, then the text */
+  .cs-dialog__body { display: flex; flex-direction: column; }
+  .cs-dialog__shot { order: -1; margin: 16px 0 24px; padding: 12px; border-radius: 12px; }
   @keyframes cs-sheet-in { from { transform: translateY(100%); } }
   .cs-dialog__list { grid-template-columns: minmax(0, 1fr); }
   .cs-dialog__title { font-size: 24px; line-height: 32px; }
