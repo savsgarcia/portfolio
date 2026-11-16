@@ -243,7 +243,7 @@
 .cs-section h3.cs-label { font-family: var(--font-mono); font-size: 12px; line-height: 24px; }
 .cs-hard {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 per row; the second column lines up with column 7 of the grid */
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* below 1100px: 2 per row; the second column lines up with column 7 of the grid */
   gap: 32px 24px;
   margin-top: 32px;
 }
@@ -254,6 +254,11 @@
   font-size: 40px;
   line-height: 44px;
   color: var(--ink);
+}
+/* Desktop (1100px+): all four in one row, larger numbers */
+@media (min-width: 1100px) {
+  .cs-hard { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .cs-hard__num { font-size: 56px; line-height: 56px; }
 }
 .cs-hard h3 { margin: 16px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; }
 .cs-hard p { font-size: 16px; line-height: 24px; margin-top: 4px !important; }
