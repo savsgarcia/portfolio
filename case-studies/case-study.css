@@ -637,10 +637,10 @@
   .cs-stat { font-size: 40px; line-height: 44px; }
   .cs-stat__unit { font-size: 23px; }
   .cs-main { padding-top: 64px; }
-  /* Tablet and phone: the controls scroll with the page (sticky only on desktop) */
-  .cs-controls { position: static; margin-left: 0; margin-right: 0; padding: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
-  /* After scrolling past them, the controls dock to the bottom until Validation ends */
-  .cs-controls.is-docked {
+  /* The controls are a bar fixed to the bottom edge. It slides in (.is-docked, set by
+     case-study.js) while the Validation screenshots are on screen, and always when a
+     control inside it has keyboard focus. */
+  .cs-controls {
     position: fixed;
     top: auto; left: 0; right: 0; bottom: 0;
     z-index: 30;
@@ -653,10 +653,13 @@
     background: rgba(255, 254, 251, .82);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
-    animation: cs-dock-in .2s ease;
+    transform: translateY(110%);
+    transition: transform .25s ease;
   }
-  .cs-controls.is-docked .cs-switch__hint { display: none; }
-  @keyframes cs-dock-in { from { transform: translateY(100%); } }
+  .cs-controls.is-docked,
+  .cs-controls:focus-within { transform: none; }
+  .cs-controls .cs-switch__hint { display: none; }
+  .cs-validation .cs-controls + .cs-version { margin-top: 32px; }
 
   .cs-section { padding-top: 72px; }
   .cs-overview { margin-top: 20px; padding-top: 40px; padding-bottom: 40px; }
