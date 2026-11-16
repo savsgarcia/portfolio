@@ -624,7 +624,8 @@
   }
   .cs-side .cs-index { display: none; } /* no section navigation below 1100px */
   .cs-main { padding-top: 64px; }
-  .cs-controls { top: calc(68px + env(safe-area-inset-top, 0px)); border-radius: 12px; }
+  /* Tablet and phone: the controls scroll with the page (sticky only on desktop) */
+  .cs-controls { position: static; margin-left: 0; margin-right: 0; padding: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
 
   .cs-section { padding-top: 72px; }
   .cs-overview { margin-top: 20px; padding-top: 40px; padding-bottom: 40px; }
