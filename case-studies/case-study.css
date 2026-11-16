@@ -243,7 +243,7 @@
 .cs-section h3.cs-label { font-family: var(--font-mono); font-size: 12px; line-height: 24px; }
 .cs-hard {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(2, minmax(0, 1fr)); /* 2 per row; the second column lines up with column 7 of the grid */
   gap: 32px 24px;
   margin-top: 32px;
 }
@@ -251,8 +251,8 @@
   display: block;
   font-family: var(--font-display);
   font-weight: 300;
-  font-size: 56px;
-  line-height: 56px;
+  font-size: 40px;
+  line-height: 44px;
   color: var(--ink);
 }
 .cs-hard h3 { margin: 16px 0 0; font-size: 16px; line-height: 24px; font-weight: 500; }
@@ -633,7 +633,6 @@
   .cs-decision--reverse .cs-decision__text,
   .cs-decision--reverse .cs-decision__media { grid-column: 1 / -1; grid-row: auto; }
   .cs-decision--reverse .cs-decision__media { order: 2; }
-  .cs-hard { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
 @media (max-width: 699px) {
@@ -643,7 +642,6 @@
   .cs-lessons { grid-template-columns: minmax(0, 1fr); }
   .cs-stat { font-size: 48px; line-height: 48px; }
   .cs-about { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-  .cs-hard { grid-template-columns: minmax(0, 1fr); }
   .cs-mobile ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .cs-controls__right { align-items: flex-start; }
   .cs-shot { padding: 20px 0 16px; }
