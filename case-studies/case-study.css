@@ -389,7 +389,7 @@
 .cs-switch[aria-checked="true"] .cs-switch__track::after { transform: translateX(20px); }
 .cs-switch__hint { font-size: 12px; line-height: 18px; color: var(--muted) !important; }
 
-.cs-version { display: grid; gap: 48px; margin-top: 32px; }
+.cs-version { display: grid; gap: 48px; margin-top: 32px; overflow-anchor: none; } /* scroll position is kept by case-study.js */
 .cs-version[hidden] { display: none; }
 
 .cs-shot {

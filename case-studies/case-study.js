@@ -113,9 +113,31 @@
   versionButtons.forEach((button) => {
     button.addEventListener('click', () => {
       const version = button.dataset.version;
+      if (button.getAttribute('aria-pressed') === 'true') return;
+
+      // Keep the reader at the same spot: the Tested and Final screenshots have different
+      // heights, so remember how far through the current screenshot the top of the screen
+      // is, and restore that point on the matching screenshot after switching.
+      const current = versions.find((v) => !v.hidden);
+      const shots = current ? Array.from(current.querySelectorAll('.cs-shot')) : [];
+      const index = shots.findIndex((f) => f.getBoundingClientRect().bottom > 0);
+      let progress = null;
+      if (index > -1) {
+        const r = shots[index].getBoundingClientRect();
+        progress = r.top < 0 ? -r.top / r.height : null; // null: screenshot starts below the top edge
+      }
+
       versionButtons.forEach((b) => b.setAttribute('aria-pressed', String(b === button)));
       versions.forEach((v) => { v.hidden = v.dataset.version !== version; });
       if (hint) hint.textContent = HINTS[version];
+
+      if (progress !== null) {
+        const next = versions.find((v) => !v.hidden).querySelectorAll('.cs-shot')[index];
+        if (next) {
+          const r = next.getBoundingClientRect();
+          window.scrollTo({ top: window.scrollY + r.top + progress * r.height, behavior: 'instant' });
+        }
+      }
     });
   });
 
