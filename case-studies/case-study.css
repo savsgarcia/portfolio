@@ -85,10 +85,22 @@
   color: var(--ink-strong);
 }
 
-.cs-about { margin-bottom: 24px; } /* first block of the persona column, above Meet Frankie */
-.cs-about dl { display: grid; gap: 0; margin: 4px 0 0; }
-.cs-about dl div { display: flex; flex-wrap: wrap; gap: 4px; font-size: 14px; line-height: 22px; color: var(--ink); } /* same type as the persona text */
-.cs-about dd { margin: 0; }
+/* About: first block of the Overview, labels above values in the eyebrow's mono style */
+.cs-about {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px 24px;
+  margin: 0 0 48px;
+}
+.cs-about dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 24px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-strong);
+}
+.cs-about dd { margin: 0; font-size: 14px; line-height: 22px; color: var(--ink); }
 
 .cs-index ol { display: grid; gap: 4px; margin-top: 8px; }
 .cs-index a {
@@ -145,7 +157,6 @@
 .cs-section p { color: var(--ink); }
 .cs-section p + p { margin-top: 16px; }
 .cs-section strong { font-weight: 600; }
-.cs-note-text { font-size: 14px; line-height: 20px; color: #737270 !important; } /* 4.7:1 on the #FCFCFB overview card */
 
 .cs-section h3 {
   font-family: var(--font-sans);
@@ -198,10 +209,6 @@
 .cs-overview__main { grid-column: 1 / span 8; }
 .cs-overview__main .cs-label { margin-top: 24px; }
 .cs-overview__main .cs-label + p { margin-top: 4px; }
-.cs-persona { grid-column: 10 / span 3; }
-.cs-persona p { font-size: 14px; line-height: 22px; }
-.cs-persona .cs-label + p { margin-top: 4px; }
-.cs-persona p + p { margin-top: 12px; }
 
 .cs-impact { margin-top: 48px; }
 .cs-impact .cs-lead { margin-top: 4px; }
@@ -623,7 +630,6 @@
   .cs-intro > :first-child,
   .cs-intro > :last-child,
   .cs-overview__main,
-  .cs-persona,
   .cs-decision__text,
   .cs-decision__media,
   .cs-decision--reverse .cs-decision__text,
@@ -638,6 +644,7 @@
   .cs-results ul,
   .cs-lessons { grid-template-columns: minmax(0, 1fr); }
   .cs-stat { font-size: 48px; line-height: 48px; }
+  .cs-about { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cs-hard { grid-template-columns: minmax(0, 1fr); }
   .cs-mobile ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .cs-controls__right { align-items: flex-start; }
