@@ -45,7 +45,6 @@
 }
 
 .cs-main { grid-area: main; min-width: 0; outline: none; }
-.cs-info { display: none; } /* Contents copy for smaller screens (built by case-study.js) */
 /* List reset with zero specificity, so component margins (e.g. .cs-stats) still apply */
 :where(.cs) ul { margin: 0; padding: 0; list-style: none; }
 .cs-footer { grid-area: footer; padding: 48px var(--cs-pad) 40px; max-width: calc(var(--cs-content) + 2 * var(--cs-pad)); width: 100%; margin: 0 auto; }
@@ -615,14 +614,10 @@
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
   }
-  .cs-layout:has(.cs-info) .cs-side .cs-index { display: none; }
+  .cs-side .cs-index { display: none; } /* no section navigation below 1100px */
   .cs-main { padding-top: 64px; }
   .cs-controls { top: calc(68px + env(safe-area-inset-top, 0px)); border-radius: 12px; }
 
-  .cs-info {
-    display: block;
-    padding: 32px var(--cs-pad) 0;
-  }
   .cs-section { padding-top: 72px; }
   .cs-overview { margin-top: 20px; padding-top: 40px; padding-bottom: 40px; }
   .cs-title { font-size: 40px; line-height: 44px; }

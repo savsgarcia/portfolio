@@ -5,27 +5,6 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-  /* ---------- About + Contents below the hero (smaller screens) ---------- */
-
-  // On tablet and phone, the sidebar shows only "Back"; a copy of Contents
-  // sits under the hero image. CSS shows one or the other, never both.
-  const side = document.querySelector('.cs-side');
-  const hero = document.querySelector('.cs-hero');
-  if (side && hero) {
-    const info = document.createElement('div');
-    info.className = 'cs-info';
-    side.querySelectorAll('.cs-index').forEach((el) => {
-      const copy = el.cloneNode(true);
-      copy.querySelectorAll('[id]').forEach((n) => {
-        const id = n.id;
-        n.id = id + '-m';
-        copy.querySelectorAll('[aria-labelledby="' + id + '"]').forEach((r) => r.setAttribute('aria-labelledby', id + '-m'));
-      });
-      info.appendChild(copy);
-    });
-    hero.after(info);
-  }
-
   /* ---------- Contents index ---------- */
 
   const indexLinks = Array.from(document.querySelectorAll('.cs-index a[href^="#"]'));
