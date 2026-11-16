@@ -175,7 +175,9 @@
 .cs-intro > :first-child { grid-column: 1 / span 5; }
 .cs-intro > :last-child { grid-column: 7 / span 5; margin-top: 0; } /* body text: 5 of 12 columns, starting where the right column of Key decisions starts */
 
-.cs-rule { margin: 64px 0 0; border: 0; border-top: 1px solid var(--ink); }
+.cs-rule { margin: 32px 0 0; border: 0; border-top: 1px solid var(--ink); }
+/* 32px between a section's closing line and the next section */
+.cs-section:has(> .cs-rule:last-child) + .cs-section { padding-top: 32px; }
 .cs-rule--dotted {
   height: 1px;
   border: 0;
