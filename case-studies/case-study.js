@@ -7,14 +7,14 @@
 
   /* ---------- About + Contents below the hero (smaller screens) ---------- */
 
-  // On tablet and phone, the sidebar shows only "Back"; a copy of About and Contents
+  // On tablet and phone, the sidebar shows only "Back"; a copy of Contents
   // sits under the hero image. CSS shows one or the other, never both.
   const side = document.querySelector('.cs-side');
   const hero = document.querySelector('.cs-hero');
   if (side && hero) {
     const info = document.createElement('div');
     info.className = 'cs-info';
-    side.querySelectorAll('.cs-about, .cs-index').forEach((el) => {
+    side.querySelectorAll('.cs-index').forEach((el) => {
       const copy = el.cloneNode(true);
       copy.querySelectorAll('[id]').forEach((n) => {
         const id = n.id;

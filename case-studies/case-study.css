@@ -45,7 +45,7 @@
 }
 
 .cs-main { grid-area: main; min-width: 0; outline: none; }
-.cs-info { display: none; } /* About + Contents copy for smaller screens (built by case-study.js) */
+.cs-info { display: none; } /* Contents copy for smaller screens (built by case-study.js) */
 /* List reset with zero specificity, so component margins (e.g. .cs-stats) still apply */
 :where(.cs) ul { margin: 0; padding: 0; list-style: none; }
 .cs-footer { grid-area: footer; padding: 48px var(--cs-pad) 40px; max-width: calc(var(--cs-content) + 2 * var(--cs-pad)); width: 100%; margin: 0 auto; }
@@ -85,8 +85,9 @@
   color: var(--ink-strong);
 }
 
-.cs-about dl { display: grid; gap: 8px; margin: 8px 0 0; }
-.cs-about dl div { display: flex; flex-wrap: wrap; gap: 4px; font-size: 14px; line-height: 22px; color: var(--ink); }
+.cs-about { margin-bottom: 24px; } /* first block of the persona column, above Meet Frankie */
+.cs-about dl { display: grid; gap: 0; margin: 4px 0 0; }
+.cs-about dl div { display: flex; flex-wrap: wrap; gap: 4px; font-size: 14px; line-height: 22px; color: var(--ink); } /* same type as the persona text */
 .cs-about dd { margin: 0; }
 
 .cs-index ol { display: grid; gap: 4px; margin-top: 8px; }
@@ -607,14 +608,12 @@
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
   }
-  .cs-layout:has(.cs-info) .cs-side :is(.cs-about, .cs-index) { display: none; }
+  .cs-layout:has(.cs-info) .cs-side .cs-index { display: none; }
   .cs-main { padding-top: 64px; }
   .cs-controls { top: calc(68px + env(safe-area-inset-top, 0px)); border-radius: 12px; }
 
   .cs-info {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 24px;
+    display: block;
     padding: 32px var(--cs-pad) 0;
   }
   .cs-section { padding-top: 72px; }
@@ -634,7 +633,6 @@
 }
 
 @media (max-width: 699px) {
-  .cs-info { grid-template-columns: minmax(0, 1fr); }
   .cs-title { font-size: 36px; line-height: 40px; }
   .cs-stats,
   .cs-results ul,
