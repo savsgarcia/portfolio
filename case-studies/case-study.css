@@ -455,8 +455,12 @@
   background: var(--accent);
   color: #FFFFFF;
   font-size: 11px;
-  line-height: 1;
+  line-height: 20px;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-align: center;
+  /* Trim the font's ascender/descender space so the digit sits in the optical center */
+  text-box: trim-both cap alphabetic;
 }
 .cs-version--final .cs-notes li { background: var(--cs-note-final-bg); border-color: var(--cs-note-final-border); }
 
@@ -473,7 +477,10 @@
   background: var(--accent);
   color: #FFFFFF;
   font-size: 11px;
+  line-height: 20px;
   font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  text-box: trim-both cap alphabetic;
   box-shadow: 0 0 0 3px rgba(255, 255, 255, .8);
   pointer-events: none;
 }
@@ -623,6 +630,10 @@
     backdrop-filter: blur(12px);
   }
   .cs-side .cs-index { display: none; } /* no section navigation below 1100px */
+  /* Impact numbers: 2 per row at 40px; the % keeps its proportion to the number (32/56) */
+  .cs-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
+  .cs-stat { font-size: 40px; line-height: 44px; }
+  .cs-stat__unit { font-size: 23px; }
   .cs-main { padding-top: 64px; }
   /* Tablet and phone: the controls scroll with the page (sticky only on desktop) */
   .cs-controls { position: static; margin-left: 0; margin-right: 0; padding: 0; background: none; -webkit-backdrop-filter: none; backdrop-filter: none; }
@@ -643,10 +654,8 @@
 
 @media (max-width: 699px) {
   .cs-title { font-size: 36px; line-height: 40px; }
-  .cs-stats,
   .cs-results ul,
   .cs-lessons { grid-template-columns: minmax(0, 1fr); }
-  .cs-stat { font-size: 48px; line-height: 48px; }
   .cs-about { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .cs-mobile ul { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
   .cs-controls__right { align-items: flex-start; }
