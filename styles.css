@@ -744,9 +744,9 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .project-copy .display { font-size: 64px; line-height: 64px; }
 }
 
-/* Small desktop (900–1099px): same Work layout as desktop L,
+/* Small desktop (1025–1099px): same Work layout as desktop L,
    with the sidebar replaced by the top bar + hamburger menu. */
-@media (min-width: 900px) and (max-width: 1099px) {
+@media (min-width: 1025px) and (max-width: 1099px) {
   .work-stack { display: none; }
   .view--work {
     display: grid;
