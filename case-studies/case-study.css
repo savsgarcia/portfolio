@@ -6,7 +6,7 @@
 
 .cs {
   --cs-side: clamp(256px, 14.7vw, 282px);
-  --cs-content: 1126px;        /* 12-column content area */
+  --cs-content: 1040px;        /* 12-column content area, centered */
   --cs-pad: 40px;
   --cs-hero-bg: #FCFAF5;
   --cs-card-bg: #FCFCFB;
@@ -153,7 +153,7 @@
 
 .cs-lead { font-size: 20px; line-height: 28px; color: var(--ink); }
 .cs-sub { margin-top: 24px; font-size: 16px; line-height: 24px; }
-/* Running text stays at a readable line length (~70 characters); images and grids use the full 1126px column */
+/* Running text stays at a readable line length (~70 characters); images and grids use the full 1040px column */
 .cs-section p { max-width: 640px; color: var(--ink); }
 .cs-section p + p { margin-top: 16px; }
 .cs-section strong { font-weight: 600; }
