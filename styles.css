@@ -708,30 +708,33 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .case-client::before { content: "·"; margin-right: 8px; color: var(--muted); font-weight: 300; }
   .case-eyebrow { padding-top: 24px; }
 
-  /* Close-up of the product: image shown large and cropped by the panel */
+  /* Product image: fills the panel's width inside the same side margin as the text
+     (--gutter on both sides) and the same space from the top; the panel crops the bottom. */
   .case-visual {
     position: relative;
     overflow: hidden;
     height: 360px;
+    padding: var(--gutter) var(--gutter) 0;
     background: var(--panel-bg);
   }
-  .case-visual .project-image {
-    position: absolute;
-    top: 32px;
-    left: 32px;
+  .case-visual .project-image,
+  .case-visual .project-image--viu,
+  .case-visual .project-image--order-entry,
+  .case-visual .project-image--order-sets {
+    position: static;
+    display: block;
+    width: 100%;
     max-width: none;
     height: auto;
   }
-  .case-visual .project-image--viu { width: 700px; }
-  .case-visual .project-image--order-entry { width: 532px; }
-  .case-visual .project-image--order-sets { width: 910px; }
+  /* The exported images carry a thin transparent edge (shadow room); widen them by that
+     edge so the visible screen lines up exactly with the text margin. */
+  .case-visual .project-image--viu { width: calc(100% + 2 * 0.82%); margin-left: -0.82%; }
+  .case-visual .project-image--order-entry { width: calc(100% + 2 * 1.04%); margin-left: -1.04%; }
+  .case-visual .project-image--order-sets { width: calc(100% + 2 * 0.5%); margin-left: -0.5%; }
 }
 @media (max-width: 699px) {
   .case-visual { height: 220px; }
-  .case-visual .project-image { top: 24px; left: var(--gutter); }
-  .case-visual .project-image--viu { width: 532px; }
-  .case-visual .project-image--order-entry { width: 392px; }
-  .case-visual .project-image--order-sets { width: 700px; }
 }
 
 /* Phone: project heading at 48px */
