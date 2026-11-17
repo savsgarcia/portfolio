@@ -3,7 +3,7 @@
 Static personal portfolio: plain HTML, CSS and JavaScript, no build step.
 
 - `index.html` — structure and content (Work, Experience, About views, switched by URL hash)
-- `styles.css` — design tokens and layout (desktop ≥1100px, small desktop 1025–1099px, tablet 700–1024px, phone <700px). Work shows the stacked use cases at 1024px and below. From 700 to 1024px content sits in a centered 720px column (`--gutter` grows with the screen), while the image panel spans the full width with the image aligned to the text edges; the top bar and open menu stay full width with 40px side margins
+- `styles.css` — design tokens and layout (desktop ≥1100px, small desktop 1025–1099px, tablet 700–1024px, phone <700px). Work shows the stacked use cases at 1024px and below. From 700 to 1024px content sits in a centered 720px column (`--gutter` grows with the screen), while the image panel spans the full width with the image aligned to the text edges; the top bar and open menu stay full width with 40px side margins. At 1099px and below the Work project titles use the case study title style (40/44px tablet, 36/40px phone, `text-wrap: balance`)
 - `script.js` — view routing, project switcher, stacked use cases on smaller screens, mobile menu
 - `assets/img/` — project images and portrait (exported from Figma)
 - `tests/` — Playwright tests, run on every `.html` page:
@@ -12,7 +12,7 @@ Static personal portfolio: plain HTML, CSS and JavaScript, no build step.
   - `links.spec.js` — every internal link, image, stylesheet, script and `#section` link exists (external links are not visited)
   - `pages.js` — shared helpers: finds every page and hash view, opens a page
 
-Analytics: Umami Cloud (no cookies, no personal data, so no cookie banner). The script is in the `<head>` of every page with `data-domains="savsgarcia.github.io"`, so local runs, tests and previews are not counted. Clicks are tracked with `data-umami-event="Name"` (plus `data-umami-event-<key>="value"` for details) on the link or button itself; new pages need the same script tag. Events: Nav, Project tab, See case study, Email, LinkedIn, Back to work, Contents, Validation version, Annotations switch, See raw data.
+Analytics: Umami Cloud (no cookies, no personal data, so no cookie banner). The script is in the `<head>` of every page with `data-domains="savsgarcia.github.io"`, so local runs, tests and previews are not counted. Clicks are tracked with `data-umami-event="Name"` (plus `data-umami-event-<key>="value"` for details) on the link or button itself; new pages need the same script tag. Events: Nav, Project tab (`project`), See case study, Email, LinkedIn (`from: experience` for the link below the last job on tablet and phone), Back to work, Contents, Validation version, Annotations switch, See raw data.
 
 Design source: Figma file "Portfolio", page "Moodboard". Fonts: Fraunces (display), Inter (text), IBM Plex Mono (labels).
 

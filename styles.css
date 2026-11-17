@@ -416,6 +416,8 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   padding-top: calc(var(--top) - 10px);
 }
 
+.experience-more { display: none; }
+
 .job {
   display: grid;
   grid-template-columns: var(--c2) var(--c3-exp) minmax(0, 1fr);
@@ -665,6 +667,11 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .job-title { white-space: normal; }
   .job-dot { left: -28px; top: 8px; }
   .job-desc { padding: 0; margin-top: 4px; }
+  /* Link to the full experience, below the last job, aligned with the job text */
+  .experience-more { display: block; margin-top: 48px; padding-left: 24px; }
+  .experience-more .cta { font-size: 16px; line-height: 24px; }
+  .experience-more a.cta:hover svg,
+  .experience-more a.cta:focus-visible svg { transform: translate(2px, -2px); }
 
   /* About */
   .view--about {
@@ -748,19 +755,19 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .sidebar { padding-left: 40px; padding-right: 40px; }
   .menu-open .site-footer { left: 40px; }
   /* Text keeps a comfortable line length (max 640px) inside the column */
-  .case .project-copy { max-width: calc(var(--gutter) + 640px); }
+  .case .project-copy { max-width: calc(2 * var(--gutter) + 640px); } /* 640px of text between the side margins */
   /* The image panel spans the full width; the image starts and ends at the text edges */
   .case-visual { padding: 40px var(--gutter) 0; }
 }
 
-/* Phone: project heading at 48px */
+/* Phone: project heading uses the case study title style (.cs-title below 700px) */
 @media (max-width: 699px) {
-  .project-copy .display { font-size: 48px; line-height: 48px; }
+  .project-copy .display { font-size: 36px; line-height: 40px; letter-spacing: -0.01em; }
 }
 
-/* Tablet: project heading stays at 64px */
+/* Tablet: project heading uses the case study title style (.cs-title below 1100px) */
 @media (min-width: 700px) and (max-width: 1099px) {
-  .project-copy .display { font-size: 64px; line-height: 64px; }
+  .project-copy .display { font-size: 40px; line-height: 44px; letter-spacing: -0.01em; }
 }
 
 /* Small desktop (1025–1099px): same Work layout as desktop L,
