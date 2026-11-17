@@ -57,6 +57,21 @@
     onTop();
   }
 
+  /* ---------- Hero band ---------- */
+
+  // The hero's gradient band ends halfway down the Overview card at every screen size.
+  const main = document.querySelector('.cs-main');
+  const overview = document.querySelector('.cs-overview');
+  if (main && overview) {
+    const setBand = () => {
+      const top = overview.getBoundingClientRect().top - main.getBoundingClientRect().top;
+      main.style.setProperty('--cs-band', Math.round(top + overview.offsetHeight / 2) + 'px');
+    };
+    if ('ResizeObserver' in window) new ResizeObserver(setBand).observe(main);
+    else window.addEventListener('resize', setBand);
+    setBand();
+  }
+
   /* ---------- Validation controls docked to the bottom (tablet/phone) ---------- */
 
   // Below 1100px the controls live in a bar fixed to the bottom edge. It slides in once the

@@ -190,10 +190,14 @@
 
 /* ---------- Hero ---------- */
 
-/* Behind the hero image: a full-width 480px band that fades from #F8F5EC into the page */
-.cs-hero { background: linear-gradient(to bottom, var(--cs-hero-bg), var(--bg)) top / 100% 480px no-repeat; }
+/* Behind the hero image: a full-width band that fades from #F8F5EC into the page and ends
+   halfway down the Overview card, so the card's lighter background stands out against it.
+   case-study.js sets --cs-band to that height; 480px is the fallback. */
+.cs-main { background: linear-gradient(to bottom, var(--cs-hero-bg), var(--bg)) top / 100% var(--cs-band, 480px) no-repeat; }
 .cs-hero { padding-top: 40px; } /* room above the image */
 .cs-hero img { display: block; width: 100%; height: auto; padding: 0; }
+/* The devices dissolve into the band at the bottom (transparent, so the gradient shows through) */
+.cs-hero img { -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent); mask-image: linear-gradient(to bottom, #000 82%, transparent); }
 
 /* ---------- 01. Overview ---------- */
 
