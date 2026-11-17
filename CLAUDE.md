@@ -3,7 +3,7 @@
 Static personal portfolio: plain HTML, CSS and JavaScript, no build step.
 
 - `index.html` — structure and content (Work, Experience, About views, switched by URL hash)
-- `styles.css` — design tokens and layout (desktop ≥1100px, small desktop 1025–1099px, tablet 700–1024px, phone <700px). Work shows the stacked use cases at 1024px and below. From 700 to 1024px content sits in a centered 720px column (`--gutter` grows with the screen), with the image panel as a card inside it
+- `styles.css` — design tokens and layout (desktop ≥1100px, small desktop 1025–1099px, tablet 700–1024px, phone <700px). Work shows the stacked use cases at 1024px and below. From 700 to 1024px content sits in a centered 720px column (`--gutter` grows with the screen), while the image panel spans the full width with the image aligned to the text edges; the top bar and open menu stay full width with 40px side margins
 - `script.js` — view routing, project switcher, stacked use cases on smaller screens, mobile menu
 - `assets/img/` — project images and portrait (exported from Figma)
 - `tests/` — Playwright tests, run on every `.html` page:
