@@ -9,18 +9,17 @@
   const projects = {
     'viu': {
       num: '01', name: 'Insurance profile', client: 'VIU by HUB',
-      // <br> forces the line break after "Frankie"
-      title: 'How Frankie<br>found clarity, and a better way to renew.',
+      title: 'How Frankie found clarity, and a better way to renew.',
       description: 'Designing VIU’s account space, where every policy lives in one place and HUB can help before each renewal.',
       // Stretched link: the only interactive element in the project copy (see .cta--stretched in styles.css)
-      cta: '<a class="cta cta--stretched" href="case-studies/viu/">See case study ' + chevron + '</a>',
+      cta: '<a class="cta cta--stretched" href="case-studies/viu/" data-umami-event="See case study" data-umami-event-project="viu">See case study ' + chevron + '</a>',
       bg: '#F8F5EC',
       image: 'assets/img/viu.webp', width: 1986, height: 1614,
       alt: 'VIU by HUB account screen: a personal dashboard greeting Frankie with all their policies and recommended coverage.'
     },
     'order-entry': {
       num: '02', name: 'AI-assisted order entry', client: 'Oracle',
-      title: 'How Dr. Haven<br>got help ordering, only when he asked for it',
+      title: 'How Dr. Haven got help ordering, only when he asked for it',
       description: 'Designing AI-assisted order entry for an EHR: when the assistant helps, and when it steps aside.',
       cta: '<span class="cta cta--locked">Available on request · NDA ' + lock + '</span>',
       bg: '#DCE8E1',
@@ -29,7 +28,7 @@
     },
     'order-sets': {
       num: '03', name: 'Order sets', client: 'Oracle',
-      title: 'How clinicians<br>ordered complex care plans without losing their place',
+      title: 'How clinicians ordered complex care plans without losing their place',
       description: 'Modernizing a legacy order sets experience for expert users, without breaking the workflows they rely on.',
       cta: '<span class="cta cta--locked">Available on request · NDA ' + lock + '</span>',
       bg: '#DCC3D2',

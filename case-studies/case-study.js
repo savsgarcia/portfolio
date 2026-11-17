@@ -46,6 +46,32 @@
   }
   if (headings[0]) setCurrent(location.hash ? location.hash.slice(1) : headings[0].id);
 
+  /* ---------- Back header (tablet/phone) ---------- */
+
+  // Below 1100px "Back" is fixed top-left. It only gets its blurred box once the page has
+  // scrolled, so at the top it sits directly on the hero band.
+  const side = document.querySelector('.cs-side');
+  if (side) {
+    const onTop = () => side.classList.toggle('is-scrolled', window.scrollY > 0);
+    window.addEventListener('scroll', onTop, { passive: true });
+    onTop();
+  }
+
+  /* ---------- Hero band ---------- */
+
+  // The hero's gradient band ends halfway down the Overview card at every screen size.
+  const main = document.querySelector('.cs-main');
+  const overview = document.querySelector('.cs-overview');
+  if (main && overview) {
+    const setBand = () => {
+      const top = overview.getBoundingClientRect().top - main.getBoundingClientRect().top;
+      main.style.setProperty('--cs-band', Math.round(top + overview.offsetHeight / 2) + 'px');
+    };
+    if ('ResizeObserver' in window) new ResizeObserver(setBand).observe(main);
+    else window.addEventListener('resize', setBand);
+    setBand();
+  }
+
   /* ---------- Validation controls docked to the bottom (tablet/phone) ---------- */
 
   // Below 1100px the controls live in a bar fixed to the bottom edge. It slides in once the

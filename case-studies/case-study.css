@@ -6,9 +6,10 @@
 
 .cs {
   --cs-side: clamp(256px, 14.7vw, 282px);
-  --cs-content: 1126px;        /* 12-column content area */
+  --cs-content: 1040px;        /* 12-column content area, centered */
   --cs-pad: 40px;
-  --cs-hero-bg: #FCFAF5;
+  --cs-hero-bg: #F8F5EC;
+  --cs-accent-line: #E4DF4F;   /* yellow accent at the start of every case study */
   --cs-card-bg: #FCFCFB;
   --cs-chip-bg: #F0ECE0;
   --cs-note-final-bg: #EEF0FB;
@@ -153,7 +154,8 @@
 
 .cs-lead { font-size: 20px; line-height: 28px; color: var(--ink); }
 .cs-sub { margin-top: 24px; font-size: 16px; line-height: 24px; }
-.cs-section p { color: var(--ink); }
+/* Running text stays at a readable line length (~70 characters); images and grids use the full 1040px column */
+.cs-section p { max-width: 640px; color: var(--ink); }
 .cs-section p + p { margin-top: 16px; }
 .cs-section strong { font-weight: 600; }
 
@@ -188,8 +190,14 @@
 
 /* ---------- Hero ---------- */
 
-.cs-hero { background: linear-gradient(to bottom, var(--cs-hero-bg), var(--bg)); }
+/* Behind the hero image: a full-width band that fades from #F8F5EC into the page and ends
+   halfway down the Overview card, so the card's lighter background stands out against it.
+   case-study.js sets --cs-band to that height; 480px is the fallback. */
+.cs-main { background: linear-gradient(to bottom, var(--cs-hero-bg), var(--bg)) top / 100% var(--cs-band, 480px) no-repeat; }
+.cs-hero { padding-top: 40px; } /* room above the image */
 .cs-hero img { display: block; width: 100%; height: auto; padding: 0; }
+/* The devices dissolve into the band at the bottom (transparent, so the gradient shows through) */
+.cs-hero img { -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent); mask-image: linear-gradient(to bottom, #000 82%, transparent); }
 
 /* ---------- 01. Overview ---------- */
 
@@ -199,6 +207,18 @@
   margin-top: 32px;
   padding: 40px var(--cs-pad);
   background: var(--cs-card-bg);
+  position: relative;
+}
+/* Barely-there accent: a 2px yellow line on the top-left 30% of the card, fading in and out */
+.cs-overview::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--cs-accent-line) 50%, transparent);
+  pointer-events: none;
 }
 .cs-overview__grid {
   display: grid;
@@ -615,8 +635,9 @@
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "side" "main" "footer";
   }
-  /* Only "Back" stays in the header: fixed top-left, 16px padding, blurred background
-     so the page shows through as it scrolls. About and Contents move below the hero. */
+  /* Only "Back" stays in the header: fixed top-left, 16px padding. At the top of the page it
+     sits on the hero band with no box; once the page scrolls (.is-scrolled, set by
+     case-study.js) it gets a blurred background so the page shows through. */
   .cs-side {
     position: fixed;
     top: calc(4px + env(safe-area-inset-top, 0px));
@@ -627,6 +648,10 @@
     display: block;
     padding: 16px;
     border-radius: 12px;
+    background: none; /* no dotted divider here */
+    transition: background-color .2s ease;
+  }
+  .cs-side.is-scrolled {
     background: rgba(255, 254, 251, .72);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
@@ -636,7 +661,8 @@
   .cs-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
   .cs-stat { font-size: 40px; line-height: 44px; }
   .cs-stat__unit { font-size: 23px; }
-  .cs-main { padding-top: 64px; }
+  /* The hero band starts at the very top; the image starts below Back */
+  .cs-hero { padding-top: 72px; }
   /* The controls are a bar fixed to the bottom edge. It slides in (.is-docked, set by
      case-study.js) while the Validation screenshots are on screen, and always when a
      control inside it has keyboard focus. */

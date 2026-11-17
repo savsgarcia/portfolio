@@ -11,6 +11,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../../styles.css">
   <link rel="stylesheet" href="../case-study.css">
+  <!-- Umami analytics: no cookies, no personal data. Only counts visits on the live site. -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="722e1d46-c88f-4b3c-b9a3-a9562d51b813" data-domains="savsgarcia.github.io"></script>
 </head>
 <body class="cs">
   <a class="skip-link" href="#main">Skip to content</a>
@@ -18,7 +20,7 @@
   <div class="cs-layout">
     <!-- Sidebar on desktop, top block on smaller screens -->
     <header class="cs-side">
-      <a class="cs-back" href="../../#work">
+      <a class="cs-back" href="../../#work" data-umami-event="Back to work" data-umami-event-from="header">
         <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
         Back
       </a>
@@ -26,12 +28,12 @@
       <nav class="cs-index" aria-label="Contents">
         <p class="cs-label" aria-hidden="true">Contents</p>
         <ol>
-          <li><a href="#overview">01. Overview</a></li>
-          <li><a href="#challenge">02. The challenge</a></li>
-          <li><a href="#decisions">03. Key decisions</a></li>
-          <li><a href="#validation">04. Validation</a></li>
-          <li><a href="#outcome">05. Outcome</a></li>
-          <li><a href="#reflection">06. Reflection</a></li>
+          <li><a href="#overview" data-umami-event="Contents" data-umami-event-section="overview">01. Overview</a></li>
+          <li><a href="#challenge" data-umami-event="Contents" data-umami-event-section="challenge">02. The challenge</a></li>
+          <li><a href="#decisions" data-umami-event="Contents" data-umami-event-section="decisions">03. Key decisions</a></li>
+          <li><a href="#validation" data-umami-event="Contents" data-umami-event-section="validation">04. Validation</a></li>
+          <li><a href="#outcome" data-umami-event="Contents" data-umami-event-section="outcome">05. Outcome</a></li>
+          <li><a href="#reflection" data-umami-event="Contents" data-umami-event-section="reflection">06. Reflection</a></li>
         </ol>
       </nav>
     </header>
@@ -165,14 +167,14 @@
 
         <div class="cs-controls">
           <div class="cs-controls__left">
-            <button class="cs-btn" type="button" id="raw-open" aria-haspopup="dialog">See raw data</button>
+            <button class="cs-btn" type="button" id="raw-open" aria-haspopup="dialog" data-umami-event="See raw data">See raw data</button>
             <div class="cs-segmented" role="group" aria-label="Screen version">
-              <button type="button" data-version="tested" aria-pressed="true">Tested</button>
-              <button type="button" data-version="final" aria-pressed="false">Final</button>
+              <button type="button" data-version="tested" aria-pressed="true" data-umami-event="Validation version" data-umami-event-version="tested">Tested</button>
+              <button type="button" data-version="final" aria-pressed="false" data-umami-event="Validation version" data-umami-event-version="final">Final</button>
             </div>
           </div>
           <div class="cs-controls__right">
-            <button class="cs-switch" type="button" role="switch" aria-checked="true" id="annotations-switch" aria-describedby="annotations-hint">
+            <button class="cs-switch" type="button" role="switch" aria-checked="true" id="annotations-switch" aria-describedby="annotations-hint" data-umami-event="Annotations switch">
               <span class="cs-switch__label">Show annotations</span>
               <span class="cs-switch__track" aria-hidden="true"></span>
             </button>
@@ -273,12 +275,12 @@
         <p class="cs-eyebrow cs-eyebrow--dot">06. Reflection</p>
         <h2 class="cs-title" id="reflection" tabindex="-1">Design for who actually shows up</h2>
         <ul class="cs-lessons">
-          <li><h3>Measure the funnel</h3><p>We tracked adoption, not quotes.<br>I’d define the funnel before launch.</p></li>
-          <li><h3>Question the brief</h3><p>The brief left out HUB’s clients.<br>They came anyway.<br>I’d research them early.</p></li>
-          <li><h3>Push for what users ask</h3><p>Users asked for auto-sync; we explained the delay.<br>I’d push for it sooner.</p></li>
+          <li><h3>Measure the funnel</h3><p>We tracked adoption, not quotes. I’d define the funnel before launch.</p></li>
+          <li><h3>Question the brief</h3><p>The brief left out HUB’s clients. They came anyway. I’d research them early.</p></li>
+          <li><h3>Push for what users ask</h3><p>Users asked for auto-sync; we explained the delay. I’d push for it sooner.</p></li>
         </ul>
         <hr class="cs-rule">
-        <p class="cs-next"><a href="../../#work">Back to work</a></p>
+        <p class="cs-next"><a href="../../#work" data-umami-event="Back to work" data-umami-event-from="end">Back to work</a></p>
       </section>
     </main>
 

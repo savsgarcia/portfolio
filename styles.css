@@ -89,6 +89,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   letter-spacing: -0.02em;
   font-variation-settings: "opsz" 72;
   color: var(--ink);
+  text-wrap: balance; /* lines break naturally, evened out; no forced <br> */
 }
 
 /* ==========================================================
@@ -708,30 +709,48 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .case-client::before { content: "·"; margin-right: 8px; color: var(--muted); font-weight: 300; }
   .case-eyebrow { padding-top: 24px; }
 
-  /* Close-up of the product: image shown large and cropped by the panel */
+  /* Product image: fills the panel's width inside the same side margin as the text
+     (--gutter on both sides) and the same space from the top; the panel crops the bottom. */
   .case-visual {
     position: relative;
     overflow: hidden;
     height: 360px;
+    padding: var(--gutter) var(--gutter) 0;
     background: var(--panel-bg);
   }
-  .case-visual .project-image {
-    position: absolute;
-    top: 32px;
-    left: 32px;
+  .case-visual .project-image,
+  .case-visual .project-image--viu,
+  .case-visual .project-image--order-entry,
+  .case-visual .project-image--order-sets {
+    position: static;
+    display: block;
+    width: 100%;
     max-width: none;
     height: auto;
   }
-  .case-visual .project-image--viu { width: 700px; }
-  .case-visual .project-image--order-entry { width: 532px; }
-  .case-visual .project-image--order-sets { width: 910px; }
+  /* The exported images carry a thin transparent edge (shadow room); widen them by that
+     edge so the visible screen lines up exactly with the text margin. */
+  .case-visual .project-image--viu { width: calc(100% + 2 * 0.82%); margin-left: -0.82%; }
+  .case-visual .project-image--order-entry { width: calc(100% + 2 * 1.04%); margin-left: -1.04%; }
+  .case-visual .project-image--order-sets { width: calc(100% + 2 * 0.5%); margin-left: -0.5%; }
 }
 @media (max-width: 699px) {
   .case-visual { height: 220px; }
-  .case-visual .project-image { top: 24px; left: var(--gutter); }
-  .case-visual .project-image--viu { width: 532px; }
-  .case-visual .project-image--order-entry { width: 392px; }
-  .case-visual .project-image--order-sets { width: 700px; }
+}
+
+/* Tablet (700–1024px): content sits in a centered 720px column. The side margin grows
+   with the screen, so the top bar, the stacked use cases and Experience all start at the
+   same left edge. */
+@media (min-width: 700px) and (max-width: 1024px) {
+  :root { --gutter: max(20px, calc((100vw - 720px) / 2)); }
+  /* The top bar and the open menu span the full width with 40px side margins */
+  .topbar { padding-left: 40px; padding-right: 40px; }
+  .sidebar { padding-left: 40px; padding-right: 40px; }
+  .menu-open .site-footer { left: 40px; }
+  /* Text keeps a comfortable line length (max 640px) inside the column */
+  .case .project-copy { max-width: calc(var(--gutter) + 640px); }
+  /* The image panel spans the full width; the image starts and ends at the text edges */
+  .case-visual { padding: 40px var(--gutter) 0; }
 }
 
 /* Phone: project heading at 48px */
@@ -744,9 +763,9 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .project-copy .display { font-size: 64px; line-height: 64px; }
 }
 
-/* Small desktop (900–1099px): same Work layout as desktop L,
+/* Small desktop (1025–1099px): same Work layout as desktop L,
    with the sidebar replaced by the top bar + hamburger menu. */
-@media (min-width: 900px) and (max-width: 1099px) {
+@media (min-width: 1025px) and (max-width: 1099px) {
   .work-stack { display: none; }
   .view--work {
     display: grid;

@@ -24,6 +24,8 @@ const targets = findPages().flatMap((page) =>
 );
 
 async function open(page, url) {
+  // Analytics (Umami) is blocked in tests: no third-party dependency and no fake visits.
+  await page.route('https://cloud.umami.is/**', (route) => route.abort());
   await page.goto(url);
   await page.waitForLoadState('networkidle');
   // Let view transitions finish so the page is measured at rest.

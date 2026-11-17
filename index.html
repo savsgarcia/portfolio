@@ -12,6 +12,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400;9..144,600&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <!-- Umami analytics: no cookies, no personal data. Only counts visits on the live site. -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="722e1d46-c88f-4b3c-b9a3-a9562d51b813" data-domains="savsgarcia.github.io"></script>
 </head>
 <body>
   <a class="skip-link" href="#main">Skip to content</a>
@@ -38,16 +40,16 @@
         </a>
 
         <nav class="nav" aria-label="Main">
-          <a class="nav-link" href="#work" data-view="work">Work</a>
-          <a class="nav-link" href="#experience" data-view="experience">Experience</a>
-          <a class="nav-link" href="#about" data-view="about">About</a>
+          <a class="nav-link" href="#work" data-view="work" data-umami-event="Nav" data-umami-event-view="work">Work</a>
+          <a class="nav-link" href="#experience" data-view="experience" data-umami-event="Nav" data-umami-event-view="experience">Experience</a>
+          <a class="nav-link" href="#about" data-view="about" data-umami-event="Nav" data-umami-event-view="about">About</a>
         </nav>
 
         <div class="contact">
           <p class="status"><span class="status-dot" aria-hidden="true"></span>I’m available for work</p>
           <p class="contact-title">Let’s get in touch</p>
-          <a class="contact-link" href="mailto:saulgarciavital@gmail.com">saulgarciavital@gmail.com</a>
-          <a class="contact-link contact-link--underline" href="https://www.linkedin.com/in/saul-garc%C3%ADa-9406a298" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="contact-link" data-umami-event="Email" href="mailto:saulgarciavital@gmail.com">saulgarciavital@gmail.com</a>
+          <a class="contact-link contact-link--underline" data-umami-event="LinkedIn" href="https://www.linkedin.com/in/saul-garc%C3%ADa-9406a298" target="_blank" rel="noopener">LinkedIn</a>
         </div>
       </div>
     </header>
@@ -59,15 +61,15 @@
         <h1 class="visually-hidden">Work</h1>
         <div class="col col--projects">
           <div class="projects" role="tablist" aria-label="Projects" aria-orientation="vertical">
-            <button class="project-tab" role="tab" id="tab-viu" aria-controls="panel-project" aria-selected="true" data-project="viu">
+            <button class="project-tab" role="tab" id="tab-viu" aria-controls="panel-project" aria-selected="true" data-project="viu" data-umami-event="Project tab" data-umami-event-project="viu">
               <span class="project-tab-num" aria-hidden="true">01</span><span class="project-tab-title">Insurance profile</span>
               <span class="project-tab-client">VIU by HUB</span>
             </button>
-            <button class="project-tab" role="tab" id="tab-order-entry" aria-controls="panel-project" aria-selected="false" tabindex="-1" data-project="order-entry">
+            <button class="project-tab" role="tab" id="tab-order-entry" aria-controls="panel-project" aria-selected="false" tabindex="-1" data-project="order-entry" data-umami-event="Project tab" data-umami-event-project="order-entry">
               <span class="project-tab-num" aria-hidden="true">02</span><span class="project-tab-title">AI-assisted order entry</span>
               <span class="project-tab-client">Oracle</span>
             </button>
-            <button class="project-tab" role="tab" id="tab-order-sets" aria-controls="panel-project" aria-selected="false" tabindex="-1" data-project="order-sets">
+            <button class="project-tab" role="tab" id="tab-order-sets" aria-controls="panel-project" aria-selected="false" tabindex="-1" data-project="order-sets" data-umami-event="Project tab" data-umami-event-project="order-sets">
               <span class="project-tab-num" aria-hidden="true">03</span><span class="project-tab-title">Order sets</span>
               <span class="project-tab-client">Oracle</span>
             </button>
@@ -76,10 +78,10 @@
 
         <div class="col col--text" id="panel-project" role="tabpanel" aria-labelledby="tab-viu">
           <div class="project-copy">
-            <h2 class="display" data-field="title">How Frankie<br>found clarity, and a better way to renew.</h2>
+            <h2 class="display" data-field="title">How Frankie found clarity, and a better way to renew.</h2>
             <p class="lede" data-field="description">Designing VIU’s account space, where every policy lives in one place and HUB can help before each renewal.</p>
             <p class="project-cta" data-field="cta">
-              <a class="cta cta--stretched" href="case-studies/viu/">See case study <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
+              <a class="cta cta--stretched" href="case-studies/viu/" data-umami-event="See case study" data-umami-event-project="viu">See case study <svg width="20" height="20" viewBox="0 0 20 20" aria-hidden="true"><path d="M8 5l5 5-5 5" stroke="currentColor" stroke-width="1.5" fill="none"/></svg></a>
             </p>
           </div>
         </div>
