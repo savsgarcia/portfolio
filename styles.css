@@ -416,6 +416,8 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   padding-top: calc(var(--top) - 10px);
 }
 
+.experience-more { display: none; }
+
 .job {
   display: grid;
   grid-template-columns: var(--c2) var(--c3-exp) minmax(0, 1fr);
@@ -665,6 +667,11 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .job-title { white-space: normal; }
   .job-dot { left: -28px; top: 8px; }
   .job-desc { padding: 0; margin-top: 4px; }
+  /* Link to the full experience, below the last job, aligned with the job text */
+  .experience-more { display: block; margin-top: 48px; padding-left: 24px; }
+  .experience-more .cta { font-size: 16px; line-height: 24px; }
+  .experience-more a.cta:hover svg,
+  .experience-more a.cta:focus-visible svg { transform: translate(2px, -2px); }
 
   /* About */
   .view--about {
