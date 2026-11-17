@@ -12,6 +12,8 @@ Static personal portfolio: plain HTML, CSS and JavaScript, no build step.
   - `links.spec.js` — every internal link, image, stylesheet, script and `#section` link exists (external links are not visited)
   - `pages.js` — shared helpers: finds every page and hash view, opens a page
 
+Analytics: Umami Cloud (no cookies, no personal data, so no cookie banner). The script is in the `<head>` of every page with `data-domains="savsgarcia.github.io"`, so local runs, tests and previews are not counted. Clicks are tracked with `data-umami-event="Name"` (plus `data-umami-event-<key>="value"` for details) on the link or button itself; new pages need the same script tag. Events: Nav, Project tab, See case study, Email, LinkedIn, Back to work, Contents, Validation version, Annotations switch, See raw data.
+
 Design source: Figma file "Portfolio", page "Moodboard". Fonts: Fraunces (display), Inter (text), IBM Plex Mono (labels).
 
 ## Running the tests

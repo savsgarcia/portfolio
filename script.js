@@ -12,7 +12,7 @@
       title: 'How Frankie found clarity, and a better way to renew.',
       description: 'Designing VIU’s account space, where every policy lives in one place and HUB can help before each renewal.',
       // Stretched link: the only interactive element in the project copy (see .cta--stretched in styles.css)
-      cta: '<a class="cta cta--stretched" href="case-studies/viu/">See case study ' + chevron + '</a>',
+      cta: '<a class="cta cta--stretched" href="case-studies/viu/" data-umami-event="See case study" data-umami-event-project="viu">See case study ' + chevron + '</a>',
       bg: '#F8F5EC',
       image: 'assets/img/viu.webp', width: 1986, height: 1614,
       alt: 'VIU by HUB account screen: a personal dashboard greeting Frankie with all their policies and recommended coverage.'
