@@ -737,6 +737,21 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .case-visual { height: 220px; }
 }
 
+/* Tablet (700–1024px): content sits in a centered 720px column. The side margin grows
+   with the screen, so the top bar, the stacked use cases and Experience all start at the
+   same left edge. */
+@media (min-width: 700px) and (max-width: 1024px) {
+  :root { --gutter: max(20px, calc((100vw - 720px) / 2)); }
+  /* Text keeps a comfortable line length (max 640px) inside the column */
+  .case .project-copy { max-width: calc(var(--gutter) + 640px); }
+  /* The image panel becomes a card inside the column, with 20px around the image */
+  .case-visual {
+    margin: 0 var(--gutter);
+    padding: 20px 20px 0;
+    border-radius: 12px;
+  }
+}
+
 /* Phone: project heading at 48px */
 @media (max-width: 699px) {
   .project-copy .display { font-size: 48px; line-height: 48px; }
