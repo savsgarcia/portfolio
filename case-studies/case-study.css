@@ -192,6 +192,7 @@
 
 /* Behind the hero image: a full-width 480px band that fades from #F8F5EC into the page */
 .cs-hero { background: linear-gradient(to bottom, var(--cs-hero-bg), var(--bg)) top / 100% 480px no-repeat; }
+.cs-hero { padding-top: 40px; } /* room above the image */
 .cs-hero img { display: block; width: 100%; height: auto; padding: 0; }
 
 /* ---------- 01. Overview ---------- */
@@ -630,8 +631,9 @@
     grid-template-columns: minmax(0, 1fr);
     grid-template-areas: "side" "main" "footer";
   }
-  /* Only "Back" stays in the header: fixed top-left, 16px padding, blurred background
-     so the page shows through as it scrolls. About and Contents move below the hero. */
+  /* Only "Back" stays in the header: fixed top-left, 16px padding. At the top of the page it
+     sits on the hero band with no box; once the page scrolls (.is-scrolled, set by
+     case-study.js) it gets a blurred background so the page shows through. */
   .cs-side {
     position: fixed;
     top: calc(4px + env(safe-area-inset-top, 0px));
@@ -642,6 +644,10 @@
     display: block;
     padding: 16px;
     border-radius: 12px;
+    background: none; /* no dotted divider here */
+    transition: background-color .2s ease;
+  }
+  .cs-side.is-scrolled {
     background: rgba(255, 254, 251, .72);
     -webkit-backdrop-filter: blur(12px);
     backdrop-filter: blur(12px);
@@ -651,7 +657,8 @@
   .cs-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 32px; }
   .cs-stat { font-size: 40px; line-height: 44px; }
   .cs-stat__unit { font-size: 23px; }
-  .cs-main { padding-top: 64px; }
+  /* The hero band starts at the very top; the image starts below Back */
+  .cs-hero { padding-top: 72px; }
   /* The controls are a bar fixed to the bottom edge. It slides in (.is-docked, set by
      case-study.js) while the Validation screenshots are on screen, and always when a
      control inside it has keyboard focus. */

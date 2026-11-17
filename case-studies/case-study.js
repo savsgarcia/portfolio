@@ -46,6 +46,17 @@
   }
   if (headings[0]) setCurrent(location.hash ? location.hash.slice(1) : headings[0].id);
 
+  /* ---------- Back header (tablet/phone) ---------- */
+
+  // Below 1100px "Back" is fixed top-left. It only gets its blurred box once the page has
+  // scrolled, so at the top it sits directly on the hero band.
+  const side = document.querySelector('.cs-side');
+  if (side) {
+    const onTop = () => side.classList.toggle('is-scrolled', window.scrollY > 0);
+    window.addEventListener('scroll', onTop, { passive: true });
+    onTop();
+  }
+
   /* ---------- Validation controls docked to the bottom (tablet/phone) ---------- */
 
   // Below 1100px the controls live in a bar fixed to the bottom edge. It slides in once the
