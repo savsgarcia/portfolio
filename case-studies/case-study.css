@@ -8,7 +8,8 @@
   --cs-side: clamp(256px, 14.7vw, 282px);
   --cs-content: 1040px;        /* 12-column content area, centered */
   --cs-pad: 40px;
-  --cs-hero-bg: #FCFAF5;
+  --cs-hero-bg: #F8F5EC;
+  --cs-accent-line: #E4DF4F;   /* yellow accent at the start of every case study */
   --cs-card-bg: #FCFCFB;
   --cs-chip-bg: #F0ECE0;
   --cs-note-final-bg: #EEF0FB;
@@ -189,7 +190,8 @@
 
 /* ---------- Hero ---------- */
 
-.cs-hero { background: linear-gradient(to bottom, var(--cs-hero-bg), var(--bg)); }
+/* Behind the hero image: a full-width 480px band that fades from #F8F5EC into the page */
+.cs-hero { background: linear-gradient(to bottom, var(--cs-hero-bg), var(--bg)) top / 100% 480px no-repeat; }
 .cs-hero img { display: block; width: 100%; height: auto; padding: 0; }
 
 /* ---------- 01. Overview ---------- */
@@ -200,6 +202,18 @@
   margin-top: 32px;
   padding: 40px var(--cs-pad);
   background: var(--cs-card-bg);
+  position: relative;
+}
+/* Barely-there accent: a 2px yellow line on the top-left 30% of the card, fading in and out */
+.cs-overview::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 30%;
+  height: 2px;
+  background: linear-gradient(to right, transparent, var(--cs-accent-line) 50%, transparent);
+  pointer-events: none;
 }
 .cs-overview__grid {
   display: grid;
