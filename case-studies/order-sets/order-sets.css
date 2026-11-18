@@ -146,38 +146,9 @@
 /* ---------- Interactive rules flow ---------- */
 
 .fl { margin: 48px 0 0; padding: 32px; border-radius: 12px; background: var(--cs-card-bg); }
+.fl-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 32px; }
 .fl-head h3 { margin: 4px 0 0; }
-
-/* Flow picker: two flows, chosen like radio cards */
-.fl-flows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 640px; margin: 24px 0 0; padding: 0; border: 0; }
-.fl-flow { position: relative; display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 1px solid #CBCAC3; border-radius: 10px; background: #fff; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
-.fl-flow input { appearance: none; flex: none; display: grid; place-items: center; width: 18px; height: 18px; margin: 3px 0 0; border: 1.5px solid var(--ink-soft); border-radius: 50%; background: #fff; }
-.fl-flow input::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); transform: scale(0); transition: transform .15s; }
-.fl-flow input:checked { border-color: var(--ink); }
-.fl-flow input:checked::after { transform: scale(1); }
-.fl-flow input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.fl-flow:has(input:checked) { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
-.fl-flow__body { display: grid; gap: 2px; }
-.fl-flow__title { font-size: 15px; line-height: 22px; font-weight: 500; color: var(--ink); }
-.fl-flow__desc { font-size: 13px; line-height: 18px; color: var(--ink-soft); }
-
-/* Conditions: switches styled as checkbox chips */
-.fl-controls { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; margin-top: 16px; }
-.fl-chip {
-  display: inline-flex; align-items: center; gap: 8px;
-  height: 36px; padding: 0 14px;
-  border: 1px solid #CBCAC3; border-radius: 999px;
-  background: #fff; font-size: 14px; line-height: 20px; color: var(--ink);
-}
-.fl-chip::before {
-  content: ""; width: 14px; height: 14px; border-radius: 4px;
-  border: 1.5px solid var(--ink-soft); background: #fff;
-}
-.fl-chip[aria-checked="true"]::before {
-  background: var(--ink) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M3 7.2l2.6 2.6L11 4.4' stroke='white' stroke-width='1.8' fill='none'/%3E%3C/svg%3E") center/12px no-repeat;
-  border-color: var(--ink);
-}
-.fl-chip[hidden] { display: none; }
+.cs-section .fl-hint { margin: 0; font-family: var(--font-mono); font-size: 12px; line-height: 20px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
 
 /* Board: warm paper with a faint dot grid, in the site palette.
    Contrast on the board (#F6F4EE): lines 3.3:1, labels 6.4:1, ok 4.0:1, stop 4.9:1, text 13:1+ */
@@ -190,16 +161,48 @@
   --fl-stop: #B5462F;
   --fl-stop-bg: #FBECE8;
 }
-.fl-board { margin-top: 24px; }
+.fl-board { position: relative; margin-top: 24px; }
 .fl-canvas {
-  overflow-x: auto;
-  padding: 24px;
+  overflow: auto; overscroll-behavior-x: contain;
+  padding: 16px;
   border-radius: 12px;
   background: var(--fl-board) radial-gradient(rgba(30, 41, 59, .12) 1px, transparent 1.4px) 0 0 / 20px 20px;
+  background-attachment: local;
+  cursor: grab;
 }
+.fl-canvas.is-dragging { cursor: grabbing; }
 .fl-canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.fl-canvas svg { display: block; width: 100%; height: auto; max-width: none; font-family: var(--font-sans); }
-.cs-section .fl-swipe { display: none; margin-top: 8px; font-family: var(--font-mono); font-size: 11px; line-height: 16px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
+.fl-stage { position: relative; }
+.fl-stage svg { display: block; width: 100%; height: 100%; max-width: none; user-select: none; font-family: var(--font-sans); }
+
+/* Zoom tools, top right of the board */
+.fl-tools {
+  position: absolute; top: 12px; right: 12px; z-index: 3;
+  display: flex; align-items: center; gap: 2px; padding: 4px;
+  border-radius: 8px; background: #fff; box-shadow: var(--cs-shadow), 0 0 0 1px rgba(30, 41, 59, .08);
+}
+.fl-tools button { min-width: 32px; height: 28px; padding: 0 8px; border-radius: 6px; font-size: 14px; color: var(--ink); }
+.fl-tools button:hover { background: #F2F1ED; }
+.fl-zoom { min-width: 44px; text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); }
+
+/* Buttons on the chart: the two paths (over the action pills) and the Yes / No answers */
+.fl-pick {
+  position: absolute; z-index: 2;
+  border-radius: 999px; background: transparent; cursor: pointer;
+}
+.fl-pick:hover { box-shadow: 0 0 0 3px rgba(84, 132, 57, .35); }
+.fl-pick:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.fl-answer {
+  position: absolute; z-index: 2; transform: translate(-50%, -50%);
+  min-width: 40px; height: 26px; padding: 0 10px;
+  border: 1px solid var(--fl-line); border-radius: 999px;
+  background: #fff; cursor: pointer;
+  font-family: var(--font-mono); font-size: 11px; line-height: 24px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink);
+}
+.fl-answer:hover { border-color: var(--ink-strong); }
+.fl-answer[aria-pressed="true"] { border-color: var(--ink-strong); background: var(--ink-strong); color: #fff; }
+.fl-answer.is-off-path { opacity: .55; }
+.fl-answer:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* Nodes and edges (drawn by flow.js) */
 .fl-node rect, .fl-node polygon { fill: #fff; stroke: var(--fl-line); stroke-width: 1.25; transition: fill .2s, stroke .2s, opacity .2s; }
@@ -235,9 +238,7 @@
   .cs-persona { grid-column: 1 / -1; }
 }
 @media (max-width: 699px) {
-  .os-findings,
-  .fl-flows { grid-template-columns: minmax(0, 1fr); }
+  .os-findings { grid-template-columns: minmax(0, 1fr); }
   .fl-canvas { padding: 16px; }
-  .cs-section .fl-swipe { display: block; }
   .fl { padding: 20px; }
 }
