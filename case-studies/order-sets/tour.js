@@ -76,7 +76,14 @@
 
     function go(i, focusHotspot) {
       current = i;
+      const changed = steps[i].hidden; // a different screen is about to show
       steps.forEach((s, k) => { s.hidden = k !== i; });
+      // The new screen fades in, then its note (CSS; near-instant with reduced motion)
+      if (changed) {
+        steps[i].classList.remove('is-entering');
+        void steps[i].offsetWidth; // restart the animation
+        steps[i].classList.add('is-entering');
+      }
       const last = i === steps.length - 1;
       prev.disabled = i === 0;
       next.textContent = last ? 'Start over' : 'Next';

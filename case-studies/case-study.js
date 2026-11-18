@@ -198,4 +198,73 @@
     // Return focus to the button that opened it.
     dialog.addEventListener('close', () => opener.focus());
   }
+  /* ---------- Motion: blocks settle in as they enter, numbers count up ---------- */
+
+  // Skipped entirely with prefers-reduced-motion: everything shows at once, numbers at their value.
+  if (!reduceMotion.matches && 'IntersectionObserver' in window) {
+    // Reveal: each block fades in and rises a few pixels the first time it reaches the screen.
+    // Fixed, sticky and modal elements stay out (a transform would change how they're placed).
+    const skip = '.cs-controls, dialog, .cs-hero, script';
+    const blocks = Array.from(document.querySelectorAll('.cs-section > *'))
+      .filter((el) => !el.matches(skip) && !el.querySelector('.cs-controls'));
+    // Checked on scroll (not only on intersection), so blocks above the screen after a jump,
+    // like a Contents link, are shown too.
+    let pending = [];
+    const check = () => {
+      const limit = window.innerHeight * 0.92;
+      pending = pending.filter((el) => {
+        if (el.getBoundingClientRect().top < limit) { el.classList.add('is-in'); return false; }
+        return true;
+      });
+      if (!pending.length) window.removeEventListener('scroll', onRevealScroll);
+    };
+    let queued = false;
+    const onRevealScroll = () => { if (!queued) { queued = true; requestAnimationFrame(() => { queued = false; check(); }); } };
+    blocks.forEach((el) => {
+      // Already on screen when the page opens: show it as is
+      if (el.getBoundingClientRect().top < window.innerHeight) return;
+      el.classList.add('cs-reveal');
+      pending.push(el);
+    });
+    if (pending.length) window.addEventListener('scroll', onRevealScroll, { passive: true });
+
+    // Count up: impact numbers run from 0 to their value once, when they come into view.
+    // Screen readers get the final number only; the moving digits are hidden from them.
+    const stats = Array.from(document.querySelectorAll('.cs-stat'));
+    const count = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (!e.isIntersecting) return;
+        count.unobserve(e.target);
+        const num = e.target.querySelector('.cs-stat__num');
+        const { target, prefix, comma } = num.dataset;
+        const end = Number(target), start = performance.now(), dur = 900;
+        const fmt = (n) => prefix + (comma ? n.toLocaleString('en-US') : String(n));
+        const tick = (t) => {
+          const p = Math.min(1, (t - start) / dur);
+          num.textContent = fmt(Math.round(end * (1 - Math.pow(1 - p, 3))));
+          if (p < 1) requestAnimationFrame(tick);
+        };
+        requestAnimationFrame(tick);
+      });
+    }, { threshold: 0.6 });
+    stats.forEach((stat) => {
+      const text = stat.firstChild;
+      if (!text || text.nodeType !== 3) return;
+      const m = text.textContent.trim().match(/^(\+?)([\d,]+)$/);
+      if (!m) return;
+      const final = text.textContent.trim();
+      const shown = document.createElement('span');
+      shown.className = 'cs-stat__num';
+      shown.setAttribute('aria-hidden', 'true');
+      shown.dataset.target = m[2].replace(/,/g, '');
+      shown.dataset.prefix = m[1];
+      if (m[2].includes(',')) shown.dataset.comma = '1';
+      shown.textContent = m[1] + '0';
+      const read = document.createElement('span');
+      read.className = 'visually-hidden';
+      read.textContent = final;
+      text.replaceWith(shown, read);
+      count.observe(stat);
+    });
+  }
 })();

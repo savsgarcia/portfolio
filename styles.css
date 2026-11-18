@@ -4,6 +4,14 @@
    ========================================================== */
 
 :root {
+  /* Motion: one language for the whole site. Short (hovers, colors), medium (switching
+     content), long (things entering the page). Everything is near-instant with
+     prefers-reduced-motion (see the end of this file). */
+  --ease: cubic-bezier(.2, .7, .2, 1);
+  --dur-short: 150ms;
+  --dur-medium: 250ms;
+  --dur-long: 500ms;
+
   /* Colors */
   --bg: #FFFEFB;
   --ink: #334155;
@@ -162,7 +170,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   color: var(--faint);
   text-decoration: none;
   font-variation-settings: "opsz" 48;
-  transition: color .2s ease;
+  transition: color var(--dur-short) var(--ease);
 }
 .nav-link::after {
   content: "";
@@ -172,7 +180,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   background: var(--accent);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform .25s ease;
+  transition: transform var(--dur-medium) var(--ease);
 }
 .nav-link:hover { color: var(--ink); }
 .nav-link[aria-current="page"] { color: var(--ink); }
@@ -243,7 +251,9 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 .view {
   min-height: 100vh;
   min-height: 100dvh;
-  animation: view-in .35s ease both;
+  /* Switching between Work, Experience and About: the view that appears fades in and settles
+     (the animation runs each time a view goes from hidden to shown) */
+  animation: view-in 300ms var(--ease) both;
 }
 .view[hidden] { display: none; }
 
@@ -300,7 +310,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   border-bottom: 2px solid transparent;
   text-align: left;
   color: var(--muted);
-  transition: color .2s ease, border-color .25s ease;
+  transition: color var(--dur-short) var(--ease), border-color var(--dur-medium) var(--ease);
 }
 .project-tab-num {
   margin-bottom: 8px;
@@ -310,7 +320,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   line-height: 20px;
   font-variation-settings: "opsz" 24;
   color: var(--num-idle);
-  transition: color .2s ease;
+  transition: color var(--dur-short) var(--ease);
 }
 .project-tab[aria-selected="true"] .project-tab-num { color: var(--ink); }
 .project-tab-title {
@@ -328,7 +338,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 .col--text { padding: calc(var(--top) - 7px) 40px 40px; }
 
-.project-copy { transition: opacity .2s ease, transform .2s ease; }
+.project-copy { transition: opacity var(--dur-medium) var(--ease), transform var(--dur-medium) var(--ease); }
 .is-switching .project-copy,
 .is-switching .project-image { opacity: 0; transform: translateY(6px); }
 
@@ -356,7 +366,7 @@ a.cta {
   background-position: left bottom;
   background-repeat: repeat-x;
 }
-a.cta svg { transition: transform .2s ease; }
+a.cta svg { transition: transform var(--dur-short) var(--ease); }
 
 /* Stretched link: one real <a href>, whose ::after covers the whole project copy
    (title, description, CTA). Nothing else in the block is clickable, so screen
@@ -375,7 +385,7 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   position: relative;
   overflow: hidden;
   background: var(--panel-bg, #F8F5EC);
-  transition: background-color .35s ease;
+  transition: background-color var(--dur-long) var(--ease);
 }
 
 .project-image {
@@ -387,7 +397,7 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   left: var(--img-start);
   max-width: none;
   height: auto;
-  transition: opacity .25s ease, transform .25s ease;
+  transition: opacity var(--dur-medium) var(--ease), transform var(--dur-medium) var(--ease);
 }
 .project-image--viu { width: 120%; left: calc(var(--img-start) - 0.97%); }
 .project-image--order-entry {
@@ -575,12 +585,12 @@ a.cta:focus-visible svg { transform: translateX(4px); }
     overflow-y: auto;
     visibility: hidden;
     opacity: 0;
-    transition: opacity .2s ease, visibility 0s linear .2s;
+    transition: opacity var(--dur-medium) var(--ease), visibility 0s linear var(--dur-medium);
   }
   .menu-open .sidebar {
     visibility: visible;
     opacity: 1;
-    transition: opacity .2s ease;
+    transition: opacity var(--dur-medium) var(--ease);
   }
   .sidebar > .brand { display: none; }
   .nav { margin-top: 12vh; padding-left: 0; }
