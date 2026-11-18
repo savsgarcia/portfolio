@@ -30,10 +30,11 @@
           <li><a href="#overview" data-umami-event="Contents" data-umami-event-section="overview">01. Overview</a></li>
           <li><a href="#challenge" data-umami-event="Contents" data-umami-event-section="challenge">02. The challenge</a></li>
           <li><a href="#decisions" data-umami-event="Contents" data-umami-event-section="decisions">03. Key decisions</a></li>
-          <li><a href="#buildable" data-umami-event="Contents" data-umami-event-section="buildable">04. Making it buildable</a></li>
-          <li><a href="#validation" data-umami-event="Contents" data-umami-event-section="validation">05. Validation</a></li>
-          <li><a href="#outcome" data-umami-event="Contents" data-umami-event-section="outcome">06. Outcome</a></li>
-          <li><a href="#reflection" data-umami-event="Contents" data-umami-event-section="reflection">07. Reflection</a></li>
+          <li><a href="#calculator" data-umami-event="Contents" data-umami-event-section="calculator">04. Dose calculations</a></li>
+          <li><a href="#buildable" data-umami-event="Contents" data-umami-event-section="buildable">05. Making it buildable</a></li>
+          <li><a href="#validation" data-umami-event="Contents" data-umami-event-section="validation">06. Validation</a></li>
+          <li><a href="#outcome" data-umami-event="Contents" data-umami-event-section="outcome">07. Outcome</a></li>
+          <li><a href="#reflection" data-umami-event="Contents" data-umami-event-section="reflection">08. Reflection</a></li>
         </ol>
       </nav>
     </header>
@@ -151,50 +152,64 @@
           </figure>
         </article>
 
-        <div class="os-steps">
-          <p class="cs-label">The new dose calculations, step by step</p>
-          <ol>
-            <li>
-              <figure>
-                <img class="os-screen" src="img/calc-1.webp" width="2000" height="1125" loading="lazy" alt="Cycle 1 of 4 of the pemetrexed and cisplatin regimen, last updated by Nadia Reyes, MD, with a Dose calculations link and a check mark under the title.">
-                <figcaption><span class="os-steps__num" aria-hidden="true">01</span>Dose calculations sits under the cycle title. The check shows every dose is calculated.</figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure>
-                <img class="os-screen" src="img/calc-2.webp" width="2000" height="1125" loading="lazy" alt="Dose calculations drawer listing cisplatin, target 75 mg/m² (120 mg), and pemetrexed, target 500 mg/m² (800 mg), both with no adjustment and a BSA of 1.60 m².">
-                <figcaption><span class="os-steps__num" aria-hidden="true">02</span>Every dose-based order in the cycle, side by side, with the BSA each one used.</figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure>
-                <img class="os-screen" src="img/calc-3.webp" width="2000" height="1125" loading="lazy" alt="Cisplatin open for editing in the drawer: target 75 mg/m², calculated 120 mg, dose adjustment at 100%, rounding rule and order comments. Pemetrexed stays below, and Apply is disabled.">
-                <figcaption><span class="os-steps__num" aria-hidden="true">03</span>Editing cisplatin opens its full calculation in place. Pemetrexed stays in view, and Apply waits until she’s done.</figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure>
-                <img class="os-screen" src="img/calc-4.webp" width="2000" height="1125" loading="lazy" alt="Cisplatin set to 90%: adjusted target 67.5 mg/m², adjusted final dose 108 mg, and a required Adjust reason field.">
-                <figcaption><span class="os-steps__num" aria-hidden="true">04</span>Any reduction asks for a reason, and the adjusted dose updates as she changes it.</figcaption>
-              </figure>
-            </li>
-            <li>
-              <figure>
-                <img class="os-screen" src="img/calc-5.webp" width="2000" height="1125" loading="lazy" alt="Cisplatin set to 80%: adjusted target 60 mg/m², adjusted final dose 96 mg. Pemetrexed is still at full dose.">
-                <figcaption><span class="os-steps__num" aria-hidden="true">05</span>At 80%, cisplatin drops to 96 mg while pemetrexed stays at full dose.</figcaption>
-              </figure>
-            </li>
-          </ol>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 04. DOSE CALCULATIONS -->
+      <section class="cs-section" aria-labelledby="calculator">
+        <p class="cs-eyebrow cs-eyebrow--dot">04. Dose calculations</p>
+        <h2 class="cs-title" id="calculator" tabindex="-1">Every dose in the cycle, in one place</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">A dose reduction should take one view, not one window per medication.</p>
+          <p>A clinical SME walked us through a case she sees often: cycle 4, day 1, cisplatin reduced for nausea and weight loss. The PM and I built the flow around it: every dose-based order in one drawer, the full calculation opening in place, and a reason required for any reduction.</p>
+        </div>
+
+        <div class="os-track">
+          <div class="os-track__sticky">
+            <ol class="os-track__list">
+              <li>
+                <figure>
+                  <img class="os-screen" src="img/calc-1.webp" width="2000" height="1125" alt="Cycle 1 of 4 of the pemetrexed and cisplatin regimen, last updated by Nadia Reyes, MD, with a Dose calculations link and a check mark under the title.">
+                  <figcaption><span class="os-track__num" aria-hidden="true">01</span>Dose calculations sits under the cycle title. The check shows every dose is calculated.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img class="os-screen" src="img/calc-2.webp" width="2000" height="1125" alt="Dose calculations drawer listing cisplatin, target 75 mg/m² (120 mg), and pemetrexed, target 500 mg/m² (800 mg), both with no adjustment and a BSA of 1.60 m².">
+                  <figcaption><span class="os-track__num" aria-hidden="true">02</span>Every dose-based order in the cycle, side by side, with the BSA each one used.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img class="os-screen" src="img/calc-3.webp" width="2000" height="1125" alt="Cisplatin open for editing in the drawer: target 75 mg/m², calculated 120 mg, dose adjustment at 100%, rounding rule and order comments. Pemetrexed stays below, and Apply is disabled.">
+                  <figcaption><span class="os-track__num" aria-hidden="true">03</span>Editing cisplatin opens its full calculation in place. Pemetrexed stays in view, and Apply waits until she’s done.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img class="os-screen" src="img/calc-4.webp" width="2000" height="1125" alt="Cisplatin set to 90%: adjusted target 67.5 mg/m², adjusted final dose 108 mg, and a required Adjust reason field.">
+                  <figcaption><span class="os-track__num" aria-hidden="true">04</span>Any reduction asks for a reason, and the adjusted dose updates as she changes it.</figcaption>
+                </figure>
+              </li>
+              <li>
+                <figure>
+                  <img class="os-screen" src="img/calc-5.webp" width="2000" height="1125" alt="Cisplatin set to 80%: adjusted target 60 mg/m², adjusted final dose 96 mg. Pemetrexed is still at full dose.">
+                  <figcaption><span class="os-track__num" aria-hidden="true">05</span>At 80%, cisplatin drops to 96 mg while pemetrexed stays at full dose.</figcaption>
+                </figure>
+              </li>
+            </ol>
+            <p class="os-track__count" aria-hidden="true"><span class="os-track__now">01</span> / 05</p>
+          </div>
         </div>
         <hr class="cs-rule">
       </section>
 
-      <!-- 04. MAKING IT BUILDABLE -->
+      <!-- 05. MAKING IT BUILDABLE -->
       <section class="cs-section" aria-labelledby="buildable">
-        <p class="cs-eyebrow cs-eyebrow--dot">04. Making it buildable</p>
+        <p class="cs-eyebrow cs-eyebrow--dot">05. Making it buildable</p>
         <h2 class="cs-title" id="buildable" tabindex="-1">The rules came from engineering’s questions</h2>
         <div class="cs-intro">
-          <p class="cs-lead">By mid-June, the same questions kept coming back.</p>
+          <p class="cs-lead">By late June, the same questions kept coming back.</p>
           <div>
             <p>Can Dr. Reyes start a cycle before the regimen is signed? What happens if a draft already exists? Which alerts stop her from signing? Each answer lived in a different thread, and every new screen raised them again.</p>
             <p>I wrote them down in one flowchart, on top of the statuses the legacy system already used. The PM helped me walk the team through it, and <strong>engineering used it as the base for the build.</strong></p>
@@ -251,9 +266,9 @@
         <hr class="cs-rule">
       </section>
 
-      <!-- 05. VALIDATION -->
+      <!-- 06. VALIDATION -->
       <section class="cs-section" aria-labelledby="validation">
-        <p class="cs-eyebrow cs-eyebrow--dot">05. Validation</p>
+        <p class="cs-eyebrow cs-eyebrow--dot">06. Validation</p>
         <h2 class="cs-title" id="validation" tabindex="-1">What the workgroups told us</h2>
         <div class="cs-intro">
           <p class="cs-lead">Clinicians like Dr. Reyes, and the people who build and support her regimens.</p>
@@ -298,9 +313,9 @@
         <hr class="cs-rule">
       </section>
 
-      <!-- 06. OUTCOME -->
+      <!-- 07. OUTCOME -->
       <section class="cs-section" aria-labelledby="outcome">
-        <p class="cs-eyebrow cs-eyebrow--dot">06. Outcome</p>
+        <p class="cs-eyebrow cs-eyebrow--dot">07. Outcome</p>
         <h2 class="cs-title" id="outcome" tabindex="-1">The views shipped, the setup screen didn’t change</h2>
         <div class="cs-intro">
           <p class="cs-lead">Dr. Reyes can read a cycle by day and by time.</p>
@@ -308,9 +323,9 @@
         </div>
       </section>
 
-      <!-- 07. REFLECTION -->
+      <!-- 08. REFLECTION -->
       <section class="cs-section" aria-labelledby="reflection">
-        <p class="cs-eyebrow cs-eyebrow--dot">07. Reflection</p>
+        <p class="cs-eyebrow cs-eyebrow--dot">08. Reflection</p>
         <h2 class="cs-title" id="reflection" tabindex="-1">What I’d do differently</h2>
         <ul class="cs-lessons">
           <li><h3>Bring evidence to word debates</h3><p>I argued “Start” with an opinion. The clinician evidence came in July; I’d have asked for it in April.</p></li>
@@ -329,5 +344,6 @@
 
   <script src="../case-study.js"></script>
   <script src="flow.js"></script>
+  <script src="track.js"></script>
 </body>
 </html>

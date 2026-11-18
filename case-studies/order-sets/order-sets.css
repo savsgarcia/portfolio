@@ -71,13 +71,37 @@
 .os-findings h3 { margin: 0; }
 .cs-section .os-findings p { margin-top: 8px; }
 
-/* ---------- Calculator, step by step ---------- */
+/* ---------- Dose calculations: screens that move sideways as the page scrolls ---------- */
 
-.os-steps { margin-top: 64px; }
-.os-steps ol { display: grid; gap: 48px; margin: 16px 0 0; padding: 0; list-style: none; }
-.os-steps figure { margin: 0; }
-.cs-section .os-steps figcaption { display: flex; gap: 12px; align-items: baseline; max-width: 640px; margin-top: 16px; font-size: 16px; line-height: 24px; color: var(--ink); }
-.os-steps__num { flex: none; font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-strong); }
+/* Default (no JavaScript, or prefers-reduced-motion): screens stacked vertically */
+.os-track { margin-top: 48px; }
+.os-track__list { display: grid; gap: 48px; margin: 0; padding: 0; list-style: none; }
+.os-track figure { margin: 0; }
+.cs-section .os-track figcaption { display: flex; gap: 12px; align-items: baseline; max-width: 640px; margin-top: 16px; font-size: 16px; line-height: 24px; color: var(--ink); }
+.os-track__num { flex: none; font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-strong); }
+.os-track__count { display: none; }
+
+/* Pinned (700px and up, set by track.js): the section stays on screen while the row moves */
+.os-track.is-pinned .os-track__sticky {
+  position: sticky; top: 0; /* track.js centres it in the window */
+  overflow: hidden;
+}
+.os-track.is-pinned .os-track__list { display: flex; gap: 40px; width: max-content; will-change: transform; }
+.os-track.is-pinned .os-track__list li { flex: none; }
+.cs-section .os-track.is-pinned .os-track__count {
+  display: block; margin-top: 24px;
+  font-family: var(--font-mono); font-size: 12px; line-height: 16px; letter-spacing: .04em; color: var(--ink-soft);
+}
+.os-track__now { color: var(--ink-strong); }
+
+/* Phones: a native swipe row with snap points, bleeding to the screen edges */
+.os-track.is-swipe .os-track__list {
+  display: flex; gap: 16px;
+  margin: 0 calc(-1 * var(--cs-pad)); padding: 0 var(--cs-pad) 8px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--cs-pad);
+}
+.os-track.is-swipe .os-track__list li { flex: 0 0 88%; scroll-snap-align: start; }
+.os-track.is-swipe .os-track__list:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ---------- The rules, in words, before the flowchart ---------- */
 
@@ -181,7 +205,6 @@
   .os-findings,
   .os-rules,
   .fl-flows { grid-template-columns: minmax(0, 1fr); }
-  .os-steps ol { gap: 32px; }
   .fl-canvas { padding: 16px; }
   .cs-section .fl-swipe { display: block; }
   .fl { padding: 20px; }
