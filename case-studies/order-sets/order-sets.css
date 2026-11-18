@@ -197,12 +197,6 @@
 .os-tour__hotspot:focus-visible { outline: 3px solid var(--ink-strong); outline-offset: 1px; }
 @media (prefers-reduced-motion: reduce) { .os-tour__hotspot::after { animation: none; opacity: 0; } }
 
-/* Moving between steps: the screen cross-fades in, then the note follows */
-.os-tour__step.is-entering .os-tour__frame { animation: tour-screen var(--dur-medium) var(--ease) both; }
-.os-tour__step.is-entering figcaption { animation: tour-note var(--dur-medium) var(--ease) 120ms both; }
-@keyframes tour-screen { from { opacity: .3; } to { opacity: 1; } }
-@keyframes tour-note { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
-
 /* Chapters above the screen: jump to the start of each part of the flow */
 .os-tour__chapters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
 .os-tour__chapters button {
