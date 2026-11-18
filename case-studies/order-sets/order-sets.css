@@ -4,6 +4,9 @@
 
 /* Flat screenshots get a card treatment: rounded corners and the shared shadow */
 .os-screen { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--cs-shadow); }
+/* Overview accent line in this project's color from Work (#DCC3D2), deepened so the 2px line still shows */
+.cs { --cs-accent-line: #C49AB4; }
+
 /* Hero teaser: a cropped flat screen that fades out over its lower half, like the device mockups */
 .cs-hero { --cs-hero-fade: 45%; }
 .cs-decision__media figcaption { margin-top: 12px; }
