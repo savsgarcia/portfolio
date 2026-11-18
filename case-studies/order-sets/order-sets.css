@@ -6,9 +6,19 @@
 .os-screen { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--cs-shadow); }
 /* Overview accent line in this project's color from Work (#DCC3D2), deepened so the 2px line still shows */
 .cs { --cs-accent-line: #C49AB4; }
+/* Top band: a very light tint of the project's mauve (#DCC3D2), instead of VIU's warm cream */
+.cs { --cs-hero-bg: #F6EEF2; }
+/* "Based on" chips: the same very light mauve tint */
+.cs { --cs-chip-bg: #F4ECF0; }
 
 /* Hero teaser: a cropped flat screen that fades out over its lower half, like the device mockups */
-.cs-hero { --cs-hero-fade: 45%; }
+/* Hero: the full screen at full opacity (no fade), never touching the edges:
+   at most the content column, and always at least 40px from each side */
+.cs-hero .os-screen {
+  width: min(var(--cs-content), calc(100% - 80px)); max-width: none;
+  margin: 0 auto; padding: 0; border-radius: 10px;
+  -webkit-mask-image: none; mask-image: none;
+}
 .cs-decision__media figcaption { margin-top: 12px; }
 /* Extra space between the decision blocks inside Validation */
 .os-gap { margin-top: 64px; }
@@ -114,12 +124,12 @@
 
 /* Quotes: the medical director's principle, and clinicians in Outcome */
 .os-quote { margin: 40px 0 0; padding-left: 20px; border-left: 2px solid var(--accent); }
-.cs-section .os-quote p { max-width: 640px; font-family: var(--font-display); font-weight: 300; font-size: 26px; line-height: 34px; color: var(--ink-strong); font-variation-settings: "opsz" 72; }
+.cs-section .os-quote p { max-width: 760px; font-family: var(--font-display); font-weight: 300; font-size: 36px; line-height: 44px; color: var(--ink-strong); font-variation-settings: "opsz" 72; }
 .os-quote footer { margin-top: 12px; font-family: var(--font-mono); font-size: 12px; line-height: 18px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
 .os-quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin-top: 24px; }
 .os-quotes .os-quote { margin-top: 24px; }
 .os-quotes--one { grid-template-columns: minmax(0, 1fr); }
-.cs-section .os-quotes .os-quote p { font-size: 22px; line-height: 30px; }
+.cs-section .os-quotes .os-quote p { font-size: 36px; line-height: 44px; }
 .cs-section .os-quotes__note { margin-top: 16px; font-size: 12px; line-height: 18px; color: var(--ink-soft); }
 .os-outcomes { margin-top: 48px; }
 @media (min-width: 1100px) { .os-outcomes { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
@@ -127,7 +137,8 @@
 .cs-section .os-open .cs-label + p { margin-top: 8px; }
 @media (max-width: 699px) {
   .os-quotes { grid-template-columns: minmax(0, 1fr); }
-  .cs-section .os-quote p { font-size: 22px; line-height: 30px; }
+  .cs-section .os-quote p,
+  .cs-section .os-quotes .os-quote p { font-size: 26px; line-height: 34px; }
 }
 
 /* ---------- Validation: the "Start" finding and the two options explored ---------- */
