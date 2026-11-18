@@ -79,6 +79,10 @@
 
 .cs-decision--text { display: block; }
 .cs-decision--text .cs-decision__text { max-width: 640px; }
+/* Decisions 03 and 04 have no image: two columns side by side */
+.os-decision-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 48px; margin-top: 64px; }
+.os-decision-pair .cs-decision { margin-top: 0; }
+@media (max-width: 699px) { .os-decision-pair { grid-template-columns: minmax(0, 1fr); } }
 
 /* Before / after, on demand from the tour: the same premedication rows, offsets then times */
 .os-compare-open {
