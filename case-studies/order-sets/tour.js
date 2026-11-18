@@ -32,17 +32,21 @@
       frame.className = 'os-tour__frame';
       img.replaceWith(frame);
       frame.appendChild(img);
+      if (!step.dataset.x) return;
       const x = parseFloat(step.dataset.x), y = parseFloat(step.dataset.y);
+      fig.classList.add('has-note');
       fig.style.setProperty('--x', x + '%');
       fig.style.setProperty('--y', y + '%');
       if (x > 55) fig.classList.add('is-left');   // note opens to the left of the hotspot
       if (y > 60) fig.classList.add('is-up');     // and above it near the bottom
-      const last = i === steps.length - 1;
+      if (step.dataset.hotspot === 'none') return; // the result screen: a note, no click
       const hot = document.createElement('button');
       hot.type = 'button';
       hot.className = 'os-tour__hotspot';
-      hot.innerHTML = '<span class="visually-hidden">' + step.dataset.action + (last ? ', then start over' : ', next step') + '</span>';
-      hot.addEventListener('click', () => go(last ? 0 : i + 1, true));
+      // A pink touch target with a cursor, like the prototype's
+      hot.innerHTML = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3l10 6.5-4.4 1L8.2 15z"/></svg>' +
+        '<span class="visually-hidden">' + step.dataset.action + ', next step</span>';
+      hot.addEventListener('click', () => go(i + 1, true));
       frame.appendChild(hot);
     });
 
@@ -54,7 +58,10 @@
       next.textContent = last ? 'Start over' : 'Next';
       count.textContent = pad(i + 1) + ' / ' + pad(steps.length);
       live.textContent = 'Step ' + (i + 1) + ' of ' + steps.length + '. ' + steps[i].querySelector('figcaption').textContent;
-      if (focusHotspot) steps[i].querySelector('.os-tour__hotspot').focus({ preventScroll: true });
+      if (focusHotspot) {
+        const target = steps[i].querySelector('.os-tour__hotspot') || next;
+        target.focus({ preventScroll: true });
+      }
     }
 
     prev.addEventListener('click', () => { if (current > 0) go(current - 1); });

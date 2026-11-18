@@ -83,23 +83,28 @@
 .os-tour.is-tour .os-tour__step[hidden] { display: none; }
 .os-tour__frame { position: relative; }
 
-/* Hotspot: where Dr. Reyes clicks. 44px target, pink ring (4.6:1 on white), gentle pulse */
+/* Hotspot: where Dr. Reyes clicks. A pink touch target with a cursor, like the prototype's.
+   44px button; the black-outlined cursor carries the contrast (the pink is a soft highlight). */
 .os-tour__hotspot {
   position: absolute; left: var(--x); top: var(--y); z-index: 2;
-  width: 44px; height: 44px; margin: -22px 0 0 -22px;
-  border: 2px solid #D6336C; border-radius: 50%;
-  background: transparent; /* a ring, so the control it points at stays readable */
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, .8), inset 0 0 0 2px rgba(255, 255, 255, .8);
+  width: 44px; height: 44px; margin: -22px 0 0 -22px; padding: 0;
+  border: 0; border-radius: 50%;
+  background: rgba(226, 150, 232, .72);
   cursor: pointer;
 }
+.os-tour__hotspot svg {
+  position: absolute; left: 50%; top: 50%;
+  width: 22px; height: 22px; margin: -3px 0 0 -5px; /* the cursor tip sits on the centre */
+  fill: #fff; stroke: #111; stroke-width: 1.4; stroke-linejoin: round;
+}
 .os-tour__hotspot::after {
-  content: ""; position: absolute; inset: -2px;
-  border: 2px solid #D6336C; border-radius: 50%;
+  content: ""; position: absolute; inset: 0;
+  border: 2px solid #C042B5; border-radius: 50%;
   animation: os-pulse 1.6s ease-out infinite;
 }
-@keyframes os-pulse { from { transform: scale(1); opacity: .8; } to { transform: scale(1.9); opacity: 0; } }
-.os-tour__hotspot:hover { background: rgba(214, 51, 108, .12); }
-.os-tour__hotspot:focus-visible { outline: 3px solid var(--ink-strong); outline-offset: 4px; }
+@keyframes os-pulse { from { transform: scale(1); opacity: .7; } to { transform: scale(1.8); opacity: 0; } }
+.os-tour__hotspot:hover { background: rgba(214, 120, 222, .85); }
+.os-tour__hotspot:focus-visible { outline: 3px solid var(--ink-strong); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .os-tour__hotspot::after { animation: none; opacity: 0; } }
 
 /* Controls under the screen */
@@ -110,7 +115,7 @@
 
 /* From 1100px the caption floats next to the hotspot, like a tour note */
 @media (min-width: 1100px) {
-  .cs-section .os-tour.is-tour figcaption {
+  .cs-section .os-tour.is-tour .has-note figcaption {
     position: absolute; z-index: 3;
     left: calc(var(--x) + 36px); top: var(--y);
     width: 300px; margin: -20px 0 0;
@@ -118,8 +123,8 @@
     background: #fff; box-shadow: var(--cs-shadow), 0 0 0 1px rgba(30, 41, 59, .06);
     font-size: 15px; line-height: 22px;
   }
-  .cs-section .os-tour.is-tour .is-left figcaption { left: auto; right: calc(100% - var(--x) + 36px); }
-  .cs-section .os-tour.is-tour .is-up figcaption { top: auto; bottom: calc(100% - var(--y)); margin: 0 0 -20px; }
+  .cs-section .os-tour.is-tour .has-note.is-left figcaption { left: auto; right: calc(100% - var(--x) + 36px); }
+  .cs-section .os-tour.is-tour .has-note.is-up figcaption { top: auto; bottom: calc(100% - var(--y)); margin: 0 0 -20px; }
 }
 
 /* ---------- The rules, in words, before the flowchart ---------- */
