@@ -14,8 +14,8 @@
       // Stretched link: the only interactive element in the project copy (see .cta--stretched in styles.css)
       cta: '<a class="cta cta--stretched" href="case-studies/order-sets/" data-umami-event="See case study" data-umami-event-project="order-sets">See case study ' + chevron + '</a>',
       bg: '#DCC3D2',
-      image: 'assets/img/order-sets.webp', width: 2000, height: 1134,
-      alt: 'Oncology regimen screen showing a patient summary next to a chemotherapy order set with pre-chemo metrics and pre-medications.'
+      image: 'assets/img/order-sets.webp', width: 2400, height: 1350,
+      alt: 'Cycle 1 of 4 of a lung cancer regimen: the patient summary on the left, pre-medication and treatment orders with an estimated time for each on Day 1.'
     },
     'viu': {
       num: '02', name: 'Insurance profile', client: 'VIU by HUB',
