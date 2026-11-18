@@ -87,6 +87,35 @@
 .cs-section .os-findings p { color: #403730; }
 .cs-section .os-findings p { margin-top: 8px; }
 
+/* ---------- Decisions without an image: text only, at reading width ---------- */
+
+.cs-decision--text { display: block; }
+.cs-decision--text .cs-decision__text { max-width: 640px; }
+
+/* Before / after: the same premedication rows, offsets then times */
+.os-ba { display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px; align-items: end; margin-top: 40px; }
+.os-ba figure { margin: 0; }
+.os-ba figcaption.cs-label { margin-bottom: 8px; }
+.os-ba img { border-radius: 6px; }
+@media (max-width: 699px) { .os-ba { grid-template-columns: minmax(0, 1fr); } }
+
+/* Quotes: the medical director's principle, and clinicians in Outcome */
+.os-quote { margin: 40px 0 0; padding-left: 20px; border-left: 2px solid var(--accent); }
+.cs-section .os-quote p { max-width: 640px; font-family: var(--font-display); font-weight: 300; font-size: 26px; line-height: 34px; color: var(--ink-strong); font-variation-settings: "opsz" 72; }
+.os-quote footer { margin-top: 12px; font-family: var(--font-mono); font-size: 12px; line-height: 18px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
+.os-quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin-top: 24px; }
+.os-quotes .os-quote { margin-top: 24px; }
+.os-quotes--one { grid-template-columns: minmax(0, 1fr); }
+.cs-section .os-quotes .os-quote p { font-size: 22px; line-height: 30px; }
+.cs-section .os-quotes__note { margin-top: 16px; font-size: 12px; line-height: 18px; color: var(--ink-soft); }
+.os-outcomes { margin-top: 48px; }
+.os-open { margin-top: 48px; }
+.cs-section .os-open .cs-label + p { margin-top: 8px; }
+@media (max-width: 699px) {
+  .os-quotes { grid-template-columns: minmax(0, 1fr); }
+  .cs-section .os-quote p { font-size: 22px; line-height: 30px; }
+}
+
 /* ---------- Validation: the "Start" finding and the two options explored ---------- */
 
 .os-start h3 { margin: 8px 0 0; }
