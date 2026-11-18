@@ -62,6 +62,12 @@
             <p>Dr. Reyes orders chemotherapy as a regimen: four cycles of pemetrexed and cisplatin, each with premeds, labs and treatment days that don’t always match. In the legacy system she read that plan as a grid of offsets, T-30 min or T+4 h, split across phases she opened one at a time. She never questioned it. She had learned it.</p>
             <p class="cs-label">My role</p>
             <p>I designed the regimen and day-of-treatment views for a new EHR, from choosing a regimen to signing a cycle, and the dose calculator with the PM. Engineering was already building a first version, so most of my work was architecture and prioritization inside that build: <strong>what lives at the regimen, cycle and day level, what sits face-up on a dense screen, and the rules the team implemented.</strong></p>
+            <p class="cs-label">Where it landed</p>
+            <dl class="os-where">
+              <div><dt>Shipped</dt><dd>Regimen and day-of-treatment views, in release when I left in September 2026.</dd></div>
+              <div><dt>Adopted</dt><dd>My sign-and-start rules became the base engineering built on.</dd></div>
+              <div><dt>Open</dt><dd>The cycle setup behind “Start”, which clinicians asked to hide: two options in the backlog.</dd></div>
+            </dl>
           </div>
 
           <div class="cs-persona">
@@ -81,14 +87,6 @@
           </div>
         </div>
 
-        <div class="cs-impact">
-          <p class="cs-label">Where it landed</p>
-          <dl class="os-where">
-            <div><dt>Shipped</dt><dd>Regimen and day-of-treatment views, in release when I left in September 2026.</dd></div>
-            <div><dt>Adopted</dt><dd>My sign-and-start rules became the base engineering built on.</dd></div>
-            <div><dt>Open</dt><dd>The cycle setup behind “Start”, which clinicians asked to hide: two options in the backlog.</dd></div>
-          </dl>
-        </div>
       </section>
 
       <!-- 02. THE CHALLENGE -->
