@@ -30,7 +30,7 @@
           <li><a href="#overview" data-umami-event="Contents" data-umami-event-section="overview">01. Overview</a></li>
           <li><a href="#challenge" data-umami-event="Contents" data-umami-event-section="challenge">02. The challenge</a></li>
           <li><a href="#decisions" data-umami-event="Contents" data-umami-event-section="decisions">03. Key decisions</a></li>
-          <li><a href="#calculator" data-umami-event="Contents" data-umami-event-section="calculator">04. Dose calculations</a></li>
+          <li><a href="#walkthrough" data-umami-event="Contents" data-umami-event-section="walkthrough">04. The flow</a></li>
           <li><a href="#buildable" data-umami-event="Contents" data-umami-event-section="buildable">05. Making it buildable</a></li>
           <li><a href="#validation" data-umami-event="Contents" data-umami-event-section="validation">06. Validation</a></li>
           <li><a href="#outcome" data-umami-event="Contents" data-umami-event-section="outcome">07. Outcome</a></li>
@@ -42,7 +42,7 @@
     <main id="main" class="cs-main" tabindex="-1">
 
       <div class="cs-hero">
-        <img class="os-screen" src="img/cycle-final.webp" width="1920" height="1080" alt="Cycle 1 of 4 of a lung cancer regimen: pre-medication and treatment orders on the left, Day 1 on the right with an estimated time for every order.">
+        <img class="os-screen" src="img/calc-1.webp" width="2880" height="1620" alt="Cycle 1 of 4 of a lung cancer regimen: pre-medication and treatment orders on the left, Day 1 on the right with an estimated time for every order.">
       </div>
 
       <!-- 01. OVERVIEW -->
@@ -155,63 +155,111 @@
         <hr class="cs-rule">
       </section>
 
-      <!-- 04. DOSE CALCULATIONS -->
-      <section class="cs-section" aria-labelledby="calculator">
-        <p class="cs-eyebrow cs-eyebrow--dot">04. Dose calculations</p>
-        <h2 class="cs-title" id="calculator" tabindex="-1">Every dose in the cycle, in one place</h2>
+      <!-- 04. THE FLOW -->
+      <section class="cs-section" aria-labelledby="walkthrough">
+        <p class="cs-eyebrow cs-eyebrow--dot">04. The flow</p>
+        <h2 class="cs-title" id="walkthrough" tabindex="-1">From a signed regimen to an adjusted dose</h2>
         <div class="cs-intro">
-          <p class="cs-lead">A feature inside the day-of-treatment view: one place to adjust every dose.</p>
+          <p class="cs-lead">Click through what Dr. Reyes does: sign the regimen, start cycle 1, and lower a dose.</p>
           <div>
-            <p>A clinical SME walked us through a case she sees often: cycle 4, day 1, cisplatin reduced for nausea and weight loss. The PM and I built the flow around it: every dose-based order in one drawer, the full calculation opening in place, and a reason required for any reduction.</p>
+            <p>Dose calculations is a feature inside the day-of-treatment view. A clinical SME walked us through a case she sees often: cycle 4, day 1, cisplatin reduced for nausea and weight loss. The PM and I built the flow around it: every dose-based order in one drawer, the full calculation opening in place, and a reason required for any reduction.</p>
             <p>I scoped it to oncology and left it as a reference for teams like pediatrics, where weight-based doses matter just as much: the same pattern, with their own formulas.</p>
           </div>
         </div>
 
-        <div class="os-tour" role="region" aria-label="Dose calculations walkthrough">
+        <div class="os-tour" role="region" aria-label="Walkthrough: from a signed regimen to an adjusted dose">
           <ol class="os-tour__steps">
-            <li class="os-tour__step" data-x="27.7" data-y="18.8" data-ny="27" data-action="Open dose calculations">
+            <li class="os-tour__step" data-chapter="Sign the regimen" data-x="64.5" data-y="42.8" data-ny="84" data-action="Add the diagnosis">
               <figure>
-                <img class="os-screen" src="img/calc-1.webp" width="2880" height="1620" alt="Cycle 1 of 4 of the pemetrexed and cisplatin regimen, last updated by Nadia Reyes, MD, with a Dose calculations link and a check mark under the title.">
-                <figcaption>Dose calculations sits under the cycle title, inside the day-of-treatment view. The check shows every dose is calculated.</figcaption>
+                <img class="os-screen" src="img/flow-1.webp" width="2880" height="1620" alt="Regimen draft: ONC NSCLC Pemetrexed/Cisplatin with treatment start date, intent of therapy (Curative) and line of therapy (First), four cycles and a survivorship plan, and a prior authorization note.">
+                <figcaption>The regimen draft: its attributes on top, its four cycles below. Dr. Reyes starts by linking the diagnosis.</figcaption>
               </figure>
             </li>
-            <li class="os-tour__step" data-x="95.7" data-y="14.6" data-action="Edit cisplatin">
+            <li class="os-tour__step" data-chapter="Sign the regimen" data-x="83.6" data-y="21.7" data-action="Open the diagnoses">
+              <figure>
+                <img class="os-screen" src="img/flow-2.webp" width="2880" height="1620" alt="Associated diagnoses panel open on the right, with an empty Select diagnoses field.">
+                <figcaption>Associated diagnoses opens in the side panel, so the regimen stays in view.</figcaption>
+              </figure>
+            </li>
+            <li class="os-tour__step" data-chapter="Sign the regimen" data-x="77.7" data-y="27.8" data-action="Choose non-small cell lung cancer">
+              <figure>
+                <img class="os-screen" src="img/flow-3.webp" width="2880" height="1620" alt="Diagnoses list open with Non-small cell lung cancer (NSCLC) (C34.90) and Type 2 Diabetes Mellitus (E11.9).">
+                <figcaption>She picks from the patient’s own problems, not a search across every code.</figcaption>
+              </figure>
+            </li>
+            <li class="os-tour__step" data-chapter="Sign the regimen" data-x="96.9" data-y="90.6" data-action="Done">
+              <figure>
+                <img class="os-screen" src="img/flow-4.webp" width="2880" height="1620" alt="Non-small cell lung cancer is checked, and Regimen details now shows the associated diagnosis.">
+                <figcaption>The diagnosis shows up in Regimen details right away.</figcaption>
+              </figure>
+            </li>
+            <li class="os-tour__step" data-chapter="Sign the regimen" data-x="71.1" data-y="10.6" data-action="Sign the regimen">
+              <figure>
+                <img class="os-screen" src="img/flow-5.webp" width="2880" height="1620" alt="The regimen draft with attributes and diagnosis complete, and the Sign button at the top.">
+                <figcaption>With the attributes complete, she can sign the regimen on its own: one of the rules from the flowchart.</figcaption>
+              </figure>
+            </li>
+            <li class="os-tour__step" data-chapter="Start the cycle" data-x="67.2" data-y="33.3" data-action="Start cycle 1">
+              <figure>
+                <img class="os-screen" src="img/flow-6.webp" width="2880" height="1620" alt="Signed regimen marked Not started, with a Regimen signed confirmation and prior authorization Submitted.">
+                <figcaption>Signing sends prior authorization in parallel. Now she starts cycle 1.</figcaption>
+              </figure>
+            </li>
+            <li class="os-tour__step" data-chapter="Start the cycle" data-x="53" data-y="35.0" data-ny="70" data-action="Set the start time">
+              <figure>
+                <img class="os-screen" src="img/flow-7.webp" width="2880" height="1620" alt="Set up cycle drawer: visit and start time options with Future visit selected, treatment start date, an empty required start time, and a table of phase actions.">
+                <figcaption>“Start” opens the setup screen clinicians later asked us to hide: visit type, start time and phase actions, with defaults that are almost always right.</figcaption>
+              </figure>
+            </li>
+            <li class="os-tour__step" data-chapter="Start the cycle" data-x="96.2" data-y="96.9" data-action="Continue">
+              <figure>
+                <img class="os-screen" src="img/flow-8.webp" width="2880" height="1620" alt="Set up cycle drawer with the start time set to 8:00 AM.">
+                <figcaption>Start time set to 8:00 AM: it anchors every estimated time in the cycle.</figcaption>
+              </figure>
+            </li>
+            <li class="os-tour__step" data-chapter="Adjust the doses" data-x="27.7" data-y="18.8" data-ny="27" data-action="Open dose calculations">
+              <figure>
+                <img class="os-screen" src="img/calc-1.webp" width="2880" height="1620" alt="Cycle 1 of 4 of the pemetrexed and cisplatin regimen, last updated by Nadia Reyes, MD, with a Dose calculations link and a check mark under the title.">
+                <figcaption>The cycle opens as one page: orders on the left, Day 1 on the right with an estimated time for each. Dose calculations sits under the title.</figcaption>
+              </figure>
+            </li>
+            <li class="os-tour__step" data-chapter="Adjust the doses" data-x="95.7" data-y="14.6" data-action="Edit cisplatin">
               <figure>
                 <img class="os-screen" src="img/calc-2.webp" width="2880" height="1620" alt="Dose calculations drawer listing cisplatin, target 75 mg/m² (120 mg), and pemetrexed, target 500 mg/m² (800 mg), both with no adjustment and a BSA of 1.60 m².">
                 <figcaption>Every dose-based order in the cycle, side by side, with the BSA each one used. No more one window per medication.</figcaption>
               </figure>
             </li>
-            <li class="os-tour__step" data-x="59.3" data-y="22.8" data-action="Lower the dose">
+            <li class="os-tour__step" data-chapter="Adjust the doses" data-x="59.3" data-y="22.8" data-action="Lower the dose">
               <figure>
                 <img class="os-screen" src="img/calc-3.webp" width="2880" height="1620" alt="Cisplatin open for editing in the drawer: target 75 mg/m², calculated 120 mg, dose adjustment at 100%, rounding rule and order comments. Pemetrexed stays below, and Apply is disabled.">
                 <figcaption>Editing cisplatin opens its full calculation in place. Pemetrexed stays in view, and Apply waits until she’s done.</figcaption>
               </figure>
             </li>
-            <li class="os-tour__step" data-x="59.3" data-y="22.8" data-action="Lower it again">
+            <li class="os-tour__step" data-chapter="Adjust the doses" data-x="59.3" data-y="22.8" data-action="Lower it again">
               <figure>
                 <img class="os-screen" src="img/calc-4.webp" width="2880" height="1620" alt="Cisplatin set to 90%: adjusted target 67.5 mg/m², adjusted final dose 108 mg, and a required Adjust reason field.">
                 <figcaption>Any reduction asks for a reason, and the adjusted dose updates as she changes it.</figcaption>
               </figure>
             </li>
-            <li class="os-tour__step" data-x="59.5" data-y="33.0" data-action="Choose a reason">
+            <li class="os-tour__step" data-chapter="Adjust the doses" data-x="59.5" data-y="33.0" data-action="Choose a reason">
               <figure>
                 <img class="os-screen" src="img/calc-5.webp" width="2880" height="1620" alt="Cisplatin set to 80%: adjusted target 60 mg/m², adjusted final dose 96 mg, and the Adjust reason still empty and required.">
                 <figcaption>At 80%, cisplatin drops to 96 mg. She can’t update until she says why.</figcaption>
               </figure>
             </li>
-            <li class="os-tour__step" data-x="95.4" data-y="58.0" data-action="Update cisplatin">
+            <li class="os-tour__step" data-chapter="Adjust the doses" data-x="95.4" data-y="58.0" data-action="Update cisplatin">
               <figure>
                 <img class="os-screen" src="img/calc-6.webp" width="2880" height="1620" alt="Cisplatin at 80% with Toxicity / Tolerance chosen as the adjust reason, ready to update.">
                 <figcaption>She picks Toxicity / Tolerance. The reason travels with the dose, so nursing and pharmacy see why it changed.</figcaption>
               </figure>
             </li>
-            <li class="os-tour__step" data-x="96.4" data-y="97.0" data-action="Apply the changes">
+            <li class="os-tour__step" data-chapter="Adjust the doses" data-x="96.4" data-y="97.0" data-action="Apply the changes">
               <figure>
                 <img class="os-screen" src="img/calc-7.webp" width="2880" height="1620" alt="Dose calculations list after the update: cisplatin shows Dose adjustment 80% (down 20%), final dose 60 mg/m² (96 mg) and the reason; pemetrexed has no adjustment. Apply is enabled.">
                 <figcaption>The reduction stays visible in the list: 80% (↓20%), the final dose and the reason, next to pemetrexed at full dose.</figcaption>
               </figure>
             </li>
-            <li class="os-tour__step" data-x="47" data-y="70" data-hotspot="none">
+            <li class="os-tour__step" data-chapter="Adjust the doses" data-x="47" data-y="70" data-hotspot="none">
               <figure>
                 <img class="os-screen" src="img/calc-8.webp" width="2880" height="1620" alt="Cycle view after applying: the cisplatin row now shows Dose adjustment 80% (down 20%), final dose 60 mg/m² (96 mg) and Toxicity / Tolerance as the reason, with a Dose changes applied confirmation.">
                 <figcaption>Back on the day of treatment, cisplatin carries the reduction in its own row: 80% (↓20%), the final dose and the reason, for nursing and pharmacy to see.</figcaption>
@@ -304,30 +352,20 @@
           </div>
         </div>
 
-        <article class="cs-decision cs-decision--reverse os-gap">
-          <div class="cs-decision__text">
+        <div class="os-findings os-gap">
+          <div>
             <p class="cs-label">What changed after the first session</p>
-            <h3>Hierarchy, not color.</h3>
-            <p>Clinicians said the sections blended together and asked for the colored notes from the legacy screen. I didn’t bring them back. In the old grid, green, teal and yellow bars did the work of headings, on the same screen as allergy and interaction alerts.</p>
-            <p>I rebuilt the hierarchy with type instead: category names in semibold with their order count, orders in regular weight, notes in a quieter style. That left color free for alerts, where it has to stand out.</p>
+            <h3>Hierarchy, not color</h3>
+            <p>Clinicians said the sections blended together and asked for the colored notes from the legacy screen. I tried color, and the design system team advised against it: its principles keep color for meaning, not decoration. In the old grid, green, teal and yellow bars did the work of headings, on the same screen as allergy and interaction alerts.</p>
+            <p>I rebuilt the hierarchy with type instead: category names in semibold with their order count, orders in regular weight, notes in a quieter style. Color stayed free for alerts, where it has to stand out.</p>
           </div>
-          <figure class="cs-decision__media">
-            <img class="os-screen" src="img/cycle-grid.webp" width="1100" height="740" alt="Chemotherapy phase: Pre-medication and Treatment regimen headers in semibold with their order counts, orders below in regular weight, and Day 1 with estimated times and an 8:00 AM anchor time.">
-          </figure>
-        </article>
-
-        <article class="cs-decision os-gap">
-          <div class="cs-decision__text">
+          <div>
             <p class="cs-label">The finding that stayed with me</p>
-            <h3>The button nobody understood.</h3>
+            <h3>The button nobody understood</h3>
             <p>In April I questioned “Start”. It only opened the cycle for review, so I proposed “View cycle”. Product kept “Start” because it was the term everyone knew.</p>
-            <p>The workgroups brought it back. Behind “Start” sat a setup screen with visit types and phase actions. One organization tells its oncologists never to touch it; another has seen a lab phase removed by accident. Regimens follow national guidelines, so the defaults are almost always right, yet the screen presented each one as a decision. Clinicians asked to hide it.</p>
+            <p>The workgroups brought it back. Behind “Start” sat a setup screen with visit types and phase actions (step 7 in the walkthrough above). One organization tells its oncologists never to touch it; another has seen a lab phase removed by accident. Regimens follow national guidelines, so the defaults are almost always right, yet the screen presented each one as a decision. Clinicians asked to hide it.</p>
           </div>
-          <figure class="cs-decision__media">
-            <img class="os-screen" src="img/setup-cycle.webp" width="1200" height="675" alt="Set up cycle drawer: visit and start time options, and a table of phase actions for chemotherapy, labs, prescription and scheduling.">
-            <figcaption>The setup screen behind “Start”.</figcaption>
-          </figure>
-        </article>
+        </div>
         <hr class="cs-rule">
       </section>
 

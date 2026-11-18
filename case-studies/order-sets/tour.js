@@ -9,6 +9,29 @@
     const pad = (n) => String(n).padStart(2, '0');
     let current = 0;
 
+    // Chapters (from data-chapter): buttons above the screen that jump to each chapter's first step
+    const chapters = [];
+    steps.forEach((st, i) => {
+      const name = st.dataset.chapter;
+      if (name && !chapters.some((c) => c.name === name)) chapters.push({ name, first: i });
+    });
+    let chapterButtons = [];
+    if (chapters.length > 1) {
+      const nav = document.createElement('div');
+      nav.className = 'os-tour__chapters';
+      nav.setAttribute('role', 'group');
+      nav.setAttribute('aria-label', 'Chapters');
+      chapterButtons = chapters.map((c, k) => {
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.innerHTML = '<span class="os-tour__chapter-num" aria-hidden="true">' + pad(k + 1) + '</span>' + c.name;
+        b.addEventListener('click', () => go(c.first));
+        nav.appendChild(b);
+        return b;
+      });
+      tour.prepend(nav);
+    }
+
     // Controls under the screen: Back, the step count and Next
     const controls = document.createElement('div');
     controls.className = 'os-tour__controls';
@@ -58,7 +81,9 @@
       prev.disabled = i === 0;
       next.textContent = last ? 'Start over' : 'Next';
       count.textContent = pad(i + 1) + ' / ' + pad(steps.length);
-      live.textContent = 'Step ' + (i + 1) + ' of ' + steps.length + '. ' + steps[i].querySelector('figcaption').textContent;
+      const chapter = steps[i].dataset.chapter;
+      chapterButtons.forEach((b, k) => b.setAttribute('aria-pressed', String(chapters[k].name === chapter)));
+      live.textContent = (steps[i].dataset.chapter ? steps[i].dataset.chapter + '. ' : '') + 'Step ' + (i + 1) + ' of ' + steps.length + '. ' + steps[i].querySelector('figcaption').textContent;
       if (focusHotspot) {
         const target = steps[i].querySelector('.os-tour__hotspot') || next;
         target.focus({ preventScroll: true });

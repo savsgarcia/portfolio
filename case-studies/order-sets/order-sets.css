@@ -107,6 +107,18 @@
 .os-tour__hotspot:focus-visible { outline: 3px solid var(--ink-strong); outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .os-tour__hotspot::after { animation: none; opacity: 0; } }
 
+/* Chapters above the screen: jump to the start of each part of the flow */
+.os-tour__chapters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.os-tour__chapters button {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 36px; padding: 0 14px;
+  border: 1px solid #CBCAC3; border-radius: 999px;
+  background: #fff; font-size: 14px; line-height: 20px; color: var(--ink);
+}
+.os-tour__chapters button:hover { background: #F2F1ED; }
+.os-tour__chapters button[aria-pressed="true"] { border-color: var(--ink-strong); background: var(--ink-strong); color: #fff; }
+.os-tour__chapter-num { font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; opacity: .8; }
+
 /* Controls under the screen */
 .os-tour__controls { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
 .cs-section .os-tour__count { margin: 0; font-family: var(--font-mono); font-size: 12px; line-height: 16px; letter-spacing: .04em; color: var(--ink-soft); }
