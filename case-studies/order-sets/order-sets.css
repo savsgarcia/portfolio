@@ -6,6 +6,8 @@
 .os-screen { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--cs-shadow); }
 /* Overview accent line in this project's color from Work (#DCC3D2), deepened so the 2px line still shows */
 .cs { --cs-accent-line: #C49AB4; }
+/* Top band: a very light tint of the project's mauve (#DCC3D2), instead of VIU's warm cream */
+.cs { --cs-hero-bg: #F6EEF2; }
 
 /* Hero teaser: a cropped flat screen that fades out over its lower half, like the device mockups */
 /* Hero: the full screen at full opacity (no fade), never touching the edges:
