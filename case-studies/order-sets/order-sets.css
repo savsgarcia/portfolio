@@ -1,0 +1,323 @@
+/* Order sets case: additions on top of case-study.css */
+
+/* ---------- Screens ---------- */
+
+/* Flat screenshots get a card treatment: rounded corners and the shared shadow */
+.os-screen { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--cs-shadow); }
+/* Overview accent line in this project's color from Work (#DCC3D2), deepened so the 2px line still shows */
+.cs { --cs-accent-line: #C49AB4; }
+
+/* Hero teaser: a cropped flat screen that fades out over its lower half, like the device mockups */
+.cs-hero { --cs-hero-fade: 45%; }
+.cs-decision__media figcaption { margin-top: 12px; }
+/* Extra space between the decision blocks inside Validation */
+.os-gap { margin-top: 64px; }
+
+/* ---------- Overview ---------- */
+
+/* Persona card, right of the Overview text on desktop, full width below 1100px */
+.cs-persona {
+  grid-column: 9 / span 4;
+  align-self: start;
+  margin: 0;
+  padding: 24px;
+  border-radius: 8px;
+  background: var(--cs-card-bg);
+  box-shadow: var(--cs-shadow);
+}
+.cs-persona__head { display: flex; gap: 16px; align-items: center; }
+.cs-persona__avatar {
+  flex: none;
+  width: 56px; height: 56px;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  background: var(--cs-chip-bg);
+  font-family: var(--font-display);
+  font-size: 22px;
+  color: var(--ink);
+}
+.cs-section .cs-persona__name { margin: 0; font-size: 16px; line-height: 24px; font-weight: 500; }
+.cs-section .cs-persona__role { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink-soft); }
+.cs-persona dl { display: grid; gap: 12px; margin: 20px 0 0; }
+.cs-persona dt,
+.os-where dt {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-strong);
+}
+.cs-persona dt { line-height: 20px; }
+.cs-persona dd { margin: 2px 0 0; font-size: 14px; line-height: 20px; color: var(--ink); }
+.cs-section .cs-persona__note { margin: 16px 0 0; font-size: 12px; line-height: 18px; color: var(--ink-soft); } /* --muted is under 4.5:1 on the card */
+
+/* "Where it landed": label/value rows */
+.os-where { display: grid; gap: 12px; margin: 16px 0 0; }
+.os-where div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; }
+.os-where dt { line-height: 24px; }
+.os-where dd { margin: 0; font-size: 16px; line-height: 24px; color: var(--ink); }
+
+/* Three hard things: one row on desktop */
+@media (min-width: 1100px) { .os-hard-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+
+/* ---------- Validation findings ---------- */
+
+.os-findings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 48px; }
+/* h3 keeps the case study's section h3 style (20px, regular) */
+.os-findings h3 { margin: 0; }
+/* Findings as notes, styled like the Tested notes in the VIU case study:
+   a numbered card with a warm border and the shared shadow */
+.os-findings > div {
+  padding: 16px 18px 18px;
+  border: 1px solid #D6CEC7;
+  border-radius: 4px;
+  background: #FCFCFB;
+  box-shadow: var(--cs-shadow);
+}
+.os-findings h3 { font-size: 18px; line-height: 26px; }
+.cs-section .os-findings p { color: #403730; }
+.cs-section .os-findings p { margin-top: 8px; }
+
+/* ---------- Decisions without an image: text only, at reading width ---------- */
+
+.cs-decision--text { display: block; }
+.cs-decision--text .cs-decision__text { max-width: 640px; }
+/* Decisions 03 and 04 have no image: two columns side by side */
+.os-decision-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 48px; margin-top: 64px; }
+.os-decision-pair .cs-decision { margin-top: 0; }
+@media (max-width: 699px) { .os-decision-pair { grid-template-columns: minmax(0, 1fr); } }
+
+/* Before / after, on demand from the tour: the same premedication rows, offsets then times */
+.os-compare-open {
+  display: block; margin-top: 8px; padding: 0;
+  font-size: 14px; line-height: 20px; font-weight: 500; color: var(--ink-strong);
+  text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+}
+.os-compare-open:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.os-compare {
+  width: min(960px, calc(100vw - 32px)); max-height: calc(100dvh - 32px);
+  padding: 24px; border: 0; border-radius: 12px;
+  background: var(--bg); color: var(--ink); box-shadow: 0 24px 64px rgba(30, 41, 59, .25);
+}
+.os-compare::backdrop { background: rgba(30, 41, 59, .45); }
+.os-compare__head { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+.cs-section .os-compare h3 { margin: 0; }
+.os-compare > p { margin-top: 8px; max-width: 640px; color: var(--ink); }
+.os-compare__close { width: 40px; height: 40px; border-radius: 8px; font-size: 24px; line-height: 1; color: var(--ink); }
+.os-compare__close:hover { background: #F2F1ED; }
+.os-compare__close:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.os-ba { display: grid; grid-template-columns: 1fr 1.3fr; gap: 24px; align-items: end; margin-top: 24px; }
+.os-ba figure { margin: 0; }
+.os-ba figcaption.cs-label { margin-bottom: 8px; }
+.os-ba img { border-radius: 6px; }
+@media (max-width: 699px) { .os-ba { grid-template-columns: minmax(0, 1fr); } }
+
+/* Quotes: the medical director's principle, and clinicians in Outcome */
+.os-quote { margin: 40px 0 0; padding-left: 20px; border-left: 2px solid var(--accent); }
+.cs-section .os-quote p { max-width: 640px; font-family: var(--font-display); font-weight: 300; font-size: 26px; line-height: 34px; color: var(--ink-strong); font-variation-settings: "opsz" 72; }
+.os-quote footer { margin-top: 12px; font-family: var(--font-mono); font-size: 12px; line-height: 18px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
+.os-quotes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 40px; margin-top: 24px; }
+.os-quotes .os-quote { margin-top: 24px; }
+.os-quotes--one { grid-template-columns: minmax(0, 1fr); }
+.cs-section .os-quotes .os-quote p { font-size: 22px; line-height: 30px; }
+.cs-section .os-quotes__note { margin-top: 16px; font-size: 12px; line-height: 18px; color: var(--ink-soft); }
+.os-outcomes { margin-top: 48px; }
+@media (min-width: 1100px) { .os-outcomes { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+.os-open { margin-top: 48px; }
+.cs-section .os-open .cs-label + p { margin-top: 8px; }
+@media (max-width: 699px) {
+  .os-quotes { grid-template-columns: minmax(0, 1fr); }
+  .cs-section .os-quote p { font-size: 22px; line-height: 30px; }
+}
+
+/* ---------- Validation: the "Start" finding and the two options explored ---------- */
+
+.os-start h3 { margin: 8px 0 0; }
+.cs-section .os-start h3 + p { margin-top: 8px; }
+/* The options at full size in a row that scrolls sideways; the next one peeks in */
+.os-options {
+  display: flex; gap: 24px; margin-top: 32px; padding: 6px 0 16px; /* room for the screenshot shadow */
+  overflow-x: auto; scroll-snap-type: x mandatory; overscroll-behavior-x: contain;
+}
+.os-options figure { flex: 0 0 88%; scroll-snap-align: start; }
+.os-options:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; }
+.os-options figure { margin: 0; }
+.cs-section .os-options figcaption { max-width: 640px; margin-top: 12px; font-size: 15px; line-height: 22px; color: var(--ink); }
+.os-options figcaption .cs-label { display: block; margin-bottom: 4px; }
+
+/* ---------- Feature walkthrough (tour.js) ---------- */
+
+/* Without JavaScript: the screens and captions as a numbered list */
+.os-tour { margin-top: 48px; }
+.os-tour__steps { display: grid; gap: 48px; margin: 0; padding: 0; list-style: none; }
+.os-tour figure { position: relative; margin: 0; }
+.cs-section .os-tour figcaption { max-width: 640px; margin-top: 16px; font-size: 16px; line-height: 24px; color: var(--ink); }
+
+/* As a tour: one screen at a time */
+.os-tour.is-tour .os-tour__step[hidden] { display: none; }
+.os-tour__frame { position: relative; }
+
+/* Hotspot: where Dr. Reyes clicks. A small accent-green touch target with a cursor.
+   The button is a 44px target; the visible circle is 28px. The black-outlined cursor carries the contrast. */
+.os-tour__hotspot {
+  position: absolute; left: var(--x); top: var(--y); z-index: 2;
+  width: 44px; height: 44px; margin: -22px 0 0 -22px; padding: 0;
+  border: 0; border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+}
+.os-tour__hotspot::before {
+  content: ""; position: absolute; inset: 8px;
+  border-radius: 50%; background: rgba(84, 132, 57, .42); /* --accent */
+  transition: background .2s;
+}
+.os-tour__hotspot svg {
+  position: absolute; left: 50%; top: 50%; z-index: 1;
+  width: 20px; height: 20px; margin: -3px 0 0 -4px; /* the cursor tip sits on the centre */
+  fill: #fff; stroke: #111; stroke-width: 1.4; stroke-linejoin: round;
+}
+.os-tour__hotspot::after {
+  content: ""; position: absolute; inset: 8px;
+  border: 2px solid var(--accent); border-radius: 50%;
+  animation: os-pulse 1.6s ease-out infinite;
+}
+@keyframes os-pulse { from { transform: scale(1); opacity: .8; } to { transform: scale(2); opacity: 0; } }
+.os-tour__hotspot:hover::before { background: rgba(84, 132, 57, .6); }
+.os-tour__hotspot:focus-visible { outline: 3px solid var(--ink-strong); outline-offset: 1px; }
+@media (prefers-reduced-motion: reduce) { .os-tour__hotspot::after { animation: none; opacity: 0; } }
+
+/* Chapters above the screen: jump to the start of each part of the flow */
+.os-tour__chapters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 20px; }
+.os-tour__chapters button {
+  display: inline-flex; align-items: center; gap: 8px;
+  height: 36px; padding: 0 14px;
+  border: 1px solid #CBCAC3; border-radius: 999px;
+  background: #fff; font-size: 14px; line-height: 20px; color: var(--ink);
+}
+.os-tour__chapters button:hover { background: #F2F1ED; }
+.os-tour__chapters button[aria-pressed="true"] { border-color: var(--ink-strong); background: var(--ink-strong); color: #fff; }
+.os-tour__chapter-num { font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; opacity: .8; }
+
+/* Controls under the screen */
+.os-tour__controls { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
+.cs-section .os-tour__count { margin: 0; font-family: var(--font-mono); font-size: 12px; line-height: 16px; letter-spacing: .04em; color: var(--ink-soft); }
+.os-tour__controls .cs-btn:disabled { opacity: .5; cursor: default; }
+.os-tour__controls [data-go="next"] { margin-left: auto; }
+
+/* From 1100px the caption floats next to the hotspot, like a tour note */
+@media (min-width: 1100px) {
+  .cs-section .os-tour.is-tour .has-note figcaption {
+    position: absolute; z-index: 3;
+    left: calc(var(--x) + 28px); top: var(--ny);
+    width: 300px; margin: -20px 0 0;
+    padding: 12px 14px; border: 1px solid var(--cs-note-final-border); border-radius: 4px;
+    background: var(--cs-note-final-bg); box-shadow: var(--cs-shadow); /* like the Final notes in VIU */
+    font-size: 14px; line-height: 21px;
+  }
+  .cs-section .os-tour.is-tour .has-note.is-left figcaption { left: auto; right: calc(100% - var(--x) + 28px); }
+  .cs-section .os-tour.is-tour .has-note.is-up figcaption { top: auto; bottom: calc(100% - var(--ny)); margin: 0 0 -20px; }
+}
+
+/* ---------- The rules, in words, before the flowchart (numbered like the challenges) ---------- */
+
+.os-rules { margin-top: 48px; }
+
+/* ---------- Interactive rules flow ---------- */
+
+.fl { margin: 48px 0 0; padding: 32px; border-radius: 12px; background: var(--cs-card-bg); }
+.fl-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 8px 32px; }
+.fl-head h3 { margin: 4px 0 0; }
+.cs-section .fl-hint { margin: 0; font-family: var(--font-mono); font-size: 12px; line-height: 20px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
+
+/* Board: warm paper with a faint dot grid, in the site palette.
+   Contrast on the board (#F6F4EE): lines 3.3:1, labels 6.4:1, ok 4.0:1, stop 4.9:1, text 13:1+ */
+.fl {
+  --fl-board: #F6F4EE;
+  --fl-line: #8A867C;
+  --fl-label: #5C5850;
+  --fl-ok: var(--accent);
+  --fl-ok-bg: #EAF1E4;
+  --fl-stop: #B5462F;
+  --fl-stop-bg: #FBECE8;
+}
+.fl-board { position: relative; margin-top: 24px; }
+.fl-canvas {
+  overflow: auto; overscroll-behavior-x: contain;
+  padding: 16px;
+  border-radius: 12px;
+  background: var(--fl-board) radial-gradient(rgba(30, 41, 59, .12) 1px, transparent 1.4px) 0 0 / 20px 20px;
+  background-attachment: local;
+  cursor: grab;
+}
+.fl-canvas.is-dragging { cursor: grabbing; }
+.fl-canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.fl-stage { position: relative; }
+.fl-stage svg { display: block; width: 100%; height: 100%; max-width: none; user-select: none; font-family: var(--font-sans); }
+
+/* Zoom tools, top right of the board */
+.fl-tools {
+  position: absolute; top: 12px; right: 12px; z-index: 3;
+  display: flex; align-items: center; gap: 2px; padding: 4px;
+  border-radius: 8px; background: #fff; box-shadow: var(--cs-shadow), 0 0 0 1px rgba(30, 41, 59, .08);
+}
+.fl-tools button { min-width: 32px; height: 28px; padding: 0 8px; border-radius: 6px; font-size: 14px; color: var(--ink); }
+.fl-tools button:hover { background: #F2F1ED; }
+.fl-zoom { min-width: 44px; text-align: center; font-family: var(--font-mono); font-size: 11px; color: var(--ink-soft); }
+
+/* Buttons on the chart: the two paths (over the action pills) and the Yes / No answers */
+.fl-pick {
+  position: absolute; z-index: 2;
+  border-radius: 999px; background: transparent; cursor: pointer;
+}
+.fl-pick:hover { box-shadow: 0 0 0 3px rgba(84, 132, 57, .35); }
+.fl-pick:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.fl-answer {
+  position: absolute; z-index: 2; transform: translate(-50%, -50%);
+  min-width: 40px; height: 26px; padding: 0 10px;
+  border: 1px solid var(--fl-line); border-radius: 999px;
+  background: #fff; cursor: pointer;
+  font-family: var(--font-mono); font-size: 11px; line-height: 24px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink);
+}
+.fl-answer:hover { border-color: var(--ink-strong); }
+.fl-answer[aria-pressed="true"] { border-color: var(--ink-strong); background: var(--ink-strong); color: #fff; }
+.fl-answer.is-off-path { opacity: .55; }
+.fl-answer:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+/* Nodes and edges (drawn by flow.js) */
+.fl-node rect, .fl-node polygon { fill: #fff; stroke: var(--fl-line); stroke-width: 1.25; transition: fill .2s, stroke .2s, opacity .2s; }
+.fl-node text { font-size: 14px; fill: var(--ink-strong); transition: opacity .2s; }
+.fl-start rect { stroke-width: 1.5; }
+.fl-action rect { fill: var(--ink); stroke: var(--ink); }
+.fl-action text { fill: #fff; font-weight: 600; }
+.fl-block rect { stroke-dasharray: 5 4; }
+.fl-edge path { fill: none; stroke: var(--fl-line); stroke-width: 1.5; transition: stroke .2s, opacity .2s; }
+.fl-label { font-family: var(--font-mono); font-size: 11px; fill: var(--fl-label); }
+.fl-arrow-head { fill: context-stroke; }
+/* The path for the chosen scenario stays strong; the rest fades back */
+.has-path .fl-node:not(.is-on) { opacity: .4; }
+.has-path .fl-edge:not(.is-on) { opacity: .35; }
+.fl-node.is-on rect, .fl-node.is-on polygon { stroke: var(--ink-strong); stroke-width: 2; }
+.fl-action.is-on rect { fill: var(--ink-strong); }
+.fl-edge.is-on path { stroke: var(--ink-strong); stroke-width: 2; }
+.fl-end.is-on rect { fill: var(--fl-ok-bg); stroke: var(--fl-ok); }
+.fl-block.is-on rect { fill: var(--fl-stop-bg); stroke: var(--fl-stop); }
+
+/* Outcome of the chosen scenario, and the legend */
+.cs-section .fl-outcome {
+  max-width: none; margin-top: 20px;
+  padding: 14px 16px; border-radius: 8px; border-left: 3px solid var(--accent);
+  background: #fff; font-size: 16px; line-height: 24px;
+}
+.cs-section .fl-outcome[data-tone="block"] { border-left-color: var(--fl-stop); }
+.cs-section .fl-legend { margin-top: 12px; font-size: 12px; line-height: 18px; color: var(--ink-soft); }
+
+/* ---------- Smaller screens ---------- */
+
+@media (max-width: 1099px) {
+  .cs-persona { grid-column: 1 / -1; }
+}
+@media (max-width: 699px) {
+  .os-findings { grid-template-columns: minmax(0, 1fr); }
+  .fl-canvas { padding: 16px; }
+  .fl { padding: 20px; }
+}

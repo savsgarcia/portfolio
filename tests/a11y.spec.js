@@ -154,13 +154,13 @@ test('project copy has only one interactive element and no click handlers on con
   }
 });
 
-test('the whole VIU project copy opens the case study (stretched link)', async ({ page }) => {
+test('the whole first project copy opens its case study (stretched link)', async ({ page }) => {
   await open(page, '/#work');
   const copy = page.locator('.project-copy:visible').first();
   const link = copy.getByRole('link', { name: 'See case study' });
-  await expect(link).toHaveAttribute('href', /case-studies\/viu\//);
+  await expect(link).toHaveAttribute('href', /case-studies\/order-sets\//);
   // Click the middle of the heading like a person would; the link's ::after sits on top of it.
   const box = await copy.locator('.display').boundingBox();
   await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
-  await expect(page).toHaveURL(/case-studies\/viu\/$/);
+  await expect(page).toHaveURL(/case-studies\/order-sets\/$/);
 });

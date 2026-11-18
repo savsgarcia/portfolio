@@ -197,7 +197,8 @@
 .cs-hero { padding-top: 40px; } /* room above the image */
 .cs-hero img { display: block; width: 100%; height: auto; padding: 0; }
 /* The devices dissolve into the band at the bottom (transparent, so the gradient shows through) */
-.cs-hero img { -webkit-mask-image: linear-gradient(to bottom, #000 82%, transparent); mask-image: linear-gradient(to bottom, #000 82%, transparent); }
+/* --cs-hero-fade: where the fade starts. A flat screenshot fades over a longer stretch (see order-sets.css) */
+.cs-hero img { -webkit-mask-image: linear-gradient(to bottom, #000 var(--cs-hero-fade, 82%), transparent); mask-image: linear-gradient(to bottom, #000 var(--cs-hero-fade, 82%), transparent); }
 
 /* ---------- 01. Overview ---------- */
 

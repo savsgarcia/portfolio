@@ -7,33 +7,33 @@
   const lock = '<svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M18 8h-1V6A5 5 0 0 0 7 6v2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V10a2 2 0 0 0-2-2zM9 6a3 3 0 0 1 6 0v2H9V6z"/></svg>';
 
   const projects = {
+    'order-sets': {
+      num: '01', name: 'Order sets', client: 'Oracle',
+      title: 'How Dr. Reyes planned a chemo cycle without decoding it',
+      description: 'Designing oncology regimens and the day of treatment for a new EHR, inside a build that was already under way.',
+      // Stretched link: the only interactive element in the project copy (see .cta--stretched in styles.css)
+      cta: '<a class="cta cta--stretched" href="case-studies/order-sets/" data-umami-event="See case study" data-umami-event-project="order-sets">See case study ' + chevron + '</a>',
+      bg: '#DCC3D2',
+      image: 'assets/img/order-sets.webp', width: 2400, height: 1350,
+      alt: 'Cycle 1 of 4 of a lung cancer regimen: the patient summary on the left, pre-medication and treatment orders with an estimated time for each on Day 1.'
+    },
     'viu': {
-      num: '01', name: 'Insurance profile', client: 'VIU by HUB',
+      num: '02', name: 'Insurance profile', client: 'VIU by HUB',
       title: 'How Frankie found clarity, and a better way to renew',
       description: 'Designing VIU’s account space, where every policy lives in one place and HUB can help before each renewal.',
-      // Stretched link: the only interactive element in the project copy (see .cta--stretched in styles.css)
       cta: '<a class="cta cta--stretched" href="case-studies/viu/" data-umami-event="See case study" data-umami-event-project="viu">See case study ' + chevron + '</a>',
       bg: '#F8F5EC',
       image: 'assets/img/viu.webp', width: 1986, height: 1614,
       alt: 'VIU by HUB account screen: a personal dashboard greeting Frankie with all their policies and recommended coverage.'
     },
     'order-entry': {
-      num: '02', name: 'AI-assisted order entry', client: 'Oracle',
+      num: '03', name: 'AI-assisted order entry', client: 'Oracle',
       title: 'How Dr. Haven got help ordering, only when he asked for it',
       description: 'Designing AI-assisted order entry for an EHR: when the assistant helps, and when it steps aside.',
       cta: '<span class="cta cta--locked">Available on request · NDA ' + lock + '</span>',
       bg: '#DCE8E1',
       image: 'assets/img/order-entry.webp', width: 1372, height: 784,
       alt: 'AI assistant panel inside an EHR suggesting a lisinopril order ready for review, with relevant chart context.'
-    },
-    'order-sets': {
-      num: '03', name: 'Order sets', client: 'Oracle',
-      title: 'How clinicians ordered complex care plans without losing their place',
-      description: 'Modernizing a legacy order sets experience for expert users, without breaking the workflows they rely on.',
-      cta: '<span class="cta cta--locked">Available on request · NDA ' + lock + '</span>',
-      bg: '#DCC3D2',
-      image: 'assets/img/order-sets.webp', width: 2000, height: 1134,
-      alt: 'Oncology regimen screen showing a patient summary next to a chemotherapy order set with pre-chemo metrics and pre-medications.'
     }
   };
 
