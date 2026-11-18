@@ -96,3 +96,25 @@
     go(0);
   });
 })();
+
+// "Compare with the legacy offsets": a small native dialog opened on demand from a tour note.
+// Focus stays inside while it's open, Esc and the backdrop close it, and focus returns to the button.
+(function () {
+  'use strict';
+  document.querySelectorAll('[data-dialog]').forEach((opener) => {
+    const dialog = document.getElementById(opener.dataset.dialog);
+    if (!dialog) return;
+    opener.addEventListener('click', () => dialog.showModal());
+    dialog.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', () => dialog.close()));
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key !== 'Tab') return;
+      const f = Array.from(dialog.querySelectorAll('button, a[href], [tabindex]:not([tabindex="-1"])'));
+      if (!f.length) return;
+      const first = f[0], last = f[f.length - 1];
+      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+    });
+    dialog.addEventListener('close', () => opener.focus());
+  });
+})();

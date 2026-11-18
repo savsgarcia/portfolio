@@ -140,16 +140,6 @@
           </figure>
         </article>
 
-        <div class="os-ba">
-          <figure>
-            <figcaption class="cs-label">Before · offsets</figcaption>
-            <img class="os-screen" src="img/before-offsets.webp" width="692" height="148" loading="lazy" alt="Legacy rows: ondansetron and dexamethasone under Pre-Medications, each with -30 min in the Day 1 and Day 8 columns.">
-          </figure>
-          <figure>
-            <figcaption class="cs-label">After · times</figcaption>
-            <img class="os-screen" src="img/after-times.webp" width="1589" height="392" loading="lazy" alt="New rows: fosaprepitant, ondansetron and dexamethasone under Pre-medication, each with Est. 7:30 AM in the Day 1 column.">
-          </figure>
-        </div>
 
         <hr class="cs-rule cs-rule--dotted">
 
@@ -184,7 +174,7 @@
           <div class="cs-decision__text">
             <p class="cs-label">04. Conservative to ship, exploratory to learn</p>
             <h3>Two versions, side by side.</h3>
-            <p>Design leadership asked us to go beyond what the build could take. Instead of choosing between that ask and the release, I prepared a conservative version and an exploratory one to compare like for like. The conservative one matched how clinicians think and shipped. The exploration, a view focused on the active day with its execution schedule, stayed as a direction to test: an oncology nurse liked reading “my hydration starts at 7”, while physicians wanted the whole cycle at once.</p>
+            <p>Design leadership asked us to go beyond what the build could take. Instead of choosing between that ask and the release, I put a conservative version next to an exploratory one, a view focused on the active day with its execution schedule, and presented both to the oncology SMEs. An oncology nurse liked reading “my hydration starts at 7”; physicians wanted the whole cycle at once. With product, we agreed to ship the MVP and keep the exploration as a direction to test.</p>
             <p class="cs-chip"><span>Based on</span> Design leadership review · Clinical SME review</p>
           </div>
         </article>
@@ -252,7 +242,7 @@
         <h2 class="cs-title" id="validation" tabindex="-1">What the workgroups told us</h2>
         <div class="cs-intro">
           <p class="cs-lead">Clinicians like Dr. Reyes, and the people who build and support her regimens.</p>
-          <p>The designs went through three oncology workgroups with oncologists, pharmacists and informaticists from academic, community and cancer centers. I presented the first and prepared the prototypes for all three; the PM, who had the clinical depth, led the follow-ups. Most of what they said confirmed the grid. One finding changed how I see the whole flow.</p>
+          <p>The designs went through three oncology workgroups with the 16 organizations using the system: academic, community and cancer centers. Around 20 people joined each call, about 10 of them physicians who took part. I presented the first and prepared the prototypes for all three; the PM, who had the clinical depth, led the follow-ups. Most of what they said confirmed the grid. One finding changed how I see the whole flow.</p>
         </div>
 
         <div class="os-findings">
@@ -351,7 +341,7 @@
             <li class="os-tour__step" data-chapter="Adjust the doses" data-x="27.7" data-y="18.8" data-ny="27" data-action="Open dose calculations">
               <figure>
                 <img class="os-screen" src="img/calc-1.webp" width="2880" height="1620" alt="Cycle 1 of 4 of the pemetrexed and cisplatin regimen, last updated by Nadia Reyes, MD, with a Dose calculations link and a check mark under the title.">
-                <figcaption>The cycle opens as one page: orders on the left, Day 1 on the right with an estimated time for each. Dose calculations sits under the title.</figcaption>
+                <figcaption>The cycle opens as one page: orders on the left, Day 1 on the right with an estimated time for each. Dose calculations sits under the title. <button type="button" class="os-compare-open" data-dialog="os-compare">Compare with the legacy offsets</button></figcaption>
               </figure>
             </li>
             <li class="os-tour__step" data-chapter="Adjust the doses" data-x="95.7" data-y="14.6" data-action="Edit cisplatin">
@@ -398,6 +388,24 @@
             </li>
           </ol>
         </div>
+
+        <dialog class="os-compare" id="os-compare" aria-labelledby="os-compare-title">
+          <div class="os-compare__head">
+            <h3 id="os-compare-title">Offsets became times</h3>
+            <button type="button" class="os-compare__close" data-close aria-label="Close">×</button>
+          </div>
+          <p>The same premedication rows. The legacy grid counted back from the chemo start; the new view says when.</p>
+          <div class="os-ba">
+            <figure>
+              <figcaption class="cs-label">Before · offsets</figcaption>
+              <img class="os-screen" src="img/before-offsets.webp" width="692" height="148" loading="lazy" alt="Legacy rows: ondansetron and dexamethasone under Pre-Medications, each with -30 min in the Day 1 and Day 8 columns.">
+            </figure>
+            <figure>
+              <figcaption class="cs-label">After · times</figcaption>
+              <img class="os-screen" src="img/after-times.webp" width="1589" height="392" loading="lazy" alt="New rows: fosaprepitant, ondansetron and dexamethasone under Pre-medication, each with Est. 7:30 AM in the Day 1 column.">
+            </figure>
+          </div>
+        </dialog>
         <hr class="cs-rule">
       </section>
 
@@ -410,10 +418,11 @@
           <p>When I left in September 2026, the regimen and day-of-treatment views were in release, built on the sign-and-start rules. The dose calculator was in development, and the PM and the clinical SMEs were especially keen on it.</p>
         </div>
 
-        <ol class="cs-hard os-hard-3 os-outcomes">
+        <ol class="cs-hard os-outcomes">
           <li><span class="cs-hard__num" aria-hidden="true">01</span><h3>Shipped</h3><p>Regimen and day-of-treatment views, with estimated times instead of offsets and one scroll for the whole cycle.</p></li>
           <li><span class="cs-hard__num" aria-hidden="true">02</span><h3>Adopted</h3><p>The sign-and-start rules became the base engineering built on, and answered the questions that kept coming back with every screen.</p></li>
           <li><span class="cs-hard__num" aria-hidden="true">03</span><h3>Reused</h3><p>The dose calculator: scoped to oncology, left as the reference for teams like pediatrics, with their own formulas.</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">04</span><h3>Extended</h3><p>A separate squad building an AI-assisted bridge between the legacy EHR and the new one took these views as its base.</p></li>
         </ol>
 
         <div class="os-quotes os-quotes--one">
