@@ -289,8 +289,11 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .view--work { grid-template-columns: minmax(0, 1fr) 40vw; }
   .view--work .col--text { padding-top: 32px; }
 }
-@media (min-width: 1600px) {
-  .project-copy .display { font-size: 96px; line-height: 96px; }
+/* Desktop (1100px and up): one fluid scale instead of a jump at 1600px. The title grows with the
+   window's width and is held back by its height, so it reaches the design's 96px only on large
+   screens and stays within the window on shorter laptops. */
+@media (min-width: 1100px) {
+  .project-copy .display { font-size: clamp(40px, min(4vw, 6.8vh), 96px); line-height: 1.02; }
 }
 
 .col--projects { padding: calc(var(--top) - 24px) 16px 40px clamp(24px, 2.1vw, 40px); }
