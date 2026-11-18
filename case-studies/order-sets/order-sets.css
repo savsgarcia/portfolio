@@ -1,11 +1,25 @@
 /* Order sets case: additions on top of case-study.css */
 
-/* Screens exported flat: give them the same card treatment as the HUB screenshots */
-.os-screen { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--cs-shadow); }
-.cs-hero .os-screen { border-radius: 10px; }
-.cs-shot__frame img.os-screen { border-radius: 8px; }
+/* ---------- Screens ---------- */
 
-/* Persona card, right of the Overview text */
+/* Flat screenshots get a card treatment: rounded corners and the shared shadow */
+.os-screen { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--cs-shadow); }
+/* Hero: a flat screen (not a device mockup), so it lines up with the text column
+   and keeps its bottom edge instead of fading out */
+.cs-hero .os-screen {
+  width: calc(100% - 2 * var(--cs-pad));
+  max-width: var(--cs-content);
+  border-radius: 10px;
+  -webkit-mask-image: none;
+  mask-image: none;
+}
+.cs-decision__media figcaption { margin-top: 12px; }
+/* Extra space between the decision blocks inside Validation */
+.os-gap { margin-top: 64px; }
+
+/* ---------- Overview ---------- */
+
+/* Persona card, right of the Overview text on desktop, full width below 1100px */
 .cs-persona {
   grid-column: 9 / span 4;
   align-self: start;
@@ -26,35 +40,56 @@
   font-size: 22px;
   color: var(--ink);
 }
-.cs-persona__name { margin: 0; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--ink); }
-.cs-persona__role { margin: 0 !important; font-size: 14px; line-height: 20px; color: var(--ink-soft); }
+.cs-section .cs-persona__name { margin: 0; font-size: 16px; line-height: 24px; font-weight: 500; }
+.cs-section .cs-persona__role { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink-soft); }
 .cs-persona dl { display: grid; gap: 12px; margin: 20px 0 0; }
-.cs-persona dt {
+.cs-persona dt,
+.os-where dt {
   font-family: var(--font-mono);
-  font-size: 12px; line-height: 20px;
-  letter-spacing: 0.04em; text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ink-strong);
 }
+.cs-persona dt { line-height: 20px; }
 .cs-persona dd { margin: 2px 0 0; font-size: 14px; line-height: 20px; color: var(--ink); }
-.cs-persona__note { margin: 16px 0 0 !important; font-size: 12px; line-height: 18px; color: var(--muted); }
+.cs-section .cs-persona__note { margin: 16px 0 0; font-size: 12px; line-height: 18px; color: var(--ink-soft); } /* --muted is under 4.5:1 on the card */
 
-@media (max-width: 900px) {
-  .cs-persona { grid-column: 1 / -1; }
-}
+/* "Where it landed": label/value rows */
+.os-where { display: grid; gap: 12px; margin: 16px 0 0; }
+.os-where div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; }
+.os-where dt { line-height: 24px; }
+.os-where dd { margin: 0; font-size: 16px; line-height: 24px; color: var(--ink); }
 
-/* Outcome figure */
-.os-outcome { margin: 48px 0 0; }
-.os-outcome figcaption { margin-top: 12px; font-size: 12px; line-height: 18px; color: var(--muted); }
+/* Three hard things: one row on desktop */
+@media (min-width: 1100px) { .cs-hard { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 
-/* Legacy schematic inside the raw data dialog */
-.os-legacy { width: 100%; height: auto; display: block; border-radius: 8px; background: #fff; box-shadow: var(--cs-shadow); }
-.cs-dialog__shot figcaption { margin-top: 8px; font-size: 12px; line-height: 18px; color: var(--muted); }
+/* ---------- Validation findings ---------- */
+
+.os-findings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 48px; }
+/* h3 keeps the case study's section h3 style (20px, regular) */
+.cs-section .os-findings p { margin-top: 8px; }
 
 /* ---------- Interactive rules flow ---------- */
+
 .fl { margin: 48px 0 0; padding: 32px; border-radius: 12px; background: var(--cs-card-bg); }
-.fl-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 16px 32px; }
 .fl-head h3 { margin: 4px 0 0; }
-.fl-controls { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; margin-top: 24px; }
+
+/* Flow picker: two flows, chosen like radio cards */
+.fl-flows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 640px; margin: 24px 0 0; padding: 0; border: 0; }
+.fl-flow { position: relative; display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 1px solid #CBCAC3; border-radius: 10px; background: #fff; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
+.fl-flow input { appearance: none; flex: none; display: grid; place-items: center; width: 18px; height: 18px; margin: 3px 0 0; border: 1.5px solid var(--ink-soft); border-radius: 50%; background: #fff; }
+.fl-flow input::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); transform: scale(0); transition: transform .15s; }
+.fl-flow input:checked { border-color: var(--ink); }
+.fl-flow input:checked::after { transform: scale(1); }
+.fl-flow input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.fl-flow:has(input:checked) { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
+.fl-flow__body { display: grid; gap: 2px; }
+.fl-flow__title { font-size: 15px; line-height: 22px; font-weight: 500; color: var(--ink); }
+.fl-flow__desc { font-size: 13px; line-height: 18px; color: var(--ink-soft); }
+
+/* Conditions: switches styled as checkbox chips */
+.fl-controls { display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: center; margin-top: 16px; }
 .fl-chip {
   display: inline-flex; align-items: center; gap: 8px;
   height: 36px; padding: 0 14px;
@@ -70,81 +105,12 @@
   border-color: var(--ink);
 }
 .fl-chip[hidden] { display: none; }
-.fl-canvas { margin-top: 24px; overflow-x: auto; }
-.fl-canvas svg { display: block; width: 100%; min-width: 860px; height: auto; font-family: var(--font-sans); }
-.fl-node rect, .fl-node polygon { fill: #fff; stroke: #B9B7AF; stroke-width: 1.25; transition: fill .2s, stroke .2s, opacity .2s; }
-.fl-node text { font-size: 12.5px; fill: var(--ink); transition: opacity .2s; }
-.fl-action rect { fill: #F2F1ED; }
-.fl-block rect { stroke-dasharray: 4 3; }
-.fl-edge path { fill: none; stroke: #C9C7BF; stroke-width: 1.5; transition: stroke .2s, opacity .2s; }
-.fl-edge.is-dashed path { stroke-dasharray: 5 4; }
-.fl-label { font-size: 11px; fill: var(--muted); }
-.has-path .fl-node:not(.is-on) { opacity: .38; }
-.has-path .fl-edge:not(.is-on) { opacity: .3; }
-.fl-node.is-on rect, .fl-node.is-on polygon { stroke: var(--ink); stroke-width: 1.75; }
-.fl-edge.is-on path { stroke: var(--ink); stroke-width: 2; }
-.fl-node.fl-end.is-on rect { fill: #E8F0E2; stroke: var(--accent); }
-.fl-node.fl-block.is-on rect { fill: #FBEDEA; stroke: #B5462F; }
-.fl-arrow-head { fill: context-stroke; }
-.fl-outcome {
-  margin-top: 20px !important; max-width: none !important;
-  padding: 14px 16px; border-radius: 8px; border-left: 3px solid var(--accent);
-  background: #fff; font-size: 16px; line-height: 24px;
-}
-.fl-outcome[data-tone="block"] { border-left-color: #B5462F; }
-.fl-legend { margin-top: 12px !important; font-size: 12px; line-height: 18px; color: var(--ink-soft) !important; }
 
-/* Smaller "also in scope" block */
-.os-also { margin-top: 64px; }
-/* Validation findings */
-.os-findings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 48px; }
-.os-findings h3 { margin: 0; font-size: 18px; line-height: 26px; font-weight: 500; }
-.os-findings p { margin-top: 8px !important; }
-@media (max-width: 699px) { .os-findings { grid-template-columns: minmax(0, 1fr); } .fl { padding: 20px; } }
-.os-where { display: grid; gap: 12px; margin: 16px 0 0; }
-.os-where div { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; }
-.os-where dt { font-family: var(--font-mono); font-size: 12px; line-height: 24px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-strong); }
-.os-where dd { margin: 0; font-size: 16px; line-height: 24px; color: var(--ink); }
-.os-d3b { grid-column: 7 / span 5; }
-@media (max-width: 1099px) { .os-d3b { grid-column: 1 / -1; } }
-.cs-decision__media figcaption { margin-top: 12px; }
-@media (min-width: 1100px) { .cs-hard { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-/* Status model diagram */
-.os-status svg { display: block; width: 100%; height: auto; padding: 24px; border-radius: 8px; background: var(--cs-card-bg); box-shadow: var(--cs-shadow); font-family: var(--font-sans); }
-.st-n rect { fill: #fff; stroke: #94A3B8; stroke-width: 1.25; }
-.st-n text { font-size: 15px; fill: var(--ink); text-anchor: middle; }
-.st-done rect { fill: #E8F0E2; stroke: var(--accent); }
-.st-off rect { stroke-dasharray: 5 4; }
-.st-e { fill: none; stroke: #64748B; stroke-width: 1.5; }
-.st-l { font-size: 12px; fill: var(--muted); }
-.st-k { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; fill: var(--ink-strong); }
-/* Flow picker: two separate flows, chosen like radio cards */
-.fl-flows { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; margin: 24px 0 0; padding: 0; border: 0; max-width: 640px; }
-.fl-flow { position: relative; display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 1px solid #CBCAC3; border-radius: 10px; background: #fff; cursor: pointer; transition: border-color .2s, box-shadow .2s; }
-.fl-flow input { appearance: none; flex: none; width: 18px; height: 18px; margin: 3px 0 0; border: 1.5px solid var(--ink-soft); border-radius: 50%; background: #fff; display: grid; place-items: center; }
-.fl-flow input::after { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--ink); transform: scale(0); transition: transform .15s; }
-.fl-flow input:checked { border-color: var(--ink); }
-.fl-flow input:checked::after { transform: scale(1); }
-.fl-flow input:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.fl-flow:has(input:checked) { border-color: var(--ink); box-shadow: 0 0 0 1px var(--ink); }
-.fl-flow__body { display: grid; gap: 2px; }
-.fl-flow__title { font-size: 15px; line-height: 22px; font-weight: 500; color: var(--ink); }
-.fl-flow__desc { font-size: 13px; line-height: 18px; color: var(--ink-soft); }
-.fl-controls { margin-top: 16px; }
-.fl-node.is-out, .fl-edge.is-out { display: none; }
-@media (max-width: 699px) { .fl-flows { grid-template-columns: minmax(0, 1fr); } }
-/* v2 flow node styles */
-.fl-action rect { fill: var(--ink); stroke: var(--ink); }
-.fl-action text { fill: #fff; }
-.fl-start rect { fill: #fff; stroke: var(--ink-soft); }
-.fl-node.fl-action.is-on rect { fill: var(--ink); }
-.fl-canvas svg { min-width: 900px; }
-
-/* ---------- Blueprint board ---------- */
+/* Blueprint board: a dark grid that zooms, and pans by dragging (mouse) or scrolling (touch) */
 .fl-board { position: relative; margin-top: 24px; }
 .fl-canvas {
-  height: 480px; margin: 0; overflow: auto; overscroll-behavior: contain;
-  border-radius: 12px; cursor: grab; touch-action: none;
+  height: 480px; /* flow.js sets it to the fitted flow */ overflow: auto; overscroll-behavior-x: contain;
+  border-radius: 12px; cursor: grab;
   background-color: #0E2F4F;
   background-image:
     linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
@@ -157,7 +123,7 @@
 }
 .fl-canvas.is-dragging { cursor: grabbing; }
 .fl-canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.fl-canvas svg { display: block; min-width: 0; max-width: none; user-select: none; }
+.fl-canvas svg { display: block; max-width: none; user-select: none; font-family: var(--font-sans); }
 .fl-tools {
   position: absolute; top: 12px; right: 12px; z-index: 2;
   display: flex; align-items: center; gap: 2px; padding: 4px;
@@ -166,24 +132,43 @@
 .fl-tools button { min-width: 32px; height: 28px; padding: 0 8px; border-radius: 6px; color: #E6EEF6; font-size: 14px; }
 .fl-tools button:hover { background: rgba(255,255,255,.12); }
 .fl-zoom { min-width: 44px; text-align: center; font-family: var(--font-mono); font-size: 11px; color: rgba(230,238,246,.8); }
-.fl-hint { position: absolute; left: 16px; bottom: 12px; z-index: 2; margin: 0 !important; font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: rgba(230,238,246,.55) !important; pointer-events: none; }
+.cs-section .fl-hint { position: absolute; left: 16px; bottom: 12px; z-index: 2; margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: rgba(230,238,246,.55); pointer-events: none; }
 
-.fl-canvas .fl-node rect, .fl-canvas .fl-node polygon { fill: rgba(255,255,255,.04); stroke: rgba(230,238,246,.6); stroke-width: 1.25; }
-.fl-canvas .fl-node text { fill: #E6EEF6; font-size: 13px; }
-.fl-canvas .fl-action rect { fill: #E6EEF6; stroke: #E6EEF6; }
-.fl-canvas .fl-action text { fill: #0E2F4F; font-weight: 600; }
-.fl-canvas .fl-start rect { stroke-width: 1.5; }
-.fl-canvas .fl-edge path { stroke: rgba(230,238,246,.5); }
-.fl-canvas .fl-label { fill: rgba(230,238,246,.7); font-family: var(--font-mono); font-size: 10.5px; }
-.fl-canvas .has-path .fl-node:not(.is-on) { opacity: .28; }
-.fl-canvas .has-path .fl-edge:not(.is-on) { opacity: .22; }
-.fl-canvas .fl-node.is-on rect, .fl-canvas .fl-node.is-on polygon { stroke: #fff; stroke-width: 2; }
-.fl-canvas .fl-node.fl-action.is-on rect { fill: #fff; }
-.fl-canvas .fl-edge.is-on path { stroke: #fff; stroke-width: 2; }
-.fl-canvas .fl-node.fl-end.is-on rect { fill: rgba(134,197,107,.22); stroke: #A6DA8A; }
-.fl-canvas .fl-node.fl-block.is-on rect { fill: rgba(239,108,87,.2); stroke: #FF9C88; }
-.fl-canvas .fl-block rect { stroke-dasharray: 5 4; }
-.os-pair { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
-.os-pair figure { margin: 0; }
-.os-pair figcaption { margin-top: 8px; font-size: 12px; line-height: 18px; color: var(--muted); }
-@media (max-width: 699px) { .os-pair { grid-template-columns: minmax(0, 1fr); } }
+/* Nodes and edges (drawn by flow.js) */
+.fl-node rect, .fl-node polygon { fill: rgba(255,255,255,.04); stroke: rgba(230,238,246,.6); stroke-width: 1.25; transition: fill .2s, stroke .2s, opacity .2s; }
+.fl-node text { font-size: 13px; fill: #E6EEF6; transition: opacity .2s; }
+.fl-start rect { stroke-width: 1.5; }
+.fl-action rect { fill: #E6EEF6; stroke: #E6EEF6; }
+.fl-action text { fill: #0E2F4F; font-weight: 600; }
+.fl-block rect { stroke-dasharray: 5 4; }
+.fl-edge path { fill: none; stroke: rgba(230,238,246,.5); stroke-width: 1.5; transition: stroke .2s, opacity .2s; }
+.fl-label { font-family: var(--font-mono); font-size: 10.5px; fill: rgba(230,238,246,.7); }
+.fl-arrow-head { fill: context-stroke; }
+/* The path for the chosen scenario stays bright; the rest fades back */
+.has-path .fl-node:not(.is-on) { opacity: .28; }
+.has-path .fl-edge:not(.is-on) { opacity: .22; }
+.fl-node.is-on rect, .fl-node.is-on polygon { stroke: #fff; stroke-width: 2; }
+.fl-action.is-on rect { fill: #fff; }
+.fl-edge.is-on path { stroke: #fff; stroke-width: 2; }
+.fl-end.is-on rect { fill: rgba(134,197,107,.22); stroke: #A6DA8A; }
+.fl-block.is-on rect { fill: rgba(239,108,87,.2); stroke: #FF9C88; }
+
+/* Outcome of the chosen scenario, and the legend */
+.cs-section .fl-outcome {
+  max-width: none; margin-top: 20px;
+  padding: 14px 16px; border-radius: 8px; border-left: 3px solid var(--accent);
+  background: #fff; font-size: 16px; line-height: 24px;
+}
+.cs-section .fl-outcome[data-tone="block"] { border-left-color: #B5462F; }
+.cs-section .fl-legend { margin-top: 12px; font-size: 12px; line-height: 18px; color: var(--ink-soft); }
+
+/* ---------- Smaller screens ---------- */
+
+@media (max-width: 1099px) {
+  .cs-persona { grid-column: 1 / -1; }
+}
+@media (max-width: 699px) {
+  .os-findings,
+  .fl-flows { grid-template-columns: minmax(0, 1fr); }
+  .fl { padding: 20px; }
+}

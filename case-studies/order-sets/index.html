@@ -135,8 +135,6 @@
           </figure>
         </article>
 
-
-
         <hr class="cs-rule cs-rule--dotted">
 
         <article class="cs-decision cs-decision--reverse">
@@ -186,21 +184,20 @@
             </label>
           </fieldset>
           <div class="fl-controls" role="group" aria-label="Conditions">
-
             <button type="button" class="fl-chip" role="switch" data-toggle="attrs" aria-checked="true">Regimen attributes complete</button>
             <button type="button" class="fl-chip" role="switch" data-toggle="started" data-scope="sign" aria-checked="false">A cycle is already started</button>
             <button type="button" class="fl-chip" role="switch" data-toggle="draft" data-scope="start" aria-checked="false">A cycle draft already exists</button>
             <button type="button" class="fl-chip" role="switch" data-toggle="critical" data-scope="start" aria-checked="false">An order has a critical alert</button>
           </div>
           <div class="fl-board">
-          <div class="fl-tools" role="group" aria-label="Zoom">
-            <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
-            <span class="fl-zoom" aria-live="polite">100%</span>
-            <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
-            <button type="button" data-zoom="fit">Fit</button>
-          </div>
-          <p class="fl-hint" aria-hidden="true">Drag to move around</p>
-          <div class="fl-canvas" tabindex="0" aria-label="Flowchart canvas. Scroll or drag to move around.">
+            <div class="fl-tools" role="group" aria-label="Zoom">
+              <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
+              <span class="fl-zoom" aria-live="polite">100%</span>
+              <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+              <button type="button" data-zoom="fit">Fit</button>
+            </div>
+            <p class="fl-hint" aria-hidden="true">Drag to move around</p>
+            <div class="fl-canvas" tabindex="0" aria-label="Flowchart canvas. Scroll or drag to move around.">
             <svg viewBox="0 0 1240 560" role="img" aria-label="Flowchart of the rules for signing a regimen and starting a cycle. The highlighted path follows the scenario selected above; the outcome is described below the chart.">
               <defs>
                 <marker id="fl-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
@@ -216,7 +213,7 @@
         <hr class="cs-rule">
       </section>
 
-      <!-- 04. VALIDATION -->
+      <!-- 05. VALIDATION -->
       <section class="cs-section" aria-labelledby="validation">
         <p class="cs-eyebrow cs-eyebrow--dot">05. Validation</p>
         <h2 class="cs-title" id="validation" tabindex="-1">What the workgroups told us</h2>
@@ -236,7 +233,7 @@
           </div>
         </div>
 
-        <article class="cs-decision cs-decision--reverse" style="margin-top:64px">
+        <article class="cs-decision cs-decision--reverse os-gap">
           <div class="cs-decision__text">
             <p class="cs-label">What changed after the first session</p>
             <h3>Hierarchy, not color.</h3>
@@ -248,7 +245,7 @@
           </figure>
         </article>
 
-        <article class="cs-decision" style="margin-top:64px">
+        <article class="cs-decision os-gap">
           <div class="cs-decision__text">
             <p class="cs-label">The finding that stayed with me</p>
             <h3>The button nobody understood.</h3>
@@ -263,7 +260,7 @@
         <hr class="cs-rule">
       </section>
 
-      <!-- 05. OUTCOME -->
+      <!-- 06. OUTCOME -->
       <section class="cs-section" aria-labelledby="outcome">
         <p class="cs-eyebrow cs-eyebrow--dot">06. Outcome</p>
         <h2 class="cs-title" id="outcome" tabindex="-1">The views shipped, the setup screen didn’t change</h2>
@@ -271,10 +268,9 @@
           <p class="cs-lead">Dr. Reyes can read a cycle by day and by time.</p>
           <p>When I left in September 2026, the regimen and day-of-treatment views were in release, built on the rules flow, and the day-level dose calculator was in development. The PM and the clinical SMEs were especially keen on it. When Dr. Reyes clicks “Start”, she still meets the setup screen she was taught not to touch.</p>
         </div>
-      
       </section>
 
-      <!-- 06. REFLECTION -->
+      <!-- 07. REFLECTION -->
       <section class="cs-section" aria-labelledby="reflection">
         <p class="cs-eyebrow cs-eyebrow--dot">07. Reflection</p>
         <h2 class="cs-title" id="reflection" tabindex="-1">What I’d do differently</h2>

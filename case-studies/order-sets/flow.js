@@ -40,7 +40,7 @@
       },
     },
     sign: {
-      box: '0 0 1240 260',
+      box: '0 0 960 260',
       nodes: {
         A:  { x: 75,  y: 90,  kind: 'start',    t: ['Regimen', 'draft'], w: 110 },
         U3: { x: 225, y: 90,  kind: 'action',   t: ['Clicks', '“Sign regimen”'], w: 130 },
@@ -101,35 +101,52 @@
     layers[key] = g;
   }
 
-  // ---- Canvas: fixed board, zoom and drag to pan ----
+  // ---- Canvas: fixed board, zoom, and pan (drag with a mouse, native scroll on touch) ----
   const canvas = root.querySelector('.fl-canvas');
   const zoomLabel = root.querySelector('.fl-zoom');
-  const PAD = 80;
-  let zoom = 1.3, currentBox = '';
+  const BASE = 1.3;      // the zoom shown as 100%
+  // Below 0.75 the labels get too small to read: fit no smaller than that and let the board scroll
+  const MIN_FIT = 0.75;
+  let zoom = BASE, currentBox = '', userZoomed = false;
+  const pad = () => 20;
   function size(reset) {
     const [, , w, h] = currentBox.split(' ').map(Number);
-    svg.style.width = Math.round(w * zoom) + 'px';
-    svg.style.height = Math.round(h * zoom) + 'px';
-    const sw = w * zoom, sh = h * zoom;
-    const mx = Math.max(PAD, (canvas.clientWidth - sw) / 2), my = Math.max(PAD / 2, (canvas.clientHeight - sh) / 2);
+    const sw = w * zoom, sh = h * zoom, p = pad();
+    svg.style.width = Math.round(sw) + 'px';
+    svg.style.height = Math.round(sh) + 'px';
+    const mx = Math.max(p, (canvas.clientWidth - sw) / 2), my = Math.max(p / 2, (canvas.clientHeight - sh) / 2);
     svg.style.margin = `${Math.round(my)}px ${Math.round(mx)}px`;
-    zoomLabel.textContent = Math.round(zoom / 1.3 * 100) + '%';
+    zoomLabel.textContent = Math.round(zoom / BASE * 100) + '%';
     if (reset) { canvas.scrollLeft = 0; canvas.scrollTop = 0; }
   }
+  // Fit the whole flow on the board (up to 100%)
   function fit() {
     const [, , w, h] = currentBox.split(' ').map(Number);
-    zoom = Math.min((canvas.clientWidth - PAD * 2) / w, (canvas.clientHeight - PAD) / h);
+    const p = pad();
+    zoom = Math.max(MIN_FIT, Math.min(BASE, (canvas.clientWidth - p * 2) / w));
+    // The board is as tall as the fitted flow (plus room for the zoom tools and the hint), up to 480px
+    canvas.style.height = Math.min(480, Math.round(h * zoom + 120)) + 'px';
     size(true);
   }
   root.querySelectorAll('[data-zoom]').forEach((b) => b.addEventListener('click', () => {
     const k = b.dataset.zoom;
-    if (k === 'fit') return fit();
+    if (k === 'fit') { userZoomed = false; return fit(); }
+    userZoomed = true;
     zoom = Math.min(2.6, Math.max(0.5, zoom * (k === 'in' ? 1.2 : 1 / 1.2)));
     size(false);
   }));
+  // Refit when the board changes size, unless the reader picked a zoom
+  if ('ResizeObserver' in window) {
+    let lastW = 0;
+    new ResizeObserver(() => {
+      if (canvas.clientWidth === lastW) return;
+      lastW = canvas.clientWidth;
+      if (currentBox) (userZoomed ? size(false) : fit());
+    }).observe(canvas);
+  }
   let drag = null;
   canvas.addEventListener('pointerdown', (e) => {
-    if (e.button !== 0) return;
+    if (e.pointerType !== 'mouse' || e.button !== 0) return; // touch and pen use native scrolling
     drag = { x: e.clientX, y: e.clientY, l: canvas.scrollLeft, t: canvas.scrollTop };
     canvas.classList.add('is-dragging');
     canvas.setPointerCapture(e.pointerId);
@@ -182,7 +199,7 @@
       layers[key].style.display = active ? '' : 'none';
       if (!active) continue;
       svg.setAttribute('viewBox', f.box);
-      if (f.box !== currentBox) { currentBox = f.box; size(true); }
+      if (f.box !== currentBox) { currentBox = f.box; userZoomed ? size(true) : fit(); }
       for (const id in f.nodeEls) f.nodeEls[id].classList.toggle('is-on', on.has(id));
       for (const id in f.edgeEls) f.edgeEls[id].classList.toggle('is-on', on.has(id));
     }
