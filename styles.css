@@ -502,9 +502,10 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   font-family: var(--font-mono); font-size: 12px; line-height: 24px; font-weight: 400;
   letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-strong);
 }
-.about-list { display: grid; gap: 16px; margin: 12px 0 0; padding: 0; list-style: none; }
-.about-list li { font-size: 16px; line-height: 24px; color: var(--ink); }
-.about-list strong { font-weight: 600; color: var(--ink-strong); }
+/* Same type as the case studies' lessons: h3 at 20px regular, text at 14px */
+.about-list { display: grid; gap: 24px; margin: 16px 0 0; padding: 0; list-style: none; }
+.about-list h3 { margin: 0; font-family: var(--font-sans); font-weight: 400; font-size: 20px; line-height: 28px; color: var(--ink); }
+.about-list p { margin-top: 4px; font-size: 14px; line-height: 22px; color: var(--ink); }
 .about-cv { display: flex; flex-wrap: wrap; align-items: baseline; gap: 8px 24px; margin-top: 32px; }
 .about-cv .cta { font-size: 18px; }
 .about-cv__alt { font-size: 14px; line-height: 22px; color: var(--ink-soft); text-decoration: underline; text-underline-offset: 3px; }
