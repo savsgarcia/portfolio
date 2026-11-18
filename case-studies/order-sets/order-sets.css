@@ -71,6 +71,16 @@
 .os-findings h3 { margin: 0; }
 .cs-section .os-findings p { margin-top: 8px; }
 
+/* ---------- Validation: the "Start" finding and the two options explored ---------- */
+
+.os-start h3 { margin: 8px 0 0; }
+.cs-section .os-start h3 + p { margin-top: 8px; }
+.os-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 32px; }
+.os-options figure { margin: 0; }
+.cs-section .os-options figcaption { margin-top: 12px; font-size: 15px; line-height: 22px; color: var(--ink); }
+.os-options figcaption .cs-label { display: block; margin-bottom: 4px; }
+@media (max-width: 699px) { .os-options { grid-template-columns: minmax(0, 1fr); } }
+
 /* ---------- Feature walkthrough (tour.js) ---------- */
 
 /* Without JavaScript: the screens and captions as a numbered list */

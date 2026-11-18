@@ -329,7 +329,7 @@
         <h2 class="cs-title" id="validation" tabindex="-1">What the workgroups told us</h2>
         <div class="cs-intro">
           <p class="cs-lead">Clinicians like Dr. Reyes, and the people who build and support her regimens.</p>
-          <p>I brought the designs to oncology workgroups with oncologists, pharmacists and informaticists from academic, community and cancer centers. Most of what they said confirmed the grid. One request changed how sections read, and one finding changed how I see the whole flow.</p>
+          <p>The designs went through three oncology workgroups with oncologists, pharmacists and informaticists from academic, community and cancer centers. I presented the first and prepared the prototypes for all three; the PM, who had the clinical depth, led the follow-ups. Most of what they said confirmed the grid. One finding changed how I see the whole flow.</p>
         </div>
 
         <div class="os-findings">
@@ -343,19 +343,22 @@
           </div>
         </div>
 
-        <div class="os-findings os-gap">
-          <div>
-            <p class="cs-label">What changed after the first session</p>
-            <h3>Hierarchy, not color</h3>
-            <p>Clinicians said the sections blended together and asked for the colored notes from the legacy screen. I tried color, and the design system team advised against it: its principles keep color for meaning, not decoration. In the old grid, green, teal and yellow bars did the work of headings, on the same screen as allergy and interaction alerts.</p>
-            <p>I rebuilt the hierarchy with type instead: category names in semibold with their order count, orders in regular weight, notes in a quieter style. Color stayed free for alerts, where it has to stand out.</p>
-          </div>
-          <div>
-            <p class="cs-label">The finding that stayed with me</p>
-            <h3>The button nobody understood</h3>
-            <p>In April I questioned “Start”. It only opened the cycle for review, so I proposed “View cycle”. Product kept “Start” because it was the term everyone knew.</p>
-            <p>The workgroups brought it back. Behind “Start” sat a setup screen with visit types and phase actions (step 7 in the walkthrough above). One organization tells its oncologists never to touch it; another has seen a lab phase removed by accident. Regimens follow national guidelines, so the defaults are almost always right, yet the screen presented each one as a decision. Clinicians asked to hide it.</p>
-          </div>
+        <div class="os-start os-gap">
+          <p class="cs-label">The finding that stayed with me</p>
+          <h3>The button nobody understood</h3>
+          <p>In April I questioned “Start”. It only opened the cycle for review, so I proposed “View cycle”. Product kept “Start” because it was the term everyone knew.</p>
+          <p>The workgroups brought it back. Behind “Start” sat a setup screen with visit types and phase actions (step 7 in the walkthrough above). One organization tells its oncologists never to touch it; another has seen a lab phase removed by accident. Regimens follow national guidelines, so the defaults are almost always right, yet the screen presented each one as a decision. Clinicians asked to hide it.</p>
+          <p>I explored two ways to take it out of her path:</p>
+        </div>
+        <div class="os-options">
+          <figure>
+            <img class="os-screen" src="img/option-1.webp" width="2880" height="1620" loading="lazy" alt="Option A: a small modal over the signed regimen asks only for the visit and start time, prefilled with Future visit, outpatient, March 23, 2026 at 8:00 AM, with Cancel and Continue.">
+            <figcaption><span class="cs-label">Option A · Ask less</span>A small modal with only the visit and start time, filled in from the plan. Phase actions leave the screen; one Continue confirms.</figcaption>
+          </figure>
+          <figure>
+            <img class="os-screen" src="img/option-2.webp" width="2880" height="1620" loading="lazy" alt="Option B: Start opens the cycle directly, with a banner reading Activation settings applied from plan, review or adjust phase activation settings before signing.">
+            <figcaption><span class="cs-label">Option B · Ask nothing</span>“Start” opens the cycle straight away with the plan’s settings, and a banner says so. She can still review them before signing.</figcaption>
+          </figure>
         </div>
         <hr class="cs-rule">
       </section>
