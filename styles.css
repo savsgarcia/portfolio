@@ -502,10 +502,6 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   font-family: var(--font-mono); font-size: 12px; line-height: 24px; font-weight: 400;
   letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-strong);
 }
-/* Same type as the case studies' lessons: h3 at 20px regular, text at 14px */
-.about-list { display: grid; gap: 24px; margin: 16px 0 0; padding: 0; list-style: none; }
-.about-list h3 { margin: 0; font-family: var(--font-sans); font-weight: 400; font-size: 20px; line-height: 28px; color: var(--ink); }
-.about-list p { margin-top: 4px; font-size: 14px; line-height: 22px; color: var(--ink); }
 .about-cv { display: flex; flex-wrap: wrap; gap: 12px 32px; margin-top: 16px; }
 .about-cv .cta { font-size: 16px; line-height: 24px; }
 .about-cv .cta:hover svg,
