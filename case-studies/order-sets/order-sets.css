@@ -4,15 +4,8 @@
 
 /* Flat screenshots get a card treatment: rounded corners and the shared shadow */
 .os-screen { display: block; width: 100%; height: auto; border-radius: 8px; box-shadow: var(--cs-shadow); }
-/* Hero: a flat screen (not a device mockup), so it lines up with the text column
-   and keeps its bottom edge instead of fading out */
-.cs-hero .os-screen {
-  width: calc(100% - 2 * var(--cs-pad));
-  max-width: var(--cs-content);
-  border-radius: 10px;
-  -webkit-mask-image: none;
-  mask-image: none;
-}
+/* Hero teaser: a cropped flat screen that fades out over its lower half, like the device mockups */
+.cs-hero { --cs-hero-fade: 45%; }
 .cs-decision__media figcaption { margin-top: 12px; }
 /* Extra space between the decision blocks inside Validation */
 .os-gap { margin-top: 64px; }
