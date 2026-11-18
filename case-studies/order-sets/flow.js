@@ -101,64 +101,14 @@
     layers[key] = g;
   }
 
-  // ---- Canvas: fixed board, zoom, and pan (drag with a mouse, native scroll on touch) ----
-  const canvas = root.querySelector('.fl-canvas');
-  const zoomLabel = root.querySelector('.fl-zoom');
-  const BASE = 1.3;      // the zoom shown as 100%
-  // Below 0.75 the labels get too small to read: fit no smaller than that and let the board scroll
-  const MIN_FIT = 0.75;
-  let zoom = BASE, currentBox = '', userZoomed = false;
-  const pad = () => 20;
-  function size(reset) {
-    const [, , w, h] = currentBox.split(' ').map(Number);
-    const sw = w * zoom, sh = h * zoom, p = pad();
-    svg.style.width = Math.round(sw) + 'px';
-    svg.style.height = Math.round(sh) + 'px';
-    const mx = Math.max(p, (canvas.clientWidth - sw) / 2), my = Math.max(p / 2, (canvas.clientHeight - sh) / 2);
-    svg.style.margin = `${Math.round(my)}px ${Math.round(mx)}px`;
-    zoomLabel.textContent = Math.round(zoom / BASE * 100) + '%';
-    if (reset) { canvas.scrollLeft = 0; canvas.scrollTop = 0; }
+  // ---- Board: the flow always fills the card's width. On narrow screens it keeps a
+  // readable minimum width and the board scrolls sideways (native scrolling, no drag code).
+  const MIN_SCALE = 0.72; // below this, 14px labels drop under 10px
+  let currentBox = '';
+  function size() {
+    const w = Number(currentBox.split(' ')[2]);
+    svg.style.minWidth = Math.round(w * MIN_SCALE) + 'px';
   }
-  // Fit the whole flow on the board (up to 100%)
-  function fit() {
-    const [, , w, h] = currentBox.split(' ').map(Number);
-    const p = pad();
-    zoom = Math.max(MIN_FIT, Math.min(BASE, (canvas.clientWidth - p * 2) / w));
-    // The board is as tall as the fitted flow (plus room for the zoom tools and the hint), up to 480px
-    canvas.style.height = Math.min(480, Math.round(h * zoom + 120)) + 'px';
-    size(true);
-  }
-  root.querySelectorAll('[data-zoom]').forEach((b) => b.addEventListener('click', () => {
-    const k = b.dataset.zoom;
-    if (k === 'fit') { userZoomed = false; return fit(); }
-    userZoomed = true;
-    zoom = Math.min(2.6, Math.max(0.5, zoom * (k === 'in' ? 1.2 : 1 / 1.2)));
-    size(false);
-  }));
-  // Refit when the board changes size, unless the reader picked a zoom
-  if ('ResizeObserver' in window) {
-    let lastW = 0;
-    new ResizeObserver(() => {
-      if (canvas.clientWidth === lastW) return;
-      lastW = canvas.clientWidth;
-      if (currentBox) (userZoomed ? size(false) : fit());
-    }).observe(canvas);
-  }
-  let drag = null;
-  canvas.addEventListener('pointerdown', (e) => {
-    if (e.pointerType !== 'mouse' || e.button !== 0) return; // touch and pen use native scrolling
-    drag = { x: e.clientX, y: e.clientY, l: canvas.scrollLeft, t: canvas.scrollTop };
-    canvas.classList.add('is-dragging');
-    canvas.setPointerCapture(e.pointerId);
-  });
-  canvas.addEventListener('pointermove', (e) => {
-    if (!drag) return;
-    canvas.scrollLeft = drag.l - (e.clientX - drag.x);
-    canvas.scrollTop = drag.t - (e.clientY - drag.y);
-  });
-  const end = () => { drag = null; canvas.classList.remove('is-dragging'); };
-  canvas.addEventListener('pointerup', end);
-  canvas.addEventListener('pointercancel', end);
 
   const state = { action: 'start', attrs: true, started: false, draft: false, critical: false };
 
@@ -199,7 +149,7 @@
       layers[key].style.display = active ? '' : 'none';
       if (!active) continue;
       svg.setAttribute('viewBox', f.box);
-      if (f.box !== currentBox) { currentBox = f.box; userZoomed ? size(true) : fit(); }
+      if (f.box !== currentBox) { currentBox = f.box; size(); }
       for (const id in f.nodeEls) f.nodeEls[id].classList.toggle('is-on', on.has(id));
       for (const id in f.edgeEls) f.edgeEls[id].classList.toggle('is-on', on.has(id));
     }

@@ -68,7 +68,23 @@
 
 .os-findings { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 24px; margin-top: 48px; }
 /* h3 keeps the case study's section h3 style (20px, regular) */
+.os-findings h3 { margin: 0; }
 .cs-section .os-findings p { margin-top: 8px; }
+
+/* ---------- Calculator, step by step ---------- */
+
+.os-steps { margin-top: 64px; }
+.os-steps ol { display: grid; gap: 48px; margin: 16px 0 0; padding: 0; list-style: none; }
+.os-steps figure { margin: 0; }
+.cs-section .os-steps figcaption { display: flex; gap: 12px; align-items: baseline; max-width: 640px; margin-top: 16px; font-size: 16px; line-height: 24px; color: var(--ink); }
+.os-steps__num { flex: none; font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-strong); }
+
+/* ---------- The rules, in words, before the flowchart ---------- */
+
+.os-rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 24px 32px; margin: 48px 0 0; padding: 0; list-style: none; }
+.os-rules li { padding-left: 16px; border-left: 2px solid var(--accent); }
+.os-rules h3 { margin: 0; }
+.cs-section .os-rules p { margin-top: 4px; }
 
 /* ---------- Interactive rules flow ---------- */
 
@@ -106,52 +122,46 @@
 }
 .fl-chip[hidden] { display: none; }
 
-/* Blueprint board: a dark grid that zooms, and pans by dragging (mouse) or scrolling (touch) */
-.fl-board { position: relative; margin-top: 24px; }
+/* Board: warm paper with a faint dot grid, in the site palette.
+   Contrast on the board (#F6F4EE): lines 3.3:1, labels 6.4:1, ok 4.0:1, stop 4.9:1, text 13:1+ */
+.fl {
+  --fl-board: #F6F4EE;
+  --fl-line: #8A867C;
+  --fl-label: #5C5850;
+  --fl-ok: var(--accent);
+  --fl-ok-bg: #EAF1E4;
+  --fl-stop: #B5462F;
+  --fl-stop-bg: #FBECE8;
+}
+.fl-board { margin-top: 24px; }
 .fl-canvas {
-  height: 480px; /* flow.js sets it to the fitted flow */ overflow: auto; overscroll-behavior-x: contain;
-  border-radius: 12px; cursor: grab;
-  background-color: #0E2F4F;
-  background-image:
-    linear-gradient(rgba(255,255,255,.10) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.10) 1px, transparent 1px),
-    linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
-  background-size: 100px 100px, 100px 100px, 20px 20px, 20px 20px;
-  background-attachment: local;
-  scrollbar-color: rgba(255,255,255,.3) transparent;
+  overflow-x: auto;
+  padding: 24px;
+  border-radius: 12px;
+  background: var(--fl-board) radial-gradient(rgba(30, 41, 59, .12) 1px, transparent 1.4px) 0 0 / 20px 20px;
 }
-.fl-canvas.is-dragging { cursor: grabbing; }
 .fl-canvas:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
-.fl-canvas svg { display: block; max-width: none; user-select: none; font-family: var(--font-sans); }
-.fl-tools {
-  position: absolute; top: 12px; right: 12px; z-index: 2;
-  display: flex; align-items: center; gap: 2px; padding: 4px;
-  border-radius: 8px; background: rgba(9, 32, 55, .85); border: 1px solid rgba(255,255,255,.18);
-}
-.fl-tools button { min-width: 32px; height: 28px; padding: 0 8px; border-radius: 6px; color: #E6EEF6; font-size: 14px; }
-.fl-tools button:hover { background: rgba(255,255,255,.12); }
-.fl-zoom { min-width: 44px; text-align: center; font-family: var(--font-mono); font-size: 11px; color: rgba(230,238,246,.8); }
-.cs-section .fl-hint { position: absolute; left: 16px; bottom: 12px; z-index: 2; margin: 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: .04em; text-transform: uppercase; color: rgba(230,238,246,.55); pointer-events: none; }
+.fl-canvas svg { display: block; width: 100%; height: auto; max-width: none; font-family: var(--font-sans); }
+.cs-section .fl-swipe { display: none; margin-top: 8px; font-family: var(--font-mono); font-size: 11px; line-height: 16px; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-soft); }
 
 /* Nodes and edges (drawn by flow.js) */
-.fl-node rect, .fl-node polygon { fill: rgba(255,255,255,.04); stroke: rgba(230,238,246,.6); stroke-width: 1.25; transition: fill .2s, stroke .2s, opacity .2s; }
-.fl-node text { font-size: 13px; fill: #E6EEF6; transition: opacity .2s; }
+.fl-node rect, .fl-node polygon { fill: #fff; stroke: var(--fl-line); stroke-width: 1.25; transition: fill .2s, stroke .2s, opacity .2s; }
+.fl-node text { font-size: 14px; fill: var(--ink-strong); transition: opacity .2s; }
 .fl-start rect { stroke-width: 1.5; }
-.fl-action rect { fill: #E6EEF6; stroke: #E6EEF6; }
-.fl-action text { fill: #0E2F4F; font-weight: 600; }
+.fl-action rect { fill: var(--ink); stroke: var(--ink); }
+.fl-action text { fill: #fff; font-weight: 600; }
 .fl-block rect { stroke-dasharray: 5 4; }
-.fl-edge path { fill: none; stroke: rgba(230,238,246,.5); stroke-width: 1.5; transition: stroke .2s, opacity .2s; }
-.fl-label { font-family: var(--font-mono); font-size: 10.5px; fill: rgba(230,238,246,.7); }
+.fl-edge path { fill: none; stroke: var(--fl-line); stroke-width: 1.5; transition: stroke .2s, opacity .2s; }
+.fl-label { font-family: var(--font-mono); font-size: 11px; fill: var(--fl-label); }
 .fl-arrow-head { fill: context-stroke; }
-/* The path for the chosen scenario stays bright; the rest fades back */
-.has-path .fl-node:not(.is-on) { opacity: .28; }
-.has-path .fl-edge:not(.is-on) { opacity: .22; }
-.fl-node.is-on rect, .fl-node.is-on polygon { stroke: #fff; stroke-width: 2; }
-.fl-action.is-on rect { fill: #fff; }
-.fl-edge.is-on path { stroke: #fff; stroke-width: 2; }
-.fl-end.is-on rect { fill: rgba(134,197,107,.22); stroke: #A6DA8A; }
-.fl-block.is-on rect { fill: rgba(239,108,87,.2); stroke: #FF9C88; }
+/* The path for the chosen scenario stays strong; the rest fades back */
+.has-path .fl-node:not(.is-on) { opacity: .4; }
+.has-path .fl-edge:not(.is-on) { opacity: .35; }
+.fl-node.is-on rect, .fl-node.is-on polygon { stroke: var(--ink-strong); stroke-width: 2; }
+.fl-action.is-on rect { fill: var(--ink-strong); }
+.fl-edge.is-on path { stroke: var(--ink-strong); stroke-width: 2; }
+.fl-end.is-on rect { fill: var(--fl-ok-bg); stroke: var(--fl-ok); }
+.fl-block.is-on rect { fill: var(--fl-stop-bg); stroke: var(--fl-stop); }
 
 /* Outcome of the chosen scenario, and the legend */
 .cs-section .fl-outcome {
@@ -159,7 +169,7 @@
   padding: 14px 16px; border-radius: 8px; border-left: 3px solid var(--accent);
   background: #fff; font-size: 16px; line-height: 24px;
 }
-.cs-section .fl-outcome[data-tone="block"] { border-left-color: #B5462F; }
+.cs-section .fl-outcome[data-tone="block"] { border-left-color: var(--fl-stop); }
 .cs-section .fl-legend { margin-top: 12px; font-size: 12px; line-height: 18px; color: var(--ink-soft); }
 
 /* ---------- Smaller screens ---------- */
@@ -169,6 +179,10 @@
 }
 @media (max-width: 699px) {
   .os-findings,
+  .os-rules,
   .fl-flows { grid-template-columns: minmax(0, 1fr); }
+  .os-steps ol { gap: 32px; }
+  .fl-canvas { padding: 16px; }
+  .cs-section .fl-swipe { display: block; }
   .fl { padding: 20px; }
 }

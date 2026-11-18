@@ -150,6 +150,42 @@
             <figcaption>The legacy calculator: one medication per window. Public screenshot.</figcaption>
           </figure>
         </article>
+
+        <div class="os-steps">
+          <p class="cs-label">The new dose calculations, step by step</p>
+          <ol>
+            <li>
+              <figure>
+                <img class="os-screen" src="img/calc-1.webp" width="2000" height="1125" loading="lazy" alt="Cycle 1 of 4 of the pemetrexed and cisplatin regimen, last updated by Nadia Reyes, MD, with a Dose calculations link and a check mark under the title.">
+                <figcaption><span class="os-steps__num" aria-hidden="true">01</span>Dose calculations sits under the cycle title. The check shows every dose is calculated.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img class="os-screen" src="img/calc-2.webp" width="2000" height="1125" loading="lazy" alt="Dose calculations drawer listing cisplatin, target 75 mg/m² (120 mg), and pemetrexed, target 500 mg/m² (800 mg), both with no adjustment and a BSA of 1.60 m².">
+                <figcaption><span class="os-steps__num" aria-hidden="true">02</span>Every dose-based order in the cycle, side by side, with the BSA each one used.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img class="os-screen" src="img/calc-3.webp" width="2000" height="1125" loading="lazy" alt="Cisplatin open for editing in the drawer: target 75 mg/m², calculated 120 mg, dose adjustment at 100%, rounding rule and order comments. Pemetrexed stays below, and Apply is disabled.">
+                <figcaption><span class="os-steps__num" aria-hidden="true">03</span>Editing cisplatin opens its full calculation in place. Pemetrexed stays in view, and Apply waits until she’s done.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img class="os-screen" src="img/calc-4.webp" width="2000" height="1125" loading="lazy" alt="Cisplatin set to 90%: adjusted target 67.5 mg/m², adjusted final dose 108 mg, and a required Adjust reason field.">
+                <figcaption><span class="os-steps__num" aria-hidden="true">04</span>Any reduction asks for a reason, and the adjusted dose updates as she changes it.</figcaption>
+              </figure>
+            </li>
+            <li>
+              <figure>
+                <img class="os-screen" src="img/calc-5.webp" width="2000" height="1125" loading="lazy" alt="Cisplatin set to 80%: adjusted target 60 mg/m², adjusted final dose 96 mg. Pemetrexed is still at full dose.">
+                <figcaption><span class="os-steps__num" aria-hidden="true">05</span>At 80%, cisplatin drops to 96 mg while pemetrexed stays at full dose.</figcaption>
+              </figure>
+            </li>
+          </ol>
+        </div>
         <hr class="cs-rule">
       </section>
 
@@ -164,6 +200,14 @@
             <p>I wrote them down in one flowchart, on top of the statuses the legacy system already used. The PM helped me walk the team through it, and <strong>engineering used it as the base for the build.</strong></p>
           </div>
         </div>
+
+
+        <ul class="os-rules">
+          <li><h3>One signature for both</h3><p>Signing a cycle signs the regimen too.</p></li>
+          <li><h3>Drafts resume, never duplicate</h3><p>Starting a cycle reopens the draft she left, instead of creating a second one.</p></li>
+          <li><h3>Only critical alerts block</h3><p>Critical alerts stop signing; pending ones don’t.</p></li>
+          <li><h3>Attributes come first</h3><p>A regimen can’t be signed or started until its attributes, like intent or line of therapy, are complete.</p></li>
+        </ul>
 
         <div class="fl" id="flow">
           <div class="fl-head">
@@ -190,23 +234,17 @@
             <button type="button" class="fl-chip" role="switch" data-toggle="critical" data-scope="start" aria-checked="false">An order has a critical alert</button>
           </div>
           <div class="fl-board">
-            <div class="fl-tools" role="group" aria-label="Zoom">
-              <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
-              <span class="fl-zoom" aria-live="polite">100%</span>
-              <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
-              <button type="button" data-zoom="fit">Fit</button>
+            <div class="fl-canvas" tabindex="0" role="region" aria-label="Flowchart. On small screens, scroll sideways to see all of it.">
+              <svg viewBox="0 0 1240 560" role="img" aria-label="Flowchart of the rules for signing a regimen and starting a cycle. The highlighted path follows the scenario selected above; the outcome is described below the chart.">
+                <defs>
+                  <marker id="fl-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0 0 L10 5 L0 10 z" class="fl-arrow-head"/>
+                  </marker>
+                </defs>
+              </svg>
             </div>
-            <p class="fl-hint" aria-hidden="true">Drag to move around</p>
-            <div class="fl-canvas" tabindex="0" aria-label="Flowchart canvas. Scroll or drag to move around.">
-            <svg viewBox="0 0 1240 560" role="img" aria-label="Flowchart of the rules for signing a regimen and starting a cycle. The highlighted path follows the scenario selected above; the outcome is described below the chart.">
-              <defs>
-                <marker id="fl-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                  <path d="M0 0 L10 5 L0 10 z" class="fl-arrow-head"/>
-                </marker>
-              </defs>
-            </svg>
           </div>
-          </div>
+          <p class="fl-swipe" aria-hidden="true">Swipe sideways to see the whole flow</p>
           <p class="fl-outcome" aria-live="polite"></p>
           <p class="fl-legend">Redrawn from my original flowchart. Pills are Dr. Reyes’ actions, diamonds are system checks. Pending alerts never block signing; critical ones do.</p>
         </div>
