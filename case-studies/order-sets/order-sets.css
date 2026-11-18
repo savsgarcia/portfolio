@@ -8,7 +8,13 @@
 .cs { --cs-accent-line: #C49AB4; }
 
 /* Hero teaser: a cropped flat screen that fades out over its lower half, like the device mockups */
-.cs-hero { --cs-hero-fade: 45%; }
+/* Hero: the full screen at full opacity (no fade), never touching the edges:
+   at most the content column, and always at least 40px from each side */
+.cs-hero .os-screen {
+  width: min(var(--cs-content), calc(100% - 80px)); max-width: none;
+  margin: 0 auto; padding: 0; border-radius: 10px;
+  -webkit-mask-image: none; mask-image: none;
+}
 .cs-decision__media figcaption { margin-top: 12px; }
 /* Extra space between the decision blocks inside Validation */
 .os-gap { margin-top: 64px; }
