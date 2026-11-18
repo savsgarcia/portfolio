@@ -271,7 +271,7 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
 
 /* Desktop (1100px+): image panel takes 40% (50% from 1600px) of the viewport width.
    The project list sits above the intro, full width with 40px margins. */
-@media (min-width: 1100px) {
+@media (min-width: 1240px) {
   .view--work {
     grid-template-columns: minmax(0, 1fr) 50vw;
     grid-template-rows: auto 1fr;
@@ -285,14 +285,14 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .project-copy .display { font-size: clamp(40px, 3.75vw, 60px); line-height: 1.04; text-wrap: balance; }
   .project-copy .lede { max-width: 580px; }
 }
-@media (min-width: 1100px) and (max-width: 1599px) {
+@media (min-width: 1240px) and (max-width: 1599px) {
   .view--work { grid-template-columns: minmax(0, 1fr) 40vw; }
   .view--work .col--text { padding-top: 32px; }
 }
 /* Desktop (1100px and up): one fluid scale instead of a jump at 1600px. The title grows with the
    window's width and is held back by its height, so it reaches the design's 96px only on large
    screens and stays within the window on shorter laptops. */
-@media (min-width: 1100px) {
+@media (min-width: 1240px) {
   .project-copy .display { font-size: clamp(40px, min(4vw, 6.8vh), 96px); line-height: 1.02; }
 }
 
@@ -535,7 +535,7 @@ a.cta:focus-visible svg { transform: translateX(4px); }
    Tablet & phone
    ========================================================== */
 
-@media (max-width: 1099px) {
+@media (max-width: 1239px) {
   :root { --gutter: 20px; }
 
   body.menu-open { overflow: hidden; }
@@ -711,7 +711,7 @@ a.cta:focus-visible svg { transform: translateX(4px); }
 /* Stacked use cases: only on tablet/phone */
 .work-stack { display: none; }
 
-@media (max-width: 1099px) {
+@media (max-width: 1239px) {
   .view--work > .col--projects,
   .view--work > .col--text,
   .view--work > .col--visual { display: none; }
@@ -788,13 +788,17 @@ a.cta:focus-visible svg { transform: translateX(4px); }
 }
 
 /* Tablet: project heading uses the case study title style (.cs-title below 1100px) */
-@media (min-width: 700px) and (max-width: 1099px) {
+@media (min-width: 700px) and (max-width: 1239px) {
   .project-copy .display { font-size: 40px; line-height: 44px; letter-spacing: -0.01em; }
 }
 
-/* Small desktop (1025–1099px): same Work layout as desktop L,
+/* Small desktop (1025–1239px): same Work layout as desktop L,
    with the sidebar replaced by the top bar + hamburger menu. */
-@media (min-width: 1025px) and (max-width: 1099px) {
+@media (min-width: 1025px) and (max-width: 1239px) {
+  /* Top bar and open menu with 40px side margins, lined up with the Work columns */
+  .topbar { padding-left: 40px; padding-right: 40px; }
+  .sidebar { padding-left: 40px; padding-right: 40px; }
+  .menu-open .site-footer { left: 40px; }
   .work-stack { display: none; }
   .view--work {
     display: grid;
@@ -841,7 +845,7 @@ a.cta:focus-visible svg { transform: translateX(4px); }
 
 /* Tablet to small desktop (700–1099px): About keeps the desktop
    column layout with dotted dividers; the menu stays in the hamburger. */
-@media (min-width: 700px) and (max-width: 1099px) {
+@media (min-width: 700px) and (max-width: 1239px) {
   .view--about {
     display: grid;
     grid-template-columns: 18% minmax(0, 46%) 1fr;
@@ -862,29 +866,6 @@ a.cta:focus-visible svg { transform: translateX(4px); }
     padding: calc(clamp(48px, calc(var(--top) - 84px), 240px) + 7px) 24px 40px 32px;
   }
   .about-photo img { width: min(160px, 100%); height: auto; aspect-ratio: 1; }
-}
-
-/* Narrow desktop (1100–1239px): the three project tabs don't fit one row, so Work uses the
-   stacked use cases from tablet, next to the sidebar, in a centered 720px column */
-@media (min-width: 1100px) and (max-width: 1239px) {
-  .view--work { --gutter: max(40px, calc((100vw - var(--side) - 720px) / 2)); }
-  .view--work { display: block; }
-  .view--work > .col--projects,
-  .view--work > .col--text,
-  .view--work > .col--visual { display: none; }
-  .work-stack { display: flex; flex-direction: column; gap: 40px; padding: 0 0 64px; }
-  .case .project-copy { padding: 0 var(--gutter); max-width: calc(2 * var(--gutter) + 640px); }
-  .case-eyebrow { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 8px; padding: 24px var(--gutter) 24px; }
-  .case-eyebrow .project-tab-num { margin: 0; color: var(--ink); font-size: 16px; line-height: 24px; font-weight: 300; }
-  .case-name, .case-client { font-size: 16px; line-height: 24px; font-weight: 300; }
-  .case-client { color: var(--muted); }
-  .case-name::before, .case-client::before { content: "·"; margin-right: 8px; color: var(--muted); font-weight: 300; }
-  .case-visual { position: relative; overflow: hidden; height: 360px; padding: 40px var(--gutter) 0; background: var(--panel-bg); }
-  .case-visual .project-image { position: static; display: block; width: 100%; max-width: none; height: auto; }
-  .case-visual .project-image--viu { width: calc(100% + 2 * 0.82%); margin-left: -0.82%; }
-  .case-visual .project-image--order-entry { width: calc(100% + 2 * 1.04%); margin-left: -1.04%; }
-  .case-visual .project-image--order-sets { width: calc(100% + 2 * 0.5%); margin-left: -0.5%; }
-  .case .project-copy .display { font-size: 40px; line-height: 44px; letter-spacing: -0.01em; }
 }
 
 @media (prefers-reduced-motion: reduce) {
