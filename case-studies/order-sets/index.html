@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Dr. Reyes planned a chemo cycle · Order sets case study · Saul García</title>
+  <meta name="description" content="Case study: architecture and prioritization for oncology regimens and day-of-treatment order sets in a new EHR, designed inside a build that was already under way.">
+  <meta name="theme-color" content="#FFFEFB">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../case-study.css">
+  <link rel="stylesheet" href="order-sets.css">
+  <!-- Umami analytics: no cookies, no personal data. Only counts visits on the live site. -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="722e1d46-c88f-4b3c-b9a3-a9562d51b813" data-domains="savsgarcia.github.io"></script>
+</head>
+<body class="cs">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="cs-layout">
+    <header class="cs-side">
+      <a class="cs-back" href="../../#work" data-umami-event="Back to work" data-umami-event-from="header">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        Back
+      </a>
+      <nav class="cs-index" aria-label="Contents">
+        <p class="cs-label" aria-hidden="true">Contents</p>
+        <ol>
+          <li><a href="#overview" data-umami-event="Contents" data-umami-event-section="overview">01. Overview</a></li>
+          <li><a href="#challenge" data-umami-event="Contents" data-umami-event-section="challenge">02. The challenge</a></li>
+          <li><a href="#decisions" data-umami-event="Contents" data-umami-event-section="decisions">03. Key decisions</a></li>
+          <li><a href="#buildable" data-umami-event="Contents" data-umami-event-section="buildable">04. Making it buildable</a></li>
+          <li><a href="#validation" data-umami-event="Contents" data-umami-event-section="validation">05. Validation</a></li>
+          <li><a href="#outcome" data-umami-event="Contents" data-umami-event-section="outcome">06. Outcome</a></li>
+          <li><a href="#reflection" data-umami-event="Contents" data-umami-event-section="reflection">07. Reflection</a></li>
+        </ol>
+      </nav>
+    </header>
+
+    <main id="main" class="cs-main" tabindex="-1">
+
+      <div class="cs-hero">
+        <img class="os-screen" src="img/cycle-final.webp" width="1920" height="1080" alt="Cycle 1 of 4 of a lung cancer regimen: pre-medication and treatment orders on the left, Day 1 on the right with an estimated time for every order.">
+      </div>
+
+      <!-- 01. OVERVIEW -->
+      <section class="cs-section cs-overview" aria-labelledby="overview">
+        <dl class="cs-about" aria-label="About the project">
+          <div><dt>Project</dt><dd>Regimens &amp; day of treatment</dd></div>
+          <div><dt>Client</dt><dd>Oracle Health</dd></div>
+          <div><dt>Team</dt><dd>PM, engineering lead, three clinical SMEs</dd></div>
+          <div><dt>Timeline</dt><dd>May–Aug 2026</dd></div>
+        </dl>
+
+        <p class="cs-eyebrow">01. Overview</p>
+        <h1 class="cs-title" id="overview" tabindex="-1">How Dr. Reyes planned a chemo cycle without decoding it</h1>
+
+        <div class="cs-overview__grid">
+          <div class="cs-overview__main">
+            <p>Dr. Reyes orders chemotherapy as a regimen: four cycles of pemetrexed and cisplatin, each with premeds, labs and treatment days that don’t always match. In the legacy system she read that plan as a grid of offsets, T-30 min or T+4 h, split across phases she opened one at a time. She never questioned it. She had learned it.</p>
+            <p class="cs-label">My role</p>
+            <p>I designed the regimen and day-of-treatment views for a new EHR, from choosing a regimen to signing a cycle, and the dose calculator with the PM. Engineering was already building a first version, so most of my work was architecture and prioritization inside that build: <strong>what lives at the regimen, cycle and day level, what sits face-up on a dense screen, and the rules the team implemented.</strong></p>
+          </div>
+
+          <div class="cs-persona">
+            <div class="cs-persona__head">
+              <span class="cs-persona__avatar" aria-hidden="true">NR</span>
+              <div>
+                <p class="cs-persona__name">Dr. Nadia Reyes, MD</p>
+                <p class="cs-persona__role">Medical oncologist</p>
+              </div>
+            </div>
+            <dl>
+              <div><dt>Her week</dt><dd>Sees patients in clinic, orders regimens, and signs cycles between visits.</dd></div>
+              <div><dt>Works with</dt><dd>Infusion nurses, oncology pharmacists and schedulers.</dd></div>
+              <div><dt>Needs</dt><dd>To prescribe a regimen, set up each cycle and adjust doses, so the plan is ready for safe administration.</dd></div>
+            </dl>
+            <p class="cs-persona__note">Composite persona, based on oncology workgroups and sessions with clinical SMEs.</p>
+          </div>
+        </div>
+
+        <div class="cs-impact">
+          <p class="cs-label">Where it landed</p>
+          <dl class="os-where">
+            <div><dt>Shipped</dt><dd>Regimen and day-of-treatment views, in release when I left in September 2026.</dd></div>
+            <div><dt>Adopted</dt><dd>My sign-and-start rules became the base engineering built on.</dd></div>
+            <div><dt>Open</dt><dd>The cycle setup behind “Start”, which clinicians asked to hide.</dd></div>
+          </dl>
+        </div>
+      </section>
+
+      <!-- 02. THE CHALLENGE -->
+      <section class="cs-section" aria-labelledby="challenge">
+        <p class="cs-eyebrow cs-eyebrow--dot">02. The challenge</p>
+        <h2 class="cs-title" id="challenge" tabindex="-1">A screen she trusted out of habit</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">Change it too much and Dr. Reyes stops trusting it. Change it too little and the offsets stay.</p>
+          <p>Three groups pulled in different directions. Clinicians in our workgroups wanted the legacy structure kept. Design leadership wanted us to go well beyond it. Engineering had already started its own version for the release, with protocol orders on the left and one column per treatment day.</p>
+        </div>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <div class="cs-problem">
+          <h3 class="cs-label">The problem</h3>
+          <p class="cs-lead">How might we decide what Dr. Reyes sees at each level of a regimen, so a dense plan stays readable without hiding what she relies on?</p>
+          <p>I set a plain bar for it: <strong>a view she would trust on day one, on rules engineering could ship.</strong></p>
+          <p>Three things made this hard:</p>
+        </div>
+        <ol class="cs-hard">
+          <li><span class="cs-hard__num" aria-hidden="true">01</span><h3>Five levels deep</h3><p>Regimen, cycle, phase, day and order.</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">02</span><h3>Every field matters to someone</h3><p>Little could be removed, only reordered.</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">03</span><h3>A build in motion</h3><p>Engineering was already coding.</p></li>
+        </ol>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 03. KEY DECISIONS -->
+      <section class="cs-section" aria-labelledby="decisions">
+        <p class="cs-eyebrow cs-eyebrow--dot">03. Key decisions</p>
+        <h2 class="cs-title" id="decisions" tabindex="-1">Two calls about where information lives</h2>
+        <p class="cs-sub">We made both before drawing a screen, starting from how the legacy system was organized.</p>
+
+        <article class="cs-decision">
+          <div class="cs-decision__text">
+            <p class="cs-label">01. Keep the grid</p>
+            <h3>The columns were right.</h3>
+            <p>On Day 8, Dr. Reyes may drop cisplatin and keep the rest. That’s why the legacy screen gave each treatment day its own column, and why I kept it: protocol orders on the left, days on the right. It was also close to what engineering had already built, which kept it shippable.</p>
+            <p>What I changed was priority, not structure. Offsets became estimated times anchored to the chemo start, so a premed reads 7:30 AM instead of T-30 min. The whole cycle scrolls as one page, with no phase to open.</p>
+            <p class="cs-chip"><span>Based on</span> Legacy audit · Workgroup feedback</p>
+          </div>
+          <figure class="cs-decision__media">
+            <img class="os-screen" src="img/legacy-orders.webp" width="1220" height="701" alt="Legacy day-of-treatment view: protocol orders on the left, Day 1 and Day 8 columns on the right, relative offsets like -30 min in each cell, and colored bars dividing pre-chemo metrics, pre-medications and treatment regimen.">
+            <figcaption>The legacy day-of-treatment view: offsets in every cell and colored bars as section headers. Public screenshot.</figcaption>
+          </figure>
+        </article>
+
+
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision cs-decision--reverse">
+          <div class="cs-decision__text">
+            <p class="cs-label">02. Move the calculator up a level</p>
+            <h3>From one medication to the whole day.</h3>
+            <p>In the legacy system, Dr. Reyes adjusted doses one medication at a time: open the order, open its calculator, close it, move to the next. She never saw a day’s doses side by side, or which ones she could still change.</p>
+            <p>Before we drew anything, the PM and I decided the calculator would live at the day-of-treatment level. It lists every dose-based order with its target dose, BSA and final dose, so a reduction like cisplatin at 80% sits next to the pemetrexed it’s given with.</p>
+            <p class="cs-chip"><span>Based on</span> Legacy audit · Clinical SME review</p>
+          </div>
+          <figure class="cs-decision__media">
+            <img class="os-screen" src="img/legacy-calc.webp" width="1212" height="848" alt="Legacy dosage calculator for a single medication, with target, calculated and final dose, and patient weight and body surface area.">
+            <figcaption>The legacy calculator: one medication per window. Public screenshot.</figcaption>
+          </figure>
+        </article>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 04. MAKING IT BUILDABLE -->
+      <section class="cs-section" aria-labelledby="buildable">
+        <p class="cs-eyebrow cs-eyebrow--dot">04. Making it buildable</p>
+        <h2 class="cs-title" id="buildable" tabindex="-1">The rules came from engineering’s questions</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">By mid-June, the same questions kept coming back.</p>
+          <div>
+            <p>Can Dr. Reyes start a cycle before the regimen is signed? What happens if a draft already exists? Which alerts stop her from signing? Each answer lived in a different thread, and every new screen raised them again.</p>
+            <p>I wrote them down in one flowchart, on top of the statuses the legacy system already used. The PM helped me walk the team through it, and <strong>engineering used it as the base for the build.</strong></p>
+          </div>
+        </div>
+
+        <div class="fl" id="flow">
+          <div class="fl-head">
+            <div>
+              <p class="cs-label">Try the flow</p>
+              <h3>Two flows, one set of rules</h3>
+            </div>
+          </div>
+          <fieldset class="fl-flows">
+            <legend class="visually-hidden">Pick a flow</legend>
+            <label class="fl-flow">
+              <input type="radio" name="fl-flow" value="start" checked>
+              <span class="fl-flow__body"><span class="fl-flow__title">Start a cycle</span><span class="fl-flow__desc">Create or resume a cycle draft, then sign it.</span></span>
+            </label>
+            <label class="fl-flow">
+              <input type="radio" name="fl-flow" value="sign">
+              <span class="fl-flow__body"><span class="fl-flow__title">Sign the regimen</span><span class="fl-flow__desc">Sign the regimen on its own, without signing a cycle.</span></span>
+            </label>
+          </fieldset>
+          <div class="fl-controls" role="group" aria-label="Conditions">
+
+            <button type="button" class="fl-chip" role="switch" data-toggle="attrs" aria-checked="true">Regimen attributes complete</button>
+            <button type="button" class="fl-chip" role="switch" data-toggle="started" data-scope="sign" aria-checked="false">A cycle is already started</button>
+            <button type="button" class="fl-chip" role="switch" data-toggle="draft" data-scope="start" aria-checked="false">A cycle draft already exists</button>
+            <button type="button" class="fl-chip" role="switch" data-toggle="critical" data-scope="start" aria-checked="false">An order has a critical alert</button>
+          </div>
+          <div class="fl-board">
+          <div class="fl-tools" role="group" aria-label="Zoom">
+            <button type="button" data-zoom="out" aria-label="Zoom out">−</button>
+            <span class="fl-zoom" aria-live="polite">100%</span>
+            <button type="button" data-zoom="in" aria-label="Zoom in">+</button>
+            <button type="button" data-zoom="fit">Fit</button>
+          </div>
+          <p class="fl-hint" aria-hidden="true">Drag to move around</p>
+          <div class="fl-canvas" tabindex="0" aria-label="Flowchart canvas. Scroll or drag to move around.">
+            <svg viewBox="0 0 1240 560" role="img" aria-label="Flowchart of the rules for signing a regimen and starting a cycle. The highlighted path follows the scenario selected above; the outcome is described below the chart.">
+              <defs>
+                <marker id="fl-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                  <path d="M0 0 L10 5 L0 10 z" class="fl-arrow-head"/>
+                </marker>
+              </defs>
+            </svg>
+          </div>
+          </div>
+          <p class="fl-outcome" aria-live="polite"></p>
+          <p class="fl-legend">Redrawn from my original flowchart. Pills are Dr. Reyes’ actions, diamonds are system checks. Pending alerts never block signing; critical ones do.</p>
+        </div>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 04. VALIDATION -->
+      <section class="cs-section" aria-labelledby="validation">
+        <p class="cs-eyebrow cs-eyebrow--dot">05. Validation</p>
+        <h2 class="cs-title" id="validation" tabindex="-1">What the workgroups told us</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">Clinicians like Dr. Reyes, and the people who build and support her regimens.</p>
+          <p>I brought the designs to oncology workgroups with oncologists, pharmacists and informaticists from academic, community and cancer centers. Most of what they said confirmed the grid. One request changed how sections read, and one finding changed how I see the whole flow.</p>
+        </div>
+
+        <div class="os-findings">
+          <div>
+            <h3>Status per day earned its place</h3>
+            <p>An informaticist who supports an infusion center told us status is the first thing she checks when an order fails, and that staff there are trained to look for the word “Future”. We kept the word.</p>
+          </div>
+          <div>
+            <h3>One scroll beat opening phases</h3>
+            <p>Two clinicians said scrolling the whole cycle was easier than hopping between phases. They also flagged the empty space between orders and days: with Days 1, 8 and 15 it would force a sideways scroll, so we tightened the columns.</p>
+          </div>
+        </div>
+
+        <article class="cs-decision cs-decision--reverse" style="margin-top:64px">
+          <div class="cs-decision__text">
+            <p class="cs-label">What changed after the first session</p>
+            <h3>Hierarchy, not color.</h3>
+            <p>Clinicians said the sections blended together and asked for the colored notes from the legacy screen. I didn’t bring them back. In the old grid, green, teal and yellow bars did the work of headings, on the same screen as allergy and interaction alerts.</p>
+            <p>I rebuilt the hierarchy with type instead: category names in semibold with their order count, orders in regular weight, notes in a quieter style. That left color free for alerts, where it has to stand out.</p>
+          </div>
+          <figure class="cs-decision__media">
+            <img class="os-screen" src="img/cycle-grid.webp" width="1100" height="740" alt="Chemotherapy phase: Pre-medication and Treatment regimen headers in semibold with their order counts, orders below in regular weight, and Day 1 with estimated times and an 8:00 AM anchor time.">
+          </figure>
+        </article>
+
+        <article class="cs-decision" style="margin-top:64px">
+          <div class="cs-decision__text">
+            <p class="cs-label">The finding that stayed with me</p>
+            <h3>The button nobody understood.</h3>
+            <p>In April I questioned “Start”. It only opened the cycle for review, so I proposed “View cycle”. Product kept “Start” because it was the term everyone knew.</p>
+            <p>The workgroups brought it back. Behind “Start” sat a setup screen with visit types and phase actions. One organization tells its oncologists never to touch it; another has seen a lab phase removed by accident. Regimens follow national guidelines, so the defaults are almost always right, yet the screen presented each one as a decision. Clinicians asked to hide it.</p>
+          </div>
+          <figure class="cs-decision__media">
+            <img class="os-screen" src="img/setup-cycle.webp" width="1200" height="675" alt="Set up cycle drawer: visit and start time options, and a table of phase actions for chemotherapy, labs, prescription and scheduling.">
+            <figcaption>The setup screen behind “Start”.</figcaption>
+          </figure>
+        </article>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 05. OUTCOME -->
+      <section class="cs-section" aria-labelledby="outcome">
+        <p class="cs-eyebrow cs-eyebrow--dot">06. Outcome</p>
+        <h2 class="cs-title" id="outcome" tabindex="-1">The views shipped, the setup screen didn’t change</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">Dr. Reyes can read a cycle by day and by time.</p>
+          <p>When I left in September 2026, the regimen and day-of-treatment views were in release, built on the rules flow, and the day-level dose calculator was in development. The PM and the clinical SMEs were especially keen on it. When Dr. Reyes clicks “Start”, she still meets the setup screen she was taught not to touch.</p>
+        </div>
+      
+      </section>
+
+      <!-- 06. REFLECTION -->
+      <section class="cs-section" aria-labelledby="reflection">
+        <p class="cs-eyebrow cs-eyebrow--dot">07. Reflection</p>
+        <h2 class="cs-title" id="reflection" tabindex="-1">What I’d do differently</h2>
+        <ul class="cs-lessons">
+          <li><h3>Bring evidence to word debates</h3><p>I argued “Start” with an opinion. The clinician evidence came in July; I’d have asked for it in April.</p></li>
+          <li><h3>Draft the rules with engineers</h3><p>The flow landed once the PM and I walked the team through it. Writing it with them would have saved that step.</p></li>
+          <li><h3>Test one bolder idea early</h3><p>I explored a view focused on the active day and kept it as an exploration. I’d have put it in front of clinicians anyway.</p></li>
+        </ul>
+        <hr class="cs-rule">
+        <p class="cs-next"><a href="../../#work" data-umami-event="Back to work" data-umami-event-from="end">Back to work</a></p>
+      </section>
+    </main>
+
+    <footer class="cs-footer">
+      <p class="last-update">Last update Nov 2026</p>
+    </footer>
+  </div>
+
+  <script src="../case-study.js"></script>
+  <script src="flow.js"></script>
+</body>
+</html>
