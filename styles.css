@@ -767,10 +767,10 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .case-visual { height: 220px; }
 }
 
-/* Tablet (700–1099px): content sits in a centered 720px column. The side margin grows
+/* Tablet (700–1024px): content sits in a centered 720px column. The side margin grows
    with the screen, so the top bar, the stacked use cases and Experience all start at the
    same left edge. */
-@media (min-width: 700px) and (max-width: 1099px) {
+@media (min-width: 700px) and (max-width: 1024px) {
   :root { --gutter: max(20px, calc((100vw - 720px) / 2)); }
   /* The top bar and the open menu span the full width with 40px side margins */
   .topbar { padding-left: 40px; padding-right: 40px; }
@@ -790,6 +790,53 @@ a.cta:focus-visible svg { transform: translateX(4px); }
 /* Tablet: project heading uses the case study title style (.cs-title below 1100px) */
 @media (min-width: 700px) and (max-width: 1099px) {
   .project-copy .display { font-size: 40px; line-height: 44px; letter-spacing: -0.01em; }
+}
+
+/* Small desktop (1025–1099px): same Work layout as desktop L,
+   with the sidebar replaced by the top bar + hamburger menu. */
+@media (min-width: 1025px) and (max-width: 1099px) {
+  .work-stack { display: none; }
+  .view--work {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 40vw;
+    grid-template-rows: auto 1fr;
+    min-height: calc(100dvh - 84px);
+  }
+  .view--work > .col--projects {
+    display: block;
+    grid-column: 1; grid-row: 1;
+    padding: 40px 40px 0;
+    overflow: visible;
+  }
+  .view--work > .col--text {
+    display: block;
+    grid-column: 1; grid-row: 2;
+    padding: 32px 40px 40px;
+    max-width: none;
+  }
+  .view--work > .col--visual {
+    display: block;
+    grid-column: 2; grid-row: 1 / -1;
+    padding: 0;
+    height: auto;
+  }
+  .view--work .projects {
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-end;
+    gap: 8px 40px;
+    padding: 0;
+    width: auto;
+  }
+  .view--work .project-tab { padding-top: 0; }
+  .view--work .project-tab-title { white-space: normal; }
+  .view--work .project-copy .display { font-size: 48px; line-height: 1.04; text-wrap: balance; }
+  .view--work .project-copy .lede { max-width: 580px; }
+
+  .view--work > .col--visual .project-image { position: absolute; top: 48px; height: auto; max-width: none; }
+  .view--work > .col--visual .project-image--viu { width: 120%; left: calc(var(--img-start) - 0.97%); }
+  .view--work > .col--visual .project-image--order-entry { width: 84%; left: 8%; }
+  .view--work > .col--visual .project-image--order-sets { width: 186%; left: calc(var(--img-start) - 0.93%); }
 }
 
 /* Tablet to small desktop (700–1099px): About keeps the desktop
