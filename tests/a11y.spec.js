@@ -114,6 +114,8 @@ test('mobile menu is accessible when open and closes with Escape', async ({ page
   test.skip(!(await toggle.isVisible()), 'menu button only shows on smaller screens');
   await toggle.click();
   await expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  // The menu fades in: measure contrast once the transition has finished, not mid-fade
+  await page.waitForFunction(() => document.getAnimations().every((a) => a.playState === 'finished'));
   const { violations } = await axe(page).analyze();
   expect(violations, formatViolations(violations)).toEqual([]);
   await page.keyboard.press('Escape');
