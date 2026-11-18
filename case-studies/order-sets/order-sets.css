@@ -8,10 +8,7 @@
 .cs { --cs-accent-line: #C49AB4; }
 
 /* Hero teaser: a cropped flat screen that fades out over its lower half, like the device mockups */
-.cs-hero { --cs-hero-fade: 86%; } /* fade only the end of the interface */
-/* Sized like the VIU devices: about three quarters of the column, centered, with margins around it */
-.cs-hero .os-screen { width: min(820px, 76%); max-width: none; margin: 0 auto; padding: 0; border-radius: 10px; }
-@media (max-width: 699px) { .cs-hero .os-screen { width: calc(100% - 2 * var(--cs-pad)); } }
+.cs-hero { --cs-hero-fade: 45%; }
 .cs-decision__media figcaption { margin-top: 12px; }
 /* Extra space between the decision blocks inside Validation */
 .os-gap { margin-top: 64px; }
