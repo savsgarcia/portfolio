@@ -81,7 +81,15 @@
 
 /* As a tour: one screen at a time */
 .os-tour.is-tour .os-tour__step[hidden] { display: none; }
-.os-tour__frame { position: relative; }
+.os-tour__frame { position: relative; overflow: hidden; border-radius: 8px; box-shadow: var(--cs-shadow); }
+.os-tour__frame .os-screen { border-radius: 0; box-shadow: none; }
+/* Zoom (on by default): the screen scales toward the hotspot; the hotspot keeps its size */
+.os-tour__zoom { position: relative; transition: transform .45s ease; }
+.os-tour.is-zoomed .os-tour__zoom { transform: scale(var(--s, 1.6)); }
+.os-tour.is-zoomed .os-tour__hotspot { transform: scale(calc(1 / var(--s, 1.6))); }
+.os-tour__hotspot { transition: transform .45s ease; }
+@media (prefers-reduced-motion: reduce) { .os-tour__zoom, .os-tour__hotspot { transition: none; } }
+.os-tour__zoom-toggle[aria-pressed="true"] { border-color: var(--ink-strong); }
 
 /* Hotspot: where Dr. Reyes clicks. A pink touch target with a cursor, like the prototype's.
    44px button; the black-outlined cursor carries the contrast (the pink is a soft highlight). */
@@ -123,7 +131,7 @@
 .os-tour__controls { display: flex; align-items: center; gap: 16px; margin-top: 20px; }
 .cs-section .os-tour__count { margin: 0; font-family: var(--font-mono); font-size: 12px; line-height: 16px; letter-spacing: .04em; color: var(--ink-soft); }
 .os-tour__controls .cs-btn:disabled { opacity: .5; cursor: default; }
-.os-tour__controls [data-go="next"] { margin-left: auto; }
+.os-tour__controls .os-tour__zoom-toggle { margin-left: auto; }
 
 /* From 1100px the caption floats next to the hotspot, like a tour note */
 @media (min-width: 1100px) {

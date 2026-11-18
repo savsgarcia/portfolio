@@ -38,6 +38,7 @@
     controls.innerHTML =
       '<button type="button" class="cs-btn" data-go="prev">Back</button>' +
       '<p class="os-tour__count" aria-hidden="true"></p>' +
+      '<button type="button" class="cs-btn os-tour__zoom-toggle" aria-pressed="true">Zoom</button>' +
       '<button type="button" class="cs-btn" data-go="next">Next</button>';
     const live = document.createElement('p');
     live.className = 'visually-hidden';
@@ -46,6 +47,14 @@
     const prev = controls.querySelector('[data-go="prev"]');
     const next = controls.querySelector('[data-go="next"]');
     const count = controls.querySelector('.os-tour__count');
+    // Zoom: on by default, so the part of the screen that matters is readable
+    const zoomToggle = controls.querySelector('.os-tour__zoom-toggle');
+    tour.classList.add('is-zoomed');
+    zoomToggle.addEventListener('click', () => {
+      const on = zoomToggle.getAttribute('aria-pressed') !== 'true';
+      zoomToggle.setAttribute('aria-pressed', String(on));
+      tour.classList.toggle('is-zoomed', on);
+    });
 
     // Each screen gets a frame for its hotspot; the caption becomes the floating note
     steps.forEach((step, i) => {
@@ -53,13 +62,18 @@
       const img = fig.querySelector('img');
       const frame = document.createElement('div');
       frame.className = 'os-tour__frame';
+      const zoom = document.createElement('div'); // scales toward the hotspot when zoom is on
+      zoom.className = 'os-tour__zoom';
       img.replaceWith(frame);
-      frame.appendChild(img);
+      frame.appendChild(zoom);
+      zoom.appendChild(img);
+      zoom.style.setProperty('--s', step.dataset.zoom || '1.6');
       if (!step.dataset.x) return;
       const x = parseFloat(step.dataset.x), y = parseFloat(step.dataset.y);
       fig.classList.add('has-note');
       fig.style.setProperty('--x', x + '%');
       fig.style.setProperty('--y', y + '%');
+      zoom.style.transformOrigin = x + '% ' + y + '%'; // the hotspot stays put, so its note stays next to it
       fig.style.setProperty('--ny', (step.dataset.ny || y) + '%'); // the note can sit lower than the hotspot
       if (x > 55) fig.classList.add('is-left');   // note opens to the left of the hotspot
       if (y > 60) fig.classList.add('is-up');     // and above it near the bottom
@@ -71,7 +85,7 @@
       hot.innerHTML = '<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M5 3l10 6.5-4.4 1L8.2 15z"/></svg>' +
         '<span class="visually-hidden">' + step.dataset.action + ', next step</span>';
       hot.addEventListener('click', () => go(i + 1, true));
-      frame.appendChild(hot);
+      zoom.appendChild(hot);
     });
 
     function go(i, focusHotspot) {
