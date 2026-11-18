@@ -497,6 +497,15 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   font-weight: 500;
 }
 .about-body { margin-top: 16px; }
+.about-label {
+  margin-top: 40px;
+  font-family: var(--font-mono); font-size: 12px; line-height: 24px; font-weight: 400;
+  letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-strong);
+}
+.about-cv { display: flex; flex-wrap: wrap; gap: 12px 32px; margin-top: 16px; }
+.about-cv .cta { font-size: 16px; line-height: 24px; }
+.about-cv .cta:hover svg,
+.about-cv .cta:focus-visible svg { transform: translateY(2px); }
 
 .about-photo {
   grid-column: 3;
