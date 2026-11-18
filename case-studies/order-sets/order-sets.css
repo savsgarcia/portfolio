@@ -81,27 +81,32 @@
 .os-track__num { flex: none; font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; color: var(--ink-strong); }
 .os-track__count { display: none; }
 
-/* Pinned (700px and up, set by track.js): the section stays on screen while the row moves */
-.os-track.is-pinned .os-track__sticky {
-  position: sticky; top: 0; /* track.js centres it in the window */
-  overflow: hidden;
-}
-.os-track.is-pinned .os-track__list { display: flex; gap: 40px; width: max-content; will-change: transform; }
-.os-track.is-pinned .os-track__list li { flex: none; }
-.cs-section .os-track.is-pinned .os-track__count {
+/* Pinned (700px and up, set by track.js): the whole section stays put while the row moves.
+   The row isn't clipped by the column: it runs behind the Contents sidebar and out to the
+   window edge (.cs-layout clips it at the window, see below). */
+.os-calc.is-pinned .os-pin { position: sticky; top: 0; /* track.js centres it in the window */ }
+.os-calc.is-pinned .os-track__list { display: flex; gap: 40px; width: max-content; will-change: transform; }
+.os-calc.is-pinned .os-track__list li { flex: none; }
+.cs-section.os-calc.is-pinned .os-track__count {
   display: block; margin-top: 24px;
   font-family: var(--font-mono); font-size: 12px; line-height: 16px; letter-spacing: .04em; color: var(--ink-soft);
 }
 .os-track__now { color: var(--ink-strong); }
+/* Clip the row at the window (overflow: clip keeps the sticky sidebar and section working),
+   and keep the sidebar on top so the screens pass behind it */
+.cs-layout { overflow-x: clip; }
+@media (min-width: 1100px) {
+  .cs-side { z-index: 3; background-color: var(--bg); }
+}
 
 /* Phones: a native swipe row with snap points, bleeding to the screen edges */
-.os-track.is-swipe .os-track__list {
+.os-calc.is-swipe .os-track__list {
   display: flex; gap: 16px;
   margin: 0 calc(-1 * var(--cs-pad)); padding: 0 var(--cs-pad) 8px;
   overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding: 0 var(--cs-pad);
 }
-.os-track.is-swipe .os-track__list li { flex: 0 0 88%; scroll-snap-align: start; }
-.os-track.is-swipe .os-track__list:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.os-calc.is-swipe .os-track__list li { flex: 0 0 88%; scroll-snap-align: start; }
+.os-calc.is-swipe .os-track__list:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
 /* ---------- The rules, in words, before the flowchart ---------- */
 
