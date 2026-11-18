@@ -285,6 +285,17 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .project-copy .display { font-size: clamp(40px, 3.75vw, 60px); line-height: 1.04; text-wrap: balance; }
   .project-copy .lede { max-width: 580px; }
 }
+/* When the three project tabs no longer fit on one row, list them stacked instead of wrapping:
+   one line each, number then name and client */
+@media (min-width: 1100px) {
+  .view--work .col--projects { container-type: inline-size; }
+}
+@container (max-width: 405px) {
+  .view--work .projects { flex-direction: column; flex-wrap: nowrap; align-items: flex-start; gap: 4px; }
+  .view--work .project-tab { flex-direction: row; align-items: baseline; gap: 12px; padding: 6px 0 4px; }
+  .view--work .project-tab-num { margin: 0; }
+  .view--work .project-tab-client::before { content: "·"; margin-right: 8px; }
+}
 @media (min-width: 1100px) and (max-width: 1599px) {
   .view--work { grid-template-columns: minmax(0, 1fr) 40vw; }
   .view--work .col--text { padding-top: 32px; }
