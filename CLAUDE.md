@@ -15,6 +15,8 @@ Static personal portfolio: plain HTML, CSS and JavaScript, no build step.
 
 Analytics: Umami Cloud (no cookies, no personal data, so no cookie banner). The script is in the `<head>` of every page with `data-domains="savsgarcia.github.io"`, so local runs, tests and previews are not counted. Clicks are tracked with `data-umami-event="Name"` (plus `data-umami-event-<key>="value"` for details) on the link or button itself; new pages need the same script tag. Events: Nav, Resume (`lang`: en / es), Project tab (`project`), See case study, Email, LinkedIn (`from: experience` for the link below the last job on tablet and phone), Back to work, Contents, Validation version, Annotations switch, See raw data.
 
+Motion: one language, set in `styles.css` (`--ease`, `--dur-short` 150ms, `--dur-medium` 250ms, `--dur-long` 500ms). Views fade in when switched (`view-in`); case study blocks settle in as they reach the screen (`.cs-reveal`, `case-study.js`); impact numbers (`.cs-stat`) count up once, with the final value in a visually hidden span; the Order sets tour changes screens without animation. With `prefers-reduced-motion` nothing moves: the JS effects don't start and every transition or animation is near-instant. Tests run with reduced motion, so pages are checked at rest.
+
 Design source: Figma file "Portfolio", page "Moodboard". Fonts: Fraunces (display), Inter (text), IBM Plex Mono (labels).
 
 ## Running the tests

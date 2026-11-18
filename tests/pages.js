@@ -24,6 +24,9 @@ const targets = findPages().flatMap((page) =>
 );
 
 async function open(page, url) {
+  // Check the page at rest: with reduced motion, nothing fades in or counts up while axe measures
+  // contrast, and every block is visible without scrolling.
+  await page.emulateMedia({ reducedMotion: 'reduce' });
   // Analytics (Umami) is blocked in tests: no third-party dependency and no fake visits.
   await page.route('https://cloud.umami.is/**', (route) => route.abort());
   await page.goto(url);

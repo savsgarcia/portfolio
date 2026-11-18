@@ -741,6 +741,12 @@
   .cs-dialog__body > p { font-size: 16px; line-height: 24px; }
 }
 
+/* Blocks settle in as they enter the screen (case-study.js adds .cs-reveal only without reduced motion) */
+.cs-reveal { opacity: 0; transform: translateY(12px); transition: opacity var(--dur-long) var(--ease), transform var(--dur-long) var(--ease); }
+.cs-reveal.is-in { opacity: 1; transform: none; }
+/* Counting numbers keep a steady width */
+.cs-stat__num { font-variant-numeric: tabular-nums; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
