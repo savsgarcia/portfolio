@@ -148,7 +148,7 @@
             <p class="cs-label">02. Move the calculator up a level</p>
             <h3>From one medication to the whole cycle.</h3>
             <p>In the legacy system, Dr. Reyes adjusted doses one medication at a time: open the order, open its calculator, close it, move to the next. She never saw a day’s doses side by side, or which ones she could still change.</p>
-            <p>Before we drew anything, the PM and I decided the calculator would cover the whole cycle, inside the day-of-treatment view. It lists every dose-based order with its target dose, BSA and final dose, so a reduction like cisplatin at 80% sits next to the pemetrexed it’s given with.</p>
+            <p>Before we drew anything, the PM and I decided the calculator would cover the whole cycle, inside the day-of-treatment view. It lists every dose-based order with its target dose, BSA and final dose, so a reduction like cisplatin at 80% sits next to the pemetrexed it’s given with. Every reduction asks for a reason, which leaves an auditable record of who changed a dose and why.</p>
             <p class="cs-chip"><span>Based on</span> Legacy audit · Clinical SME review</p>
           </div>
           <figure class="cs-decision__media">
@@ -371,7 +371,7 @@
             <li class="os-tour__step" data-chapter="Adjust the doses" data-x="95.4" data-y="58.0" data-action="Update cisplatin">
               <figure>
                 <img class="os-screen" src="img/calc-6.webp" width="2880" height="1620" alt="Cisplatin at 80% with Toxicity / Tolerance chosen as the adjust reason, ready to update.">
-                <figcaption>She picks Toxicity / Tolerance. The reason travels with the dose, so nursing and pharmacy see why it changed.</figcaption>
+                <figcaption>She picks Toxicity / Tolerance. The reason travels with the dose: nursing and pharmacy see why it changed, and the record shows who changed it.</figcaption>
               </figure>
             </li>
             <li class="os-tour__step" data-chapter="Adjust the doses" data-x="96.4" data-y="97.0" data-action="Apply the changes">
@@ -419,9 +419,9 @@
         </div>
 
         <ol class="cs-hard os-outcomes">
-          <li><span class="cs-hard__num" aria-hidden="true">01</span><h3>Shipped</h3><p>Regimen and day-of-treatment views, with estimated times instead of offsets and one scroll for the whole cycle.</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">01</span><h3>Shipped</h3><p>Regimen and day-of-treatment views: estimated times instead of offsets, one scroll for the whole cycle, and prior authorization sent the moment the regimen is signed.</p></li>
           <li><span class="cs-hard__num" aria-hidden="true">02</span><h3>Adopted</h3><p>The sign-and-start rules became the base engineering built on, and answered the questions that kept coming back with every screen.</p></li>
-          <li><span class="cs-hard__num" aria-hidden="true">03</span><h3>Reused</h3><p>The dose calculator: scoped to oncology, left as the reference for teams like pediatrics, with their own formulas.</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">03</span><h3>Reused</h3><p>The dose calculator: every dose in one drawer instead of one window per medication. Scoped to oncology, left as the reference for teams like pediatrics.</p></li>
           <li><span class="cs-hard__num" aria-hidden="true">04</span><h3>Extended</h3><p>A separate squad building an AI-assisted bridge between the legacy EHR and the new one took these views as its base.</p></li>
         </ol>
 
