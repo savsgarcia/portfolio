@@ -271,7 +271,7 @@
           <p class="cs-label">The finding that stayed with me</p>
           <h3>The button nobody understood</h3>
           <p>In April I questioned “Start”. It only opened the cycle for review, so I proposed “View cycle”. Product kept “Start” because it was the term everyone knew.</p>
-          <p>The workgroups brought it back. Behind “Start” sat a setup screen with visit types and phase actions (step 3 in the walkthrough below). One organization tells its oncologists never to touch it; another has seen a lab phase removed by accident. Regimens follow national guidelines, so the defaults are almost always right, yet the screen presented each one as a decision. Clinicians asked to hide it.</p>
+          <p>The workgroups brought it back. Behind “Start” sat a setup screen with visit types and phase actions (step 2 in the walkthrough below). One organization tells its oncologists never to touch it; another has seen a lab phase removed by accident. Regimens follow national guidelines, so the defaults are almost always right, yet the screen presented each one as a decision. Clinicians asked to hide it.</p>
           <p>I explored two ways to take it out of her path:</p>
         </div>
         <div class="os-options" tabindex="0" role="region" aria-label="Two options explored. Scroll sideways to see both.">
@@ -292,7 +292,7 @@
         <p class="cs-eyebrow cs-eyebrow--dot">06. The flow</p>
         <h2 class="cs-title" id="walkthrough" tabindex="-1">From a signed regimen to an adjusted dose</h2>
         <div class="cs-intro">
-          <p class="cs-lead">What shipped, step by step: sign the regimen, start cycle 1, and lower a dose.</p>
+          <p class="cs-lead">What shipped, step by step: start cycle 1 from a signed regimen, and lower a dose.</p>
           <div>
             <p>Dose calculations is a feature inside the day-of-treatment view. A clinical SME walked us through a case she sees often: cycle 4, day 1, cisplatin reduced for nausea and weight loss. The PM and I built the flow around it: every dose-based order in one drawer, the full calculation opening in place, and a reason required for any reduction.</p>
             <p>I scoped it to oncology and left it as a reference for teams like pediatrics, where weight-based doses matter just as much: the same pattern, with their own formulas.</p>
@@ -301,16 +301,10 @@
 
         <div class="os-tour" role="region" aria-label="Walkthrough: from a signed regimen to an adjusted dose">
           <ol class="os-tour__steps">
-            <li class="os-tour__step" data-chapter="Sign the regimen" data-x="71.1" data-y="10.6" data-ny="82" data-action="Sign the regimen">
-              <figure>
-                <img class="os-screen" src="img/flow-5.webp" width="2880" height="1620" alt="The regimen draft for pemetrexed and cisplatin with its attributes complete, four cycles and a survivorship plan, and the Sign button at the top.">
-                <figcaption>The regimen draft: its attributes on top, its four cycles below. With the attributes complete, Dr. Reyes signs the regimen on its own: one of the rules from the flowchart.</figcaption>
-              </figure>
-            </li>
-            <li class="os-tour__step" data-chapter="Start the cycle" data-x="67.2" data-y="33.3" data-action="Start cycle 1">
+            <li class="os-tour__step" data-chapter="Start the cycle" data-x="67.2" data-y="33.3" data-ny="72" data-action="Start cycle 1">
               <figure>
                 <img class="os-screen" src="img/flow-6.webp" width="2880" height="1620" alt="Signed regimen marked Not started, with a Regimen signed confirmation and prior authorization Submitted.">
-                <figcaption>Signing sends prior authorization in parallel. Now she starts cycle 1.</figcaption>
+                <figcaption>Dr. Reyes has just signed the regimen, which sends prior authorization in parallel. Now she starts cycle 1.</figcaption>
               </figure>
             </li>
             <li class="os-tour__step" data-chapter="Start the cycle" data-x="53" data-y="35.0" data-ny="70" data-action="Set the start time">
