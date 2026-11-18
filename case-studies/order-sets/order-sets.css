@@ -117,14 +117,14 @@
 @media (min-width: 1100px) {
   .cs-section .os-tour.is-tour .has-note figcaption {
     position: absolute; z-index: 3;
-    left: calc(var(--x) + 36px); top: var(--y);
+    left: calc(var(--x) + 36px); top: var(--ny);
     width: 300px; margin: -20px 0 0;
     padding: 14px 16px; border-radius: 8px;
     background: #fff; box-shadow: var(--cs-shadow), 0 0 0 1px rgba(30, 41, 59, .06);
     font-size: 15px; line-height: 22px;
   }
   .cs-section .os-tour.is-tour .has-note.is-left figcaption { left: auto; right: calc(100% - var(--x) + 36px); }
-  .cs-section .os-tour.is-tour .has-note.is-up figcaption { top: auto; bottom: calc(100% - var(--y)); margin: 0 0 -20px; }
+  .cs-section .os-tour.is-tour .has-note.is-up figcaption { top: auto; bottom: calc(100% - var(--ny)); margin: 0 0 -20px; }
 }
 
 /* ---------- The rules, in words, before the flowchart ---------- */

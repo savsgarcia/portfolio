@@ -37,6 +37,7 @@
       fig.classList.add('has-note');
       fig.style.setProperty('--x', x + '%');
       fig.style.setProperty('--y', y + '%');
+      fig.style.setProperty('--ny', (step.dataset.ny || y) + '%'); // the note can sit lower than the hotspot
       if (x > 55) fig.classList.add('is-left');   // note opens to the left of the hotspot
       if (y > 60) fig.classList.add('is-up');     // and above it near the bottom
       if (step.dataset.hotspot === 'none') return; // the result screen: a note, no click
