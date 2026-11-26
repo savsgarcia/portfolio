@@ -26,8 +26,17 @@
       image: 'assets/img/viu.webp', width: 1986, height: 1614,
       alt: 'VIU by HUB account screen: a personal dashboard greeting Frankie with all their policies and recommended coverage.'
     },
+    'volana': {
+      num: '03', name: 'Cash loans app', client: 'Volana',
+      title: 'Moving cash loans from the street to the phone',
+      description: 'Designing an app so people who lived on cash could sign up, track and pay their loans without a trip to the branch.',
+      cta: '<a class="cta cta--stretched" href="case-studies/volana/" data-umami-event="See case study" data-umami-event-project="volana">See case study ' + chevron + '</a>',
+      bg: '#DDE0FC',
+      image: 'assets/img/volana.webp', width: 1920, height: 1232,
+      alt: 'Three Volana screens: the borrower’s wallet with the next payment, offering a loan to a trusted member, and rating a member when a loan closes.'
+    },
     'order-entry': {
-      num: '03', name: 'AI-assisted order entry', client: 'Oracle',
+      num: '04', name: 'AI-assisted order entry', client: 'Oracle',
       title: 'How Dr. Haven got help ordering, only when he asked for it',
       description: 'Designing AI-assisted order entry for an EHR: when the assistant helps, and when it steps aside.',
       cta: '<span class="cta cta--locked">Available on request · NDA ' + lock + '</span>',
