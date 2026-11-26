@@ -7,3 +7,41 @@
 .cs-decision__media--phone img { max-width: 300px; margin: 0 auto; border-radius: 20px; box-shadow: 0 12px 40px rgba(45, 58, 99, .14), 0 0 0 1px rgba(45, 58, 99, .06); }
 .cs-decision__media--phone figcaption { max-width: 360px; margin: 16px auto 0; text-align: center; }
 .cs-note { margin-top: 24px !important; font-size: 12px; line-height: 18px; color: var(--muted); }
+
+/* Customer journey: stages as columns on desktop (rows aligned with subgrid), cards below 1100px.
+   The feeling curve is drawn from --level (1 low, 5 high); the feeling word is always in the text. */
+.vo-journey { margin: 64px 0 0; }
+.vo-journey figcaption p { margin-top: 4px; color: var(--ink-soft); }
+.vo-journey__grid { margin-top: 24px; }
+.vo-journey ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.vo-journey li { background: #fff; border: 1px solid var(--cs-line, #E7E4DA); border-radius: 12px; padding: 16px; }
+.vo-journey__stage { margin: 0 0 12px; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--ink-strong); }
+.vo-journey__stage span { font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); margin-right: 4px; }
+.vo-journey dl { margin: 0; display: grid; gap: 12px; }
+.vo-journey dt { font-family: var(--font-mono); font-size: 11px; line-height: 16px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.vo-journey dd { margin: 2px 0 0; font-size: 14px; line-height: 21px; }
+.vo-journey__feel dd { display: flex; align-items: center; gap: 8px; font-weight: 500; }
+.vo-journey__dot { width: 10px; height: 10px; border-radius: 50%; background: var(--cs-accent-line); flex: none; }
+.vo-journey__change dd { color: var(--ink-strong); }
+.vo-journey__change { padding-top: 12px; border-top: 1px dashed var(--cs-line, #DDD9CC); }
+.vo-journey__rows, .vo-journey__curve { display: none; }
+
+@media (min-width: 1100px) {
+  .vo-journey__grid { display: grid; grid-template-columns: 112px repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto 120px auto auto; position: relative; }
+  .vo-journey ol { grid-column: 2 / -1; grid-row: 1 / -1; grid-template-columns: subgrid; grid-template-rows: subgrid; gap: 0; }
+  .vo-journey li { grid-row: 1 / -1; display: grid; grid-template-rows: subgrid; border-radius: 0; border-width: 0 0 0 1px; border-style: dotted; padding: 0; background: none; }
+  .vo-journey li:first-child { border-left: 0; }
+  .vo-journey__stage { grid-row: 1; margin: 0; padding: 10px 12px; background: var(--cs-hero-bg); }
+  .vo-journey dl { grid-row: 2 / -1; display: grid; grid-template-rows: subgrid; gap: 0; }
+  .vo-journey dl > div { padding: 12px; }
+  .vo-journey dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+  .vo-journey__feel { position: relative; padding: 0 !important; }
+  .vo-journey__feel dd { position: absolute; left: 50%; top: calc((5 - var(--level)) * 17.5% + 15%); transform: translate(-5px, -50%); margin: 0; font-size: 13px; z-index: 1; }
+  .vo-journey__feel dd { gap: 6px; padding-right: 6px; background: linear-gradient(to right, transparent 10px, var(--cs-hero-bg) 10px); border-radius: 0 4px 4px 0; }
+  .vo-journey__rows { display: grid; grid-column: 1; grid-row: 2 / -1; grid-template-rows: subgrid; font-family: var(--font-mono); font-size: 11px; line-height: 16px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .vo-journey__rows span { padding: 12px 12px 12px 0; }
+  .vo-journey__rows span:nth-child(2) { align-self: center; padding: 0; }
+  .vo-journey__curve { display: block; grid-column: 2 / -1; grid-row: 3; width: 100%; height: 100%; background: linear-gradient(var(--cs-hero-bg), var(--cs-hero-bg)); }
+  .vo-journey__curve polyline { fill: none; stroke: var(--cs-accent-line); stroke-width: 2; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
+  .vo-journey__change { border-top: 1px dashed var(--cs-line, #DDD9CC); }
+}
