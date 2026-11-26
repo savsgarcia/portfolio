@@ -15,7 +15,7 @@
   });
 })();
 
-// Decision 01: Lender / Associate switch. Without JavaScript both phones show, one after the other.
+// Decisions 01 and 02: a switch between two screens (Lender / Associate, Offer / Close). Without JavaScript both phones show, one after the other.
 (function () {
   'use strict';
   document.querySelectorAll('.vo-roles').forEach((fig) => {
@@ -27,6 +27,6 @@
     };
     buttons.forEach((b) => b.addEventListener('click', () => show(b.dataset.role)));
     fig.classList.add('is-switchable');
-    show('lender');
+    show(buttons[0].dataset.role);
   });
 })();
