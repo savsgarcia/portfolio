@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Moving cash loans to the phone · Volana case study · Saul García</title>
+  <meta name="description" content="Case study: designing Volana's app, so people who lived on cash could sign up, track and pay their loans without a trip to the branch.">
+  <meta name="theme-color" content="#FFFEFB">
+  <link rel="canonical" href="https://savsgarcia.github.io/portfolio/case-studies/volana/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Saul García · Product designer">
+  <meta property="og:title" content="Moving cash loans from the street to the phone">
+  <meta property="og:description" content="Case study: Volana’s app, so people who lived on cash could sign up, track and pay their loans without a trip to the branch.">
+  <meta property="og:url" content="https://savsgarcia.github.io/portfolio/case-studies/volana/">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../case-study.css">
+  <link rel="stylesheet" href="volana.css">
+  <!-- Umami analytics: no cookies, no personal data. Only counts visits on the live site. -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="722e1d46-c88f-4b3c-b9a3-a9562d51b813" data-domains="savsgarcia.github.io"></script>
+</head>
+<body class="cs cs--volana">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="cs-layout">
+    <!-- Sidebar on desktop, top block on smaller screens -->
+    <header class="cs-side">
+      <a class="cs-back" href="../../#work" data-umami-event="Back to work" data-umami-event-from="header">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        Back
+      </a>
+
+      <nav class="cs-index" aria-label="Contents">
+        <p class="cs-label" aria-hidden="true">Contents</p>
+        <ol>
+          <li><a href="#overview" data-umami-event="Contents" data-umami-event-section="overview">01. Overview</a></li>
+          <li><a href="#challenge" data-umami-event="Contents" data-umami-event-section="challenge">02. The challenge</a></li>
+          <li><a href="#decisions" data-umami-event="Contents" data-umami-event-section="decisions">03. Key decisions</a></li>
+          <li><a href="#reflection" data-umami-event="Contents" data-umami-event-section="reflection">04. Reflection</a></li>
+        </ol>
+      </nav>
+    </header>
+
+    <main id="main" class="cs-main" tabindex="-1">
+
+      <div class="cs-hero">
+        <img src="img/hero.webp" width="2000" height="1100" alt="PLACEHOLDER: Volana app screens on a phone.">
+      </div>
+
+      <!-- 01. OVERVIEW -->
+      <section class="cs-section cs-overview" aria-labelledby="overview">
+        <dl class="cs-about" aria-label="About the project">
+          <div><dt>Project</dt><dd>Loans app</dd></div>
+          <div><dt>Client</dt><dd>Volana by Polygon Fintech (now Medá)</dd></div>
+          <div><dt>Team</dt><dd>Devs, legal, sales, branch staff</dd></div>
+          <div><dt>Timeline</dt><dd>Jul–Oct 2019</dd></div>
+        </dl>
+
+        <p class="cs-eyebrow">01. Overview</p>
+        <h1 class="cs-title" id="overview" tabindex="-1">Moving cash loans from the street to the phone</h1>
+
+        <div class="cs-overview__grid">
+          <div class="cs-overview__main">
+            <p>Volana gave trust-based loans to people who lived on cash. Paying them back meant carrying money and documents across town. The app let them <strong>sign up, track and pay their loans</strong> without a trip to the branch, by bank transfer or in cash at an OXXO store.</p>
+            <p class="cs-label">My role</p>
+            <p>As Lead UI Designer, I defined the visual style, built the UI kit, designed the information architecture and the loan request and admin flows, and managed the design backlog.</p>
+          </div>
+        </div>
+
+        <div class="cs-impact">
+          <p class="cs-label">Impact</p>
+          <p class="cs-lead">People who had always paid in person chose the app.</p>
+          <ul class="cs-stats">
+            <li><span class="cs-stat">60<span class="cs-stat__unit">%</span></span> of in-branch customers became early adopters in the first month</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 02. THE CHALLENGE -->
+      <section class="cs-section" aria-labelledby="challenge">
+        <p class="cs-eyebrow cs-eyebrow--dot">02. The challenge</p>
+        <h2 class="cs-title" id="challenge" tabindex="-1">Every payment was a trip with cash</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">The risk wasn’t one trip. It was a daily route.</p>
+          <p>A borrower took out a loan of around MXN 20,000 and shared it with people they trusted, their credit circle. Then they collected each payment themselves. In focus groups we learned that some spent the whole day on public transport, picking up cash from their circle and a new member’s documents to sign them up at the branch.</p>
+        </div>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <div class="cs-problem">
+          <h3 class="cs-label">The problem</h3>
+          <p class="cs-lead">How might we keep borrowers safe and let new customers join, without anyone carrying cash or documents across town?</p>
+        </div>
+
+        <ol class="cs-hard">
+          <li><span class="cs-hard__num" aria-hidden="true">01</span><h3>Cash on the bus</h3><p>Payments travelled by hand.</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">02</span><h3>Papers on the bus</h3><p>Sign-up meant carrying IDs.</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">03</span><h3>Online only at home</h3><p>Little mobile data, home Wi-Fi.</p></li>
+          <li><span class="cs-hard__num" aria-hidden="true">04</span><h3>Built on trust</h3><p>Loans between people who know each other.</p></li>
+        </ol>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 03. KEY DECISIONS -->
+      <section class="cs-section" aria-labelledby="decisions">
+        <p class="cs-eyebrow cs-eyebrow--dot">03. Key decisions</p>
+        <h2 class="cs-title" id="decisions" tabindex="-1">Change the trip, keep the habit</h2>
+        <p class="cs-sub">I led workshops with developers and legal to find what was viable for each feature, then tested high-fidelity prototypes with borrowers before development.</p>
+
+        <article class="cs-decision">
+          <div class="cs-decision__text">
+            <p class="cs-label">01. Design for both sides of the loan</p>
+            <h3>Who paid, and what’s still owed.</h3>
+            <p>The borrower who collected payments and the people who paid them needed different things. The borrower needed to see who had paid and what was still owed. Payers needed to know how much and when.</p>
+            <p class="cs-chip"><span>Based on</span> Focus groups</p>
+          </div>
+          <figure class="cs-decision__media cs-decision__media--phone">
+            <img src="img/circle.webp" width="750" height="1538" alt="PLACEHOLDER: the borrower’s view of their credit circle.">
+          </figure>
+        </article>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision cs-decision--reverse">
+          <div class="cs-decision__text">
+            <p class="cs-label">02. Meet people where the cash is</p>
+            <h3>Pay by transfer, or in cash at OXXO.</h3>
+            <p>Not everyone used a bank account, so payments worked both by bank transfer and in cash at OXXO stores. The app turned an in-person habit into a digital record, without asking people to stop using cash.</p>
+            <p class="cs-chip"><span>Based on</span> Focus groups · Sales</p>
+          </div>
+          <figure class="cs-decision__media cs-decision__media--phone">
+            <img src="img/oxxo.webp" width="750" height="1538" alt="PLACEHOLDER: paying a loan installment in cash at OXXO.">
+          </figure>
+        </article>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision">
+          <div class="cs-decision__text">
+            <p class="cs-label">03. Design for Wi-Fi, not for mobile data</p>
+            <h3>Made for the moment they’re home.</h3>
+            <p>Most people only went online at home, on Wi-Fi. So the app had to use little data, and every notification had to make sense on its own, read hours later: what was due and when, without opening the app.</p>
+            <p class="cs-chip"><span>Based on</span> Prototype testing</p>
+          </div>
+          <figure class="cs-decision__media cs-decision__media--phone">
+            <img src="img/rating.webp" width="750" height="1538" alt="PLACEHOLDER: a payment reminder and the on-time rating.">
+          </figure>
+        </article>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision cs-decision--reverse">
+          <div class="cs-decision__text">
+            <p class="cs-label">04. Remove the branch from sign-up</p>
+            <h3>No documents carried anywhere.</h3>
+            <p>Branch staff uploaded existing customers’ data, so they only had to confirm their identity with Veriff, an ID verification service. New members of a circle could join from their own phone.</p>
+            <p class="cs-chip"><span>Based on</span> Legal requirements</p>
+          </div>
+          <figure class="cs-decision__media cs-decision__media--phone">
+            <img src="img/signup.webp" width="750" height="1538" alt="PLACEHOLDER: identity check during sign-up.">
+          </figure>
+        </article>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 04. REFLECTION -->
+      <section class="cs-section" aria-labelledby="reflection">
+        <p class="cs-eyebrow cs-eyebrow--dot">04. Reflection</p>
+        <h2 class="cs-title" id="reflection" tabindex="-1">Measure the change, not just the download</h2>
+        <ul class="cs-lessons">
+          <li><h3>Define success first</h3><p>We tracked adoption only. I’d agree on digital payments, on-time rate and trips avoided before designing.</p></li>
+          <li><h3>Motivate, don’t expose</h3><p>On-time payers earned a rating. I’d test that comparison never shames people who are late.</p></li>
+        </ul>
+        <hr class="cs-rule">
+        <p class="cs-next"><a href="../../#work" data-umami-event="Back to work" data-umami-event-from="end">Back to work</a></p>
+      </section>
+    </main>
+
+    <footer class="cs-footer">
+      <p class="last-update">Last update Nov 2026</p>
+    </footer>
+  </div>
+
+  <script src="../case-study.js"></script>
+</body>
+</html>

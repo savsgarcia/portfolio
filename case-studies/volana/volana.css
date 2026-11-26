@@ -1,0 +1,8 @@
+/* Volana: a short case study. Phone screens sit at phone size inside the decision media column. */
+.cs.cs--volana {
+  --cs-hero-bg: #EEF3EC;      /* very light tint of Volana's green */
+  --cs-accent-line: #7FA77A;
+  --cs-chip-bg: #E9EFE6;
+}
+.cs-decision__media--phone img { max-width: 300px; margin: 0 auto; }
+.cs-decision__media--phone figcaption { max-width: 360px; margin: 16px auto 0; text-align: center; }
