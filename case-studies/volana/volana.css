@@ -97,3 +97,4 @@
 @media (min-width: 700px) {
   .vo-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 }
+.vo-impact { margin-top: 40px; }
