@@ -45,3 +45,7 @@
   .vo-journey__curve polyline { fill: none; stroke: var(--cs-accent-line); stroke-width: 2; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
   .vo-journey__change { border-top: 1px dashed var(--cs-line, #DDD9CC); }
 }
+/* Decision 01: the lender and the associate side by side */
+.vo-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); justify-content: center; gap: 20px; }
+.vo-pair img { border-radius: 16px; box-shadow: 0 12px 40px rgba(45, 58, 99, .14), 0 0 0 1px rgba(45, 58, 99, .06); }
+.vo-pair figcaption { grid-column: 1 / -1; text-align: center; }

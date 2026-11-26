@@ -51,7 +51,7 @@
     <main id="main" class="cs-main" tabindex="-1">
 
       <div class="cs-hero">
-        <img src="img/hero.webp" width="2000" height="1100" alt="Three Volana screens: the borrower’s wallet, offering a loan to a member of the circle, and rating a member when a loan closes.">
+        <img src="img/hero.webp" width="2000" height="1100" alt="Three Volana screens: the lender’s wallet, offering a loan to an associate, and an associate’s next payment with an OXXO reference.">
       </div>
 
       <!-- 01. OVERVIEW -->
@@ -89,31 +89,31 @@
         <h2 class="cs-title" id="challenge" tabindex="-1">Every payment was a trip with cash</h2>
         <div class="cs-intro">
           <p class="cs-lead">The risk wasn’t one trip. It was a daily route.</p>
-          <p>A borrower took out a loan of around MXN 20,000 and shared it with people they trusted, their credit circle. Then they collected each payment themselves. In focus groups we learned that some spent the whole day on public transport, picking up cash from their circle and a new member’s documents to sign them up at the branch.</p>
+          <p>Volana lent around MXN 20,000 to one person, who shared it with people they trusted: their credit circle of associates. That lender then collected each payment themselves. In focus groups we learned that some spent the whole day on public transport, picking up cash from their associates and a new associate’s documents to sign them up at the branch.</p>
         </div>
 
         <hr class="cs-rule cs-rule--dotted">
 
         <div class="cs-problem">
           <h3 class="cs-label">The problem</h3>
-          <p class="cs-lead">How might we keep borrowers safe and let new customers join, without anyone carrying cash or documents across town?</p>
+          <p class="cs-lead">How might we keep lenders and their associates safe, and let new people join, without anyone carrying cash or documents across town?</p>
         </div>
 
         <figure class="vo-journey" aria-labelledby="journey-title">
           <figcaption>
-            <h3 class="cs-label" id="journey-title">The journey before the app</h3>
-            <p>From focus groups with borrowers: what each step needed, how it felt, and what the app changed.</p>
+            <h3 class="cs-label" id="journey-title">The lender’s journey before the app</h3>
+            <p>From focus groups: what each step needed from the person in the middle, how it felt, and what the app changed.</p>
           </figcaption>
           <div class="vo-journey__grid">
             <div class="vo-journey__rows" aria-hidden="true"><span>Need</span><span>Feeling</span><span>Pain point</span><span>With the app</span></div>
             <svg class="vo-journey__curve" viewBox="0 0 500 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="50,67.5 150,32.5 250,85 350,67.5 450,15" /></svg>
             <ol>
             <li style="--level: 2">
-              <h4 class="vo-journey__stage"><span aria-hidden="true">01</span> Sign up a member</h4>
+              <h4 class="vo-journey__stage"><span aria-hidden="true">01</span> Sign up an associate</h4>
               <dl>
                 <div class="vo-journey__need"><dt>Need</dt><dd>Add someone they trust to their credit circle.</dd></div>
                 <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😟</span>Worried</dd></div>
-                <div class="vo-journey__pain"><dt>Pain point</dt><dd>Carrying the new member’s IDs and papers to the branch by bus.</dd></div>
+                <div class="vo-journey__pain"><dt>Pain point</dt><dd>Carrying the new associate’s IDs and papers to the branch by bus.</dd></div>
                 <div class="vo-journey__change"><dt>With the app</dt><dd>Identity confirmed with Veriff, from home.</dd></div>
               </dl>
             </li>
@@ -123,16 +123,16 @@
                 <div class="vo-journey__need"><dt>Need</dt><dd>Decide how much to lend, and to whom.</dd></div>
                 <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">🙂</span>Confident</dd></div>
                 <div class="vo-journey__pain"><dt>Pain point</dt><dd>Only memory and word of mouth to judge who pays well.</dd></div>
-                <div class="vo-journey__change"><dt>With the app</dt><dd>Each member’s rating and track record next to the amount.</dd></div>
+                <div class="vo-journey__change"><dt>With the app</dt><dd>Each associate’s rating and track record next to the amount.</dd></div>
               </dl>
             </li>
             <li style="--level: 1">
               <h4 class="vo-journey__stage"><span aria-hidden="true">03</span> Collect</h4>
               <dl>
-                <div class="vo-journey__need"><dt>Need</dt><dd>Get each member’s payment on time.</dd></div>
+                <div class="vo-journey__need"><dt>Need</dt><dd>Get each associate’s payment on time.</dd></div>
                 <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😩</span>Exhausted</dd></div>
                 <div class="vo-journey__pain"><dt>Pain point</dt><dd>A whole day on public transport, house to house, carrying cash.</dd></div>
-                <div class="vo-journey__change"><dt>With the app</dt><dd>Members pay by transfer or at OXXO; the wallet shows who paid.</dd></div>
+                <div class="vo-journey__change"><dt>With the app</dt><dd>Associates pay by transfer or at OXXO; the wallet shows who paid.</dd></div>
               </dl>
             </li>
             <li style="--level: 2">
@@ -150,7 +150,7 @@
                 <div class="vo-journey__need"><dt>Need</dt><dd>Close it, and decide whether to lend again.</dd></div>
                 <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😌</span>Relieved</dd></div>
                 <div class="vo-journey__pain"><dt>Pain point</dt><dd>No record of who paid well to carry into the next loan.</dd></div>
-                <div class="vo-journey__change"><dt>With the app</dt><dd>A rating that becomes part of the member’s history.</dd></div>
+                <div class="vo-journey__change"><dt>With the app</dt><dd>A rating that becomes part of the associate’s history.</dd></div>
               </dl>
             </li>
             </ol>
@@ -163,18 +163,20 @@
       <section class="cs-section" aria-labelledby="decisions">
         <p class="cs-eyebrow cs-eyebrow--dot">03. Key decisions</p>
         <h2 class="cs-title" id="decisions" tabindex="-1">Change the trip, keep the habit</h2>
-        <p class="cs-sub">I led workshops with developers and legal to find what was viable for each feature, then tested high-fidelity prototypes with borrowers before development.</p>
+        <p class="cs-sub">I led workshops with developers and legal to find what was viable for each feature, then tested high-fidelity prototypes with lenders and associates before development.</p>
 
         <article class="cs-decision">
           <div class="cs-decision__text">
-            <p class="cs-label">01. Design for both sides of the loan</p>
-            <h3>Who paid, and what’s still owed.</h3>
-            <p>The borrower who collected payments and the people who paid them needed different things. The borrower needed to see who had paid and what was still owed. Payers needed to know how much and when.</p>
-            <p>So the wallet opens on the next payment, with the members of the circle who owe this fortnight right below it.</p>
+            <p class="cs-label">01. One app, two roles</p>
+            <h3>The lender tracks, the associate pays.</h3>
+            <p>Lenders and associates used the same app and signed in by role, because they needed different things. The lender needed to see who had paid and what was still owed. The associate needed to know how much and when, and a way to pay without a trip.</p>
+            <p>So the lender’s wallet opens on their next payment to Volana, with the associates who owe this fortnight below it. The associate’s home opens on what they owe, and two ways to pay: a bank transfer, or cash at any OXXO store with a reference. Not everyone used a bank account, so cash had to stay an option.</p>
             <p class="cs-chip"><span>Based on</span> Focus groups</p>
           </div>
-          <figure class="cs-decision__media cs-decision__media--phone">
-            <img src="img/wallet.webp" width="750" height="1540" alt="“Mi cartera”: the next payment of $13,500.00 with a “Ver detalles” button, a personal loan offer, and the active members who pay this fortnight, Juana de Arco ($350.00) and Julieta García ($700.00).">
+          <figure class="cs-decision__media vo-pair">
+            <img src="img/wallet.webp" width="750" height="1540" alt="Lender, “Mi cartera”: the next payment of $13,500.00, a personal loan offer, and the associates who pay this fortnight, Juana de Arco ($350.00) and Julieta García ($700.00).">
+            <img src="img/pay.webp" width="750" height="1540" alt="Associate, “Hola, Juana”: next payment of $350.00 due Friday, November 15, payment 2 of 6, lent by María Hernández, with cash at OXXO selected and a payment reference with a barcode.">
+            <figcaption>Left, the lender. Right, the associate.</figcaption>
           </figure>
         </article>
 
@@ -185,11 +187,11 @@
             <p class="cs-label">02. Make trust visible</p>
             <h3>Lend to people you know, with their track record.</h3>
             <p>Volana’s loans already ran on trust between people who know each other. The app didn’t replace that judgment; it backed it up with history.</p>
-            <p>When a borrower offers a loan to a member, they see the member’s rating and whether they’ve paid well before, next to the amount and the term.</p>
+            <p>When a lender offers a loan to an associate, they see the associate’s rating and whether they’ve paid well before, next to the amount and the term.</p>
             <p class="cs-chip"><span>Based on</span> Focus groups · Legal</p>
           </div>
           <figure class="cs-decision__media cs-decision__media--phone">
-            <img src="img/offer.webp" width="750" height="1540" alt="“Ofrece un préstamo”: $11,800.00 of available credit, Julieta García chosen with a four-star rating, a $4,000.00 loan on a slider, the note “Julieta se ha comportado bien en otros préstamos”, and a term of 6 quincenas.">
+            <img src="img/offer.webp" width="750" height="1540" alt="“Ofrece un préstamo”: $11,800.00 of available credit, the associate Julieta García chosen with a four-star rating, a $4,000.00 loan on a slider, the note “Julieta se ha comportado bien en otros préstamos”, and a term of 6 quincenas.">
           </figure>
         </article>
 
@@ -199,20 +201,34 @@
           <div class="cs-decision__text">
             <p class="cs-label">03. Reward on-time payment</p>
             <h3>Good habits, made visible.</h3>
-            <p>We used behavioral economics: when a loan closes, the borrower rates the member, and that rating becomes part of their history. Paying on time builds a reputation people can see.</p>
+            <p>We used behavioral economics: when a loan closes, the lender rates the associate, and that rating becomes part of their history. Paying on time builds a reputation people can see.</p>
             <p class="cs-chip"><span>Based on</span> Behavioral economics</p>
           </div>
           <figure class="cs-decision__media cs-decision__media--phone">
-            <img src="img/rate.webp" width="750" height="1540" alt="“Solicitud de cierre aprobada”: a $2,400.00 loan with $1,200.00 to settle, and a card to rate the member Juana de Arco with four stars and the comment “Siempre pagó a tiempo”.">
+            <img src="img/rate.webp" width="750" height="1540" alt="“Solicitud de cierre aprobada”: a $2,400.00 loan with $1,200.00 to settle, and a card to rate the associate Juana de Arco with four stars and the comment “Siempre pagó a tiempo”.">
+          </figure>
+        </article>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision cs-decision--reverse">
+          <div class="cs-decision__text">
+            <p class="cs-label">04. Remove the branch from sign-up</p>
+            <h3>No documents carried anywhere.</h3>
+            <p>Everyone who joined, lender or associate, verified their identity in the app with Veriff: a photo of their INE and a selfie. Branch staff uploaded existing customers’ data beforehand, so they only had to confirm it.</p>
+            <p>The trip with someone else’s papers, the riskiest part of signing up, disappeared.</p>
+            <p class="cs-chip"><span>Based on</span> Legal requirements</p>
+          </div>
+          <figure class="cs-decision__media cs-decision__media--phone">
+            <img src="img/verify.webp" width="750" height="1540" alt="Sign-up, “Verifica tu identidad”: step 2 of 3, the INE photo done, a selfie next, “Verificación segura con Veriff” and a “Tomar selfie” button.">
           </figure>
         </article>
 
         <hr class="cs-rule cs-rule--dotted">
 
         <ul class="cs-lessons">
-          <li><h3>Meet people where the cash is</h3><p>Not everyone used a bank account, so payments worked by transfer and in cash at OXXO stores.</p></li>
           <li><h3>Design for Wi-Fi, not mobile data</h3><p>Most people went online at home. The app used little data, and every notification made sense on its own.</p></li>
-          <li><h3>Remove the branch from sign-up</h3><p>Existing customers only confirmed their identity with Veriff. New members joined without carrying documents.</p></li>
+          <li><h3>Plan the path up</h3><p>Next, we planned to open circles: after building a history, associates could join other circles and later offer loans themselves.</p></li>
         </ul>
         <p class="cs-note">Screens recreated from the 2019 designs.</p>
         <hr class="cs-rule">
@@ -224,7 +240,7 @@
         <h2 class="cs-title" id="reflection" tabindex="-1">Measure the change, not just the download</h2>
         <ul class="cs-lessons">
           <li><h3>Define success first</h3><p>We tracked adoption only. I’d agree on digital payments, on-time rate and trips avoided before designing.</p></li>
-          <li><h3>Motivate, don’t expose</h3><p>On-time payers earned a rating. I’d test that comparison never shames people who are late.</p></li>
+          <li><h3>Motivate, don’t expose</h3><p>On-time payers earned a rating. I’d test that it never shames people who are late, or pushes anyone to borrow beyond their means.</p></li>
         </ul>
         <hr class="cs-rule">
         <p class="cs-next"><a href="../../#work" data-umami-event="Back to work" data-umami-event-from="end">Back to work</a></p>
