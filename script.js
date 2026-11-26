@@ -28,7 +28,7 @@
     },
     'volana': {
       num: '03', name: 'Cash loans app', client: 'Volana', tag: 'Fintech',
-      title: 'Moving cash loans from the street to the phone',
+      title: 'How Julieta stopped carrying her circle’s cash across town',
       description: 'Designing an app so people who lived on cash could sign up, track and pay their loans without a trip to the branch.',
       cta: '<a class="cta cta--stretched" href="case-studies/volana/" data-umami-event="See case study" data-umami-event-project="volana">See case study ' + chevron + '</a>',
       bg: '#DDE0FC',

@@ -25,31 +25,6 @@
 
 /* ---------- Overview ---------- */
 
-/* Persona card, right of the Overview text on desktop, full width below 1100px */
-.cs-persona {
-  grid-column: 9 / span 4;
-  align-self: start;
-  margin: 0;
-  padding: 24px;
-  border-radius: 8px;
-  background: var(--cs-card-bg);
-  box-shadow: var(--cs-shadow);
-}
-.cs-persona__head { display: flex; gap: 16px; align-items: center; }
-.cs-persona__avatar {
-  flex: none;
-  width: 56px; height: 56px;
-  border-radius: 50%;
-  display: grid; place-items: center;
-  background: var(--cs-chip-bg);
-  font-family: var(--font-display);
-  font-size: 22px;
-  color: var(--ink);
-}
-.cs-section .cs-persona__name { margin: 0; font-size: 16px; line-height: 24px; font-weight: 500; }
-.cs-section .cs-persona__role { margin: 0; font-size: 14px; line-height: 20px; color: var(--ink-soft); }
-.cs-persona dl { display: grid; gap: 12px; margin: 20px 0 0; }
-.cs-persona dt,
 .os-where dt {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -57,9 +32,6 @@
   text-transform: uppercase;
   color: var(--ink-strong);
 }
-.cs-persona dt { line-height: 20px; }
-.cs-persona dd { margin: 2px 0 0; font-size: 14px; line-height: 20px; color: var(--ink); }
-.cs-section .cs-persona__note { margin: 16px 0 0; font-size: 12px; line-height: 18px; color: var(--ink-soft); } /* --muted is under 4.5:1 on the card */
 
 /* "Where it landed": label/value rows */
 .os-where { display: grid; gap: 12px; margin: 16px 0 0; }
@@ -325,7 +297,6 @@
 /* ---------- Smaller screens ---------- */
 
 @media (max-width: 1099px) {
-  .cs-persona { grid-column: 1 / -1; }
 }
 @media (max-width: 699px) {
   .os-findings { grid-template-columns: minmax(0, 1fr); }
