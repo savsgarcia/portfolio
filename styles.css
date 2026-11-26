@@ -279,8 +279,10 @@ button { font: inherit; color: inherit; background: none; border: 0; padding: 0;
   .view--work .col--projects { grid-column: 1; grid-row: 1; padding: var(--top) 40px 0; }
   .view--work .col--text { grid-column: 1; grid-row: 2; padding: 48px 40px 40px; }
   .view--work .col--visual { grid-column: 2; grid-row: 1 / -1; }
-  .view--work .projects { flex-direction: row; flex-wrap: wrap; align-items: flex-end; gap: 8px 40px; }
+  /* One row of tabs: each column takes its title's width, and long titles wrap when the row is tight */
+  .view--work .projects { display: grid; grid-auto-flow: column; grid-auto-columns: auto; justify-content: start; align-items: stretch; gap: 8px 32px; }
   .view--work .project-tab { padding-top: 0; }
+  .view--work .project-tab-title { white-space: normal; }
   .view--work .project-copy { max-width: none; }
   .project-copy .display { font-size: clamp(40px, 3.75vw, 60px); line-height: 1.04; text-wrap: balance; }
   .project-copy .lede { max-width: 580px; }
@@ -375,6 +377,20 @@ a.cta svg { transition: transform var(--dur-short) var(--ease); }
    (title, description, CTA). Nothing else in the block is clickable, so screen
    readers announce only the link; the heading and text read as normal content. */
 .project-copy { position: relative; }
+/* Industry tag above each project title */
+.project-tag {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 2px 10px;
+  border: 1px solid #D9D6CC;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
 .cta--stretched::after {
   content: "";
   position: absolute;
@@ -408,6 +424,7 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   width: 84%;
 }
 .project-image--order-sets { width: 186%; left: calc(var(--img-start) - 0.93%); }
+.project-image--volana { width: 150%; left: var(--img-start); }
 
 /* ---------- Experience ---------- */
 
@@ -648,7 +665,8 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .project-image,
   .project-image--viu,
   .project-image--order-entry,
-  .project-image--order-sets {
+  .project-image--order-sets,
+  .project-image--volana {
     position: static;
     width: 100%;
     max-width: 100%;
@@ -750,7 +768,8 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .case-visual .project-image,
   .case-visual .project-image--viu,
   .case-visual .project-image--order-entry,
-  .case-visual .project-image--order-sets {
+  .case-visual .project-image--order-sets,
+  .case-visual .project-image--volana {
     position: static;
     display: block;
     width: 100%;
@@ -841,6 +860,7 @@ a.cta:focus-visible svg { transform: translateX(4px); }
   .view--work > .col--visual .project-image--viu { width: 120%; left: calc(var(--img-start) - 0.97%); }
   .view--work > .col--visual .project-image--order-entry { width: 84%; left: 8%; }
   .view--work > .col--visual .project-image--order-sets { width: 186%; left: calc(var(--img-start) - 0.93%); }
+  .view--work > .col--visual .project-image--volana { width: 150%; left: var(--img-start); }
 }
 
 /* Tablet to small desktop (700–1099px): About keeps the desktop

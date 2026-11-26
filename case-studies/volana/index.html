@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>How Julieta stopped carrying cash across town · Volana case study · Saul García</title>
+  <meta name="description" content="Case study: designing Volana's app, so people who lived on cash could sign up, track and pay their loans without a trip to the branch.">
+  <meta name="theme-color" content="#FFFEFB">
+  <link rel="canonical" href="https://savsgarcia.github.io/portfolio/case-studies/volana/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Saul García · Product designer">
+  <meta property="og:title" content="How Julieta stopped carrying her circle’s cash across town">
+  <meta property="og:description" content="Case study: Volana’s app, so people who lived on cash could sign up, track and pay their loans without a trip to the branch.">
+  <meta property="og:url" content="https://savsgarcia.github.io/portfolio/case-studies/volana/">
+  <meta property="og:image" content="https://savsgarcia.github.io/portfolio/assets/og/volana.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="How Julieta stopped carrying her circle’s cash across town">
+  <meta name="twitter:card" content="summary_large_image">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,400&family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../styles.css">
+  <link rel="stylesheet" href="../case-study.css">
+  <link rel="stylesheet" href="volana.css">
+  <!-- Umami analytics: no cookies, no personal data. Only counts visits on the live site. -->
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="722e1d46-c88f-4b3c-b9a3-a9562d51b813" data-domains="savsgarcia.github.io"></script>
+</head>
+<body class="cs cs--volana">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="cs-layout">
+    <!-- Sidebar on desktop, top block on smaller screens -->
+    <header class="cs-side">
+      <a class="cs-back" href="../../#work" data-umami-event="Back to work" data-umami-event-from="header">
+        <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        Back
+      </a>
+
+      <nav class="cs-index" aria-label="Contents">
+        <p class="cs-label" aria-hidden="true">Contents</p>
+        <ol>
+          <li><a href="#overview" data-umami-event="Contents" data-umami-event-section="overview">01. Overview</a></li>
+          <li><a href="#challenge" data-umami-event="Contents" data-umami-event-section="challenge">02. The challenge</a></li>
+          <li><a href="#process" data-umami-event="Contents" data-umami-event-section="process">03. Process</a></li>
+          <li><a href="#decisions" data-umami-event="Contents" data-umami-event-section="decisions">04. Key decisions</a></li>
+          <li><a href="#outcome" data-umami-event="Contents" data-umami-event-section="outcome">05. Outcome</a></li>
+          <li><a href="#reflection" data-umami-event="Contents" data-umami-event-section="reflection">06. Reflection</a></li>
+        </ol>
+      </nav>
+    </header>
+
+    <main id="main" class="cs-main" tabindex="-1">
+
+      <div class="cs-hero">
+        <img src="img/hero.webp" width="2000" height="1100" alt="Three Volana screens: the lender’s wallet, offering a loan to an associate, and an associate’s next payment with an OXXO reference.">
+      </div>
+
+      <!-- 01. OVERVIEW -->
+      <section class="cs-section cs-overview" aria-labelledby="overview">
+        <dl class="cs-about" aria-label="About the project">
+          <div><dt>Project</dt><dd>Loans app</dd></div>
+          <div><dt>Client</dt><dd>Volana by Polygon Fintech (now Medá)</dd></div>
+          <div><dt>Team</dt><dd>Devs, legal, sales, branch staff</dd></div>
+          <div><dt>Timeline</dt><dd>Jul–Oct 2019</dd></div>
+        </dl>
+
+        <p class="cs-eyebrow">01. Overview</p>
+        <h1 class="cs-title" id="overview" tabindex="-1">How Julieta stopped carrying her circle’s cash across town</h1>
+
+        <div class="cs-overview__grid">
+          <div class="cs-overview__main">
+            <p>Julieta borrowed from Volana and lent that money to people she trusted, her credit circle. Every fortnight she rode the bus from house to house to collect their payments, then carried the cash to the branch. Volana’s app let her and her associates <strong>sign up, track and pay their loans</strong> without that trip, by bank transfer or in cash at an OXXO store.</p>
+            <p class="cs-label">My role</p>
+            <p>As Lead UI Designer, I defined the visual style, built the UI kit, designed the information architecture and the loan request and admin flows, and managed the design backlog.</p>
+          <div class="cs-impact vo-impact">
+            <p class="cs-label">Impact</p>
+            <p class="cs-lead">People who had always paid in person chose the app.</p>
+            <ul class="cs-stats">
+              <li><span class="cs-stat">60<span class="cs-stat__unit">%</span></span> of in-branch customers, about 1,000 accounts, became early adopters in the first month</li>
+            </ul>
+          </div>
+          </div>
+
+          <div class="cs-persona">
+            <div class="cs-persona__head">
+              <span class="cs-persona__avatar" aria-hidden="true">JG</span>
+              <div>
+                <p class="cs-persona__name">Julieta García</p>
+                <p class="cs-persona__role">Lender in a Volana credit circle</p>
+              </div>
+            </div>
+            <dl>
+              <div><dt>Her fortnight</dt><dd>Collects payments from her associates and pays Volana back, in cash.</dd></div>
+              <div><dt>Works with</dt><dd>Her circle of associates, people she knows, and Volana’s branch staff.</dd></div>
+              <div><dt>Needs</dt><dd>To lend to people she trusts, know who has paid, and pay back without carrying cash across town.</dd></div>
+            </dl>
+            <p class="cs-persona__note">Composite persona, based on the focus group with Volana’s branch customers.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- 02. THE CHALLENGE -->
+      <section class="cs-section" aria-labelledby="challenge">
+        <p class="cs-eyebrow cs-eyebrow--dot">02. The challenge</p>
+        <h2 class="cs-title" id="challenge" tabindex="-1">Every payment was a trip with cash</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">The risk wasn’t one trip. It was a daily route.</p>
+          <p>Volana lent around MXN 20,000 to one person, like Julieta, who shared it with people they trusted: their credit circle of associates. That lender then collected each payment themselves. Some spent the whole day on public transport, picking up cash from their associates and a new associate’s documents to sign them up at the branch.</p>
+        </div>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <div class="cs-problem">
+          <h3 class="cs-label">The problem</h3>
+          <p class="cs-lead">How might we keep lenders and their associates safe, and let new people join, without anyone carrying cash or documents across town?</p>
+        </div>
+
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 03. PROCESS -->
+      <section class="cs-section" aria-labelledby="process">
+        <p class="cs-eyebrow cs-eyebrow--dot">03. Process</p>
+        <h2 class="cs-title" id="process" tabindex="-1">Listen first, then test it in their hands</h2>
+        <ol class="vo-steps">
+          <li>
+            <img src="img/process-focus.webp" width="969" height="482" alt="Live stream of the focus group: Volana customers around a table while the moderator writes on a flip chart.">
+            <p class="cs-label">01. Focus group</p>
+            <h3>Hear it from the branch.</h3>
+            <p>We started with a focus group with Volana’s branch customers, led by a moderator while I followed it over a live stream. That’s where we heard about the all-day routes with cash and documents.</p>
+          </li>
+          <li>
+            <img src="img/process-workshop.webp" width="1200" height="886" alt="Workshop: the team around a table covered in sticky notes while a teammate writes on a glass wall. Faces blurred.">
+            <p class="cs-label">02. Workshops</p>
+            <h3>Agree on what’s viable.</h3>
+            <p>I led workshops with developers, legal and sales to decide what each feature needed and what we could build. Out of them came the app’s structure and the flows I designed.</p>
+          </li>
+          <li>
+            <img src="img/process-testing.webp" width="1200" height="891" alt="A participant in a test session, with the prototype on a phone on the table. Face blurred.">
+            <p class="cs-label">03. Testing</p>
+            <h3>Put it in their hands.</h3>
+            <p>We tested high-fidelity prototypes in person, in rounds, before development. That’s where we learned most people only went online at home, which changed how the app handled notifications and data.</p>
+          </li>
+        </ol>
+        <figure class="vo-journey" aria-labelledby="journey-title">
+          <figcaption>
+            <h3 class="cs-label" id="journey-title">Julieta’s journey before the app</h3>
+            <p>What came out of the focus group: what each step needed from the person in the middle, how it felt, and what the app changed.</p>
+          </figcaption>
+          <div class="vo-journey__grid">
+            <div class="vo-journey__rows" aria-hidden="true"><span>Need</span><span>Feeling</span><span>Pain point</span><span>With the app</span></div>
+            <svg class="vo-journey__curve" viewBox="0 0 500 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,50 500,50" /></svg>
+            <ol>
+            <li style="--level: 2">
+              <h4 class="vo-journey__stage"><span aria-hidden="true">01</span> Sign up an associate</h4>
+              <dl>
+                <div class="vo-journey__need"><dt>Need</dt><dd>Add someone they trust to their credit circle.</dd></div>
+                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😟</span>Worried</dd></div>
+                <div class="vo-journey__pain"><dt>Pain point</dt><dd>Carrying the new associate’s IDs and papers to the branch by bus.</dd></div>
+                <div class="vo-journey__change"><dt>With the app</dt><dd>Identity confirmed with Veriff, from home.</dd></div>
+              </dl>
+            </li>
+            <li style="--level: 4">
+              <h4 class="vo-journey__stage"><span aria-hidden="true">02</span> Lend</h4>
+              <dl>
+                <div class="vo-journey__need"><dt>Need</dt><dd>Decide how much to lend, and to whom.</dd></div>
+                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">🙂</span>Confident</dd></div>
+                <div class="vo-journey__pain"><dt>Pain point</dt><dd>Only memory and word of mouth to judge who pays well.</dd></div>
+                <div class="vo-journey__change"><dt>With the app</dt><dd>Each associate’s rating and track record next to the amount.</dd></div>
+              </dl>
+            </li>
+            <li style="--level: 1">
+              <h4 class="vo-journey__stage"><span aria-hidden="true">03</span> Collect</h4>
+              <dl>
+                <div class="vo-journey__need"><dt>Need</dt><dd>Get each associate’s payment on time.</dd></div>
+                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😩</span>Exhausted</dd></div>
+                <div class="vo-journey__pain"><dt>Pain point</dt><dd>A whole day on public transport, house to house, carrying cash.</dd></div>
+                <div class="vo-journey__change"><dt>With the app</dt><dd>Associates pay by transfer or at OXXO; the wallet shows who paid.</dd></div>
+              </dl>
+            </li>
+            <li style="--level: 2">
+              <h4 class="vo-journey__stage"><span aria-hidden="true">04</span> Pay back</h4>
+              <dl>
+                <div class="vo-journey__need"><dt>Need</dt><dd>Pay Volana before the due date.</dd></div>
+                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😬</span>Anxious</dd></div>
+                <div class="vo-journey__pain"><dt>Pain point</dt><dd>Another trip to the branch with all the cash collected.</dd></div>
+                <div class="vo-journey__change"><dt>With the app</dt><dd>Transfer or cash at OXXO, no trip to the branch.</dd></div>
+              </dl>
+            </li>
+            <li style="--level: 5">
+              <h4 class="vo-journey__stage"><span aria-hidden="true">05</span> Close the loan</h4>
+              <dl>
+                <div class="vo-journey__need"><dt>Need</dt><dd>Close it, and decide whether to lend again.</dd></div>
+                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😌</span>Relieved</dd></div>
+                <div class="vo-journey__pain"><dt>Pain point</dt><dd>No record of who paid well to carry into the next loan.</dd></div>
+                <div class="vo-journey__change"><dt>With the app</dt><dd>A rating that becomes part of the associate’s history.</dd></div>
+              </dl>
+            </li>
+            </ol>
+          </div>
+        </figure>
+        <figure class="vo-board">
+          <img src="img/process-whiteboard.webp" width="1600" height="1181" alt="Whiteboard from a workshop: the app’s sections (Home, Cartera, Mi red, Notificaciones) and what Home holds: the credit line, “18,000” to offer; offer a loan, by registering an associate or offering to a previous one; my payments, with the history and the next payment broken down per associate; increase the credit line; and my requests, pending, approved, returned or denied. Next to it, a phone sketch with sticky notes.">
+          <figcaption>The app’s first structure, drafted in a workshop: Home, Wallet, My network and Notifications, and everything Home had to hold.</figcaption>
+        </figure>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 04. KEY DECISIONS -->
+      <section class="cs-section" aria-labelledby="decisions">
+        <p class="cs-eyebrow cs-eyebrow--dot">04. Key decisions</p>
+        <h2 class="cs-title" id="decisions" tabindex="-1">Change the trip, keep the habit</h2>
+        <p class="cs-sub">Each one traces back to something we heard in the focus group, agreed in a workshop or saw in a test.</p>
+
+        <article class="cs-decision">
+          <div class="cs-decision__text">
+            <p class="cs-label">01. One app, two roles</p>
+            <h3>The lender tracks, the associate pays.</h3>
+            <p>Lenders and associates used the same app and signed in by role, because they needed different things. The lender needed to see who had paid and what was still owed. The associate needed to know how much and when, and a way to pay without a trip.</p>
+            <p>So the lender’s wallet opens on their next payment to Volana, with the associates who owe this fortnight below it. The associate’s home opens on what they owe, and two ways to pay: a bank transfer, or cash at any OXXO store with a reference. Not everyone used a bank account, so cash had to stay an option.</p>
+            <p class="cs-chip"><span>Based on</span> Focus groups</p>
+          </div>
+          <figure class="cs-decision__media cs-decision__media--phone vo-roles">
+            <div class="cs-segmented" role="group" aria-label="Role">
+              <button type="button" data-role="lender" aria-pressed="true">Lender</button>
+              <button type="button" data-role="associate" aria-pressed="false">Associate</button>
+            </div>
+            <div class="vo-roles__view" data-role="lender">
+            <div class="vo-phone">
+              <img class="vo-phone__status" src="img/wallet-status.webp" width="750" height="66" alt="">
+              <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Mi cartera (scrollable screen)">
+                <img src="img/wallet.webp" width="750" height="1568" alt="Julieta, the lender, “Mi cartera”: the next payment of $13,500.00, a personal loan offer, and the four associates who pay this fortnight: Mariana López ($350.00), Sofía Herrera ($756.67), Andrea Ruiz ($500.00) and Carlos Méndez ($420.00).">
+              </div>
+              <img class="vo-phone__bar" src="img/wallet-bar.webp" width="750" height="124" alt="">
+            </div>
+            </div>
+            <div class="vo-roles__view" data-role="associate">
+            <div class="vo-phone">
+              <img class="vo-phone__status" src="img/pay-status.webp" width="750" height="66" alt="">
+              <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Hola, Mariana (scrollable screen)">
+                <img src="img/pay.webp" width="750" height="1313" alt="Mariana, an associate, “Hola, Mariana”: next payment of $350.00 due Friday, November 15, payment 2 of 6, lent by Julieta García, with cash at OXXO selected and a payment reference with a barcode.">
+              </div>
+              <img class="vo-phone__bar" src="img/pay-bar.webp" width="750" height="124" alt="">
+            </div>
+            </div>
+          </figure>
+        </article>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision cs-decision--reverse">
+          <div class="cs-decision__text">
+            <p class="cs-label">02. Make trust visible</p>
+            <h3>A track record you see when you lend, and build when you pay.</h3>
+            <p>Volana’s loans already ran on trust between people who know each other. The app didn’t replace that judgment; it backed it up with history.</p>
+            <p>When Julieta offers Mariana a loan, she sees Mariana’s rating and whether she’s paid well before. When the loan closes, Julieta rates her, and that rating becomes part of Mariana’s history. We used behavioral economics here: paying on time builds a reputation people can see.</p>
+            <p class="cs-chip"><span>Based on</span> Focus groups · Behavioral economics</p>
+          </div>
+          <figure class="cs-decision__media cs-decision__media--phone vo-roles">
+            <div class="cs-segmented" role="group" aria-label="Moment">
+              <button type="button" data-role="offer" aria-pressed="true">Offer a loan</button>
+              <button type="button" data-role="close" aria-pressed="false">Close a loan</button>
+            </div>
+            <div class="vo-roles__view" data-role="offer">
+            <div class="vo-phone">
+              <img class="vo-phone__status" src="img/offer-status.webp" width="750" height="66" alt="">
+              <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Ofrece un préstamo (scrollable screen)">
+                <img src="img/offer.webp" width="750" height="1716" alt="“Ofrece un préstamo”: $11,800.00 of available credit, the associate Mariana López chosen with a four-star rating, a $1,850.00 loan on a slider, the note “Mariana se ha comportado bien en otros préstamos”, and a term of 6 quincenas.">
+              </div>
+              <div class="vo-phone__cta" aria-hidden="true"><span class="vo-phone__btn">Continuar</span></div>
+            </div>
+            </div>
+            <div class="vo-roles__view" data-role="close">
+            <div class="vo-phone">
+              <img class="vo-phone__status" src="img/rate-status.webp" width="750" height="66" alt="">
+              <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Califica a tu asociado (scrollable screen)">
+                <img src="img/rate.webp" width="750" height="1315" alt="“Solicitud de cierre aprobada”: a $2,100.00 loan with $350.00 to settle, and a card to rate the associate Mariana López with four stars and the comment “Siempre pagó a tiempo”.">
+              </div>
+              <div class="vo-phone__cta" aria-hidden="true"><span class="vo-phone__btn">Cerrar asociado</span><span class="vo-phone__link">Cancelar</span></div>
+            </div>
+            </div>
+          </figure>
+        </article>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision">
+          <div class="cs-decision__text">
+            <p class="cs-label">03. Design for Wi-Fi, not mobile data</p>
+            <h3>Made for the moment they’re home.</h3>
+            <p>Testing changed this one. Most people only went online at home, on Wi-Fi, and rarely had mobile data on the street. So the app was kept light on data, and notifications got their own strategy: each one had to make sense on its own, read hours later, with what was due, when, and how to pay.</p>
+            <p class="cs-chip"><span>Based on</span> Prototype testing</p>
+          </div>
+          <figure class="cs-decision__media cs-decision__media--phone">
+            <div class="vo-phone">
+              <img class="vo-phone__status" src="img/notify-status.webp" width="750" height="66" alt="">
+              <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Lock screen notifications (scrollable screen)" style="background: #8F9BFF">
+                <img src="img/notify.webp" width="750" height="1434" alt="Lock screen with two Volana notifications: “Tu pago vence mañana: paga $350.00 antes del viernes. En OXXO usa tu referencia 9301 4472 0815 36”, and an older one, “Pago recibido: tu pago 1 de 6 por $350.00 quedó registrado. ¡Gracias por pagar a tiempo!”">
+              </div>
+            </div>
+          </figure>
+        </article>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision cs-decision--reverse">
+          <div class="cs-decision__text">
+            <p class="cs-label">04. Remove the branch from sign-up</p>
+            <h3>No documents carried anywhere.</h3>
+            <p>Everyone who joined, lender or associate, verified their identity in the app with Veriff: a photo of their INE and a selfie. Branch staff uploaded existing customers’ data beforehand, so they only had to confirm it.</p>
+            <p>The trip with someone else’s papers, the riskiest part of signing up, disappeared.</p>
+            <p class="cs-chip"><span>Based on</span> Legal requirements</p>
+          </div>
+          <figure class="cs-decision__media cs-decision__media--phone">
+            <div class="vo-phone">
+              <img class="vo-phone__status" src="img/verify-status.webp" width="750" height="66" alt="">
+              <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Verifica tu identidad (scrollable screen)">
+                <img src="img/verify.webp" width="750" height="1418" alt="Sign-up, “Verifica tu identidad”: step 2 of 3, the INE photo done, a selfie next, “Verificación segura con Veriff” and a “Tomar selfie” button.">
+              </div>
+              <div class="vo-phone__cta" aria-hidden="true"><span class="vo-phone__btn">Tomar selfie</span></div>
+            </div>
+          </figure>
+        </article>
+
+        <p class="cs-note">Screens recreated from the 2019 designs.</p>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 05. OUTCOME -->
+      <section class="cs-section" aria-labelledby="outcome">
+        <p class="cs-eyebrow cs-eyebrow--dot">05. Outcome</p>
+        <h2 class="cs-title" id="outcome" tabindex="-1">People chose the app over the branch</h2>
+        <div class="cs-intro">
+          <p class="cs-lead">60% of in-branch customers became early adopters in the first month.</p>
+          <p>Volana’s base was small, about 1,000 accounts, all of them used to borrowing, collecting and paying in person and in cash. For them, that was a fast shift. I moved to a new role soon after the first release, so I didn’t see the longer-term numbers.</p>
+        </div>
+        <div class="cs-problem">
+          <h3 class="cs-label">What came next</h3>
+          <p class="cs-lead">Open the circles: after building a history, associates could join other circles and, later, offer loans themselves.</p>
+        </div>
+        <hr class="cs-rule">
+      </section>
+
+      <!-- 06. REFLECTION -->
+      <section class="cs-section" aria-labelledby="reflection">
+        <p class="cs-eyebrow cs-eyebrow--dot">06. Reflection</p>
+        <h2 class="cs-title" id="reflection" tabindex="-1">Measure the change, not just the download</h2>
+        <ul class="cs-lessons">
+          <li><h3>Define success first</h3><p>We tracked adoption only. I’d agree on digital payments, on-time rate and trips avoided before designing.</p></li>
+          <li><h3>Motivate, don’t expose</h3><p>On-time payers earned a rating. I’d test that it never shames people who are late, or pushes anyone to borrow beyond their means.</p></li>
+        </ul>
+        <hr class="cs-rule">
+        <p class="cs-next"><a href="../../#work" data-umami-event="Back to work" data-umami-event-from="end">Back to work</a></p>
+      </section>
+    </main>
+
+    <footer class="cs-footer">
+      <p class="last-update">Last update Nov 2026</p>
+    </footer>
+  </div>
+
+  <script src="../case-study.js"></script>
+  <script src="volana.js"></script>
+</body>
+</html>
