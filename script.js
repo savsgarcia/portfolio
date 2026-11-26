@@ -8,7 +8,7 @@
 
   const projects = {
     'order-sets': {
-      num: '01', name: 'Order sets', client: 'Oracle',
+      num: '01', name: 'Order sets', client: 'Oracle', tag: 'Healthcare',
       title: 'How Dr. Reyes planned a chemo cycle without decoding it',
       description: 'Designing oncology regimens and the day of treatment for a new EHR, inside a build that was already under way.',
       // Stretched link: the only interactive element in the project copy (see .cta--stretched in styles.css)
@@ -18,7 +18,7 @@
       alt: 'Cycle 1 of 4 of a lung cancer regimen: the patient summary on the left, pre-medication and treatment orders with an estimated time for each on Day 1.'
     },
     'viu': {
-      num: '02', name: 'Insurance profile', client: 'VIU by HUB',
+      num: '02', name: 'Insurance profile', client: 'VIU by HUB', tag: 'Insurance',
       title: 'How Frankie found clarity, and a better way to renew',
       description: 'Designing VIU’s account space, where every policy lives in one place and HUB can help before each renewal.',
       cta: '<a class="cta cta--stretched" href="case-studies/viu/" data-umami-event="See case study" data-umami-event-project="viu">See case study ' + chevron + '</a>',
@@ -27,7 +27,7 @@
       alt: 'VIU by HUB account screen: a personal dashboard greeting Frankie with all their policies and recommended coverage.'
     },
     'volana': {
-      num: '03', name: 'Cash loans app', client: 'Volana',
+      num: '03', name: 'Cash loans app', client: 'Volana', tag: 'Fintech',
       title: 'Moving cash loans from the street to the phone',
       description: 'Designing an app so people who lived on cash could sign up, track and pay their loans without a trip to the branch.',
       cta: '<a class="cta cta--stretched" href="case-studies/volana/" data-umami-event="See case study" data-umami-event-project="volana">See case study ' + chevron + '</a>',
@@ -36,7 +36,7 @@
       alt: 'Three Volana screens: the borrower’s wallet with the next payment, offering a loan to a trusted member, and rating a member when a loan closes.'
     },
     'order-entry': {
-      num: '04', name: 'AI-assisted order entry', client: 'Oracle',
+      num: '04', name: 'AI-assisted order entry', client: 'Oracle', tag: 'Healthcare',
       title: 'How Dr. Haven got help ordering, only when he asked for it',
       description: 'Designing AI-assisted order entry for an EHR: when the assistant helps, and when it steps aside.',
       cta: '<span class="cta cta--locked">Available on request · NDA ' + lock + '</span>',
@@ -67,6 +67,7 @@
         '<span class="case-client">' + p.client + '</span>' +
       '</p>' +
       '<div class="project-copy">' +
+        '<p class="project-tag">' + p.tag + '</p>' +
         '<h2 class="display">' + p.title + '</h2>' +
         '<p class="lede">' + p.description + '</p>' +
         '<p class="project-cta">' + p.cta + '</p>' +
@@ -111,6 +112,7 @@
   const workView = document.getElementById('view-work');
   const tabs = Array.from(document.querySelectorAll('.project-tab'));
   const panel = document.getElementById('panel-project');
+  const tagEl = panel.querySelector('[data-field="tag"]');
   const titleEl = panel.querySelector('[data-field="title"]');
   const descEl = panel.querySelector('[data-field="description"]');
   const ctaEl = panel.querySelector('[data-field="cta"]');
@@ -135,6 +137,7 @@
     visual.style.setProperty('--panel-bg', p.bg);
 
     switchTimer = setTimeout(function () {
+      tagEl.textContent = p.tag;
       titleEl.innerHTML = p.title;
       descEl.textContent = p.description;
       ctaEl.innerHTML = p.cta;

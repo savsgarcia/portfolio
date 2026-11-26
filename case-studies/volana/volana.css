@@ -4,7 +4,7 @@
   --cs-accent-line: #6C78FF;
   --cs-chip-bg: #E8EAFD;
 }
-.cs-decision__media--phone img { max-width: 300px; margin: 0 auto; border-radius: 20px; box-shadow: 0 12px 40px rgba(45, 58, 99, .14), 0 0 0 1px rgba(45, 58, 99, .06); }
+.cs-decision__media--phone .vo-phone { max-width: 300px; margin: 0 auto; }
 .cs-decision__media--phone figcaption { max-width: 360px; margin: 16px auto 0; text-align: center; }
 .cs-note { margin-top: 24px !important; font-size: 12px; line-height: 18px; color: var(--muted); }
 
@@ -45,7 +45,42 @@
   .vo-journey__curve polyline { fill: none; stroke: var(--cs-accent-line); stroke-width: 2; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
   .vo-journey__change { border-top: 1px dashed var(--cs-line, #DDD9CC); }
 }
-/* Decision 01: the lender and the associate side by side */
-.vo-pair { display: grid; grid-template-columns: repeat(2, minmax(0, 220px)); justify-content: center; gap: 20px; }
-.vo-pair img { border-radius: 16px; box-shadow: 0 12px 40px rgba(45, 58, 99, .14), 0 0 0 1px rgba(45, 58, 99, .06); }
-.vo-pair figcaption { grid-column: 1 / -1; text-align: center; }
+/* Decision 01: one phone, a Lender / Associate switch above it (volana.js) */
+.vo-roles .cs-segmented { display: flex; width: max-content; margin: 0 auto 20px; }
+.vo-roles__view + .vo-roles__view { margin-top: 24px; }
+.vo-roles.is-switchable .vo-roles__view + .vo-roles__view { margin-top: 0; }
+.vo-roles__view[hidden] { display: none; }
+
+/* Phone frame: status bar fixed on top, the screen scrolls inside, a tab bar or the screen's
+   main button stays fixed at the bottom (40px above the edge, in the screen's 375px scale). */
+.vo-phone {
+  container-type: inline-size;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  aspect-ratio: 375 / 700;
+  background: #fff;
+  border: 10px solid #1E2333;
+  border-radius: 44px;
+  overflow: hidden;
+  box-shadow: 0 16px 48px rgba(45, 58, 99, .18);
+}
+.vo-phone img { display: block; width: 100%; height: auto; border-radius: 0; box-shadow: none; }
+.vo-phone__status { flex: none; }
+.vo-phone__screen { flex: 1; min-height: 0; overflow-y: auto; scrollbar-width: none; }
+.vo-phone__screen::-webkit-scrollbar { display: none; }
+.vo-phone__screen:focus-visible { outline: 3px solid var(--cs-accent-line); outline-offset: -3px; }
+.vo-phone__bar { position: absolute; left: 0; right: 0; bottom: 0; }
+.vo-phone__cta {
+  position: absolute; left: 5.9cqw; right: 5.9cqw; bottom: 10.7cqw;
+  display: flex; flex-direction: column; align-items: center; gap: 3.2cqw;
+  transition: transform var(--dur-medium) var(--ease), opacity var(--dur-medium) var(--ease);
+}
+.vo-phone__btn {
+  width: 100%; height: 12.8cqw; border-radius: 6.4cqw; background: #2B73D6; color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: Roboto, Inter, sans-serif; font-weight: 500; font-size: 4.27cqw;
+  box-shadow: 0 2cqw 5cqw rgba(43, 115, 214, .3);
+}
+.vo-phone__link { font-size: 3.2cqw; color: #2563C9; text-decoration: underline; }
+.vo-phone.is-scrolling .vo-phone__cta { transform: translateY(calc(100% + 10.7cqw)); opacity: 0; }

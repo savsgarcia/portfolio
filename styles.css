@@ -377,6 +377,20 @@ a.cta svg { transition: transform var(--dur-short) var(--ease); }
    (title, description, CTA). Nothing else in the block is clickable, so screen
    readers announce only the link; the heading and text read as normal content. */
 .project-copy { position: relative; }
+/* Industry tag above each project title */
+.project-tag {
+  display: inline-block;
+  margin: 0 0 16px;
+  padding: 2px 10px;
+  border: 1px solid #D9D6CC;
+  border-radius: 999px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
 .cta--stretched::after {
   content: "";
   position: absolute;
