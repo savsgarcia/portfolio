@@ -79,10 +79,10 @@
 .vo-phone__btn {
   width: 100%; height: 12.8cqw; border-radius: 6.4cqw; background: #2B73D6; color: #fff;
   display: flex; align-items: center; justify-content: center;
-  font-family: Roboto, Inter, sans-serif; font-weight: 500; font-size: 4.27cqw;
+  font-family: Roboto, Inter, sans-serif; font-weight: 500; font-size: 4.7cqw;
   box-shadow: 0 2cqw 5cqw rgba(43, 115, 214, .3);
 }
-.vo-phone__link { font-size: 3.2cqw; color: #2563C9; text-decoration: underline; }
+.vo-phone__link { font-size: 3.6cqw; color: #2563C9; text-decoration: underline; }
 .vo-phone.is-scrolling .vo-phone__cta { transform: translateY(calc(100% + 10.7cqw)); opacity: 0; }
 
 /* Process: three steps with a photo each, then the workshop whiteboard across the column */
