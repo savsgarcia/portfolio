@@ -84,3 +84,16 @@
 }
 .vo-phone__link { font-size: 3.2cqw; color: #2563C9; text-decoration: underline; }
 .vo-phone.is-scrolling .vo-phone__cta { transform: translateY(calc(100% + 10.7cqw)); opacity: 0; }
+
+/* Process: three steps with a photo each, then the workshop whiteboard across the column */
+.vo-steps { list-style: none; margin: 40px 0 0; padding: 0; display: grid; gap: 40px; }
+.vo-steps img { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 12px; margin-bottom: 16px; }
+.vo-steps .cs-label { margin: 0 0 4px; }
+.vo-steps h3 { margin: 0; }
+.vo-steps h3 + p { margin-top: 8px; }
+.vo-board { margin: 48px 0 0; }
+.vo-board img { display: block; width: 100%; height: auto; border-radius: 12px; }
+.vo-board figcaption { margin-top: 12px; font-size: 12px; line-height: 18px; color: var(--muted); }
+@media (min-width: 700px) {
+  .vo-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
+}
