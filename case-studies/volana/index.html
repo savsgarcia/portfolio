@@ -108,7 +108,7 @@
               <h4 class="vo-journey__stage"><span aria-hidden="true">01</span> Sign up a member</h4>
               <dl>
                 <div class="vo-journey__need"><dt>Need</dt><dd>Add someone they trust to their credit circle.</dd></div>
-                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__dot" aria-hidden="true"></span>Worried</dd></div>
+                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😟</span>Worried</dd></div>
                 <div class="vo-journey__pain"><dt>Pain point</dt><dd>Carrying the new member’s IDs and papers to the branch by bus.</dd></div>
                 <div class="vo-journey__change"><dt>With the app</dt><dd>Identity confirmed with Veriff, from home.</dd></div>
               </dl>
@@ -117,7 +117,7 @@
               <h4 class="vo-journey__stage"><span aria-hidden="true">02</span> Lend</h4>
               <dl>
                 <div class="vo-journey__need"><dt>Need</dt><dd>Decide how much to lend, and to whom.</dd></div>
-                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__dot" aria-hidden="true"></span>Confident</dd></div>
+                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">🙂</span>Confident</dd></div>
                 <div class="vo-journey__pain"><dt>Pain point</dt><dd>Only memory and word of mouth to judge who pays well.</dd></div>
                 <div class="vo-journey__change"><dt>With the app</dt><dd>Each member’s rating and track record next to the amount.</dd></div>
               </dl>
@@ -126,7 +126,7 @@
               <h4 class="vo-journey__stage"><span aria-hidden="true">03</span> Collect</h4>
               <dl>
                 <div class="vo-journey__need"><dt>Need</dt><dd>Get each member’s payment on time.</dd></div>
-                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__dot" aria-hidden="true"></span>Exhausted</dd></div>
+                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😩</span>Exhausted</dd></div>
                 <div class="vo-journey__pain"><dt>Pain point</dt><dd>A whole day on public transport, house to house, carrying cash.</dd></div>
                 <div class="vo-journey__change"><dt>With the app</dt><dd>Members pay by transfer or at OXXO; the wallet shows who paid.</dd></div>
               </dl>
@@ -135,7 +135,7 @@
               <h4 class="vo-journey__stage"><span aria-hidden="true">04</span> Pay back</h4>
               <dl>
                 <div class="vo-journey__need"><dt>Need</dt><dd>Pay Volana before the due date.</dd></div>
-                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__dot" aria-hidden="true"></span>Anxious</dd></div>
+                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😬</span>Anxious</dd></div>
                 <div class="vo-journey__pain"><dt>Pain point</dt><dd>Another trip to the branch with all the cash collected.</dd></div>
                 <div class="vo-journey__change"><dt>With the app</dt><dd>Transfer or cash at OXXO, no trip to the branch.</dd></div>
               </dl>
@@ -144,7 +144,7 @@
               <h4 class="vo-journey__stage"><span aria-hidden="true">05</span> Close the loan</h4>
               <dl>
                 <div class="vo-journey__need"><dt>Need</dt><dd>Close it, and decide whether to lend again.</dd></div>
-                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__dot" aria-hidden="true"></span>Relieved</dd></div>
+                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😌</span>Relieved</dd></div>
                 <div class="vo-journey__pain"><dt>Pain point</dt><dd>No record of who paid well to carry into the next loan.</dd></div>
                 <div class="vo-journey__change"><dt>With the app</dt><dd>A rating that becomes part of the member’s history.</dd></div>
               </dl>
@@ -193,7 +193,50 @@
 
         <article class="cs-decision">
           <div class="cs-decision__text">
-            <p class="cs-label">03. Reward on-time payment</p>
+            <p class="cs-label">03. Start from people you’ve lent to</p>
+            <h3>Find them, see their history, add them.</h3>
+            <p>Circles changed from loan to loan, but the people in them were often the same. Instead of signing everyone up again, borrowers searched the people they had already lent to, checked how they had paid, and added them to the new loan.</p>
+            <p>Try it: search for a name, open a member and add them to your circle.</p>
+            <p class="cs-chip"><span>Based on</span> Focus groups</p>
+          </div>
+          <div class="cs-decision__media vo-proto-wrap">
+            <section class="vo-proto" lang="es" aria-label="Interactive prototype: add a member to your circle">
+              <div class="vo-proto__bar"><span aria-hidden="true">12:30</span></div>
+
+              <div class="vo-proto__view" data-view="search">
+                <p class="vo-proto__title">Agrega a tu círculo</p>
+                <label class="vo-proto__label" for="vo-search">Busca a alguien a quien ya le prestaste</label>
+                <input class="vo-proto__search" id="vo-search" type="search" autocomplete="off" placeholder="Nombre del asociado">
+                <p class="vo-proto__count" aria-live="polite"></p>
+                <ul class="vo-proto__list"></ul>
+              </div>
+
+              <div class="vo-proto__view" data-view="member" hidden>
+                <button class="vo-proto__back" type="button">
+                  <svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8H3m4-4L3 8l4 4" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+                  Volver
+                </button>
+                <p class="vo-proto__title" tabindex="-1" data-mname></p>
+                <p class="vo-proto__stars" data-stars></p>
+                <dl class="vo-proto__facts">
+                  <div><dt>Préstamos contigo</dt><dd data-loans></dd></div>
+                  <div><dt>Pagos a tiempo</dt><dd data-ontime></dd></div>
+                  <div><dt>Último préstamo</dt><dd data-last></dd></div>
+                </dl>
+                <p class="vo-proto__note" data-note></p>
+                <button class="vo-proto__btn" type="button" data-add>Agregar al círculo</button>
+              </div>
+
+              <p class="vo-proto__toast" role="status"></p>
+            </section>
+          </div>
+        </article>
+
+        <hr class="cs-rule cs-rule--dotted">
+
+        <article class="cs-decision cs-decision--reverse">
+          <div class="cs-decision__text">
+            <p class="cs-label">04. Reward on-time payment</p>
             <h3>Good habits, made visible.</h3>
             <p>We used behavioral economics: when a loan closes, the borrower rates the member, and that rating becomes part of their history. Paying on time builds a reputation people can see.</p>
             <p class="cs-chip"><span>Based on</span> Behavioral economics</p>
@@ -233,5 +276,6 @@
   </div>
 
   <script src="../case-study.js"></script>
+  <script src="proto.js"></script>
 </body>
 </html>
