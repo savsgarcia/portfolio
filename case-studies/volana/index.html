@@ -53,7 +53,7 @@
     <main id="main" class="cs-main" tabindex="-1">
 
       <div class="cs-hero">
-        <img src="img/hero.webp" width="2000" height="1100" alt="Three Volana screens: the lender’s wallet, offering a loan to an associate, and an associate’s next payment with an OXXO reference.">
+        <img src="img/hero.webp" width="2000" height="1100" alt="Three Volana screens: the lender’s wallet, offering a loan to an associate, and an associate’s next payment with a barcode to pay in cash at a store.">
       </div>
 
       <!-- 01. OVERVIEW -->
@@ -70,7 +70,7 @@
 
         <div class="cs-overview__grid">
           <div class="cs-overview__main">
-            <p>Julieta borrowed from Volana and lent that money to people she trusted, her credit circle. Every fortnight she rode the bus from house to house to collect their payments, then carried the cash to the branch. Volana’s app let her and her associates <strong>sign up, track and pay their loans</strong> without that trip, by bank transfer or in cash at an OXXO store.</p>
+            <p>Julieta borrowed from Volana and lent that money to people she trusted, her credit circle. Every fortnight she rode the bus from house to house to collect their payments, then carried the cash to the branch. Volana’s app let her and her associates <strong>sign up, track and pay their loans</strong> without that trip, by bank transfer or in cash at stores like Walmart or Soriana.</p>
             <p class="cs-label">My role</p>
             <p>As Lead UI Designer, I defined the visual style, built the UI kit, designed the information architecture and the loan request and admin flows, and managed the design backlog.</p>
           <div class="cs-impact vo-impact">
@@ -109,11 +109,26 @@
           <p>Volana lent around MXN 20,000 to one person, like Julieta, who shared it with people they trusted: their credit circle of associates. That lender then collected each payment themselves. Some spent the whole day on public transport, picking up cash from their associates and a new associate’s documents to sign them up at the branch.</p>
         </div>
 
+        <div class="vo-why">
+          <h3 class="cs-label">Why digital</h3>
+          <p>The circles worked: people lent to people they knew, and they paid. What didn’t scale was the branch. Every new customer meant a visit, papers and staff, and Volana only reached as far as its branches in Estado de México. Polygon Fintech, which already ran the Medá wallet, acquired Volana to grow it without opening more branches. The app was how.</p>
+        </div>
+
         <hr class="cs-rule cs-rule--dotted">
 
         <div class="cs-problem">
           <h3 class="cs-label">The problem</h3>
           <p class="cs-lead">How might we keep lenders and their associates safe, and let new people join, without anyone carrying cash or documents across town?</p>
+        </div>
+
+        <div class="vo-constraints">
+          <h3 class="cs-label">The constraints we designed within</h3>
+          <ul>
+            <li><h4>A credit line, not a loan</h4><p>Each lender had a line from Volana, around MXN 20,000. They could only lend within it, Volana reviewed every loan to an associate, and lenders could ask for a bigger line.</p></li>
+            <li><h4>Identity on paper</h4><p>Everyone who joined showed both sides of their INE and a proof of address. In the app, Veriff checked them, so nobody carried them to a branch.</p></li>
+            <li><h4>Money that moves at two speeds</h4><p>Bank transfers showed up at once. Cash paid at a store took up to 24 hours, so for a day a lender could see as unpaid an associate who had already paid.</p></li>
+            <li><h4>Risk held by people</h4><p>The credit line capped what anyone could owe, the circle meant lending to people you know, and every loan got Volana’s review and, at the end, a rating.</p></li>
+          </ul>
         </div>
 
         <hr class="cs-rule">
@@ -176,7 +191,7 @@
                 <div class="vo-journey__need"><dt>Need</dt><dd>Get each associate’s payment on time.</dd></div>
                 <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😩</span>Exhausted</dd></div>
                 <div class="vo-journey__pain"><dt>Pain point</dt><dd>A whole day on public transport, house to house, carrying cash.</dd></div>
-                <div class="vo-journey__change"><dt>With the app</dt><dd>Associates pay by transfer or at OXXO; the wallet shows who paid.</dd></div>
+                <div class="vo-journey__change"><dt>With the app</dt><dd>Associates pay by transfer or in cash at a store; the wallet shows who paid.</dd></div>
               </dl>
             </li>
             <li style="--level: 2">
@@ -185,7 +200,7 @@
                 <div class="vo-journey__need"><dt>Need</dt><dd>Pay Volana before the due date.</dd></div>
                 <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😬</span>Anxious</dd></div>
                 <div class="vo-journey__pain"><dt>Pain point</dt><dd>Another trip to the branch with all the cash collected.</dd></div>
-                <div class="vo-journey__change"><dt>With the app</dt><dd>Transfer or cash at OXXO, no trip to the branch.</dd></div>
+                <div class="vo-journey__change"><dt>With the app</dt><dd>Transfer or cash at a store, no trip to the branch.</dd></div>
               </dl>
             </li>
             <li style="--level: 5">
@@ -218,7 +233,7 @@
             <p class="cs-label">01. One app, two roles</p>
             <h3>The lender tracks, the associate pays.</h3>
             <p>Lenders and associates used the same app and signed in by role, because they needed different things. The lender needed to see who had paid and what was still owed. The associate needed to know how much and when, and a way to pay without a trip.</p>
-            <p>So the lender’s wallet opens on their next payment to Volana, with the associates who owe this fortnight below it. The associate’s home opens on what they owe, and two ways to pay: a bank transfer, or cash at any OXXO store with a reference. Not everyone used a bank account, so cash had to stay an option.</p>
+            <p>So the lender’s wallet opens on their next payment to Volana, with the associates who owe this fortnight below it. The associate’s home opens on what they owe, and two ways to pay: a bank transfer or deposit, or cash at Walmart, Bodega Aurrera, Soriana or La Comer with a barcode. Not everyone used a bank account, so cash had to stay an option, and the screen says when each payment shows up: at once, or within 24 hours.</p>
             <p class="cs-chip"><span>Based on</span> Focus groups</p>
           </div>
           <figure class="cs-decision__media cs-decision__media--phone vo-roles">
@@ -230,7 +245,7 @@
             <div class="vo-phone">
               <img class="vo-phone__status" src="img/wallet-status.webp" width="750" height="66" alt="">
               <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Mi cartera (scrollable screen)">
-                <img src="img/wallet.webp" width="750" height="1568" alt="Julieta, the lender, “Mi cartera”: the next payment of $13,500.00, a personal loan offer, and the four associates who pay this fortnight: Mariana López ($350.00), Sofía Herrera ($756.67), Andrea Ruiz ($500.00) and Carlos Méndez ($420.00).">
+                <img src="img/wallet.webp" width="750" height="1778" alt="Julieta, the lender, “Mi cartera”: the next payment of $13,500.00, her credit line with $11,800.00 available of $20,000.00 and “Solicitar aumento”, a personal loan offer, and the four associates who pay this fortnight: Mariana López ($350.00), Sofía Herrera ($756.67), Andrea Ruiz ($500.00) and Carlos Méndez ($420.00).">
               </div>
               <img class="vo-phone__bar" src="img/wallet-bar.webp" width="750" height="124" alt="">
             </div>
@@ -239,7 +254,7 @@
             <div class="vo-phone">
               <img class="vo-phone__status" src="img/pay-status.webp" width="750" height="66" alt="">
               <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Hola, Mariana (scrollable screen)">
-                <img src="img/pay.webp" width="750" height="1313" alt="Mariana, an associate, “Hola, Mariana”: next payment of $350.00 due Friday, November 15, payment 2 of 6, lent by Julieta García, with cash at OXXO selected and a payment reference with a barcode.">
+                <img src="img/pay.webp" width="750" height="1385" alt="Mariana, an associate, “Hola, Mariana”: next payment of $350.00 due Friday, November 15, payment 2 of 6, lent by Julieta García, with cash at a store (Walmart, Bodega Aurrera, Soriana or La Comer) selected, a barcode for service #198, and a note that the payment shows within 24 hours.">
               </div>
               <img class="vo-phone__bar" src="img/pay-bar.webp" width="750" height="124" alt="">
             </div>
@@ -296,7 +311,7 @@
             <div class="vo-phone">
               <img class="vo-phone__status" src="img/notify-status.webp" width="750" height="66" alt="">
               <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Lock screen notifications (scrollable screen)" style="background: #8F9BFF">
-                <img src="img/notify.webp" width="750" height="1434" alt="Lock screen with two Volana notifications: “Tu pago vence mañana: paga $350.00 antes del viernes. En OXXO usa tu referencia 9301 4472 0815 36”, and an older one, “Pago recibido: tu pago 1 de 6 por $350.00 quedó registrado. ¡Gracias por pagar a tiempo!”">
+                <img src="img/notify.webp" width="750" height="1434" alt="Lock screen with two Volana notifications: “Tu pago vence mañana: paga $350.00 antes del viernes, por transferencia o en efectivo en Walmart, Soriana o Bodega Aurrera”, and an older one, “Pago recibido: tu pago 1 de 6 por $350.00 quedó registrado. ¡Gracias por pagar a tiempo!”">
               </div>
             </div>
           </figure>
@@ -348,6 +363,7 @@
         <h2 class="cs-title" id="reflection" tabindex="-1">Measure the change, not just the download</h2>
         <ul class="cs-lessons">
           <li><h3>Define success first</h3><p>We tracked adoption only. I’d agree on digital payments, on-time rate and trips avoided before designing.</p></li>
+          <li><h3>Design for the 24-hour gap</h3><p>Cash took up to a day to show. I’d show “paid at a store, shows within 24 hours” so a lender never chases someone who already paid.</p></li>
           <li><h3>Motivate, don’t expose</h3><p>On-time payers earned a rating. I’d test that it never shames people who are late, or pushes anyone to borrow beyond their means.</p></li>
         </ul>
         <hr class="cs-rule">
