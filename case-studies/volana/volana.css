@@ -8,42 +8,51 @@
 .cs-decision__media--phone figcaption { max-width: 360px; margin: 16px auto 0; text-align: center; }
 .cs-note { margin-top: 24px !important; font-size: 12px; line-height: 18px; color: var(--muted); }
 
-/* Customer journey: stages as columns on desktop (rows aligned with subgrid), cards below 1100px.
-   Feelings sit on one dashed horizontal line; the feeling word is always in the text. */
+/* Customer journey: four phases, two steps each. On desktop the steps are columns and every row
+   (need, feeling, pain point, with the app) lines up across them through nested subgrids; below
+   1100px each phase is a group of cards. Feelings sit on one dashed horizontal line; the word is
+   always in the text, the emoji is decoration. */
 .vo-journey { margin: 64px 0 0; }
-.vo-journey figcaption p { margin-top: 4px; color: var(--ink-soft); }
-.vo-journey__grid { margin-top: 24px; }
-.vo-journey ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
-.vo-journey li { background: #fff; border: 1px solid var(--cs-line, #E7E4DA); border-radius: 12px; padding: 16px; }
-.vo-journey__stage { margin: 0 0 12px; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--ink-strong); }
-.vo-journey__stage span { font-family: var(--font-mono); font-size: 12px; color: var(--ink-soft); margin-right: 4px; }
+.vo-journey figcaption .cs-lead { margin-top: 8px; }
+.vo-journey figcaption .cs-lead + p { margin-top: 8px; color: var(--ink-soft); }
+.vo-journey__grid { margin-top: 32px; }
+.vo-journey ol { list-style: none; margin: 0; padding: 0; }
+.vo-journey__phases { display: grid; gap: 32px; }
+.vo-journey__phase h4 { margin: 0 0 12px; font-family: var(--font-mono); font-size: 12px; line-height: 20px; font-weight: 400; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-strong); }
+.vo-journey__steps { display: grid; gap: 12px; }
+.vo-journey__step { background: #fff; border: 1px solid var(--cs-line, #E7E4DA); border-radius: 12px; padding: 16px; }
+.vo-journey__step h5 { margin: 0 0 12px; font-size: 16px; line-height: 22px; font-weight: 500; color: var(--ink-strong); }
+.vo-journey__step h5 span { font-family: var(--font-mono); font-size: 12px; font-weight: 400; color: var(--ink-soft); margin-right: 4px; }
 .vo-journey dl { margin: 0; display: grid; gap: 12px; }
 .vo-journey dt { font-family: var(--font-mono); font-size: 11px; line-height: 16px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
 .vo-journey dd { margin: 2px 0 0; font-size: 14px; line-height: 21px; }
 .vo-journey__feel dd { display: flex; align-items: center; gap: 8px; font-weight: 500; }
 .vo-journey__emoji { font-size: 20px; line-height: 1; flex: none; }
-.vo-journey__change dd { color: var(--ink-strong); }
-.vo-journey__change { padding-top: 12px; border-top: 1px dashed var(--cs-line, #DDD9CC); }
 .vo-journey__rows, .vo-journey__curve { display: none; }
+@media (min-width: 700px) and (max-width: 1099px) { .vo-journey__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 @media (min-width: 1100px) {
-  .vo-journey__grid { display: grid; grid-template-columns: 112px repeat(5, minmax(0, 1fr)); grid-template-rows: auto auto 72px auto auto; position: relative; }
-  .vo-journey ol { grid-column: 2 / -1; grid-row: 1 / -1; grid-template-columns: subgrid; grid-template-rows: subgrid; gap: 0; }
-  .vo-journey li { grid-row: 1 / -1; display: grid; grid-template-rows: subgrid; border-radius: 0; border-width: 0 0 0 1px; border-style: dotted; padding: 0; background: none; }
-  .vo-journey li:first-child { border-left: 0; }
-  .vo-journey__stage { grid-row: 1; margin: 0; padding: 10px 12px; background: var(--cs-hero-bg); }
+  .vo-journey__grid { display: grid; grid-template-columns: 88px repeat(8, minmax(0, 1fr)); grid-template-rows: auto auto auto 64px auto; }
+  .vo-journey__phases { grid-column: 2 / -1; grid-row: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; gap: 0; }
+  .vo-journey__phase { grid-column: span 2; grid-row: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; border-left: 1px solid var(--cs-line, #DDD9CC); }
+  .vo-journey__phase h4 { grid-column: 1 / -1; grid-row: 1; margin: 0; padding: 8px 10px; background: var(--cs-hero-bg); }
+  .vo-journey__steps { grid-column: 1 / -1; grid-row: 2 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; gap: 0; }
+  .vo-journey__step { grid-row: 1 / -1; display: grid; grid-template-rows: subgrid; padding: 0; border: 0; border-radius: 0; background: none; }
+  .vo-journey__step + .vo-journey__step { border-left: 1px dotted var(--cs-line, #DDD9CC); }
+  .vo-journey__step h5 { grid-row: 1; margin: 0; padding: 10px 10px 4px; font-size: 14px; line-height: 20px; }
+  .vo-journey__step h5 span { display: block; font-size: 11px; margin: 0 0 2px; }
   .vo-journey dl { grid-row: 2 / -1; display: grid; grid-template-rows: subgrid; gap: 0; }
-  .vo-journey dl > div { padding: 12px; }
+  .vo-journey dl > div { padding: 10px; }
+  .vo-journey dd { font-size: 13px; line-height: 19px; }
   .vo-journey dt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
   .vo-journey__feel { position: relative; padding: 0 !important; }
-  .vo-journey__feel dd { position: absolute; left: 50%; top: 50%; transform: translate(-12px, -50%); margin: 0; font-size: 13px; z-index: 1; }
-  .vo-journey__feel dd { gap: 6px; padding: 2px 8px 2px 0; background: var(--bg); }
-  .vo-journey__rows { display: grid; grid-column: 1; grid-row: 2 / -1; grid-template-rows: subgrid; font-family: var(--font-mono); font-size: 11px; line-height: 16px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
-  .vo-journey__rows span { padding: 12px 12px 12px 0; }
+  .vo-journey__feel dd { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); margin: 0; gap: 4px; padding: 2px 6px; background: var(--bg); font-size: 12px; white-space: nowrap; z-index: 1; }
+  .vo-journey__emoji { font-size: 18px; }
+  .vo-journey__rows { display: grid; grid-column: 1; grid-row: 3 / -1; grid-template-rows: subgrid; font-family: var(--font-mono); font-size: 11px; line-height: 16px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+  .vo-journey__rows span { padding: 10px 10px 10px 0; }
   .vo-journey__rows span:nth-child(2) { align-self: center; padding: 0; }
-  .vo-journey__curve { display: block; grid-column: 2 / -1; grid-row: 3; width: 100%; height: 100%; }
+  .vo-journey__curve { display: block; grid-column: 2 / -1; grid-row: 4; width: 100%; height: 100%; }
   .vo-journey__curve polyline { fill: none; stroke: var(--cs-accent-line); stroke-width: 2; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
-  .vo-journey__change { border-top: 1px dashed var(--cs-line, #DDD9CC); }
 }
 /* Decision 01: one phone, a Lender / Associate switch above it (volana.js) */
 .vo-roles .cs-segmented { display: flex; width: max-content; margin: 0 auto 20px; }
@@ -98,3 +107,45 @@
   .vo-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; }
 }
 .vo-impact { margin-top: 40px; }
+
+/* Challenge: why the business went digital, and the constraints the design worked within */
+.vo-why { max-width: 640px; margin-top: 40px; }
+.vo-why .cs-label { margin: 0 0 8px; }
+.vo-constraints { margin-top: 56px; }
+.vo-constraints .cs-label { margin: 0; }
+.vo-constraints ul { list-style: none; margin: 16px 0 0; padding: 0; display: grid; gap: 24px; }
+.vo-constraints li { padding-top: 16px; border-top: 1px solid var(--cs-line, #DDD9CC); }
+.vo-constraints h4 { margin: 0; font-size: 16px; line-height: 24px; font-weight: 500; color: var(--ink-strong); }
+.vo-constraints h4 + p { margin-top: 4px; font-size: 15px; line-height: 23px; }
+@media (min-width: 700px) { .vo-constraints ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; } }
+@media (min-width: 1100px) { .vo-constraints ul { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; } }
+
+/* Two paths: the same start, then the app path rises and the branch path sinks (after the
+   journey overview in the BBVA study). The drawing is decorative; the same steps are lists,
+   visually hidden from 700px, where the drawing shows. */
+.vo-paths { margin: 64px 0 0; }
+.vo-paths figcaption .cs-lead { margin-top: 8px; }
+.vo-paths__svg { display: none; width: 100%; height: auto; margin-top: 24px; border-radius: 12px; font-family: var(--font-sans); }
+.vo-paths__svg .vp-shared { fill: #F2F1ED; }
+.vo-paths__svg .vp-up { fill: var(--cs-hero-bg); }
+.vo-paths__svg .vp-down { fill: #E1E4FB; }
+.vo-paths__svg .vp-mid { stroke: #8A867C; stroke-width: 1.5; stroke-dasharray: 6 5; }
+.vo-paths__svg .vp-path { fill: none; stroke: var(--ink-soft); stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; }
+.vo-paths__svg .vp-path--app { stroke: var(--cs-accent-line); stroke-width: 2.5; }
+.vo-paths__svg circle { fill: #fff; stroke: var(--ink-strong); stroke-width: 1.5; }
+.vo-paths__svg .vp-node--app circle { stroke: #3443C9; stroke-width: 2; }
+.vo-paths__svg .vp-n { font-size: 12px; font-weight: 600; text-anchor: middle; fill: var(--ink-strong); }
+.vo-paths__svg .vp-l { font-size: 13px; text-anchor: middle; fill: var(--ink); }
+.vo-paths__svg .vp-tag { font-family: var(--font-display); font-size: 30px; text-anchor: end; fill: var(--ink-strong); }
+.vo-paths__svg .vp-zone { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; fill: var(--ink-soft); }
+.vo-paths__lists { display: grid; gap: 24px; margin-top: 24px; }
+.vo-paths__lists h4 { margin: 0 0 8px; font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-strong); }
+.vo-paths__lists ol { list-style: decimal; margin: 0; padding-left: 24px; display: grid; gap: 6px; font-size: 15px; line-height: 22px; }
+@media (min-width: 700px) {
+  .vo-paths__svg { display: block; }
+  .vo-paths__lists { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+}
+/* Overview: the wins, as short lines instead of a number */
+.vo-wins { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 12px; }
+.vo-wins li { padding-left: 16px; border-left: 2px solid var(--cs-accent-line); font-size: 16px; line-height: 24px; }
+.vo-wins strong { font-weight: 600; color: var(--ink-strong); }

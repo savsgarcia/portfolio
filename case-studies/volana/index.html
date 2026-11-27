@@ -53,7 +53,7 @@
     <main id="main" class="cs-main" tabindex="-1">
 
       <div class="cs-hero">
-        <img src="img/hero.webp" width="2000" height="1100" alt="Three Volana screens: the lender’s wallet, offering a loan to an associate, and an associate’s next payment with an OXXO reference.">
+        <img src="img/hero.webp" width="2000" height="1100" alt="Three Volana screens: the lender’s wallet, offering a loan to an associate, and an associate’s next payment with a barcode to pay in cash at a store.">
       </div>
 
       <!-- 01. OVERVIEW -->
@@ -70,16 +70,18 @@
 
         <div class="cs-overview__grid">
           <div class="cs-overview__main">
-            <p>Julieta borrowed from Volana and lent that money to people she trusted, her credit circle. Every fortnight she rode the bus from house to house to collect their payments, then carried the cash to the branch. Volana’s app let her and her associates <strong>sign up, track and pay their loans</strong> without that trip, by bank transfer or in cash at an OXXO store.</p>
+            <p>Julieta borrowed from Volana and lent that money to people she trusted, her credit circle. Every fortnight she rode the bus from house to house to collect their payments, then carried the cash to the branch. Volana’s app let her and her associates <strong>sign up, track and pay their loans</strong> without that trip, by bank transfer or in cash at stores like Walmart or Soriana.</p>
             <p class="cs-label">My role</p>
             <p>As Lead UI Designer, I defined the visual style, built the UI kit, designed the information architecture and the loan request and admin flows, and managed the design backlog.</p>
           <div class="cs-impact vo-impact">
-            <p class="cs-label">Impact</p>
-            <p class="cs-lead">People who had always paid in person chose the app.</p>
-            <ul class="cs-stats">
-              <li><span class="cs-stat">60<span class="cs-stat__unit">%</span></span> of in-branch customers, about 1,000 accounts, became early adopters in the first month</li>
-            </ul>
-          </div>
+              <p class="cs-label">Impact</p>
+              <ul class="vo-wins">
+                <li><strong>Less cash on the street.</strong> Lenders and associates paid by transfer or at a store, instead of carrying cash across town.</li>
+                <li><strong>Sign-up without a branch.</strong> Photos of the INE and proof of address, checked with Veriff.</li>
+                <li><strong>More ways to pay.</strong> Transfers, deposits at several banks, and cash at Walmart, Bodega Aurrera, Soriana or La Comer.</li>
+                <li><strong>Growth on both sides.</strong> Medá gained Volana’s portfolio; Volana’s customers gained Medá’s wallet, with points and cashback.</li>
+              </ul>
+            </div>
           </div>
 
           <div class="cs-persona">
@@ -109,11 +111,26 @@
           <p>Volana lent around MXN 20,000 to one person, like Julieta, who shared it with people they trusted: their credit circle of associates. That lender then collected each payment themselves. Some spent the whole day on public transport, picking up cash from their associates and a new associate’s documents to sign them up at the branch.</p>
         </div>
 
+        <div class="vo-why">
+          <h3 class="cs-label">Why digital</h3>
+          <p>The circles worked: people lent to people they knew, and they paid. What didn’t scale was the branch. Every new customer meant a visit, papers and staff, and Volana only reached as far as its branches in Estado de México. Polygon Fintech, which already ran the Medá wallet, acquired Volana to grow it without opening more branches. The app was how.</p>
+        </div>
+
         <hr class="cs-rule cs-rule--dotted">
 
         <div class="cs-problem">
           <h3 class="cs-label">The problem</h3>
           <p class="cs-lead">How might we keep lenders and their associates safe, and let new people join, without anyone carrying cash or documents across town?</p>
+        </div>
+
+        <div class="vo-constraints">
+          <h3 class="cs-label">The constraints we designed within</h3>
+          <ul>
+            <li><h4>A credit line, not a loan</h4><p>Each lender had a line from Volana, around MXN 20,000. They could only lend within it, Volana reviewed every loan to an associate, and lenders could ask for a bigger line.</p></li>
+            <li><h4>Identity on paper</h4><p>Everyone who joined showed both sides of their INE and a proof of address. In the app, Veriff checked them, so nobody carried them to a branch.</p></li>
+            <li><h4>Money that moves at two speeds</h4><p>Bank transfers showed up at once. Cash paid at a store took up to 24 hours, so for a day a lender could see as unpaid an associate who had already paid.</p></li>
+            <li><h4>Risk held by people</h4><p>The credit line capped what anyone could owe, the circle meant lending to people you know, and every loan got Volana’s review and, at the end, a rating.</p></li>
+          </ul>
         </div>
 
         <hr class="cs-rule">
@@ -146,63 +163,115 @@
         <figure class="vo-journey" aria-labelledby="journey-title">
           <figcaption>
             <h3 class="cs-label" id="journey-title">Julieta’s journey before the app</h3>
-            <p>What came out of the focus group: what each step needed from the person in the middle, how it felt, and what the app changed.</p>
+            <p class="cs-lead">Lending felt good. Collecting hurt.</p>
+            <p>The worst moments were the ones that moved cash and papers across town, not the ones that rested on trust. This is what came out of the focus group: each step of the process as it happened on paper and in person, what it needed from Julieta, and how it felt.</p>
           </figcaption>
           <div class="vo-journey__grid">
-            <div class="vo-journey__rows" aria-hidden="true"><span>Need</span><span>Feeling</span><span>Pain point</span><span>With the app</span></div>
-            <svg class="vo-journey__curve" viewBox="0 0 500 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,50 500,50" /></svg>
-            <ol>
-            <li style="--level: 2">
-              <h4 class="vo-journey__stage"><span aria-hidden="true">01</span> Sign up an associate</h4>
-              <dl>
-                <div class="vo-journey__need"><dt>Need</dt><dd>Add someone they trust to their credit circle.</dd></div>
-                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😟</span>Worried</dd></div>
-                <div class="vo-journey__pain"><dt>Pain point</dt><dd>Carrying the new associate’s IDs and papers to the branch by bus.</dd></div>
-                <div class="vo-journey__change"><dt>With the app</dt><dd>Identity confirmed with Veriff, from home.</dd></div>
-              </dl>
-            </li>
-            <li style="--level: 4">
-              <h4 class="vo-journey__stage"><span aria-hidden="true">02</span> Lend</h4>
-              <dl>
-                <div class="vo-journey__need"><dt>Need</dt><dd>Decide how much to lend, and to whom.</dd></div>
-                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">🙂</span>Confident</dd></div>
-                <div class="vo-journey__pain"><dt>Pain point</dt><dd>Only memory and word of mouth to judge who pays well.</dd></div>
-                <div class="vo-journey__change"><dt>With the app</dt><dd>Each associate’s rating and track record next to the amount.</dd></div>
-              </dl>
-            </li>
-            <li style="--level: 1">
-              <h4 class="vo-journey__stage"><span aria-hidden="true">03</span> Collect</h4>
-              <dl>
-                <div class="vo-journey__need"><dt>Need</dt><dd>Get each associate’s payment on time.</dd></div>
-                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😩</span>Exhausted</dd></div>
-                <div class="vo-journey__pain"><dt>Pain point</dt><dd>A whole day on public transport, house to house, carrying cash.</dd></div>
-                <div class="vo-journey__change"><dt>With the app</dt><dd>Associates pay by transfer or at OXXO; the wallet shows who paid.</dd></div>
-              </dl>
-            </li>
-            <li style="--level: 2">
-              <h4 class="vo-journey__stage"><span aria-hidden="true">04</span> Pay back</h4>
-              <dl>
-                <div class="vo-journey__need"><dt>Need</dt><dd>Pay Volana before the due date.</dd></div>
-                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😬</span>Anxious</dd></div>
-                <div class="vo-journey__pain"><dt>Pain point</dt><dd>Another trip to the branch with all the cash collected.</dd></div>
-                <div class="vo-journey__change"><dt>With the app</dt><dd>Transfer or cash at OXXO, no trip to the branch.</dd></div>
-              </dl>
-            </li>
-            <li style="--level: 5">
-              <h4 class="vo-journey__stage"><span aria-hidden="true">05</span> Close the loan</h4>
-              <dl>
-                <div class="vo-journey__need"><dt>Need</dt><dd>Close it, and decide whether to lend again.</dd></div>
-                <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😌</span>Relieved</dd></div>
-                <div class="vo-journey__pain"><dt>Pain point</dt><dd>No record of who paid well to carry into the next loan.</dd></div>
-                <div class="vo-journey__change"><dt>With the app</dt><dd>A rating that becomes part of the associate’s history.</dd></div>
-              </dl>
-            </li>
+            <div class="vo-journey__rows" aria-hidden="true"><span>Need</span><span>Feeling</span><span>Pain point</span></div>
+            <svg class="vo-journey__curve" viewBox="0 0 800 100" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,50 800,50" /></svg>
+            <ol class="vo-journey__phases">
+              <li class="vo-journey__phase">
+                <h4>Get the line</h4>
+                <ol class="vo-journey__steps">
+                  <li class="vo-journey__step">
+                    <h5><span aria-hidden="true">01</span> Apply at the branch</h5>
+                    <dl>
+                      <div class="vo-journey__need"><dt>Need</dt><dd>Get a credit line to lend to her circle.</dd></div>
+                      <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😮‍💨</span>Tired</dd></div>
+                      <div class="vo-journey__pain"><dt>Pain point</dt><dd>A trip with her own INE and proof of address, and forms to fill in at the branch.</dd></div>
+                    </dl>
+                  </li>
+                  <li class="vo-journey__step">
+                    <h5><span aria-hidden="true">02</span> Wait for approval</h5>
+                    <dl>
+                      <div class="vo-journey__need"><dt>Need</dt><dd>Know whether, and how much, she can lend.</dd></div>
+                      <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😬</span>Anxious</dd></div>
+                      <div class="vo-journey__pain"><dt>Pain point</dt><dd>No way to check but calling or going back.</dd></div>
+                    </dl>
+                  </li>
+                </ol>
+              </li>
+              <li class="vo-journey__phase">
+                <h4>Build the circle</h4>
+                <ol class="vo-journey__steps">
+                  <li class="vo-journey__step">
+                    <h5><span aria-hidden="true">03</span> Sign up an associate</h5>
+                    <dl>
+                      <div class="vo-journey__need"><dt>Need</dt><dd>Add someone she trusts to her circle.</dd></div>
+                      <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😟</span>Worried</dd></div>
+                      <div class="vo-journey__pain"><dt>Pain point</dt><dd>Carrying the new associate’s IDs and papers to the branch by bus.</dd></div>
+                    </dl>
+                  </li>
+                  <li class="vo-journey__step">
+                    <h5><span aria-hidden="true">04</span> Offer a loan</h5>
+                    <dl>
+                      <div class="vo-journey__need"><dt>Need</dt><dd>Decide how much to lend, and to whom.</dd></div>
+                      <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">🙂</span>Confident</dd></div>
+                      <div class="vo-journey__pain"><dt>Pain point</dt><dd>Only memory and word of mouth to judge who pays well.</dd></div>
+                    </dl>
+                  </li>
+                </ol>
+              </li>
+              <li class="vo-journey__phase">
+                <h4>Collect and repay</h4>
+                <ol class="vo-journey__steps">
+                  <li class="vo-journey__step">
+                    <h5><span aria-hidden="true">05</span> Collect</h5>
+                    <dl>
+                      <div class="vo-journey__need"><dt>Need</dt><dd>Get each associate’s payment on time.</dd></div>
+                      <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😩</span>Exhausted</dd></div>
+                      <div class="vo-journey__pain"><dt>Pain point</dt><dd>A whole day on public transport, house to house, carrying cash.</dd></div>
+                    </dl>
+                  </li>
+                  <li class="vo-journey__step">
+                    <h5><span aria-hidden="true">06</span> Pay back</h5>
+                    <dl>
+                      <div class="vo-journey__need"><dt>Need</dt><dd>Pay Volana before the due date.</dd></div>
+                      <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😰</span>Anxious</dd></div>
+                      <div class="vo-journey__pain"><dt>Pain point</dt><dd>Another trip to the branch with all the cash collected.</dd></div>
+                    </dl>
+                  </li>
+                </ol>
+              </li>
+              <li class="vo-journey__phase">
+                <h4>Close and grow</h4>
+                <ol class="vo-journey__steps">
+                  <li class="vo-journey__step">
+                    <h5><span aria-hidden="true">07</span> Close the loan</h5>
+                    <dl>
+                      <div class="vo-journey__need"><dt>Need</dt><dd>Close it, and decide whether to lend again.</dd></div>
+                      <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">😌</span>Relieved</dd></div>
+                      <div class="vo-journey__pain"><dt>Pain point</dt><dd>No record of who paid well to carry into the next loan.</dd></div>
+                    </dl>
+                  </li>
+                  <li class="vo-journey__step">
+                    <h5><span aria-hidden="true">08</span> Ask for more</h5>
+                    <dl>
+                      <div class="vo-journey__need"><dt>Need</dt><dd>A bigger line, to lend to more people.</dd></div>
+                      <div class="vo-journey__feel"><dt>Feeling</dt><dd><span class="vo-journey__emoji" aria-hidden="true">🤞</span>Hopeful</dd></div>
+                      <div class="vo-journey__pain"><dt>Pain point</dt><dd>Another visit to the branch just to ask.</dd></div>
+                    </dl>
+                  </li>
+                </ol>
+              </li>
             </ol>
           </div>
         </figure>
         <figure class="vo-board">
           <img src="img/process-whiteboard.webp" width="1600" height="1181" alt="Whiteboard from a workshop: the app’s sections (Home, Cartera, Mi red, Notificaciones) and what Home holds: the credit line, “18,000” to offer; offer a loan, by registering an associate or offering to a previous one; my payments, with the history and the next payment broken down per associate; increase the credit line; and my requests, pending, approved, returned or denied. Next to it, a phone sketch with sticky notes.">
           <figcaption>The app’s first structure, drafted in a workshop: Home, Wallet, My network and Notifications, and everything Home had to hold.</figcaption>
+        </figure>
+        <figure class="vo-paths" aria-labelledby="paths-title">
+          <figcaption>
+            <h3 class="cs-label" id="paths-title">Two paths through the same loan</h3>
+            <p class="cs-lead">Same lender, same circle. Five steps instead of eight, and none of them on a bus.</p>
+          </figcaption>
+          <svg class="vo-paths__svg" viewBox="0 0 1040 560" aria-hidden="true"><rect class="vp-shared" x="0" y="0" width="300" height="560"/><rect class="vp-up" x="300" y="0" width="740" height="270"/><rect class="vp-down" x="300" y="270" width="740" height="290"/><line class="vp-mid" x1="0" y1="270" x2="1040" y2="270"/><path class="vp-path" d="M40,270 L300,270"/><path class="vp-path vp-path--app" d="M300,270 C360,220 600,140 900,110"/><path class="vp-path" d="M300,270 C360,310 640,430 1000,480"/><text class="vp-tag" x="1008" y="242">With the app</text><text class="vp-tag" x="1008" y="322">At the branch</text><text class="vp-zone" x="24" y="40">Same start</text><g class="vp-node"><circle cx="90" cy="270" r="13"/><text class="vp-n" x="90" y="274">1</text><text class="vp-l" x="90" y="230"><tspan x="90" dy="0">Decide to lend</tspan><tspan x="90" dy="16">to her circle</tspan></text></g><g class="vp-node"><circle cx="220" cy="270" r="13"/><text class="vp-n" x="220" y="274">2</text><text class="vp-l" x="220" y="304"><tspan x="220" dy="0">Pick the people</tspan><tspan x="220" dy="16">she trusts</tspan></text></g><g class="vp-node vp-node--app"><circle cx="380" cy="227" r="13"/><text class="vp-n" x="380" y="231">3</text><text class="vp-l" x="380" y="187"><tspan x="380" dy="0">Sign up and</tspan><tspan x="380" dy="16">verify from home</tspan></text></g><g class="vp-node vp-node--app"><circle cx="500" cy="185" r="13"/><text class="vp-n" x="500" y="190">4</text><text class="vp-l" x="500" y="145"><tspan x="500" dy="0">Offer loans,</tspan><tspan x="500" dy="16">ratings in view</tspan></text></g><g class="vp-node vp-node--app"><circle cx="620" cy="155" r="13"/><text class="vp-n" x="620" y="159">5</text><text class="vp-l" x="620" y="115"><tspan x="620" dy="0">Associates pay</tspan><tspan x="620" dy="16">from anywhere</tspan></text></g><g class="vp-node vp-node--app"><circle cx="740" cy="131" r="13"/><text class="vp-n" x="740" y="136">6</text><text class="vp-l" x="740" y="91"><tspan x="740" dy="0">See who paid,</tspan><tspan x="740" dy="16">pay by transfer</tspan></text></g><g class="vp-node vp-node--app"><circle cx="860" cy="114" r="13"/><text class="vp-n" x="860" y="119">7</text><text class="vp-l" x="860" y="74"><tspan x="860" dy="0">Close, rate,</tspan><tspan x="860" dy="16">ask for more</tspan></text></g><g class="vp-node"><circle cx="370" cy="306" r="13"/><text class="vp-n" x="370" y="311">3</text><text class="vp-l" x="370" y="340"><tspan x="370" dy="0">Take her papers</tspan><tspan x="370" dy="16">to the branch</tspan></text></g><g class="vp-node"><circle cx="458" cy="343" r="13"/><text class="vp-n" x="458" y="347">4</text><text class="vp-l" x="458" y="377"><tspan x="458" dy="0">Wait for</tspan><tspan x="458" dy="16">approval</tspan></text></g><g class="vp-node"><circle cx="546" cy="374" r="13"/><text class="vp-n" x="546" y="379">5</text><text class="vp-l" x="546" y="408"><tspan x="546" dy="0">Bring her</tspan><tspan x="546" dy="16">associates’</tspan><tspan x="546" dy="16">papers in</tspan></text></g><g class="vp-node"><circle cx="634" cy="402" r="13"/><text class="vp-n" x="634" y="406">6</text><text class="vp-l" x="634" y="436"><tspan x="634" dy="0">Offer loans</tspan><tspan x="634" dy="16">from memory</tspan></text></g><g class="vp-node"><circle cx="722" cy="425" r="13"/><text class="vp-n" x="722" y="430">7</text><text class="vp-l" x="722" y="459"><tspan x="722" dy="0">Collect by bus,</tspan><tspan x="722" dy="16">house to house</tspan></text></g><g class="vp-node"><circle cx="810" cy="446" r="13"/><text class="vp-n" x="810" y="451">8</text><text class="vp-l" x="810" y="480"><tspan x="810" dy="0">Carry the</tspan><tspan x="810" dy="16">cash to the</tspan><tspan x="810" dy="16">branch</tspan></text></g><g class="vp-node"><circle cx="898" cy="464" r="13"/><text class="vp-n" x="898" y="468">9</text><text class="vp-l" x="898" y="498"><tspan x="898" dy="0">Close with</tspan><tspan x="898" dy="16">no record</tspan></text></g><g class="vp-node"><circle cx="986" cy="478" r="13"/><text class="vp-n" x="986" y="483">10</text><text class="vp-l" x="986" y="512"><tspan x="986" dy="0">Go back to</tspan><tspan x="986" dy="16">ask for more</tspan></text></g></svg>
+          <div class="vo-paths__lists">
+            <div><h4>Same start</h4><ol><li>Decide to lend to her circle</li><li>Pick the people she trusts</li></ol></div>
+            <div><h4>With the app</h4><ol start="3"><li>Sign up and verify from home</li><li>Offer loans, ratings in view</li><li>Associates pay from anywhere</li><li>See who paid, pay by transfer</li><li>Close, rate, ask for more</li></ol></div>
+            <div><h4>At the branch</h4><ol start="3"><li>Take her papers to the branch</li><li>Wait for approval</li><li>Bring her associates’ papers in</li><li>Offer loans from memory</li><li>Collect by bus, house to house</li><li>Carry the cash to the branch</li><li>Close with no record</li><li>Go back to ask for more</li></ol></div>
+          </div>
         </figure>
         <hr class="cs-rule">
       </section>
@@ -218,7 +287,7 @@
             <p class="cs-label">01. One app, two roles</p>
             <h3>The lender tracks, the associate pays.</h3>
             <p>Lenders and associates used the same app and signed in by role, because they needed different things. The lender needed to see who had paid and what was still owed. The associate needed to know how much and when, and a way to pay without a trip.</p>
-            <p>So the lender’s wallet opens on their next payment to Volana, with the associates who owe this fortnight below it. The associate’s home opens on what they owe, and two ways to pay: a bank transfer, or cash at any OXXO store with a reference. Not everyone used a bank account, so cash had to stay an option.</p>
+            <p>So the lender’s wallet opens on their next payment to Volana, with the associates who owe this fortnight below it. The associate’s home opens on what they owe, and two ways to pay: a bank transfer or deposit, or cash at Walmart, Bodega Aurrera, Soriana or La Comer with a barcode. Not everyone used a bank account, so cash had to stay an option, and the screen says when each payment shows up: at once, or within 24 hours.</p>
             <p class="cs-chip"><span>Based on</span> Focus groups</p>
           </div>
           <figure class="cs-decision__media cs-decision__media--phone vo-roles">
@@ -230,7 +299,7 @@
             <div class="vo-phone">
               <img class="vo-phone__status" src="img/wallet-status.webp" width="750" height="66" alt="">
               <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Mi cartera (scrollable screen)">
-                <img src="img/wallet.webp" width="750" height="1568" alt="Julieta, the lender, “Mi cartera”: the next payment of $13,500.00, a personal loan offer, and the four associates who pay this fortnight: Mariana López ($350.00), Sofía Herrera ($756.67), Andrea Ruiz ($500.00) and Carlos Méndez ($420.00).">
+                <img src="img/wallet.webp" width="750" height="1778" alt="Julieta, the lender, “Mi cartera”: the next payment of $13,500.00, her credit line with $11,800.00 available of $20,000.00 and “Solicitar aumento”, a personal loan offer, and the four associates who pay this fortnight: Mariana López ($350.00), Sofía Herrera ($756.67), Andrea Ruiz ($500.00) and Carlos Méndez ($420.00).">
               </div>
               <img class="vo-phone__bar" src="img/wallet-bar.webp" width="750" height="124" alt="">
             </div>
@@ -239,7 +308,7 @@
             <div class="vo-phone">
               <img class="vo-phone__status" src="img/pay-status.webp" width="750" height="66" alt="">
               <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Hola, Mariana (scrollable screen)">
-                <img src="img/pay.webp" width="750" height="1313" alt="Mariana, an associate, “Hola, Mariana”: next payment of $350.00 due Friday, November 15, payment 2 of 6, lent by Julieta García, with cash at OXXO selected and a payment reference with a barcode.">
+                <img src="img/pay.webp" width="750" height="1385" alt="Mariana, an associate, “Hola, Mariana”: next payment of $350.00 due Friday, November 15, payment 2 of 6, lent by Julieta García, with cash at a store (Walmart, Bodega Aurrera, Soriana or La Comer) selected, a barcode for service #198, and a note that the payment shows within 24 hours.">
               </div>
               <img class="vo-phone__bar" src="img/pay-bar.webp" width="750" height="124" alt="">
             </div>
@@ -296,7 +365,7 @@
             <div class="vo-phone">
               <img class="vo-phone__status" src="img/notify-status.webp" width="750" height="66" alt="">
               <div class="vo-phone__screen" tabindex="0" role="region" aria-label="Lock screen notifications (scrollable screen)" style="background: #8F9BFF">
-                <img src="img/notify.webp" width="750" height="1434" alt="Lock screen with two Volana notifications: “Tu pago vence mañana: paga $350.00 antes del viernes. En OXXO usa tu referencia 9301 4472 0815 36”, and an older one, “Pago recibido: tu pago 1 de 6 por $350.00 quedó registrado. ¡Gracias por pagar a tiempo!”">
+                <img src="img/notify.webp" width="750" height="1434" alt="Lock screen with two Volana notifications: “Tu pago vence mañana: paga $350.00 antes del viernes, por transferencia o en efectivo en Walmart, Soriana o Bodega Aurrera”, and an older one, “Pago recibido: tu pago 1 de 6 por $350.00 quedó registrado. ¡Gracias por pagar a tiempo!”">
               </div>
             </div>
           </figure>
@@ -330,10 +399,13 @@
       <!-- 05. OUTCOME -->
       <section class="cs-section" aria-labelledby="outcome">
         <p class="cs-eyebrow cs-eyebrow--dot">05. Outcome</p>
-        <h2 class="cs-title" id="outcome" tabindex="-1">People chose the app over the branch</h2>
+        <h2 class="cs-title" id="outcome" tabindex="-1">Cash off the street, and a way to grow</h2>
         <div class="cs-intro">
-          <p class="cs-lead">60% of in-branch customers became early adopters in the first month.</p>
-          <p>Volana’s base was small, about 1,000 accounts, all of them used to borrowing, collecting and paying in person and in cash. For them, that was a fast shift. I moved to a new role soon after the first release, so I didn’t see the longer-term numbers.</p>
+          <p class="cs-lead">The riskiest parts of a loan, signing up and paying, left the street.</p>
+          <div>
+            <p>Julieta no longer spent a day on the bus collecting, and new associates joined from their own phones instead of handing her their papers. Payments could go in by transfer, by deposit at several banks, or in cash at the stores people already shopped in.</p>
+            <p>For Polygon, it was the growth the acquisition was for: Volana’s portfolio moved into Medá, and Volana’s customers got Medá’s wallet, where everyday operations earned points and generous cashback. I moved to a new role soon after the first release, so I didn’t see the longer-term numbers.</p>
+          </div>
         </div>
         <div class="cs-problem">
           <h3 class="cs-label">What came next</h3>
@@ -348,6 +420,7 @@
         <h2 class="cs-title" id="reflection" tabindex="-1">Measure the change, not just the download</h2>
         <ul class="cs-lessons">
           <li><h3>Define success first</h3><p>We tracked adoption only. I’d agree on digital payments, on-time rate and trips avoided before designing.</p></li>
+          <li><h3>Design for the 24-hour gap</h3><p>Cash took up to a day to show. I’d show “paid at a store, shows within 24 hours” so a lender never chases someone who already paid.</p></li>
           <li><h3>Motivate, don’t expose</h3><p>On-time payers earned a rating. I’d test that it never shames people who are late, or pushes anyone to borrow beyond their means.</p></li>
         </ul>
         <hr class="cs-rule">
