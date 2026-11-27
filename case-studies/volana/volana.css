@@ -145,3 +145,7 @@
   .vo-paths__svg { display: block; }
   .vo-paths__lists { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
 }
+/* Overview: the wins, as short lines instead of a number */
+.vo-wins { list-style: none; margin: 12px 0 0; padding: 0; display: grid; gap: 12px; }
+.vo-wins li { padding-left: 16px; border-left: 2px solid var(--cs-accent-line); font-size: 16px; line-height: 24px; }
+.vo-wins strong { font-weight: 600; color: var(--ink-strong); }
