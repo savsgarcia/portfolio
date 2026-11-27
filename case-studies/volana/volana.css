@@ -28,13 +28,11 @@
 .vo-journey dd { margin: 2px 0 0; font-size: 14px; line-height: 21px; }
 .vo-journey__feel dd { display: flex; align-items: center; gap: 8px; font-weight: 500; }
 .vo-journey__emoji { font-size: 20px; line-height: 1; flex: none; }
-.vo-journey__change { padding-top: 12px; border-top: 2px solid var(--cs-accent-line); }
-.vo-journey__change dd { color: var(--ink-strong); }
 .vo-journey__rows, .vo-journey__curve { display: none; }
 @media (min-width: 700px) and (max-width: 1099px) { .vo-journey__steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
 
 @media (min-width: 1100px) {
-  .vo-journey__grid { display: grid; grid-template-columns: 88px repeat(8, minmax(0, 1fr)); grid-template-rows: auto auto auto 64px auto auto; }
+  .vo-journey__grid { display: grid; grid-template-columns: 88px repeat(8, minmax(0, 1fr)); grid-template-rows: auto auto auto 64px auto; }
   .vo-journey__phases { grid-column: 2 / -1; grid-row: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; gap: 0; }
   .vo-journey__phase { grid-column: span 2; grid-row: 1 / -1; display: grid; grid-template-columns: subgrid; grid-template-rows: subgrid; border-left: 1px solid var(--cs-line, #DDD9CC); }
   .vo-journey__phase h4 { grid-column: 1 / -1; grid-row: 1; margin: 0; padding: 8px 10px; background: var(--cs-hero-bg); }
@@ -53,7 +51,6 @@
   .vo-journey__rows { display: grid; grid-column: 1; grid-row: 3 / -1; grid-template-rows: subgrid; font-family: var(--font-mono); font-size: 11px; line-height: 16px; letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
   .vo-journey__rows span { padding: 10px 10px 10px 0; }
   .vo-journey__rows span:nth-child(2) { align-self: center; padding: 0; }
-  .vo-journey__rows span:nth-child(4) { border-top: 2px solid var(--cs-accent-line); }
   .vo-journey__curve { display: block; grid-column: 2 / -1; grid-row: 4; width: 100%; height: 100%; }
   .vo-journey__curve polyline { fill: none; stroke: var(--cs-accent-line); stroke-width: 2; stroke-dasharray: 4 4; vector-effect: non-scaling-stroke; }
 }
@@ -122,3 +119,29 @@
 .vo-constraints h4 + p { margin-top: 4px; font-size: 15px; line-height: 23px; }
 @media (min-width: 700px) { .vo-constraints ul { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 40px; } }
 @media (min-width: 1100px) { .vo-constraints ul { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; } }
+
+/* Two paths: the same start, then the app path rises and the branch path sinks (after the
+   journey overview in the BBVA study). The drawing is decorative; the same steps are lists,
+   visually hidden from 700px, where the drawing shows. */
+.vo-paths { margin: 64px 0 0; }
+.vo-paths figcaption .cs-lead { margin-top: 8px; }
+.vo-paths__svg { display: none; width: 100%; height: auto; margin-top: 24px; border-radius: 12px; font-family: var(--font-sans); }
+.vo-paths__svg .vp-shared { fill: #F2F1ED; }
+.vo-paths__svg .vp-up { fill: var(--cs-hero-bg); }
+.vo-paths__svg .vp-down { fill: #E1E4FB; }
+.vo-paths__svg .vp-mid { stroke: #8A867C; stroke-width: 1.5; stroke-dasharray: 6 5; }
+.vo-paths__svg .vp-path { fill: none; stroke: var(--ink-soft); stroke-width: 2; stroke-dasharray: 2 5; stroke-linecap: round; }
+.vo-paths__svg .vp-path--app { stroke: var(--cs-accent-line); stroke-width: 2.5; }
+.vo-paths__svg circle { fill: #fff; stroke: var(--ink-strong); stroke-width: 1.5; }
+.vo-paths__svg .vp-node--app circle { stroke: #3443C9; stroke-width: 2; }
+.vo-paths__svg .vp-n { font-size: 12px; font-weight: 600; text-anchor: middle; fill: var(--ink-strong); }
+.vo-paths__svg .vp-l { font-size: 13px; text-anchor: middle; fill: var(--ink); }
+.vo-paths__svg .vp-tag { font-family: var(--font-display); font-size: 30px; text-anchor: end; fill: var(--ink-strong); }
+.vo-paths__svg .vp-zone { font-family: var(--font-mono); font-size: 12px; letter-spacing: .04em; text-transform: uppercase; fill: var(--ink-soft); }
+.vo-paths__lists { display: grid; gap: 24px; margin-top: 24px; }
+.vo-paths__lists h4 { margin: 0 0 8px; font-family: var(--font-mono); font-size: 12px; font-weight: 400; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-strong); }
+.vo-paths__lists ol { list-style: decimal; margin: 0; padding-left: 24px; display: grid; gap: 6px; font-size: 15px; line-height: 22px; }
+@media (min-width: 700px) {
+  .vo-paths__svg { display: block; }
+  .vo-paths__lists { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; margin: 0; }
+}
